@@ -8,6 +8,12 @@
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav-main');
   if (toggle && nav) {
+    // IMPORTANT: déplacer le .nav-main hors du <header> (qui a un backdrop-filter créant un containing-block)
+    // Sinon position:fixed du drawer est limité à la hauteur du header.
+    if (nav.parentElement !== document.body) {
+      document.body.appendChild(nav);
+    }
+
     // Inject backdrop & close button si pas déjà là
     let backdrop = document.querySelector('.nav-backdrop');
     if (!backdrop) {
