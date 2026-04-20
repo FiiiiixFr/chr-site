@@ -8,11 +8,22 @@
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav-main');
   if (toggle && nav) {
-    // IMPORTANT: déplacer le .nav-main hors du <header> (qui a un backdrop-filter créant un containing-block)
-    // Sinon position:fixed du drawer est limité à la hauteur du header.
-    if (nav.parentElement !== document.body) {
-      document.body.appendChild(nav);
-    }
+    // Repère l'emplacement original pour pouvoir remettre en desktop
+    const navPlaceholder = document.createComment('nav-main-placeholder');
+    nav.parentNode.insertBefore(navPlaceholder, nav);
+
+    const mq = window.matchMedia('(max-width: 900px)');
+    const syncNavPlacement = () => {
+      if (mq.matches) {
+        // Mobile : déplacer vers body pour échapper au backdrop-filter du header (containing-block)
+        if (nav.parentElement !== document.body) document.body.appendChild(nav);
+      } else {
+        // Desktop : remettre à sa place d'origine dans le header
+        if (nav.parentElement === document.body) navPlaceholder.parentNode.insertBefore(nav, navPlaceholder);
+      }
+    };
+    syncNavPlacement();
+    mq.addEventListener('change', syncNavPlacement);
 
     // Inject backdrop & close button si pas déjà là
     let backdrop = document.querySelector('.nav-backdrop');
