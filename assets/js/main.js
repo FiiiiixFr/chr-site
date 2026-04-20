@@ -24,6 +24,19 @@
       nav.insertBefore(closeBtn, nav.firstChild);
     }
 
+    // Cloner les actions (Aide, Se connecter, Démo, FR/EN) dans le drawer
+    const navActions = document.querySelector('.nav-actions');
+    if (navActions && !nav.querySelector('.drawer-actions')) {
+      const drawerActions = document.createElement('div');
+      drawerActions.className = 'drawer-actions';
+      navActions.querySelectorAll('a.btn, .lang-switch').forEach(el => {
+        const clone = el.cloneNode(true);
+        clone.classList.remove('btn-ghost'); // Aide passe en lien simple dans drawer
+        drawerActions.appendChild(clone);
+      });
+      nav.appendChild(drawerActions);
+    }
+
     const openDrawer = () => {
       nav.classList.add('open');
       backdrop.classList.add('is-open');
