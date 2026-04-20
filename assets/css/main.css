@@ -782,9 +782,17 @@ section  { padding: var(--space-xl) 0; }
     justify-content: center;
     padding: .95rem 1rem;
   }
-  .nav-main .drawer-actions .lang-switch {
-    justify-content: center;
-    margin-top: .5rem;
+  /* Forcer couleurs des boutons dans le drawer (override .nav-main a) */
+  .nav-main .drawer-actions .btn-primary {
+    color: #0A1028 !important;
+    border: none;
+  }
+  .nav-main .drawer-actions .btn-outline {
+    color: var(--color-text) !important;
+    border: 2px solid rgba(242, 232, 213, 0.25);
+  }
+  .nav-main .drawer-actions a.btn {
+    border-bottom: none !important;
   }
 
   /* Close button inside drawer */
