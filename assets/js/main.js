@@ -1,5 +1,5 @@
 /* CHR Solution — site vitrine
-   Interactions minimales : menu mobile, scroll reveal, toggle tarifs
+   Interactions : menu mobile, scroll reveal, toggle tarifs, hero video loop
 */
 (function() {
   'use strict';
@@ -40,7 +40,45 @@
     });
   }
 
-  // Current year footer
-  const y = document.querySelectorAll('[data-year]');
-  y.forEach(el => el.textContent = new Date().getFullYear());
+  // Current year
+  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+
+  // Hero video carousel — crossfade entre plusieurs vidéos en boucle
+  const heroCarousel = document.querySelector('[data-hero-carousel]');
+  if (heroCarousel) {
+    const videos = heroCarousel.querySelectorAll('video');
+    let current = 0;
+
+    function showNext() {
+      const next = (current + 1) % videos.length;
+      const nextVideo = videos[next];
+      nextVideo.currentTime = 0;
+      nextVideo.play().catch(() => {});
+      nextVideo.classList.add('is-active');
+      // Retire la classe active de l'ancienne après transition CSS
+      setTimeout(() => {
+        videos[current].classList.remove('is-active');
+        videos[current].pause();
+        current = next;
+      }, 1200);
+    }
+
+    // Précharger et démarrer la première vidéo
+    videos[0].classList.add('is-active');
+    videos[0].play().catch(() => {});
+
+    // Écoute fin de chaque vidéo pour enchaîner
+    videos.forEach((v, i) => {
+      v.addEventListener('ended', showNext);
+      // Précharger les suivantes en silence
+      if (i > 0) v.load();
+    });
+
+    // Fallback de sécurité : si `ended` ne se déclenche pas (vidéo bouclée par erreur ou erreur réseau), toggle toutes les 8s
+    setInterval(() => {
+      if (videos[current].paused || videos[current].currentTime > videos[current].duration - 0.3) {
+        showNext();
+      }
+    }, 9000);
+  }
 })();
