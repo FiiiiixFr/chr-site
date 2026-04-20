@@ -4,14 +4,67 @@
 (function() {
   'use strict';
 
-  // Mobile menu
+  // Mobile drawer menu (slide from right)
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav-main');
   if (toggle && nav) {
+    // Inject backdrop & close button si pas déjà là
+    let backdrop = document.querySelector('.nav-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'nav-backdrop';
+      document.body.appendChild(backdrop);
+    }
+    let closeBtn = nav.querySelector('.drawer-close');
+    if (!closeBtn) {
+      closeBtn = document.createElement('button');
+      closeBtn.className = 'drawer-close';
+      closeBtn.setAttribute('aria-label', 'Fermer le menu');
+      closeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      nav.insertBefore(closeBtn, nav.firstChild);
+    }
+
+    const openDrawer = () => {
+      nav.classList.add('open');
+      backdrop.classList.add('is-open');
+      document.body.classList.add('nav-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    };
+    const closeDrawer = () => {
+      nav.classList.remove('open');
+      backdrop.classList.remove('is-open');
+      document.body.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+      nav.classList.contains('open') ? closeDrawer() : openDrawer();
     });
+    backdrop.addEventListener('click', closeDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+    // Swipe-to-close: swipe droite sur le drawer le ferme
+    let touchStartX = 0;
+    nav.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    nav.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (dx > 60) closeDrawer();
+    }, { passive: true });
+
+    // Swipe-from-edge pour ouvrir : swipe depuis le bord droit
+    let edgeStartX = null;
+    document.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      if (t.clientX > window.innerWidth - 20) edgeStartX = t.clientX;
+    }, { passive: true });
+    document.addEventListener('touchend', e => {
+      if (edgeStartX === null) return;
+      const dx = e.changedTouches[0].clientX - edgeStartX;
+      if (dx < -60 && !nav.classList.contains('open')) openDrawer();
+      edgeStartX = null;
+    }, { passive: true });
   }
 
   // Scroll reveal
