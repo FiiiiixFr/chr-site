@@ -838,7 +838,8 @@ section  { padding: var(--space-xl) 0; }
 }
 
 @media (min-width: 901px) {
-  .drawer-close { display: none; }
+  .drawer-close { display: none !important; }
+  .drawer-actions { display: none !important; }
   .nav-backdrop { display: none; }
 }
 
