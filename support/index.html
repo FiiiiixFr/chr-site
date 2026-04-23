@@ -760,6 +760,11 @@ const CATEGORIES = [
     titles:{ fr:"Dépannage", en:"Troubleshooting" },
     descs:{ fr:"Connexion, affichage, données manquantes.",
             en:"Login, display, missing data." }
+  },
+  { id:"resources", icon:"📚", iconCls:"navy",
+    titles:{ fr:"Ressources & astuces", en:"Resources & tips" },
+    descs:{ fr:"Mémos techniques, intégrations, design, icons.",
+            en:"Technical memos, integrations, design, icons." }
   }
 ];
 
@@ -2934,6 +2939,72 @@ const ARTICLES = [
   <li>Your browser (Chrome, Safari, Firefox…) and its version.</li>
 </ul>
 `
+  }
+},
+{
+  id:"iconify", cat:"resources", readTime:3,
+  titles:{ fr:"Récupérer un icon sur Iconify", en:"Get an icon from Iconify" },
+  summaries:{ fr:"3 méthodes pour intégrer un icon Iconify dans CHR Solution ou un site.",
+              en:"3 methods to embed an Iconify icon in CHR Solution or a website." },
+  bodies:{
+    fr: `<p class="lead">Pour ajouter ou remplacer un icon dans un écran CHR Solution ou sur le site, Iconify est la bibliothèque de référence. Elle agrège plus de 200 000 icons (Heroicons, Material Design, Tabler, Lucide, Phosphor…) sous une API unique.</p>
+<h2>Méthode 1 — copier un SVG isolé</h2>
+<ol>
+  <li>Va sur <a href="https://icon-sets.iconify.design/" target="_blank" rel="noopener">icon-sets.iconify.design</a>.</li>
+  <li>Cherche ton icon (ex. « settings », « user », « plus »).</li>
+  <li>Clique l\'icon — un panneau s\'ouvre à droite.</li>
+  <li>Clique « SVG » puis copie le code ou télécharge le fichier.</li>
+  <li>Colle le &lt;svg&gt;…&lt;/svg&gt; dans ton HTML. Ajuste width, height et mets fill="currentColor" pour hériter la couleur du parent.</li>
+</ol>
+<h2>Méthode 2 — CDN image (le plus simple)</h2>
+<p>Utilise l\'API Iconify comme src d\'une balise &lt;img&gt; :</p>
+<p class="ui">&lt;img src="https://api.iconify.design/mdi/settings.svg?color=%23F2E8D5&amp;width=24" alt=""&gt;</p>
+<ul>
+  <li><strong>mdi</strong> = Material Design Icons. Le préfixe (mdi, lucide, tabler, heroicons, ph, fa6-solid…) est visible sur la page de l\'icon.</li>
+  <li><strong>color</strong> en hex URL-encodé : %23 = #.</li>
+  <li><strong>width</strong> / <strong>height</strong> optionnels.</li>
+</ul>
+<h2>Méthode 3 — Web Component (plusieurs icons sur une page)</h2>
+<p>Dans le &lt;head&gt; :</p>
+<p class="ui">&lt;script src="https://code.iconify.design/3/3.1.1/iconify.min.js"&gt;&lt;/script&gt;</p>
+<p>Puis partout :</p>
+<p class="ui">&lt;span class="iconify" data-icon="mdi:settings" data-width="24"&gt;&lt;/span&gt;</p>
+<h2>Conseils</h2>
+<ul>
+  <li>Pour un design dark + accent, récupère l\'icon en <strong>currentColor</strong> et définis la couleur via le parent (ex. .ico { color: var(--color-gold) }).</li>
+  <li><strong>Heroicons</strong> et <strong>Lucide</strong> donnent le rendu le plus propre pour un design moderne.</li>
+  <li>Toujours ajouter <code>aria-hidden="true"</code> sur les icons décoratifs, sinon <code>role="img"</code> + <code>aria-label</code>.</li>
+  <li>Pour des drapeaux ou emojis stylisés, préfère <strong>twemoji</strong> ou <strong>flag-icons</strong>.</li>
+</ul>`,
+    en: `<p class="lead">To add or replace an icon in a CHR Solution screen or on the website, Iconify is the go-to library. It aggregates 200,000+ icons (Heroicons, Material Design, Tabler, Lucide, Phosphor…) under one API.</p>
+<h2>Method 1 — copy a standalone SVG</h2>
+<ol>
+  <li>Go to <a href="https://icon-sets.iconify.design/" target="_blank" rel="noopener">icon-sets.iconify.design</a>.</li>
+  <li>Search for your icon (e.g. "settings", "user", "plus").</li>
+  <li>Click the icon — a right panel opens.</li>
+  <li>Click "SVG" to copy the code or download the file.</li>
+  <li>Paste the &lt;svg&gt;…&lt;/svg&gt; in your HTML. Adjust width, height and set fill="currentColor" to inherit the parent color.</li>
+</ol>
+<h2>Method 2 — image CDN (easiest)</h2>
+<p>Use the Iconify API as the src of an &lt;img&gt; tag:</p>
+<p class="ui">&lt;img src="https://api.iconify.design/mdi/settings.svg?color=%23F2E8D5&amp;width=24" alt=""&gt;</p>
+<ul>
+  <li><strong>mdi</strong> = Material Design Icons. The prefix (mdi, lucide, tabler, heroicons, ph, fa6-solid…) is shown on each icon\'s page.</li>
+  <li><strong>color</strong> in URL-encoded hex: %23 = #.</li>
+  <li><strong>width</strong> / <strong>height</strong> optional.</li>
+</ul>
+<h2>Method 3 — Web Component (many icons on a page)</h2>
+<p>In &lt;head&gt;:</p>
+<p class="ui">&lt;script src="https://code.iconify.design/3/3.1.1/iconify.min.js"&gt;&lt;/script&gt;</p>
+<p>Then anywhere:</p>
+<p class="ui">&lt;span class="iconify" data-icon="mdi:settings" data-width="24"&gt;&lt;/span&gt;</p>
+<h2>Tips</h2>
+<ul>
+  <li>For dark + accent designs, set the icon to <strong>currentColor</strong> and define the color on the parent (e.g. .ico { color: var(--color-gold) }).</li>
+  <li><strong>Heroicons</strong> and <strong>Lucide</strong> give the cleanest modern look.</li>
+  <li>Always add <code>aria-hidden="true"</code> on decorative icons, otherwise <code>role="img"</code> + <code>aria-label</code>.</li>
+  <li>For flags or stylized emojis, prefer <strong>twemoji</strong> or <strong>flag-icons</strong>.</li>
+</ul>`
   }
 }
 
