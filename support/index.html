@@ -3,705 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Centre d'aide CHR Solution â guides, FAQ et support.">
-<title>CHR Solution â Help Center</title>
+<meta name="description" content="Centre d'aide CHR Solution — guides, FAQ et support.">
+<title>CHR Solution — Help Center</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Palette bleu nuit (aligne sur main.css) */
-    --color-bg:           #0A1028;
-    --color-bg-soft:      #121A36;
-    --color-bg-elevated:  #1B2446;
-    --color-bg-deep:      #050920;
+  /* Palette bleu nuit */
+  --color-bg:           #0A1028;          /* fond principal bleu nuit */
+  --color-bg-soft:      #121A36;          /* fond cards, sections douces */
+  --color-bg-elevated:  #1B2446;          /* fond cards "elevated" */
+  --color-bg-deep:      #050920;          /* fond extra-sombre (footer) */
 
-    /* Accents creme chaud (conservent variables --color-gold*) */
-    --color-gold:         #F2E8D5;
-    --color-gold-soft:    #FAF2DE;
-    --color-gold-deep:    #D9C99E;
-    --color-copper:       #C9B68A;
+  /* Accent crème chaud — remplace le gold */
+  --color-gold:         #F2E8D5;          /* crème principal (conservé en variable pour éviter casse) */
+  --color-gold-soft:    #FAF2DE;          /* crème clair */
+  --color-gold-deep:    #D9C99E;          /* crème plus sombre/beige */
+  --color-copper:       #C9B68A;          /* beige chaud sable */
 
-    /* Texte */
-    --color-text:         #F0EADA;
-    --color-text-soft:    #B8B4A8;
-    --color-text-dim:     #7A7668;
-    --color-white:        #FFFFFF;
+  /* Texte */
+  --color-text:         #F0EADA;          /* crème chaude */
+  --color-text-soft:    #B8B4A8;          /* texte secondaire */
+  --color-text-dim:     #7A7668;          /* texte tertiaire */
+  --color-white:        #FFFFFF;
 
-    /* Bords */
-    --color-border:       rgba(242, 232, 213, 0.16);
-    --color-border-soft:  rgba(242, 232, 213, 0.08);
+  /* Bords / séparateurs */
+  --color-border:       rgba(242, 232, 213, 0.16);
+  --color-border-soft:  rgba(242, 232, 213, 0.08);
 
-    /* Semantique */
-    --color-success:      #7BC28A;
-    --color-danger:       #E07A6B;
-    --color-info:         #8FB4D9;
+  /* Sémantique */
+  --color-success:      #7BC28A;
+  --color-danger:       #E07A6B;
+  --color-info:         #8FB4D9;
 
-    /* Typo */
-    --font-body:    'Barlow', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    --font-display: 'Playfair Display', Georgia, serif;
+  /* Typo — Barlow partout, pas de sérif (différenciation RapidStock) */
+  --font-body:    'Barlow', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-display: 'Barlow', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 
-    /* Espacements */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 2rem;
-    --space-lg: 4rem;
-    --space-xl: 6rem;
+  /* Espacements */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
 
-    --container-max: 1200px;
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
+  --container-max: 1200px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
-    --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.55);
-    --shadow-lg: 0 22px 60px rgba(0, 0, 0, 0.65);
-    --shadow-gold: 0 0 24px rgba(242, 232, 213, 0.15);
-  }
-
-  * { box-sizing: border-box; margin:0; padding:0 }
-  html, body { height: 100%; }
-  body {
-    font-family: var(--font-body);
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--color-text);
-    background: var(--color-bg);
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--color-gold); text-decoration: none; transition: color .2s; }
-  a:hover { color: var(--color-gold-soft); }
-  p { margin: 0 0 1rem; color: var(--color-text); }
-  code { background: var(--color-bg-elevated); padding: .15rem .4rem; border-radius: 4px; font-size: .88em; color: var(--color-gold-soft); border: 1px solid var(--color-border-soft); }
-  hr { border: none; border-top: 1px solid var(--color-border); margin: 2rem 0; }
-
-  .ico { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
-  svg circle { stroke: currentColor; }
-
-  /* HERO */
-  .hero {
-    position: relative;
-    padding: 5rem 1.5rem 5.5rem;
-    text-align: center;
-    color: var(--color-text);
-    background: radial-gradient(ellipse at top, var(--color-bg-elevated) 0%, var(--color-bg) 55%, var(--color-bg-deep) 100%);
-    overflow: hidden;
-    border-bottom: 1px solid var(--color-border-soft);
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 0%, rgba(242, 232, 213, 0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .hero-inner { position: relative; max-width: 780px; margin: 0 auto; z-index: 1; }
-  .eyebrow {
-    display: inline-block;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: .78rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    margin-bottom: 1.1rem;
-    padding: .35rem .8rem;
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    background: rgba(242, 232, 213, 0.04);
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-  }
-  .hero p { color: var(--color-text-soft); font-size: 1.08rem; max-width: 620px; margin: 0 auto 2rem; }
-  .hero.compact { padding: 3rem 1.5rem 3.5rem; }
-  .back-home {
-    display: inline-flex; align-items: center; gap: .4rem;
-    color: var(--color-text-soft);
-    font-size: .9rem; font-weight: 500;
-    margin-bottom: 1.2rem;
-    transition: color .2s;
-  }
-  .back-home:hover { color: var(--color-gold); }
-
-  /* SEARCH */
-  .search-wrap {
-    position: relative;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-  .search-wrap input {
-    width: 100%;
-    padding: 1rem 1.2rem 1rem 3rem;
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    color: var(--color-text);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    outline: none;
-    transition: border-color .2s, box-shadow .2s, background .2s;
-  }
-  .search-wrap input::placeholder { color: var(--color-text-dim); }
-  .search-wrap input:focus { border-color: var(--color-gold); box-shadow: var(--shadow-gold); background: var(--color-bg-elevated); }
-  .search-icon {
-    position: absolute;
-    left: 1rem; top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-text-soft);
-    pointer-events: none;
-  }
-
-  /* LANG SWITCHER */
-  .lang-switcher {
-    position: absolute;
-    top: 1.3rem; right: 1.3rem;
-    display: flex; gap: .4rem;
-    z-index: 5;
-  }
-  .lang-switcher button {
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-soft);
-    font-family: var(--font-body);
-    font-size: .82rem; font-weight: 600;
-    padding: .35rem .7rem;
-    border-radius: 999px;
-    cursor: pointer;
-    display: inline-flex; align-items: center; gap: .35rem;
-    transition: background .2s, color .2s, border-color .2s;
-  }
-  .lang-switcher button:hover { color: var(--color-gold); border-color: var(--color-gold); }
-  .lang-switcher button.active { background: var(--color-gold); color: var(--color-bg); border-color: var(--color-gold); }
-  .flag { font-size: .95rem; line-height: 1; }
-
-  /* SEARCH RESULTS DROPDOWN */
-  .search-results {
-    position: absolute;
-    top: calc(100% + .6rem);
-    left: 0; right: 0;
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    max-height: 360px;
-    overflow-y: auto;
-    z-index: 10;
-    display: none;
-    text-align: left;
-  }
-  .search-results.open { display: block; }
-  .search-results .item {
-    display: block;
-    padding: .8rem 1rem;
-    border-bottom: 1px solid var(--color-border-soft);
-    color: var(--color-text);
-    transition: background .15s;
-  }
-  .search-results .item:last-child { border-bottom: none; }
-  .search-results .item:hover { background: var(--color-bg-elevated); color: var(--color-gold); }
-  .search-results .item strong { color: var(--color-gold); font-weight: 700; }
-  .search-results .item span { display: block; font-size: .82rem; color: var(--color-text-soft); margin-top: .2rem; }
-  .search-results .empty { padding: 1rem; color: var(--color-text-soft); font-style: italic; text-align: center; }
-
-  /* CONTAINER */
-  .container { max-width: var(--container-max); margin: 0 auto; padding: 3rem 1.5rem; }
-  .container.overlap { margin-top: -2.5rem; position: relative; z-index: 2; }
-
-  /* CATEGORIES GRID */
-  .cat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.2rem;
-  }
-  .cat-card {
-    display: flex; flex-direction: column;
-    padding: 1.6rem 1.4rem;
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: transform .2s, border-color .2s, box-shadow .2s, background .2s;
-    color: var(--color-text);
-  }
-  .cat-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-gold);
-    background: var(--color-bg-elevated);
-    box-shadow: var(--shadow-md), var(--shadow-gold);
-  }
-  .cat-icon {
-    width: 44px; height: 44px;
-    display: inline-flex; align-items: center; justify-content: center;
-    border-radius: var(--radius-sm);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    color: var(--color-bg);
-    background: var(--color-gold);
-  }
-  .cat-icon.teal   { background: #6FB8B5; }
-  .cat-icon.navy   { background: #4A6FA5; }
-  .cat-icon.gold   { background: var(--color-gold); }
-  .cat-icon.brown  { background: #8C6E4F; color: var(--color-text); }
-  .cat-icon.green  { background: var(--color-success); }
-  .cat-icon.red    { background: var(--color-danger); }
-  .cat-icon.purple { background: #9B7BC2; }
-  .cat-card h3 { font-family: var(--font-body); font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin: 0 0 .4rem; letter-spacing: -0.005em; }
-  .cat-card p { color: var(--color-text-soft); font-size: .95rem; margin: 0 0 .8rem; }
-  .cat-card .count { margin-top: auto; font-size: .82rem; color: var(--color-text-dim); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
-
-  /* CATEGORY HEADER */
-  .cat-header { margin-bottom: 2rem; }
-  .breadcrumb { font-size: .88rem; color: var(--color-text-soft); margin-bottom: .8rem; }
-  .breadcrumb a { color: var(--color-text-soft); }
-  .breadcrumb a:hover { color: var(--color-gold); }
-  .breadcrumb .sep { margin: 0 .4rem; color: var(--color-text-dim); }
-
-  /* ARTICLE LIST */
-  .article-list { display: flex; flex-direction: column; gap: .7rem; }
-  .article-list .item {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 1.2rem;
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    color: var(--color-text);
-    transition: border-color .2s, transform .18s, background .2s;
-  }
-  .article-list .item:hover { border-color: var(--color-gold); background: var(--color-bg-elevated); transform: translateX(4px); }
-  .art-num {
-    flex: 0 0 auto;
-    width: 34px; height: 34px;
-    display: inline-flex; align-items: center; justify-content: center;
-    background: var(--color-bg-elevated);
-    color: var(--color-gold);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    font-weight: 700; font-size: .92rem;
-  }
-  .art-body { flex: 1; }
-  .art-body strong { font-weight: 600; color: var(--color-text); }
-  .art-body p { font-size: .86rem; color: var(--color-text-soft); margin: .15rem 0 0; }
-  .art-arrow { color: var(--color-text-soft); transition: transform .2s, color .2s; }
-  .article-list .item:hover .art-arrow { color: var(--color-gold); transform: translateX(3px); }
-
-  /* ARTICLE LAYOUT */
-  .article-layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  .side-nav {
-    position: sticky; top: 1rem;
-    padding: 1.2rem 1rem;
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-  }
-  .side-nav h4 {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: .82rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    margin: 0 0 .8rem;
-  }
-  .side-nav ul { list-style: none; padding: 0; margin: 0; }
-  .side-nav li { margin: .35rem 0; }
-  .side-nav a { display: block; padding: .35rem .4rem; font-size: .92rem; color: var(--color-text-soft); border-radius: 4px; transition: color .15s, background .15s; }
-  .side-nav a:hover, .side-nav a.active { color: var(--color-gold); background: var(--color-bg-elevated); }
-
-  .article {
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 2.2rem 2rem;
-  }
-  .article h1 {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.3rem);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: .6rem;
-    line-height: 1.2;
-  }
-  .article .meta { color: var(--color-text-soft); font-size: .85rem; margin-bottom: 1.6rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-  .article h2 { font-family: var(--font-body); font-size: 1.4rem; font-weight: 700; color: var(--color-gold); margin: 1.8rem 0 .8rem; letter-spacing: -0.005em; }
-  .article h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin: 1.4rem 0 .6rem; }
-  .article ul, .article ol { margin: 0 0 1rem 1.4rem; color: var(--color-text); }
-  .article li { margin-bottom: .35rem; }
-  .article .lead { font-size: 1.08rem; color: var(--color-text-soft); margin-bottom: 1.4rem; }
-
-  /* CALLOUTS */
-  .callout {
-    padding: 1rem 1.2rem;
-    margin: 1.2rem 0;
-    border-left: 3px solid var(--color-gold);
-    background: var(--color-bg-elevated);
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-  }
-  .callout strong { color: var(--color-gold); }
-  .callout.info    { border-left-color: var(--color-info); }
-  .callout.info strong { color: var(--color-info); }
-  .callout.tip     { border-left-color: var(--color-success); }
-  .callout.tip strong { color: var(--color-success); }
-  .callout.warn    { border-left-color: var(--color-gold-deep); background: rgba(217, 201, 158, 0.08); }
-  .callout.warn strong { color: var(--color-gold-deep); }
-  .callout.danger  { border-left-color: var(--color-danger); background: rgba(224, 122, 107, 0.08); }
-  .callout.danger strong { color: var(--color-danger); }
-
-  /* RELATED */
-  .related { margin-top: 2.5rem; }
-  .related h4 {
-    font-family: var(--font-body); font-weight: 700;
-    font-size: .82rem; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--color-gold); margin: 0 0 1rem;
-  }
-  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .8rem; }
-
-  /* BADGES */
-  .badge {
-    display: inline-block;
-    padding: .22rem .7rem;
-    border-radius: 999px;
-    font-size: .7rem;
-    font-weight: 700;
-    background: var(--color-gold);
-    color: var(--color-bg);
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    margin-left: .5rem;
-    vertical-align: middle;
-  }
-  .badge.soon  { background: var(--color-gold-deep); color: var(--color-bg); }
-  .badge.new   { background: var(--color-success); color: var(--color-bg); }
-  .badge.admin { background: var(--color-info); color: var(--color-bg); }
-
-  /* CONTACT CTA */
-  .contact-cta {
-    text-align: center;
-    padding: 2.4rem 1.5rem;
-    background: linear-gradient(135deg, var(--color-bg-soft) 0%, var(--color-bg-elevated) 100%);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    margin-top: 3rem;
-  }
-  .contact-cta h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--color-text); margin-bottom: .6rem; }
-  .contact-cta p { color: var(--color-text-soft); margin-bottom: 1.4rem; }
-
-  /* BUTTONS */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    gap: .5rem;
-    padding: .85rem 1.7rem;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    font-size: .98rem;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: transform .18s, box-shadow .2s, background .25s, color .2s, border-color .2s;
-    white-space: nowrap;
-    border: 2px solid transparent;
-    background: linear-gradient(135deg, var(--color-gold-soft) 0%, var(--color-copper) 100%);
-    color: var(--color-bg);
-    text-decoration: none;
-    box-shadow: 0 6px 20px rgba(242, 232, 213, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  }
-  .btn:hover {
-    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gold-soft) 100%);
-    color: var(--color-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(242, 232, 213, 0.3);
-  }
-  .btn.outline {
-    background: transparent;
-    color: var(--color-text);
-    border: 2px solid rgba(245, 235, 217, 0.25);
-    box-shadow: none;
-  }
-  .btn.outline:hover {
-    background: rgba(245, 235, 217, 0.06);
-    color: var(--color-gold);
-    border-color: var(--color-gold);
-    box-shadow: none;
-  }
-
-  /* TABLE */
-  table.tbl {
-    width: 100%; border-collapse: collapse;
-    margin: 1rem 0;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-  }
-  table.tbl th {
-    background: var(--color-bg-elevated);
-    color: var(--color-gold);
-    text-align: left; font-weight: 700;
-    padding: .7rem 1rem; font-size: .86rem;
-    letter-spacing: .06em; text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
-  }
-  table.tbl td {
-    padding: .7rem 1rem;
-    border-bottom: 1px solid var(--color-border-soft);
-    color: var(--color-text);
-    font-size: .95rem;
-  }
-  table.tbl tr:last-child td { border-bottom: none; }
-  .ui { color: var(--color-gold); font-weight: 600; }
-
-  /* MODE EMBEDDED (iframe Bubble) */
-  body.embedded .hero { display: none; }
-  body.embedded .hero::before { display: none; }
-  body.embedded .hero .eyebrow,
-  body.embedded .hero h1,
-  body.embedded .hero p { display: none; }
-  body.embedded .hero-inner { display: none; }
-  body.embedded .hero .search-wrap { display: none; }
-  body.embedded .hero .search-wrap input { display: none; }
-  body.embedded .hero .search-wrap .search-icon { display: none; }
-  body.embedded .lang-switcher { position: fixed; top: .8rem; right: .8rem; }
-  body.embedded .lang-switcher button { background: var(--color-bg-soft); }
-  body.embedded .lang-switcher button.active { background: var(--color-gold); color: var(--color-bg); }
-  body.embedded .container.overlap { margin-top: 1.5rem; }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    .article-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-    .side-nav { position: static; }
-    .hero h1 { font-size: 2rem; }
-  }
-  @media (max-width: 560px) {
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.3rem; }
-    .hero { padding: 3rem 1rem 3.5rem; }
-    .hero.compact { padding: 2rem 1rem 2.2rem; }
-    .container { padding: 2rem 1rem; }
-    .cat-grid { grid-template-columns: 1fr; }
-    .article { padding: 1.4rem 1.2rem; }
-    .contact-cta { padding: 1.8rem 1.2rem; }
-    .lang-switcher { top: .8rem; right: .8rem; }
-  }
-
-  /* CAPTCHA */
-  .captcha-backdrop {
-    position: fixed; inset: 0;
-    background: rgba(5, 9, 32, 0.85);
-    backdrop-filter: blur(8px);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 9999; padding: 1rem;
-    transition: opacity .2s;
-  }
-  .captcha-backdrop.hidden { display: none; }
-  .captcha-modal {
-    background: var(--color-bg-soft);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 2rem 1.8rem;
-    max-width: 420px; width: 100%;
-    box-shadow: var(--shadow-lg), var(--shadow-gold);
-    text-align: center;
-    color: var(--color-text);
-  }
-  .captcha-modal h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem; font-weight: 700;
-    color: var(--color-text); margin: 0 0 .4rem;
-  }
-  .captcha-modal .hint {
-    color: var(--color-text-soft);
-    font-size: .92rem;
-    margin-bottom: 1.2rem;
-  }
-  .captcha-question {
-    font-family: var(--font-display);
-    font-size: 1.6rem; font-weight: 700;
-    color: var(--color-gold);
-    padding: .8rem 1rem;
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    margin-bottom: 1rem;
-    letter-spacing: .04em;
-  }
-  .captcha-input {
-    width: 100%;
-    padding: .8rem 1rem;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    text-align: center;
-    outline: none;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .captcha-input:focus {
-    border-color: var(--color-gold);
-    box-shadow: var(--shadow-gold);
-  }
-  .captcha-actions {
-    display: flex; gap: .6rem; justify-content: center;
-    margin-top: 1.2rem;
-  }
-  .captcha-error {
-    color: var(--color-danger);
-    font-size: .88rem;
-    margin-top: .6rem;
-    min-height: 1.2em;
-  }
-  </style>
-
-<!-- SVG icons library -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-  <symbol id="i-grid9" viewBox="0 0 24 24"><circle cx="5" cy="5" r="1.9" fill="currentColor"/><circle cx="12" cy="5" r="1.9" fill="currentColor"/><circle cx="19" cy="5" r="1.9" fill="currentColor"/><circle cx="5" cy="12" r="1.9" fill="currentColor"/><circle cx="12" cy="12" r="1.9" fill="currentColor"/><circle cx="19" cy="12" r="1.9" fill="currentColor"/><circle cx="5" cy="19" r="1.9" fill="currentColor"/><circle cx="12" cy="19" r="1.9" fill="currentColor"/><circle cx="19" cy="19" r="1.9" fill="currentColor"/></symbol>
-  <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
-  <symbol id="i-dots-v" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="19" r="1.8" fill="currentColor"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
-  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
-  <symbol id="i-bell-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.3 14.8A10 10 0 0 1 18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h15"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="16" y1="11" x2="22" y2="11"/></symbol>
-  <symbol id="i-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l4 4 6-6 6 6 4-4v13H2V6z"/></symbol>
-  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
-  <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol>
-  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
-  <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
-  <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
-  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
-  <symbol id="i-question" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
-</svg>
-</head>
-<body>
-
-<section class="hero" id="hero">
-  <div class="lang-switcher" id="langSwitcher"></div>
-  <div class="hero-inner">
-    <a href="#/" class="back-home" id="backHome"><svg width="14" height="14"><use href="#i-arrow-left"/></svg> <span data-i18n="backHome">Accueil</span></a>
-    <div class="eyebrow" id="heroEyebrow"></div>
-    <h1 id="heroTitle"></h1>
-    <p id="heroSubtitle"></p>
-    <div class="search-wrap">
-      <svg class="search-icon" width="20" height="20"><use href="#i-search"/></svg>
-      <input type="search" id="search" autocomplete="off">
-      <div class="search-results" id="searchResults"></div>
-    </div>
-  </div>
-</section>
-
-<main class="container" id="app"></main>
-
-<script>
-/* ============================================================
-   CHR SOLUTION HELP CENTER v3 â BILINGUAL FR/EN
-   ============================================================ */
-
-/* ---- UI strings ---- */
-const I18N = {
-  fr: {
-    eyebrow:"Centre d'aide",
-    heroTitle:"Comment pouvons-nous vous aider ?",
-    heroSubtitle:"Guides pas Ã  pas, rÃ©ponses aux questions frÃ©quentes et assistance pour tirer le meilleur de CHR Solution.",
-    searchPlaceholder:"Chercher une question, un module, un boutonâ¦",
-    searchEmpty:"Aucun rÃ©sultat â essayez un autre mot-clÃ©.",
-    articlesCount:n=>`${n} article${n>1?'s':''} â`,
-    articleOne:"1 article â",
-    home:"Centre d'aide",
-    backHome:"Accueil",
-    readTime:n=>`${n} min de lecture`,
-    category:"CatÃ©gorie",
-    relatedTitle:"Ã lire aussi",
-    ctaHomeTitle:"Vous ne trouvez pas votre rÃ©ponse ?",
-    ctaHomeText:"L'Ã©quipe CHR Solution rÃ©pond sous 24 h ouvrÃ©es.",
-    ctaCatTitle:"Besoin d'aller plus loin ?",
-    ctaCatText:"On est Ã  votre Ã©coute.",
-    ctaBtn:"Contacter le support",
-    captchaTitle:"Petit contrÃ´le anti-spam",
-    captchaHint:"RÃ©solvez ce calcul pour ouvrir votre client mail.",
-    captchaSubmit:"Envoyer",
-    captchaCancel:"Annuler",
-    captchaError:"Mauvaise rÃ©ponse, rÃ©essayez.",
-    adminBadge:"Admin",
-    soonBadge:"BientÃ´t",
-    noArticles:"Aucun article pour le moment.",
-    langName:"FranÃ§ais"
-  },
-  en: {
-    eyebrow:"Help Center",
-    heroTitle:"How can we help you?",
-    heroSubtitle:"Step-by-step guides, frequently asked questions and support to get the most out of CHR Solution.",
-    searchPlaceholder:"Search a question, a module, a buttonâ¦",
-    searchEmpty:"No results â try another keyword.",
-    articlesCount:n=>`${n} article${n>1?'s':''} â`,
-    articleOne:"1 article â",
-    home:"Help Center",
-    backHome:"Home",
-    readTime:n=>`${n} min read`,
-    category:"Category",
-    relatedTitle:"Also read",
-    ctaHomeTitle:"Can't find your answer?",
-    ctaHomeText:"The CHR Solution team replies within 24 business hours.",
-    ctaCatTitle:"Need to go further?",
-    ctaCatText:"We're here for you.",
-    ctaBtn:"Contact support",
-    captchaTitle:"Quick anti-spam check",
-    captchaHint:"Solve this to open your email client.",
-    captchaSubmit:"Send",
-    captchaCancel:"Cancel",
-    captchaError:"Wrong answer, please try again.",
-    adminBadge:"Admin",
-    soonBadge:"Soon",
-    noArticles:"No articles yet.",
-    langName:"English"
-  }
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 22px 60px rgba(0, 0, 0, 0.65);
+  --shadow-gold: 0 0 24px rgba(242, 232, 213, 0.15);
 };
 
 /* ---- Categories ---- */
 const CATEGORIES = [
-  { id:"getting-started", icon:"ð", iconCls:"teal",
-    titles:{ fr:"DÃ©marrage", en:"Getting Started" },
-    descs:{ fr:"Connexion, accueil et repÃ¨res dans l'interface.",
+  { id:"getting-started", icon:"🚀", iconCls:"teal",
+    titles:{ fr:"Démarrage", en:"Getting Started" },
+    descs:{ fr:"Connexion, accueil et repères dans l'interface.",
             en:"Login, home page and interface orientation." }
   },
-  { id:"purchase-mgmt", icon:"ð¤", iconCls:"navy",
+  { id:"purchase-mgmt", icon:"🤝", iconCls:"navy",
     titles:{ fr:"Gestion des Achats", en:"Purchase Management" },
-    descs:{ fr:"Fournisseurs, Clients, Produit Achat, Liste Achat â le module de rÃ©fÃ©rencement.",
-            en:"Suppliers, Customers, Purchase Products, Purchase Lists â the reference module." }
+    descs:{ fr:"Fournisseurs, Clients, Produit Achat, Liste Achat — le module de référencement.",
+            en:"Suppliers, Customers, Purchase Products, Purchase Lists — the reference module." }
   },
-  { id:"purchase-client", icon:"ð", iconCls:"teal",
-    titles:{ fr:"Gestion des Achats â CÃ´tÃ© client", en:"Purchase Management â Customer side" },
-    descs:{ fr:"Consulter votre mercuriale, imprimer une feuille d'achat, gÃ©rer vos propres produits.",
+  { id:"purchase-client", icon:"🛒", iconCls:"teal",
+    titles:{ fr:"Gestion des Achats — Côté client", en:"Purchase Management — Customer side" },
+    descs:{ fr:"Consulter votre mercuriale, imprimer une feuille d'achat, gérer vos propres produits.",
             en:"Browse your catalogue, print a purchase sheet, manage your own products." }
   },
-  { id:"stock-mgmt", icon:"ð¦", iconCls:"gold",
+  { id:"stock-mgmt", icon:"📦", iconCls:"gold",
     titles:{ fr:"Gestion de Stock", en:"Stock Management" },
     descs:{ fr:"Commandes, Produits Stock, Inventaire, Ventes, Recettes, Production.",
             en:"Orders, Stock Products, Inventory, Sales, Recipes, Production." }
   },
-  { id:"settings", icon:"âï¸", iconCls:"brown",
-    titles:{ fr:"ParamÃ¨tres & Compte", en:"Settings & Account" },
-    descs:{ fr:"Mon compte, Ma Companie, Setup â configurer l'environnement.",
-            en:"My account, My Company, Setup â configure the environment." }
+  { id:"settings", icon:"⚙️", iconCls:"brown",
+    titles:{ fr:"Paramètres & Compte", en:"Settings & Account" },
+    descs:{ fr:"Mon compte, Ma Companie, Setup — configurer l'environnement.",
+            en:"My account, My Company, Setup — configure the environment." }
   },
-  { id:"faq", icon:"â", iconCls:"green",
-    titles:{ fr:"FAQ gÃ©nÃ©rale", en:"General FAQ" },
-    descs:{ fr:"Abonnement, donnÃ©es, rÃ´les, compatibilitÃ©.",
+  { id:"faq", icon:"❓", iconCls:"green",
+    titles:{ fr:"FAQ générale", en:"General FAQ" },
+    descs:{ fr:"Abonnement, données, rôles, compatibilité.",
             en:"Subscription, data, roles, compatibility." }
   },
-  { id:"troubleshoot", icon:"ð§", iconCls:"red",
-    titles:{ fr:"DÃ©pannage", en:"Troubleshooting" },
-    descs:{ fr:"Connexion, affichage, donnÃ©es manquantes.",
+  { id:"troubleshoot", icon:"🔧", iconCls:"red",
+    titles:{ fr:"Dépannage", en:"Troubleshooting" },
+    descs:{ fr:"Connexion, affichage, données manquantes.",
             en:"Login, display, missing data." }
   }
 ];
@@ -723,26 +115,26 @@ const ARTICLES = [
 {
   id:"login", cat:"getting-started", readTime:2,
   titles:{
-    fr:"Se connecter Ã  CHR Solution",
+    fr:"Se connecter à CHR Solution",
     en:"Logging into CHR Solution"
   },
   summaries:{
-    fr:"La marche Ã  suivre pour ouvrir votre session.",
+    fr:"La marche à suivre pour ouvrir votre session.",
     en:"How to open your session."
   },
   bodies:{
     fr:`
-<p class="lead">CHR Solution est une application web accessible depuis n'importe quel navigateur moderne. Aucune installation, aucun tÃ©lÃ©chargement.</p>
+<p class="lead">CHR Solution est une application web accessible depuis n'importe quel navigateur moderne. Aucune installation, aucun téléchargement.</p>
 
-<h2>Les Ã©tapes</h2>
+<h2>Les étapes</h2>
 <ol>
   <li>Rendez-vous sur <a href="https://chrsolution.app" target="_blank">chrsolution.app</a>.</li>
   <li>Saisissez votre e-mail et votre mot de passe.</li>
   <li>Vous arrivez sur la page d'accueil avec les tuiles modules.</li>
 </ol>
 
-<h2>Mot de passe oubliÃ©</h2>
-<p>Utilisez le lien <em>Mot de passe oubliÃ©</em> sur l'Ã©cran de connexion. Un lien de rÃ©initialisation est envoyÃ© Ã  votre e-mail dans la minute.</p>
+<h2>Mot de passe oublié</h2>
+<p>Utilisez le lien <em>Mot de passe oublié</em> sur l'écran de connexion. Un lien de réinitialisation est envoyé à votre e-mail dans la minute.</p>
 `,
     en:`
 <p class="lead">CHR Solution is a web application accessible from any modern browser. No installation, no download.</p>
@@ -767,47 +159,47 @@ const ARTICLES = [
     en:"The home page and the 2 modules"
   },
   summaries:{
-    fr:"Gestion des Achats et Gestion de Stock â Ã  quoi sert chacun.",
-    en:"Purchase Management and Stock Management â what each one does."
+    fr:"Gestion des Achats et Gestion de Stock — à quoi sert chacun.",
+    en:"Purchase Management and Stock Management — what each one does."
   },
   bodies:{
     fr:`
-<p class="lead">Une fois connectÃ©, vous atterrissez sur l'Ã©cran d'accueil qui affiche les modules auxquels vous avez accÃ¨s. CHR Solution s'articule autour de <strong>deux grands modules</strong>, consommÃ©s par <strong>trois profils types</strong>.</p>
+<p class="lead">Une fois connecté, vous atterrissez sur l'écran d'accueil qui affiche les modules auxquels vous avez accès. CHR Solution s'articule autour de <strong>deux grands modules</strong>, consommés par <strong>trois profils types</strong>.</p>
 
 <h2>Les 3 profils utilisateurs</h2>
 <table class="tbl">
-<thead><tr><th>Profil</th><th>Modules activÃ©s</th><th>Usage</th></tr></thead>
+<thead><tr><th>Profil</th><th>Modules activés</th><th>Usage</th></tr></thead>
 <tbody>
-<tr><td><strong>Distributeur / centrale d'achats</strong></td><td>Gestion des Achats (cÃ´tÃ© gestionnaire)</td><td>Construit la mercuriale, gÃ¨re fournisseurs et clients, envoie des listes d'achat.</td></tr>
-<tr><td><strong>Client acheteur seul</strong></td><td>Gestion des Achats (cÃ´tÃ© client)</td><td>Consulte sa mercuriale, imprime des feuilles d'achat, envoie ses commandes manuellement Ã  ses fournisseurs.</td></tr>
-<tr><td><strong>Client acheteur + cuisine</strong></td><td>Gestion des Achats + Gestion de Stock</td><td>Tout du prÃ©cÃ©dent + commandes en ligne, inventaire, recettes, production.</td></tr>
+<tr><td><strong>Distributeur / centrale d'achats</strong></td><td>Gestion des Achats (côté gestionnaire)</td><td>Construit la mercuriale, gère fournisseurs et clients, envoie des listes d'achat.</td></tr>
+<tr><td><strong>Client acheteur seul</strong></td><td>Gestion des Achats (côté client)</td><td>Consulte sa mercuriale, imprime des feuilles d'achat, envoie ses commandes manuellement à ses fournisseurs.</td></tr>
+<tr><td><strong>Client acheteur + cuisine</strong></td><td>Gestion des Achats + Gestion de Stock</td><td>Tout du précédent + commandes en ligne, inventaire, recettes, production.</td></tr>
 </tbody>
 </table>
 
-<h2>Gestion des Achats ð¤</h2>
-<p>Le module pour les <strong>distributeurs</strong> et <strong>centrales d'achat</strong>. Vous y gÃ©rez :</p>
+<h2>Gestion des Achats 🤝</h2>
+<p>Le module pour les <strong>distributeurs</strong> et <strong>centrales d'achat</strong>. Vous y gérez :</p>
 <ul>
   <li>Votre base <strong>Fournisseurs</strong>.</li>
-  <li>Vos <strong>Clients</strong> (les Ã©tablissements auxquels vous vendez).</li>
-  <li>Votre <strong>Produit Achat</strong> (catalogue des produits rÃ©fÃ©rencÃ©s, classÃ©s par famille).</li>
-  <li>Vos <strong>Liste Achat</strong> (listes de prix par pÃ©riode et par fournisseur, assignÃ©es Ã  vos clients).</li>
+  <li>Vos <strong>Clients</strong> (les établissements auxquels vous vendez).</li>
+  <li>Votre <strong>Produit Achat</strong> (catalogue des produits référencés, classés par famille).</li>
+  <li>Vos <strong>Liste Achat</strong> (listes de prix par période et par fournisseur, assignées à vos clients).</li>
 </ul>
 
-<h2>Gestion de Stock ð¦</h2>
-<p>Le module pour les <strong>restaurateurs</strong> et <strong>opÃ©rationnels cuisine</strong>. Vous y gÃ©rez :</p>
+<h2>Gestion de Stock 📦</h2>
+<p>Le module pour les <strong>restaurateurs</strong> et <strong>opérationnels cuisine</strong>. Vous y gérez :</p>
 <ul>
-  <li>Vos <strong>Commandes</strong> fournisseurs et factures associÃ©es.</li>
+  <li>Vos <strong>Commandes</strong> fournisseurs et factures associées.</li>
   <li>Vos <strong>Produits Stock</strong> et leur mouvement.</li>
   <li>Les <strong>Transfert Stock</strong> entre emplacements.</li>
   <li>L'<strong>Inventaire</strong>, les <strong>Ventes</strong>, les <strong>Recettes</strong>, la <strong>Production</strong>.</li>
 </ul>
 
 <div class="callout info">
-  <div><strong>Pourquoi deux modules ?</strong> Les besoins d'un distributeur (gÃ©rer un catalogue, rÃ©fÃ©rencer, envoyer des listes de prix) et d'un restaurateur (commander, cuisiner, stocker) sont trÃ¨s diffÃ©rents. CHR Solution fournit un outil adaptÃ© Ã  chaque mÃ©tier, sur une mÃªme plateforme.</div>
+  <div><strong>Pourquoi deux modules ?</strong> Les besoins d'un distributeur (gérer un catalogue, référencer, envoyer des listes de prix) et d'un restaurateur (commander, cuisiner, stocker) sont très différents. CHR Solution fournit un outil adapté à chaque métier, sur une même plateforme.</div>
 </div>
 
 <h2>Basculer entre les modules</h2>
-<p>Cliquez sur l'icÃ´ne ${ICO_9DOTS} <strong>(9 points)</strong> en haut Ã  gauche de n'importe quelle page. Un menu s'ouvre avec : <em>Mon compte</em>, les modules disponibles, <em>Support</em>, et l'icÃ´ne de dÃ©connexion.</p>
+<p>Cliquez sur l'icône ${ICO_9DOTS} <strong>(9 points)</strong> en haut à gauche de n'importe quelle page. Un menu s'ouvre avec : <em>Mon compte</em>, les modules disponibles, <em>Support</em>, et l'icône de déconnexion.</p>
 `,
     en:`
 <p class="lead">Once logged in, you land on the home screen showing the modules you have access to. CHR Solution is built around <strong>two main modules</strong>, used by <strong>three typical profiles</strong>.</p>
@@ -817,12 +209,12 @@ const ARTICLES = [
 <thead><tr><th>Profile</th><th>Active modules</th><th>Use</th></tr></thead>
 <tbody>
 <tr><td><strong>Distributor / purchasing hub</strong></td><td>Purchase Management (gestionnaire side)</td><td>Builds the mercuriale, manages suppliers and customers, sends purchase lists.</td></tr>
-<tr><td><strong>Customer â purchasing only</strong></td><td>Purchase Management (customer side)</td><td>Browses their mercuriale, prints purchase sheets, sends orders manually to their suppliers.</td></tr>
-<tr><td><strong>Customer â purchasing + kitchen</strong></td><td>Purchase Management + Stock Management</td><td>All the above + online orders, inventory, recipes, production.</td></tr>
+<tr><td><strong>Customer — purchasing only</strong></td><td>Purchase Management (customer side)</td><td>Browses their mercuriale, prints purchase sheets, sends orders manually to their suppliers.</td></tr>
+<tr><td><strong>Customer — purchasing + kitchen</strong></td><td>Purchase Management + Stock Management</td><td>All the above + online orders, inventory, recipes, production.</td></tr>
 </tbody>
 </table>
 
-<h2>Purchase Management ð¤</h2>
+<h2>Purchase Management 🤝</h2>
 <p>The module for <strong>distributors</strong> and <strong>purchasing hubs</strong>. You manage:</p>
 <ul>
   <li>Your <strong>Suppliers</strong> base.</li>
@@ -831,7 +223,7 @@ const ARTICLES = [
   <li>Your <strong>Purchase Lists</strong> (price lists per period and supplier, assigned to your customers).</li>
 </ul>
 
-<h2>Stock Management ð¦</h2>
+<h2>Stock Management 📦</h2>
 <p>The module for <strong>restaurateurs</strong> and <strong>kitchen operators</strong>. You manage:</p>
 <ul>
   <li>Your supplier <strong>Orders</strong> and related invoices.</li>
@@ -853,31 +245,31 @@ const ARTICLES = [
 {
   id:"main-menu", cat:"getting-started", readTime:2,
   titles:{
-    fr:"Le menu principal (icÃ´ne 9 points)",
+    fr:"Le menu principal (icône 9 points)",
     en:"The main menu (9-dots icon)"
   },
   summaries:{
-    fr:"Le raccourci universel prÃ©sent en haut Ã  gauche.",
+    fr:"Le raccourci universel présent en haut à gauche.",
     en:"The universal shortcut in the top-left corner."
   },
   bodies:{
     fr:`
-<p class="lead">Ce menu est votre point de bascule entre les modules. Il est accessible depuis toutes les pages de l'app, en cliquant sur l'icÃ´ne ${ICO_9DOTS} en haut Ã  gauche.</p>
+<p class="lead">Ce menu est votre point de bascule entre les modules. Il est accessible depuis toutes les pages de l'app, en cliquant sur l'icône ${ICO_9DOTS} en haut à gauche.</p>
 
 <h2>Ce que contient le menu</h2>
 <table class="tbl">
-<thead><tr><th>EntrÃ©e</th><th>Description</th></tr></thead>
+<thead><tr><th>Entrée</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><strong>Mon compte</strong> ${ICO_CROWN}</td><td>Informations personnelles, mot de passe, prÃ©fÃ©rences.</td></tr>
+<tr><td><strong>Mon compte</strong> ${ICO_CROWN}</td><td>Informations personnelles, mot de passe, préférences.</td></tr>
 <tr><td><strong>Gestion de Stock</strong></td><td>Bascule vers le module Stock.</td></tr>
 <tr><td><strong>Gestion des Achats</strong></td><td>Bascule vers le module Achats.</td></tr>
-<tr><td><strong>Support</strong></td><td>AccÃ¨s Ã  ce centre d'aide.</td></tr>
-<tr><td><strong>DÃ©connexion</strong> ${ICO_LOGOUT}</td><td>Ferme votre session et retourne Ã  l'Ã©cran de connexion.</td></tr>
+<tr><td><strong>Support</strong></td><td>Accès à ce centre d'aide.</td></tr>
+<tr><td><strong>Déconnexion</strong> ${ICO_LOGOUT}</td><td>Ferme votre session et retourne à l'écran de connexion.</td></tr>
 </tbody>
 </table>
 
 <div class="callout tip">
-  <div><strong>Ã savoir :</strong> le module courant est toujours en surbrillance dans le menu. Si une entrÃ©e est grisÃ©e, c'est que vous Ãªtes dÃ©jÃ  sur ce module.</div>
+  <div><strong>À savoir :</strong> le module courant est toujours en surbrillance dans le menu. Si une entrée est grisée, c'est que vous êtes déjà sur ce module.</div>
 </div>
 `,
     en:`
@@ -905,77 +297,77 @@ const ARTICLES = [
 {
   id:"sidebar", cat:"getting-started", readTime:3,
   titles:{
-    fr:"La sidebar Ã  gauche â oÃ¹ tout se trouve",
-    en:"The left sidebar â where everything lives"
+    fr:"La sidebar à gauche — où tout se trouve",
+    en:"The left sidebar — where everything lives"
   },
   summaries:{
-    fr:"Le menu vertical brun prÃ©sent dans chaque module.",
+    fr:"Le menu vertical brun présent dans chaque module.",
     en:"The brown vertical menu present in each module."
   },
   bodies:{
     fr:`
-<p class="lead">La sidebar (le menu vertical brun foncÃ© Ã  gauche) regroupe toutes les sections du module dans lequel vous Ãªtes. Son contenu change selon le module.</p>
+<p class="lead">La sidebar (le menu vertical brun foncé à gauche) regroupe toutes les sections du module dans lequel vous êtes. Son contenu change selon le module.</p>
 
 <h2>Sidebar de Gestion des Achats</h2>
 <ul>
-  <li>ð  <strong>Accueil</strong> â retour Ã  l'Ã©cran des modules.</li>
-  <li>ð <strong>Tableau de bord</strong> â vue synthÃ©tique de l'activitÃ©.</li>
-  <li>ð <strong>Fournisseurs</strong> â votre base fournisseurs.</li>
-  <li>ð¥ <strong>Clients</strong> â les Ã©tablissements que vous servez.</li>
-  <li>ð <strong>Liste Achat</strong> â listes de prix par fournisseur / pÃ©riode.</li>
-  <li>ð <strong>Produit Achat</strong> â catalogue produits.</li>
-  <li>ð <strong>Analyses</strong> ${ICO_LOCK} <span class="badge admin">Plan supÃ©rieur</span></li>
-  <li>âï¸ <strong>ParamÃ¨tres</strong> (sous-menu : Ma Companie, Setup).</li>
+  <li>🏠 <strong>Accueil</strong> — retour à l'écran des modules.</li>
+  <li>📊 <strong>Tableau de bord</strong> — vue synthétique de l'activité.</li>
+  <li>🚚 <strong>Fournisseurs</strong> — votre base fournisseurs.</li>
+  <li>👥 <strong>Clients</strong> — les établissements que vous servez.</li>
+  <li>📝 <strong>Liste Achat</strong> — listes de prix par fournisseur / période.</li>
+  <li>🛒 <strong>Produit Achat</strong> — catalogue produits.</li>
+  <li>📈 <strong>Analyses</strong> ${ICO_LOCK} <span class="badge admin">Plan supérieur</span></li>
+  <li>⚙️ <strong>Paramètres</strong> (sous-menu : Ma Companie, Setup).</li>
 </ul>
 
 <h2>Sidebar de Gestion de Stock</h2>
 <ul>
-  <li>ð  Accueil</li>
-  <li>ð Tableau de bord</li>
-  <li>ð <strong>Commande</strong></li>
-  <li>ð Fournisseurs</li>
-  <li>ð¦ <strong>Produits Stock</strong></li>
-  <li>âï¸ <strong>Transfert Stock</strong></li>
-  <li>ð <strong>Inventaire</strong></li>
-  <li>ð§¾ <strong>Ventes</strong></li>
-  <li>ð¥ <strong>Recettes</strong></li>
-  <li>ð¥ <strong>Production</strong></li>
-  <li>ð Analyses ${ICO_LOCK}</li>
-  <li>âï¸ ParamÃ¨tres (Ma Companie, Setup)</li>
+  <li>🏠 Accueil</li>
+  <li>📊 Tableau de bord</li>
+  <li>📄 <strong>Commande</strong></li>
+  <li>🚚 Fournisseurs</li>
+  <li>📦 <strong>Produits Stock</strong></li>
+  <li>↔️ <strong>Transfert Stock</strong></li>
+  <li>📋 <strong>Inventaire</strong></li>
+  <li>🧾 <strong>Ventes</strong></li>
+  <li>🥘 <strong>Recettes</strong></li>
+  <li>🔥 <strong>Production</strong></li>
+  <li>📈 Analyses ${ICO_LOCK}</li>
+  <li>⚙️ Paramètres (Ma Companie, Setup)</li>
 </ul>
 
-<h2>Le sÃ©lecteur d'entreprise</h2>
-<p>Au-dessus des entrÃ©es de sidebar, un dropdown affiche votre entreprise active. Si vous gÃ©rez plusieurs Ã©tablissements ou sociÃ©tÃ©s, vous pouvez basculer ici.</p>
+<h2>Le sélecteur d'entreprise</h2>
+<p>Au-dessus des entrées de sidebar, un dropdown affiche votre entreprise active. Si vous gérez plusieurs établissements ou sociétés, vous pouvez basculer ici.</p>
 `,
     en:`
 <p class="lead">The sidebar (the dark brown vertical menu on the left) groups all sections of the module you're in. Its content changes depending on the module.</p>
 
 <h2>Purchase Management sidebar</h2>
 <ul>
-  <li>ð  <strong>Home</strong> â back to the modules screen.</li>
-  <li>ð <strong>Dashboard</strong> â summary view of activity.</li>
-  <li>ð <strong>Suppliers</strong> â your supplier base.</li>
-  <li>ð¥ <strong>Customers</strong> â the establishments you serve.</li>
-  <li>ð <strong>Purchase List</strong> â price lists by supplier / period.</li>
-  <li>ð <strong>Purchase Product</strong> â product catalogue.</li>
-  <li>ð <strong>Analytics</strong> ${ICO_LOCK} <span class="badge admin">Higher plan</span></li>
-  <li>âï¸ <strong>Settings</strong> (submenu: My Company, Setup).</li>
+  <li>🏠 <strong>Home</strong> — back to the modules screen.</li>
+  <li>📊 <strong>Dashboard</strong> — summary view of activity.</li>
+  <li>🚚 <strong>Suppliers</strong> — your supplier base.</li>
+  <li>👥 <strong>Customers</strong> — the establishments you serve.</li>
+  <li>📝 <strong>Purchase List</strong> — price lists by supplier / period.</li>
+  <li>🛒 <strong>Purchase Product</strong> — product catalogue.</li>
+  <li>📈 <strong>Analytics</strong> ${ICO_LOCK} <span class="badge admin">Higher plan</span></li>
+  <li>⚙️ <strong>Settings</strong> (submenu: My Company, Setup).</li>
 </ul>
 
 <h2>Stock Management sidebar</h2>
 <ul>
-  <li>ð  Home</li>
-  <li>ð Dashboard</li>
-  <li>ð <strong>Order</strong></li>
-  <li>ð Suppliers</li>
-  <li>ð¦ <strong>Stock Products</strong></li>
-  <li>âï¸ <strong>Stock Transfer</strong></li>
-  <li>ð <strong>Inventory</strong></li>
-  <li>ð§¾ <strong>Sales</strong></li>
-  <li>ð¥ <strong>Recipes</strong></li>
-  <li>ð¥ <strong>Production</strong></li>
-  <li>ð Analytics ${ICO_LOCK}</li>
-  <li>âï¸ Settings (My Company, Setup)</li>
+  <li>🏠 Home</li>
+  <li>📊 Dashboard</li>
+  <li>📄 <strong>Order</strong></li>
+  <li>🚚 Suppliers</li>
+  <li>📦 <strong>Stock Products</strong></li>
+  <li>↔️ <strong>Stock Transfer</strong></li>
+  <li>📋 <strong>Inventory</strong></li>
+  <li>🧾 <strong>Sales</strong></li>
+  <li>🥘 <strong>Recipes</strong></li>
+  <li>🔥 <strong>Production</strong></li>
+  <li>📈 Analytics ${ICO_LOCK}</li>
+  <li>⚙️ Settings (My Company, Setup)</li>
 </ul>
 
 <h2>The company selector</h2>
@@ -997,19 +389,19 @@ const ARTICLES = [
   },
   bodies:{
     fr:`
-<p class="lead">Gestion des Achats est pensÃ© pour les <strong>distributeurs</strong>, <strong>centrales d'achat</strong> et <strong>groupements</strong> qui rÃ©fÃ©rencent des produits auprÃ¨s de fournisseurs et les proposent Ã  leurs clients restaurateurs.</p>
+<p class="lead">Gestion des Achats est pensé pour les <strong>distributeurs</strong>, <strong>centrales d'achat</strong> et <strong>groupements</strong> qui référencent des produits auprès de fournisseurs et les proposent à leurs clients restaurateurs.</p>
 
 <h2>Le cheminement typique</h2>
 <ol>
-  <li><strong>Je construis ma base <em>Fournisseurs</em></strong> â qui me fournit quoi, avec leurs coordonnÃ©es.</li>
-  <li><strong>Je rÃ©fÃ©rence mes produits</strong> dans <em>Produit Achat</em> â catalogue par famille, avec unitÃ©s, packs, TVA.</li>
-  <li><strong>J'ajoute mes clients</strong> dans <em>Clients</em> â avec leur groupe et leur statut.</li>
-  <li><strong>Je crÃ©e des <em>Liste Achat</em></strong> â par fournisseur et pÃ©riode, en y assignant les clients concernÃ©s.</li>
-  <li><strong>Je suis l'activitÃ©</strong> depuis le <em>Tableau de bord</em>.</li>
+  <li><strong>Je construis ma base <em>Fournisseurs</em></strong> — qui me fournit quoi, avec leurs coordonnées.</li>
+  <li><strong>Je référence mes produits</strong> dans <em>Produit Achat</em> — catalogue par famille, avec unités, packs, TVA.</li>
+  <li><strong>J'ajoute mes clients</strong> dans <em>Clients</em> — avec leur groupe et leur statut.</li>
+  <li><strong>Je crée des <em>Liste Achat</em></strong> — par fournisseur et période, en y assignant les clients concernés.</li>
+  <li><strong>Je suis l'activité</strong> depuis le <em>Tableau de bord</em>.</li>
 </ol>
 
 <div class="callout info">
-  <div><strong>DiffÃ©rence Clients / Fournisseurs :</strong> cÃ´tÃ© Achats, les <em>Fournisseurs</em> sont ceux chez qui vous achetez, les <em>Clients</em> sont ceux Ã  qui vous revendez. L'outil fait le pont entre les deux via les <em>Liste Achat</em>.</div>
+  <div><strong>Différence Clients / Fournisseurs :</strong> côté Achats, les <em>Fournisseurs</em> sont ceux chez qui vous achetez, les <em>Clients</em> sont ceux à qui vous revendez. L'outil fait le pont entre les deux via les <em>Liste Achat</em>.</div>
 </div>
 `,
     en:`
@@ -1017,10 +409,10 @@ const ARTICLES = [
 
 <h2>Typical workflow</h2>
 <ol>
-  <li><strong>Build your <em>Suppliers</em> base</strong> â who supplies what, with their contact info.</li>
-  <li><strong>Reference your products</strong> in <em>Purchase Product</em> â catalogue by family, with units, packs, VAT.</li>
-  <li><strong>Add your customers</strong> in <em>Customers</em> â with their group and status.</li>
-  <li><strong>Create <em>Purchase Lists</em></strong> â per supplier and period, assigning the relevant customers.</li>
+  <li><strong>Build your <em>Suppliers</em> base</strong> — who supplies what, with their contact info.</li>
+  <li><strong>Reference your products</strong> in <em>Purchase Product</em> — catalogue by family, with units, packs, VAT.</li>
+  <li><strong>Add your customers</strong> in <em>Customers</em> — with their group and status.</li>
+  <li><strong>Create <em>Purchase Lists</em></strong> — per supplier and period, assigning the relevant customers.</li>
   <li><strong>Track activity</strong> from the <em>Dashboard</em>.</li>
 </ol>
 
@@ -1034,7 +426,7 @@ const ARTICLES = [
 {
   id:"pc-suppliers", cat:"purchase-mgmt", readTime:4,
   titles:{
-    fr:"GÃ©rer vos Fournisseurs",
+    fr:"Gérer vos Fournisseurs",
     en:"Manage your Suppliers"
   },
   summaries:{
@@ -1043,37 +435,37 @@ const ARTICLES = [
   },
   bodies:{
     fr:`
-<p class="lead">La section <strong>Fournisseurs</strong> affiche votre base fournisseurs en vue cartes. Chaque carte regroupe les coordonnÃ©es principales et deux compteurs (Produit Fournisseur / Produits non gÃ©rÃ©s).</p>
+<p class="lead">La section <strong>Fournisseurs</strong> affiche votre base fournisseurs en vue cartes. Chaque carte regroupe les coordonnées principales et deux compteurs (Produit Fournisseur / Produits non gérés).</p>
 
 <h2>Consulter la liste</h2>
 <p>Au-dessus des cartes, deux onglets filtrent l'affichage :</p>
 <ul>
-  <li><span class="ui">Tous (n)</span> â l'ensemble des fournisseurs.</li>
-  <li><span class="ui">Favoris (n)</span> â seulement ceux marquÃ©s en favori.</li>
+  <li><span class="ui">Tous (n)</span> — l'ensemble des fournisseurs.</li>
+  <li><span class="ui">Favoris (n)</span> — seulement ceux marqués en favori.</li>
 </ul>
 
 <h2>Marquer un fournisseur en favori</h2>
-<p>Sur chaque carte, cliquez sur l'<strong>Ã©toile</strong> en haut Ã  droite. Elle devient jaune pleine. Les favoris sont les fournisseurs que vous consultez le plus souvent.</p>
+<p>Sur chaque carte, cliquez sur l'<strong>étoile</strong> en haut à droite. Elle devient jaune pleine. Les favoris sont les fournisseurs que vous consultez le plus souvent.</p>
 
 <h2>Ajouter un fournisseur</h2>
 <ol>
-  <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span> en haut Ã  gauche.</li>
-  <li>Renseignez les informations : nom, e-mail, tÃ©lÃ©phones, adresse, ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span> en haut à gauche.</li>
+  <li>Renseignez les informations : nom, e-mail, téléphones, adresse, ou tout autre champ utile présent sur la page.</li>
   <li>Enregistrez.</li>
 </ol>
 
 <h2>Les informations visibles sur une carte</h2>
 <ul>
-  <li><strong>Nom</strong> + Ã©toile favori.</li>
+  <li><strong>Nom</strong> + étoile favori.</li>
   <li>Nom(s) de contact secondaire.</li>
-  <li><strong>E-mail</strong>, <strong>tÃ©lÃ©phone(s)</strong>, <strong>adresse</strong>.</li>
-  <li>Compteurs <em>Produit Fournisseur</em> / <em>Produits non gÃ©rÃ©s</em>.</li>
-  <li>Menu ${ICO_DOTSV} (trois points) pour les actions : Ã©diter, supprimer.</li>
-  <li>...ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li><strong>E-mail</strong>, <strong>téléphone(s)</strong>, <strong>adresse</strong>.</li>
+  <li>Compteurs <em>Produit Fournisseur</em> / <em>Produits non gérés</em>.</li>
+  <li>Menu ${ICO_DOTSV} (trois points) pour les actions : éditer, supprimer.</li>
+  <li>...ou tout autre champ utile présent sur la page.</li>
 </ul>
 
 <div class="callout tip">
-  <div><strong>Astuce :</strong> les fournisseurs sans e-mail ni tÃ©lÃ©phone apparaissent avec les zones vides â pensez Ã  les complÃ©ter dÃ¨s que possible pour Ã©viter les commandes bloquÃ©es.</div>
+  <div><strong>Astuce :</strong> les fournisseurs sans e-mail ni téléphone apparaissent avec les zones vides — pensez à les compléter dès que possible pour éviter les commandes bloquées.</div>
 </div>
 `,
     en:`
@@ -1082,8 +474,8 @@ const ARTICLES = [
 <h2>Browsing the list</h2>
 <p>Above the cards, two tabs filter the view:</p>
 <ul>
-  <li><span class="ui">All (n)</span> â all suppliers.</li>
-  <li><span class="ui">Favorites (n)</span> â only those marked as favorite.</li>
+  <li><span class="ui">All (n)</span> — all suppliers.</li>
+  <li><span class="ui">Favorites (n)</span> — only those marked as favorite.</li>
 </ul>
 
 <h2>Mark a supplier as favorite</h2>
@@ -1107,7 +499,7 @@ const ARTICLES = [
 </ul>
 
 <div class="callout tip">
-  <div><strong>Tip:</strong> suppliers without email or phone appear with empty fields â fill them in as soon as possible to avoid blocked orders.</div>
+  <div><strong>Tip:</strong> suppliers without email or phone appear with empty fields — fill them in as soon as possible to avoid blocked orders.</div>
 </div>
 `
   }
@@ -1116,7 +508,7 @@ const ARTICLES = [
 {
   id:"pc-customers", cat:"purchase-mgmt", readTime:5,
   titles:{
-    fr:"GÃ©rer vos Clients",
+    fr:"Gérer vos Clients",
     en:"Manage your Customers"
   },
   summaries:{
@@ -1125,23 +517,23 @@ const ARTICLES = [
   },
   bodies:{
     fr:`
-<p class="lead">La section <strong>Clients</strong> regroupe les Ã©tablissements Ã  qui vous vendez. Chacun peut Ãªtre actif ou inactif, faire partie d'un groupe, et Ãªtre abonnÃ© Ã  Gestion de stock.</p>
+<p class="lead">La section <strong>Clients</strong> regroupe les établissements à qui vous vendez. Chacun peut être actif ou inactif, faire partie d'un groupe, et être abonné à Gestion de stock.</p>
 
 <h2>Filtrer la liste</h2>
 <p>Trois onglets au-dessus des cartes :</p>
 <ul>
   <li><span class="ui">Tous (n)</span></li>
-  <li><span class="ui">Actif (n)</span> â clients en cours</li>
-  <li><span class="ui">Inactif (n)</span> â clients dormants ou anciens</li>
+  <li><span class="ui">Actif (n)</span> — clients en cours</li>
+  <li><span class="ui">Inactif (n)</span> — clients dormants ou anciens</li>
 </ul>
 
-<h2>SÃ©lectionner par groupe</h2>
-<p>Le dropdown <span class="ui">SÃ©lectionner un groupe</span> restreint l'affichage Ã  un groupe de clients prÃ©cis.</p>
+<h2>Sélectionner par groupe</h2>
+<p>Le dropdown <span class="ui">Sélectionner un groupe</span> restreint l'affichage à un groupe de clients précis.</p>
 
 <h2>Ajouter un client</h2>
 <ol>
   <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span>.</li>
-  <li>Remplissez : nom, e-mail, tÃ©lÃ©phone, adresse, date d'expiration de l'accÃ¨s, ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>Remplissez : nom, e-mail, téléphone, adresse, date d'expiration de l'accès, ou tout autre champ utile présent sur la page.</li>
   <li>Choisissez le <strong>groupe</strong>.</li>
   <li>Enregistrez.</li>
 </ol>
@@ -1150,18 +542,18 @@ const ARTICLES = [
 <ul>
   <li>Nom du client + badge <span class="ui">Actif</span> ou <span class="ui">Inactif</span>.</li>
   <li>Badge <span class="ui">Gestion de stock</span> si le client a aussi le module Stock.</li>
-  <li>Date d'expiration de l'accÃ¨s.</li>
-  <li>E-mail, tÃ©lÃ©phone, adresse.</li>
+  <li>Date d'expiration de l'accès.</li>
+  <li>E-mail, téléphone, adresse.</li>
   <li>Badge groupe.</li>
-  <li>Compteurs <em>Produits gÃ©rÃ©s</em> / <em>Produits non gÃ©rÃ©s</em> : combien de produits sont assignÃ©s Ã  ce client via une Liste Achat.</li>
-  <li>...ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>Compteurs <em>Produits gérés</em> / <em>Produits non gérés</em> : combien de produits sont assignés à ce client via une Liste Achat.</li>
+  <li>...ou tout autre champ utile présent sur la page.</li>
 </ul>
 
-<h2>GÃ©rer les groupes</h2>
-<p>Le bouton <span class="ui">GÃ©rer Groupes</span> en haut ouvre une popup pour crÃ©er / renommer / supprimer les groupes. Un groupe vous permet de segmenter vos clients et d'assigner vos Liste Achat Ã  un ensemble d'un coup.</p>
+<h2>Gérer les groupes</h2>
+<p>Le bouton <span class="ui">Gérer Groupes</span> en haut ouvre une popup pour créer / renommer / supprimer les groupes. Un groupe vous permet de segmenter vos clients et d'assigner vos Liste Achat à un ensemble d'un coup.</p>
 
-<h2>Profil Â« Gestionnaire Achat Â» cÃ´tÃ© client</h2>
-<p>Dans la fiche d'un client, une case Ã  cocher <strong>Gestionnaire Achat</strong> peut Ãªtre activÃ©e. Elle accorde Ã  ce client des droits Ã©tendus de consultation / modification sur ses propres donnÃ©es (liste achat, produits gÃ©rÃ©s). Ã utiliser pour vos gros clients autonomes qui gÃ¨rent eux-mÃªmes leurs rÃ©fÃ©rences.</p>
+<h2>Profil « Gestionnaire Achat » côté client</h2>
+<p>Dans la fiche d'un client, une case à cocher <strong>Gestionnaire Achat</strong> peut être activée. Elle accorde à ce client des droits étendus de consultation / modification sur ses propres données (liste achat, produits gérés). À utiliser pour vos gros clients autonomes qui gèrent eux-mêmes leurs références.</p>
 `,
     en:`
 <p class="lead">The <strong>Customers</strong> section groups the establishments you sell to. Each one can be active or inactive, belong to a group, and be subscribed to Stock Management.</p>
@@ -1170,8 +562,8 @@ const ARTICLES = [
 <p>Three tabs above the cards:</p>
 <ul>
   <li><span class="ui">All (n)</span></li>
-  <li><span class="ui">Active (n)</span> â current customers</li>
-  <li><span class="ui">Inactive (n)</span> â dormant or former customers</li>
+  <li><span class="ui">Active (n)</span> — current customers</li>
+  <li><span class="ui">Inactive (n)</span> — dormant or former customers</li>
 </ul>
 
 <h2>Filter by group</h2>
@@ -1212,56 +604,56 @@ const ARTICLES = [
     en:"The Purchase Product catalogue"
   },
   summaries:{
-    fr:"Familles, groupes, unitÃ©s, TVA â la colonne vertÃ©brale de votre catalogue.",
-    en:"Families, groups, units, VAT â the backbone of your catalogue."
+    fr:"Familles, groupes, unités, TVA — la colonne vertébrale de votre catalogue.",
+    en:"Families, groups, units, VAT — the backbone of your catalogue."
   },
   bodies:{
     fr:`
-<p class="lead">La section <strong>Produit Achat</strong> est votre catalogue central. Chaque ligne = un produit rÃ©fÃ©rencÃ© avec son numÃ©ro, son unitÃ© de vente et sa TVA. Les familles s'affichent dans une sidebar Ã  gauche du tableau.</p>
+<p class="lead">La section <strong>Produit Achat</strong> est votre catalogue central. Chaque ligne = un produit référencé avec son numéro, son unité de vente et sa TVA. Les familles s'affichent dans une sidebar à gauche du tableau.</p>
 
 <div class="callout info">
-  <div><strong>Bon Ã  savoir :</strong> cÃ´tÃ© client (espace restaurateur), cette mÃªme page s'appelle <strong>Mercuriale</strong> et les lignes sont nommÃ©es <em>Produit Fournisseur</em>. Les donnÃ©es affichÃ©es sont les mÃªmes, la vue est simplement adaptÃ©e au consommateur du catalogue.</div>
+  <div><strong>Bon à savoir :</strong> côté client (espace restaurateur), cette même page s'appelle <strong>Mercuriale</strong> et les lignes sont nommées <em>Produit Fournisseur</em>. Les données affichées sont les mêmes, la vue est simplement adaptée au consommateur du catalogue.</div>
 </div>
 
 <h2>Les familles de produits</h2>
-<p>Ã gauche, une liste de familles avec pastilles colorÃ©es ${ICO_PALETTE} vous sert de filtre hiÃ©rarchique. <strong>Les familles sont 100 % paramÃ©trables</strong> : vous crÃ©ez les vÃ´tres, choisissez les couleurs, dÃ©finissez la hiÃ©rarchie (familles / sous-familles) via le bouton <span class="ui">GÃ©rer Groupes</span>.</p>
-<p>Ã titre d'exemple, une configuration typique peut regrouper : LIQUIDES, SOLIDES (avec sous-familles Cremerie, Epicerie sec, Fromages, Pain, Patisserie, Poissons, Viandes & charcuterie), HYGIENE.</p>
+<p>À gauche, une liste de familles avec pastilles colorées ${ICO_PALETTE} vous sert de filtre hiérarchique. <strong>Les familles sont 100 % paramétrables</strong> : vous créez les vôtres, choisissez les couleurs, définissez la hiérarchie (familles / sous-familles) via le bouton <span class="ui">Gérer Groupes</span>.</p>
+<p>À titre d'exemple, une configuration typique peut regrouper : LIQUIDES, SOLIDES (avec sous-familles Cremerie, Epicerie sec, Fromages, Pain, Patisserie, Poissons, Viandes & charcuterie), HYGIENE.</p>
 <p>Cliquez sur une famille pour ne voir que ses produits. Cliquez sur <span class="ui">Voir tous</span> pour lever le filtre.</p>
 
 <h2>Les colonnes du tableau</h2>
 <table class="tbl">
 <thead><tr><th>Colonne</th><th>Contenu</th></tr></thead>
 <tbody>
-<tr><td><strong>Nr</strong></td><td>NumÃ©ro de rÃ©fÃ©rence interne (triable).</td></tr>
-<tr><td><strong>Nom</strong></td><td>LibellÃ© du produit.</td></tr>
-<tr><td><strong>UnitÃ©</strong></td><td>UnitÃ© de rÃ©fÃ©rence (Kg, Pc, L, g, mlâ¦).</td></tr>
+<tr><td><strong>Nr</strong></td><td>Numéro de référence interne (triable).</td></tr>
+<tr><td><strong>Nom</strong></td><td>Libellé du produit.</td></tr>
+<tr><td><strong>Unité</strong></td><td>Unité de référence (Kg, Pc, L, g, ml…).</td></tr>
 <tr><td><strong>Pack</strong></td><td>Conditionnement standard (ex. Pack de 10).</td></tr>
 <tr><td><strong>Fournisseur</strong></td><td>Nombre de fournisseurs qui proposent ce produit.</td></tr>
 <tr><td><strong>TVA</strong></td><td>Taux applicable (5,5 ou 20).</td></tr>
-<tr><td>${ICO_DOTSV}</td><td>Menu d'actions sur la ligne (Ã©diter, dupliquer, supprimer).</td></tr>
+<tr><td>${ICO_DOTSV}</td><td>Menu d'actions sur la ligne (éditer, dupliquer, supprimer).</td></tr>
 </tbody>
 </table>
-<p>...ou toute autre colonne utile prÃ©sente sur la page.</p>
+<p>...ou toute autre colonne utile présente sur la page.</p>
 
 <h2>Les 4 actions en haut de page</h2>
 <ul>
-  <li><span class="ui">${ICO_PLUS} Ajouter</span> â crÃ©er un nouveau produit.</li>
-  <li><span class="ui">GÃ©rer Groupes</span> â crÃ©er et organiser les familles et sous-familles.</li>
-  <li><span class="ui">Cacher Groupe</span> â masquer la sidebar des familles (pour plus d'espace tableau).</li>
-  <li><span class="ui">GÃ©rer UnitÃ©s</span> â crÃ©er et Ã©diter les unitÃ©s disponibles dans l'app.</li>
+  <li><span class="ui">${ICO_PLUS} Ajouter</span> — créer un nouveau produit.</li>
+  <li><span class="ui">Gérer Groupes</span> — créer et organiser les familles et sous-familles.</li>
+  <li><span class="ui">Cacher Groupe</span> — masquer la sidebar des familles (pour plus d'espace tableau).</li>
+  <li><span class="ui">Gérer Unités</span> — créer et éditer les unités disponibles dans l'app.</li>
 </ul>
 
 <h2>Les actions au-dessus du tableau</h2>
 <ul>
-  <li><strong>Recherche</strong> â filtrage en direct sur le nom.</li>
-  <li><span class="ui">Ãditer</span> â active le mode Ã©dition en ligne (pour modifier plusieurs lignes d'un coup).</li>
-  <li><span class="ui">${ICO_PLUS} CrÃ©er Liste Achat</span> â crÃ©e une nouvelle liste d'achat Ã  partir des produits sÃ©lectionnÃ©s.</li>
-  <li><span class="ui">Cacher SupprimÃ©s</span> â dropdown Ã  2 valeurs (<em>Cacher SupprimÃ©s</em> / <em>Afficher SupprimÃ©s</em>) pour inclure ou non les produits archivÃ©s.</li>
-  <li>${ICO_REFRESH} <strong>Refresh</strong> â recharge les donnÃ©es.</li>
+  <li><strong>Recherche</strong> — filtrage en direct sur le nom.</li>
+  <li><span class="ui">Éditer</span> — active le mode édition en ligne (pour modifier plusieurs lignes d'un coup).</li>
+  <li><span class="ui">${ICO_PLUS} Créer Liste Achat</span> — crée une nouvelle liste d'achat à partir des produits sélectionnés.</li>
+  <li><span class="ui">Cacher Supprimés</span> — dropdown à 2 valeurs (<em>Cacher Supprimés</em> / <em>Afficher Supprimés</em>) pour inclure ou non les produits archivés.</li>
+  <li>${ICO_REFRESH} <strong>Refresh</strong> — recharge les données.</li>
 </ul>
 
 <div class="callout tip">
-  <div><strong>Astuce :</strong> cochez plusieurs produits dans la colonne checkbox, puis cliquez <em>${ICO_PLUS} CrÃ©er Liste Achat</em> pour gÃ©nÃ©rer rapidement une liste Ã  envoyer Ã  un client.</div>
+  <div><strong>Astuce :</strong> cochez plusieurs produits dans la colonne checkbox, puis cliquez <em>${ICO_PLUS} Créer Liste Achat</em> pour générer rapidement une liste à envoyer à un client.</div>
 </div>
 `,
     en:`
@@ -1282,7 +674,7 @@ const ARTICLES = [
 <tbody>
 <tr><td><strong>Nr</strong></td><td>Internal reference number (sortable).</td></tr>
 <tr><td><strong>Name</strong></td><td>Product label.</td></tr>
-<tr><td><strong>Unit</strong></td><td>Reference unit (Kg, Pc, L, g, mlâ¦).</td></tr>
+<tr><td><strong>Unit</strong></td><td>Reference unit (Kg, Pc, L, g, ml…).</td></tr>
 <tr><td><strong>Pack</strong></td><td>Standard packaging (e.g., Pack of 10).</td></tr>
 <tr><td><strong>Supplier</strong></td><td>Number of suppliers offering this product.</td></tr>
 <tr><td><strong>VAT</strong></td><td>Applicable rate.</td></tr>
@@ -1293,19 +685,19 @@ const ARTICLES = [
 
 <h2>The 4 top-of-page actions</h2>
 <ul>
-  <li><span class="ui">${ICO_PLUS} Add</span> â create a new product.</li>
-  <li><span class="ui">Manage Groups</span> â create and organize families and sub-families.</li>
-  <li><span class="ui">Hide Group</span> â hide the families sidebar for more table space.</li>
-  <li><span class="ui">Manage Units</span> â create and edit units available in the app.</li>
+  <li><span class="ui">${ICO_PLUS} Add</span> — create a new product.</li>
+  <li><span class="ui">Manage Groups</span> — create and organize families and sub-families.</li>
+  <li><span class="ui">Hide Group</span> — hide the families sidebar for more table space.</li>
+  <li><span class="ui">Manage Units</span> — create and edit units available in the app.</li>
 </ul>
 
 <h2>Actions above the table</h2>
 <ul>
-  <li><strong>Search</strong> â live filter on name.</li>
-  <li><span class="ui">Edit</span> â activate inline edit mode (to edit multiple rows at once).</li>
-  <li><span class="ui">${ICO_PLUS} Create Purchase List</span> â creates a new purchase list from selected products.</li>
-  <li><span class="ui">Hide Deleted</span> â 2-value dropdown (<em>Hide Deleted</em> / <em>Show Deleted</em>) to include archived products or not.</li>
-  <li>${ICO_REFRESH} <strong>Refresh</strong> â reload the data.</li>
+  <li><strong>Search</strong> — live filter on name.</li>
+  <li><span class="ui">Edit</span> — activate inline edit mode (to edit multiple rows at once).</li>
+  <li><span class="ui">${ICO_PLUS} Create Purchase List</span> — creates a new purchase list from selected products.</li>
+  <li><span class="ui">Hide Deleted</span> — 2-value dropdown (<em>Hide Deleted</em> / <em>Show Deleted</em>) to include archived products or not.</li>
+  <li>${ICO_REFRESH} <strong>Refresh</strong> — reload the data.</li>
 </ul>
 
 <div class="callout tip">
@@ -1322,27 +714,27 @@ const ARTICLES = [
     en:"Add a product to the catalogue"
   },
   summaries:{
-    fr:"CrÃ©er une rÃ©fÃ©rence Produit Achat depuis zÃ©ro.",
+    fr:"Créer une référence Produit Achat depuis zéro.",
     en:"Create a Purchase Product reference from scratch."
   },
   bodies:{
     fr:`
 <p class="lead">Toutes les Liste Achat s'appuient sur le catalogue Produit Achat. Avant de faire une liste, le produit doit exister dans la base.</p>
 
-<h2>La procÃ©dure</h2>
+<h2>La procédure</h2>
 <ol>
   <li>Ouvrez <strong>Produit Achat</strong> dans la sidebar.</li>
   <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span>.</li>
-  <li>Renseignez les champs obligatoires : <em>Nom</em>, <em>Famille</em>, <em>UnitÃ©</em>, <em>TVA</em>, ou tout autre champ utile prÃ©sent sur la page.</li>
-  <li>Facultatif : <em>Sous-famille</em>, <em>Pack</em>, <em>Fournisseur(s)</em>, allergÃ¨nes, photo.</li>
+  <li>Renseignez les champs obligatoires : <em>Nom</em>, <em>Famille</em>, <em>Unité</em>, <em>TVA</em>, ou tout autre champ utile présent sur la page.</li>
+  <li>Facultatif : <em>Sous-famille</em>, <em>Pack</em>, <em>Fournisseur(s)</em>, allergènes, photo.</li>
   <li>Enregistrez.</li>
 </ol>
 
-<h2>Avant de crÃ©er, vÃ©rifiez les doublons</h2>
-<p>Tapez les 3-4 premiÃ¨res lettres du nom dans la barre de recherche. Si le produit existe dÃ©jÃ , Ã©ditez-le plutÃ´t que d'en crÃ©er un autre.</p>
+<h2>Avant de créer, vérifiez les doublons</h2>
+<p>Tapez les 3-4 premières lettres du nom dans la barre de recherche. Si le produit existe déjà, éditez-le plutôt que d'en créer un autre.</p>
 
 <div class="callout warn">
-  <div><strong>Le nÂ° (Nr)</strong> est gÃ©nÃ©ralement attribuÃ© automatiquement. Ne le modifiez pas si votre organisation utilise dÃ©jÃ  une numÃ©rotation externe.</div>
+  <div><strong>Le n° (Nr)</strong> est généralement attribué automatiquement. Ne le modifiez pas si votre organisation utilise déjà une numérotation externe.</div>
 </div>
 `,
     en:`
@@ -1370,23 +762,23 @@ const ARTICLES = [
 {
   id:"pc-purchase-list", cat:"purchase-mgmt", readTime:6,
   titles:{
-    fr:"CrÃ©er et gÃ©rer une Liste Achat",
+    fr:"Créer et gérer une Liste Achat",
     en:"Create and manage a Purchase List"
   },
   summaries:{
-    fr:"La liste de prix que vous envoyez Ã  vos clients.",
+    fr:"La liste de prix que vous envoyez à vos clients.",
     en:"The price list you send to your customers."
   },
   bodies:{
     fr:`
-<p class="lead">Une <strong>Liste Achat</strong> est une liste de produits, Ã  un tarif, d'un fournisseur, valable sur une pÃ©riode, et assignÃ©e Ã  un ou plusieurs clients. C'est le cÅur de votre activitÃ© de distribution.</p>
+<p class="lead">Une <strong>Liste Achat</strong> est une liste de produits, à un tarif, d'un fournisseur, valable sur une période, et assignée à un ou plusieurs clients. C'est le cœur de votre activité de distribution.</p>
 
-<h2>CrÃ©er une Liste Achat</h2>
+<h2>Créer une Liste Achat</h2>
 <ol>
   <li>Ouvrez <strong>Liste Achat</strong> dans la sidebar.</li>
   <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span>.</li>
   <li>Choisissez le <strong>Fournisseur</strong>.</li>
-  <li>DÃ©finissez la <strong>pÃ©riode de validitÃ©</strong> (date de dÃ©but â date de fin).</li>
+  <li>Définissez la <strong>période de validité</strong> (date de début — date de fin).</li>
   <li>Choisissez le <strong>groupe client</strong>.</li>
   <li>Ajoutez les produits un par un, avec leur prix.</li>
   <li>Enregistrez.</li>
@@ -1397,25 +789,25 @@ const ARTICLES = [
 <thead><tr><th>Colonne</th><th>Contenu</th></tr></thead>
 <tbody>
 <tr><td><strong>Code</strong></td><td>Identifiant unique de la liste.</td></tr>
-<tr><td><strong>Fournisseur</strong></td><td>Fournisseur concernÃ©.</td></tr>
-<tr><td><strong>Groupe</strong></td><td>Groupe de clients auxquels la liste est destinÃ©e.</td></tr>
-<tr><td><strong>Date</strong></td><td>PÃ©riode de validitÃ©.</td></tr>
+<tr><td><strong>Fournisseur</strong></td><td>Fournisseur concerné.</td></tr>
+<tr><td><strong>Groupe</strong></td><td>Groupe de clients auxquels la liste est destinée.</td></tr>
+<tr><td><strong>Date</strong></td><td>Période de validité.</td></tr>
 <tr><td><strong>Lignes</strong></td><td>Nombre de produits dans la liste.</td></tr>
-<tr><td><strong>Client</strong></td><td>Nombre de clients Ã  qui la liste est assignÃ©e.</td></tr>
-<tr><td>${ICO_DOTSV}</td><td>Actions : Ã©diter, dupliquer, supprimer.</td></tr>
+<tr><td><strong>Client</strong></td><td>Nombre de clients à qui la liste est assignée.</td></tr>
+<tr><td>${ICO_DOTSV}</td><td>Actions : éditer, dupliquer, supprimer.</td></tr>
 </tbody>
 </table>
-<p>...ou toute autre colonne utile prÃ©sente sur la page.</p>
+<p>...ou toute autre colonne utile présente sur la page.</p>
 
 <h2>Les groupes de Liste Achat</h2>
-<p>Dans la sidebar Ã  gauche du tableau, les groupes (comme <strong>Commun</strong> ou <strong>GP</strong>) vous permettent de trier rapidement par type de liste. Cliquez sur <span class="ui">Voir tous</span> pour afficher toutes les listes.</p>
+<p>Dans la sidebar à gauche du tableau, les groupes (comme <strong>Commun</strong> ou <strong>GP</strong>) vous permettent de trier rapidement par type de liste. Cliquez sur <span class="ui">Voir tous</span> pour afficher toutes les listes.</p>
 
 <div class="callout tip">
-  <div><strong>Bon Ã  savoir :</strong> pour envoyer la mÃªme liste Ã  plusieurs clients, assignez-la Ã  un <em>groupe client</em> plutÃ´t qu'individuellement. Vous gagnez du temps et Ã©vitez les oublis.</div>
+  <div><strong>Bon à savoir :</strong> pour envoyer la même liste à plusieurs clients, assignez-la à un <em>groupe client</em> plutôt qu'individuellement. Vous gagnez du temps et évitez les oublis.</div>
 </div>
 
 <h2>Raccourci depuis Produit Achat</h2>
-<p>Vous pouvez aussi crÃ©er une Liste Achat directement depuis <strong>Produit Achat</strong> : cochez les produits qui vous intÃ©ressent, puis cliquez sur <span class="ui">${ICO_PLUS} CrÃ©er Liste Achat</span> au-dessus du tableau.</p>
+<p>Vous pouvez aussi créer une Liste Achat directement depuis <strong>Produit Achat</strong> : cochez les produits qui vous intéressent, puis cliquez sur <span class="ui">${ICO_PLUS} Créer Liste Achat</span> au-dessus du tableau.</p>
 `,
     en:`
 <p class="lead">A <strong>Purchase List</strong> is a list of products, at a price, from a supplier, valid over a period, and assigned to one or more customers. It's the core of your distribution activity.</p>
@@ -1425,7 +817,7 @@ const ARTICLES = [
   <li>Open <strong>Purchase List</strong> in the sidebar.</li>
   <li>Click <span class="ui">${ICO_PLUS} Add</span>.</li>
   <li>Choose the <strong>Supplier</strong>.</li>
-  <li>Set the <strong>validity period</strong> (start date â end date).</li>
+  <li>Set the <strong>validity period</strong> (start date — end date).</li>
   <li>Choose the <strong>customer group</strong>.</li>
   <li>Add products one by one, with their price.</li>
   <li>Save.</li>
@@ -1466,22 +858,22 @@ const ARTICLES = [
     en:"The Analytics module"
   },
   summaries:{
-    fr:"Rapports, tendances, KPIs â disponibles sur plan supÃ©rieur.",
-    en:"Reports, trends, KPIs â available on the higher plan."
+    fr:"Rapports, tendances, KPIs — disponibles sur plan supérieur.",
+    en:"Reports, trends, KPIs — available on the higher plan."
   },
   bodies:{
     fr:`
-<p class="lead"><span class="badge admin">Plan supÃ©rieur</span> Le module <strong>Analyses</strong> est verrouillÃ© dans les formules de base (icÃ´ne cadenas ${ICO_LOCK} Ã  cÃ´tÃ© du nom).</p>
+<p class="lead"><span class="badge admin">Plan supérieur</span> Le module <strong>Analyses</strong> est verrouillé dans les formules de base (icône cadenas ${ICO_LOCK} à côté du nom).</p>
 
 <h2>Ce qu'il contiendra</h2>
 <ul>
-  <li>Rapports d'activitÃ© par fournisseur et par client.</li>
-  <li>Ãvolution des tarifs dans le temps.</li>
+  <li>Rapports d'activité par fournisseur et par client.</li>
+  <li>Évolution des tarifs dans le temps.</li>
   <li>Tops produits, fournisseurs, marges.</li>
   <li>Export CSV / Excel.</li>
 </ul>
 
-<p>Pour dÃ©bloquer Analyses, contactez le support CHR Solution pour une Ã©volution de votre formule.</p>
+<p>Pour débloquer Analyses, contactez le support CHR Solution pour une évolution de votre formule.</p>
 `,
     en:`
 <p class="lead"><span class="badge admin">Higher plan</span> The <strong>Analytics</strong> module is locked in the basic plans (lock icon ${ICO_LOCK} next to the name).</p>
@@ -1499,7 +891,7 @@ const ARTICLES = [
   }
 },
 
-/* ========== PURCHASE MANAGEMENT â CUSTOMER SIDE ========== */
+/* ========== PURCHASE MANAGEMENT — CUSTOMER SIDE ========== */
 {
   id:"client-mercuriale", cat:"purchase-client", readTime:5,
   titles:{
@@ -1507,61 +899,61 @@ const ARTICLES = [
     en:"Browse your Mercuriale"
   },
   summaries:{
-    fr:"Le catalogue que votre distributeur vous a assignÃ©, vu cÃ´tÃ© client.",
+    fr:"Le catalogue que votre distributeur vous a assigné, vu côté client.",
     en:"The catalogue assigned by your distributor, from the customer view."
   },
   bodies:{
     fr:`
-<p class="lead">La <strong>Mercuriale</strong> est votre catalogue : la liste des produits que votre distributeur / centrale d'achats vous a rÃ©fÃ©rencÃ©s, avec leurs tarifs et conditionnements. C'est l'Ã©quivalent cÃ´tÃ© client de la page <em>Produit Achat</em> du gestionnaire.</p>
+<p class="lead">La <strong>Mercuriale</strong> est votre catalogue : la liste des produits que votre distributeur / centrale d'achats vous a référencés, avec leurs tarifs et conditionnements. C'est l'équivalent côté client de la page <em>Produit Achat</em> du gestionnaire.</p>
 
-<h2>AccÃ©der Ã  la Mercuriale</h2>
+<h2>Accéder à la Mercuriale</h2>
 <p>Dans la sidebar gauche, cliquez sur <strong>Mercuriale</strong>. Le tableau liste tous les produits disponibles pour votre entreprise.</p>
 
 <h2>Les colonnes du tableau</h2>
 <table class="tbl">
 <thead><tr><th>Colonne</th><th>Contenu</th></tr></thead>
 <tbody>
-<tr><td><strong>Nr</strong></td><td>NumÃ©ro de rÃ©fÃ©rence.</td></tr>
-<tr><td><strong>Date</strong></td><td>PÃ©riode de validitÃ© du tarif (ex. 01/01-30/09).</td></tr>
-<tr><td><strong>Produit Fournisseur</strong></td><td>Nom du produit tel que rÃ©fÃ©rencÃ© chez le fournisseur.</td></tr>
+<tr><td><strong>Nr</strong></td><td>Numéro de référence.</td></tr>
+<tr><td><strong>Date</strong></td><td>Période de validité du tarif (ex. 01/01-30/09).</td></tr>
+<tr><td><strong>Produit Fournisseur</strong></td><td>Nom du produit tel que référencé chez le fournisseur.</td></tr>
 <tr><td><strong>Fournisseur</strong></td><td>Nom du fournisseur qui propose ce produit.</td></tr>
-<tr><td><strong>UnitÃ©</strong></td><td>UnitÃ© d'achat (Kg, Pc, L, Pot de 750 Grâ¦).</td></tr>
+<tr><td><strong>Unité</strong></td><td>Unité d'achat (Kg, Pc, L, Pot de 750 Gr…).</td></tr>
 <tr><td><strong>Prix U.</strong></td><td>Prix unitaire HT.</td></tr>
-<tr><td><strong>Minimum</strong></td><td>QuantitÃ© minimum de commande (si dÃ©finie).</td></tr>
-<tr><td><strong>Pack</strong></td><td>Conditionnement par pack (si dÃ©fini).</td></tr>
-<tr><td>â­</td><td>Marquer en favori (raccourci dans l'onglet Favoris).</td></tr>
-<tr><td>âï¸</td><td>Ãditer la ligne (uniquement si c'est votre propre ajout).</td></tr>
+<tr><td><strong>Minimum</strong></td><td>Quantité minimum de commande (si définie).</td></tr>
+<tr><td><strong>Pack</strong></td><td>Conditionnement par pack (si défini).</td></tr>
+<tr><td>⭐</td><td>Marquer en favori (raccourci dans l'onglet Favoris).</td></tr>
+<tr><td>✏️</td><td>Éditer la ligne (uniquement si c'est votre propre ajout).</td></tr>
 </tbody>
 </table>
-<p>...ou toute autre colonne utile prÃ©sente sur la page.</p>
+<p>...ou toute autre colonne utile présente sur la page.</p>
 
 <h2>Filtrer la mercuriale</h2>
 <ul>
-  <li>ð <strong>Recherche</strong> â filtrage en direct sur le nom du produit.</li>
-  <li><span class="ui">Fournisseur</span> (dropdown en haut Ã  droite) â n'afficher que les produits d'un fournisseur prÃ©cis. NÃ©cessaire pour dÃ©bloquer <em>Impression</em>.</li>
-  <li><span class="ui">Cacher SupprimÃ©s</span> â dropdown 2 valeurs (Cacher / Afficher).</li>
-  <li><strong>Date</strong> â filtrer les lignes valides Ã  une date donnÃ©e.</li>
-  <li><strong>Pas de date</strong> (checkbox) â inclure les lignes sans date de validitÃ©.</li>
-  <li><strong>Sidebar familles</strong> (colorÃ©e) â cliquer une famille pour filtrer. Cliquer <span class="ui">Voir tous</span> pour lever le filtre.</li>
+  <li>🔍 <strong>Recherche</strong> — filtrage en direct sur le nom du produit.</li>
+  <li><span class="ui">Fournisseur</span> (dropdown en haut à droite) — n'afficher que les produits d'un fournisseur précis. Nécessaire pour débloquer <em>Impression</em>.</li>
+  <li><span class="ui">Cacher Supprimés</span> — dropdown 2 valeurs (Cacher / Afficher).</li>
+  <li><strong>Date</strong> — filtrer les lignes valides à une date donnée.</li>
+  <li><strong>Pas de date</strong> (checkbox) — inclure les lignes sans date de validité.</li>
+  <li><strong>Sidebar familles</strong> (colorée) — cliquer une famille pour filtrer. Cliquer <span class="ui">Voir tous</span> pour lever le filtre.</li>
 </ul>
 
 <h2>Les actions en haut de page</h2>
 <ul>
-  <li><span class="ui">${ICO_PLUS} Ajouter</span> â ajouter vos <strong>propres produits</strong> (Ã©ditables par vous, voir article dÃ©diÃ©).</li>
-  <li><span class="ui">GÃ©rer Groupes</span> â crÃ©er vos propres familles / sous-familles.</li>
-  <li><span class="ui">GÃ©rer UnitÃ©s</span> â crÃ©er vos propres unitÃ©s.</li>
-  <li><span class="ui">ð Mise Ã  jour</span> â rafraÃ®chir la mercuriale avec les derniers tarifs / nouveautÃ©s envoyÃ©s par votre distributeur. Voir <a href="#/a/client-update">Mettre Ã  jour votre Mercuriale</a>.</li>
+  <li><span class="ui">${ICO_PLUS} Ajouter</span> — ajouter vos <strong>propres produits</strong> (éditables par vous, voir article dédié).</li>
+  <li><span class="ui">Gérer Groupes</span> — créer vos propres familles / sous-familles.</li>
+  <li><span class="ui">Gérer Unités</span> — créer vos propres unités.</li>
+  <li><span class="ui">📅 Mise à jour</span> — rafraîchir la mercuriale avec les derniers tarifs / nouveautés envoyés par votre distributeur. Voir <a href="#/a/client-update">Mettre à jour votre Mercuriale</a>.</li>
 </ul>
 
 <h2>Les actions au-dessus du tableau</h2>
 <ul>
-  <li><span class="ui">âï¸ Ãditer</span> â active le mode Ã©dition en ligne (applicable uniquement Ã  vos propres entrÃ©es).</li>
-  <li><span class="ui">ð¨ï¸ Impression</span> â gÃ©nÃ©rer une <a href="#/a/client-print-sheet">feuille d'achat vierge</a> pour un fournisseur. NÃ©cessite d'avoir sÃ©lectionnÃ© un fournisseur dans le dropdown.</li>
-  <li><span class="ui">RenumÃ©roter</span> â renumÃ©rote automatiquement tous les produits de la liste (utile aprÃ¨s des imports ou des suppressions).</li>
+  <li><span class="ui">✏️ Éditer</span> — active le mode édition en ligne (applicable uniquement à vos propres entrées).</li>
+  <li><span class="ui">🖨️ Impression</span> — générer une <a href="#/a/client-print-sheet">feuille d'achat vierge</a> pour un fournisseur. Nécessite d'avoir sélectionné un fournisseur dans le dropdown.</li>
+  <li><span class="ui">Renuméroter</span> — renumérote automatiquement tous les produits de la liste (utile après des imports ou des suppressions).</li>
 </ul>
 
 <div class="callout warn">
-  <div><strong>Lecture seule sur le contenu distributeur :</strong> les produits et fournisseurs envoyÃ©s par votre distributeur sont en <strong>lecture seule</strong>. Vous ne pouvez ni les modifier ni les supprimer â ils sont sous le contrÃ´le de votre centrale d'achats. En revanche, vous pouvez ajouter vos <strong>propres produits</strong> qui, eux, vous appartiennent et sont entiÃ¨rement modifiables.</div>
+  <div><strong>Lecture seule sur le contenu distributeur :</strong> les produits et fournisseurs envoyés par votre distributeur sont en <strong>lecture seule</strong>. Vous ne pouvez ni les modifier ni les supprimer — ils sont sous le contrôle de votre centrale d'achats. En revanche, vous pouvez ajouter vos <strong>propres produits</strong> qui, eux, vous appartiennent et sont entièrement modifiables.</div>
 </div>
 `,
     en:`
@@ -1578,43 +970,43 @@ const ARTICLES = [
 <tr><td><strong>Date</strong></td><td>Price validity period (e.g., 01/01-30/09).</td></tr>
 <tr><td><strong>Produit Fournisseur</strong></td><td>Product name as referenced at the supplier.</td></tr>
 <tr><td><strong>Fournisseur</strong></td><td>Supplier offering this product.</td></tr>
-<tr><td><strong>UnitÃ©</strong></td><td>Purchase unit (Kg, Pc, L, 750g Jarâ¦).</td></tr>
+<tr><td><strong>Unité</strong></td><td>Purchase unit (Kg, Pc, L, 750g Jar…).</td></tr>
 <tr><td><strong>Prix U.</strong></td><td>Unit price ex. VAT.</td></tr>
 <tr><td><strong>Minimum</strong></td><td>Minimum order quantity (if defined).</td></tr>
 <tr><td><strong>Pack</strong></td><td>Pack packaging (if defined).</td></tr>
-<tr><td>â­</td><td>Mark as favourite (shortcut to Favourites tab).</td></tr>
-<tr><td>âï¸</td><td>Edit line (only if it's your own entry).</td></tr>
+<tr><td>⭐</td><td>Mark as favourite (shortcut to Favourites tab).</td></tr>
+<tr><td>✏️</td><td>Edit line (only if it's your own entry).</td></tr>
 </tbody>
 </table>
 <p>...or any other useful column on the page.</p>
 
 <h2>Filtering the mercuriale</h2>
 <ul>
-  <li>ð <strong>Search</strong> â live filter on product name.</li>
-  <li><span class="ui">Fournisseur</span> (top-right dropdown) â show only products from a specific supplier. Required to enable <em>Print</em>.</li>
-  <li><span class="ui">Cacher SupprimÃ©s</span> â 2-value dropdown (Hide / Show).</li>
-  <li><strong>Date</strong> â filter lines valid on a given date.</li>
-  <li><strong>Pas de date</strong> (checkbox) â include lines with no validity date.</li>
-  <li><strong>Family sidebar</strong> (coloured) â click a family to filter. Click <span class="ui">Voir tous</span> to clear the filter.</li>
+  <li>🔍 <strong>Search</strong> — live filter on product name.</li>
+  <li><span class="ui">Fournisseur</span> (top-right dropdown) — show only products from a specific supplier. Required to enable <em>Print</em>.</li>
+  <li><span class="ui">Cacher Supprimés</span> — 2-value dropdown (Hide / Show).</li>
+  <li><strong>Date</strong> — filter lines valid on a given date.</li>
+  <li><strong>Pas de date</strong> (checkbox) — include lines with no validity date.</li>
+  <li><strong>Family sidebar</strong> (coloured) — click a family to filter. Click <span class="ui">Voir tous</span> to clear the filter.</li>
 </ul>
 
 <h2>Top-of-page actions</h2>
 <ul>
-  <li><span class="ui">${ICO_PLUS} Ajouter</span> â add your <strong>own products</strong> (editable by you, see dedicated article).</li>
-  <li><span class="ui">GÃ©rer Groupes</span> â create your own families / sub-families.</li>
-  <li><span class="ui">GÃ©rer UnitÃ©s</span> â create your own units.</li>
-  <li><span class="ui">ð Mise Ã  jour</span> â refresh the mercuriale with latest prices / additions sent by your distributor. See <a href="#/a/client-update">Update your Mercuriale</a>.</li>
+  <li><span class="ui">${ICO_PLUS} Ajouter</span> — add your <strong>own products</strong> (editable by you, see dedicated article).</li>
+  <li><span class="ui">Gérer Groupes</span> — create your own families / sub-families.</li>
+  <li><span class="ui">Gérer Unités</span> — create your own units.</li>
+  <li><span class="ui">📅 Mise à jour</span> — refresh the mercuriale with latest prices / additions sent by your distributor. See <a href="#/a/client-update">Update your Mercuriale</a>.</li>
 </ul>
 
 <h2>Actions above the table</h2>
 <ul>
-  <li><span class="ui">âï¸ Ãditer</span> â activates inline edit mode (applies only to your own entries).</li>
-  <li><span class="ui">ð¨ï¸ Impression</span> â generate a <a href="#/a/client-print-sheet">blank purchase sheet</a> for a supplier. Requires selecting a supplier in the dropdown.</li>
-  <li><span class="ui">RenumÃ©roter</span> â automatically renumbers all products (useful after imports or deletions).</li>
+  <li><span class="ui">✏️ Éditer</span> — activates inline edit mode (applies only to your own entries).</li>
+  <li><span class="ui">🖨️ Impression</span> — generate a <a href="#/a/client-print-sheet">blank purchase sheet</a> for a supplier. Requires selecting a supplier in the dropdown.</li>
+  <li><span class="ui">Renuméroter</span> — automatically renumbers all products (useful after imports or deletions).</li>
 </ul>
 
 <div class="callout warn">
-  <div><strong>Read-only on distributor content:</strong> products and suppliers pushed by your distributor are <strong>read-only</strong>. You cannot modify or delete them â they are controlled by your purchasing hub. However, you can add your <strong>own products</strong> that you fully control.</div>
+  <div><strong>Read-only on distributor content:</strong> products and suppliers pushed by your distributor are <strong>read-only</strong>. You cannot modify or delete them — they are controlled by your purchasing hub. However, you can add your <strong>own products</strong> that you fully control.</div>
 </div>
 `
   }
@@ -1627,44 +1019,44 @@ const ARTICLES = [
     en:"Print a blank purchase sheet"
   },
   summaries:{
-    fr:"Une alternative Ã  passer commande pour les clients sans Gestion de Stock.",
+    fr:"Une alternative à passer commande pour les clients sans Gestion de Stock.",
     en:"An alternative to placing orders for customers without Stock Management."
   },
   bodies:{
     fr:`
-<p class="lead">Si vous n'avez pas le module <strong>Gestion de Stock</strong>, vous ne pouvez pas passer de commande en ligne. Mais vous pouvez gÃ©nÃ©rer une <strong>feuille d'achat vierge</strong> Ã  imprimer, remplir Ã  la main, puis envoyer Ã  votre fournisseur.</p>
+<p class="lead">Si vous n'avez pas le module <strong>Gestion de Stock</strong>, vous ne pouvez pas passer de commande en ligne. Mais vous pouvez générer une <strong>feuille d'achat vierge</strong> à imprimer, remplir à la main, puis envoyer à votre fournisseur.</p>
 
 <h2>Comment l'obtenir</h2>
 <ol>
   <li>Ouvrez <strong>Mercuriale</strong> dans la sidebar.</li>
-  <li>Dans le dropdown <span class="ui">Fournisseur</span> en haut Ã  droite, sÃ©lectionnez le fournisseur Ã  commander (ex. AVIGROS, JOCEANE).</li>
-  <li>Le bouton <span class="ui">ð¨ï¸ Impression</span> au-dessus du tableau devient actif. Cliquez dessus.</li>
-  <li>Un nouvel onglet s'ouvre avec la feuille d'achat prÃ©-remplie. Utilisez le bouton <strong>Imprimer</strong> ð¨ï¸ en haut Ã  droite, ou <code>Cmd+P</code> / <code>Ctrl+P</code>.</li>
+  <li>Dans le dropdown <span class="ui">Fournisseur</span> en haut à droite, sélectionnez le fournisseur à commander (ex. AVIGROS, JOCEANE).</li>
+  <li>Le bouton <span class="ui">🖨️ Impression</span> au-dessus du tableau devient actif. Cliquez dessus.</li>
+  <li>Un nouvel onglet s'ouvre avec la feuille d'achat pré-remplie. Utilisez le bouton <strong>Imprimer</strong> 🖨️ en haut à droite, ou <code>Cmd+P</code> / <code>Ctrl+P</code>.</li>
 </ol>
 
 <h2>Ce que contient la feuille</h2>
 <ul>
-  <li><strong>Adresse Livraison</strong> â votre entreprise.</li>
-  <li><strong>Fournisseur</strong> â celui que vous avez sÃ©lectionnÃ©.</li>
-  <li><strong>Commentaire</strong> â zone libre Ã  remplir Ã  la main si besoin.</li>
-  <li><strong>Dates</strong> â Commande (remplie automatiquement) / Livraison (vide, Ã  remplir).</li>
-  <li><strong>Tableau des produits</strong> avec colonnes : Nr, Produit Fournisseur, UnitÃ©, <em>QtÃ© UnitÃ©</em> (case vide), Pack, <em>QtÃ© Pack</em> (case vide), Prix Comm.</li>
+  <li><strong>Adresse Livraison</strong> — votre entreprise.</li>
+  <li><strong>Fournisseur</strong> — celui que vous avez sélectionné.</li>
+  <li><strong>Commentaire</strong> — zone libre à remplir à la main si besoin.</li>
+  <li><strong>Dates</strong> — Commande (remplie automatiquement) / Livraison (vide, à remplir).</li>
+  <li><strong>Tableau des produits</strong> avec colonnes : Nr, Produit Fournisseur, Unité, <em>Qté Unité</em> (case vide), Pack, <em>Qté Pack</em> (case vide), Prix Comm.</li>
 </ul>
 
 <h2>Flux typique</h2>
 <ol>
   <li>Vous imprimez la feuille (papier) ou l'enregistrez en PDF.</li>
-  <li>Vous remplissez les <strong>quantitÃ©s</strong> souhaitÃ©es dans les cases vides (Ã  la main ou via un Ã©diteur PDF).</li>
-  <li>Vous envoyez la feuille Ã  votre fournisseur (fax, scan, e-mail, WhatsAppâ¦).</li>
+  <li>Vous remplissez les <strong>quantités</strong> souhaitées dans les cases vides (à la main ou via un éditeur PDF).</li>
+  <li>Vous envoyez la feuille à votre fournisseur (fax, scan, e-mail, WhatsApp…).</li>
   <li>Le fournisseur traite la commande hors de CHR Solution.</li>
 </ol>
 
 <div class="callout tip">
-  <div><strong>Pour automatiser</strong> : si vous voulez passer commande directement depuis CHR Solution (sans imprimer/envoyer manuellement), il faut ajouter le module <strong>Gestion de Stock</strong>. Contactez votre distributeur ou le support pour Ã©voluer.</div>
+  <div><strong>Pour automatiser</strong> : si vous voulez passer commande directement depuis CHR Solution (sans imprimer/envoyer manuellement), il faut ajouter le module <strong>Gestion de Stock</strong>. Contactez votre distributeur ou le support pour évoluer.</div>
 </div>
 
 <div class="callout info">
-  <div><strong>Bouton grisÃ© ?</strong> Le bouton <em>Impression</em> reste grisÃ© tant qu'aucun fournisseur n'est sÃ©lectionnÃ© dans le dropdown. C'est volontaire : la feuille doit Ãªtre spÃ©cifique Ã  un fournisseur.</div>
+  <div><strong>Bouton grisé ?</strong> Le bouton <em>Impression</em> reste grisé tant qu'aucun fournisseur n'est sélectionné dans le dropdown. C'est volontaire : la feuille doit être spécifique à un fournisseur.</div>
 </div>
 `,
     en:`
@@ -1674,16 +1066,16 @@ const ARTICLES = [
 <ol>
   <li>Open <strong>Mercuriale</strong> in the sidebar.</li>
   <li>In the <span class="ui">Fournisseur</span> dropdown at the top right, select the supplier to order from (e.g. AVIGROS, JOCEANE).</li>
-  <li>The <span class="ui">ð¨ï¸ Impression</span> button above the table becomes active. Click it.</li>
-  <li>A new tab opens with the pre-filled purchase sheet. Use the <strong>Print</strong> button ð¨ï¸ at the top right, or <code>Cmd+P</code> / <code>Ctrl+P</code>.</li>
+  <li>The <span class="ui">🖨️ Impression</span> button above the table becomes active. Click it.</li>
+  <li>A new tab opens with the pre-filled purchase sheet. Use the <strong>Print</strong> button 🖨️ at the top right, or <code>Cmd+P</code> / <code>Ctrl+P</code>.</li>
 </ol>
 
 <h2>Sheet contents</h2>
 <ul>
-  <li><strong>Delivery Address</strong> â your company.</li>
-  <li><strong>Supplier</strong> â the one you selected.</li>
-  <li><strong>Comment</strong> â free zone to fill by hand if needed.</li>
-  <li><strong>Dates</strong> â Order (auto-filled) / Delivery (empty, to fill).</li>
+  <li><strong>Delivery Address</strong> — your company.</li>
+  <li><strong>Supplier</strong> — the one you selected.</li>
+  <li><strong>Comment</strong> — free zone to fill by hand if needed.</li>
+  <li><strong>Dates</strong> — Order (auto-filled) / Delivery (empty, to fill).</li>
   <li><strong>Product table</strong> with columns: Nr, Product Name, Unit, <em>Unit Qty</em> (empty), Pack, <em>Pack Qty</em> (empty), Comm. Price.</li>
 </ul>
 
@@ -1691,7 +1083,7 @@ const ARTICLES = [
 <ol>
   <li>You print the sheet (paper) or save as PDF.</li>
   <li>You fill in the desired <strong>quantities</strong> in the empty boxes (by hand or via a PDF editor).</li>
-  <li>You send the sheet to your supplier (fax, scan, email, WhatsAppâ¦).</li>
+  <li>You send the sheet to your supplier (fax, scan, email, WhatsApp…).</li>
   <li>The supplier processes the order outside CHR Solution.</li>
 </ol>
 
@@ -1709,51 +1101,51 @@ const ARTICLES = [
 {
   id:"client-suppliers", cat:"purchase-client", readTime:3,
   titles:{
-    fr:"Vos Fournisseurs rÃ©fÃ©rencÃ©s",
+    fr:"Vos Fournisseurs référencés",
     en:"Your referenced Suppliers"
   },
   summaries:{
-    fr:"Les fournisseurs que votre distributeur a associÃ©s Ã  votre compte.",
+    fr:"Les fournisseurs que votre distributeur a associés à votre compte.",
     en:"The suppliers your distributor has associated with your account."
   },
   bodies:{
     fr:`
-<p class="lead">La section <strong>Fournisseurs</strong> cÃ´tÃ© client affiche uniquement les fournisseurs que votre distributeur vous a rÃ©fÃ©rencÃ©s â pas toute la base fournisseurs du distributeur.</p>
+<p class="lead">La section <strong>Fournisseurs</strong> côté client affiche uniquement les fournisseurs que votre distributeur vous a référencés — pas toute la base fournisseurs du distributeur.</p>
 
 <h2>Ce que vous voyez</h2>
 <ul>
-  <li>Cards avec nom du fournisseur, e-mail, tÃ©lÃ©phone(s), adresse.</li>
-  <li>Badge â­ <strong>Favori</strong> si vous l'avez marquÃ© comme tel.</li>
-  <li>Compteurs <em>Produit Fournisseur</em> / <em>Produits non gÃ©rÃ©s</em> (nombre de rÃ©fÃ©rences).</li>
+  <li>Cards avec nom du fournisseur, e-mail, téléphone(s), adresse.</li>
+  <li>Badge ⭐ <strong>Favori</strong> si vous l'avez marqué comme tel.</li>
+  <li>Compteurs <em>Produit Fournisseur</em> / <em>Produits non gérés</em> (nombre de références).</li>
 </ul>
 
 <h2>Filtres et vues</h2>
 <ul>
-  <li><span class="ui">Tous (n)</span> â tous vos fournisseurs rÃ©fÃ©rencÃ©s.</li>
-  <li><span class="ui">Favoris (n)</span> â uniquement ceux marquÃ©s favori.</li>
+  <li><span class="ui">Tous (n)</span> — tous vos fournisseurs référencés.</li>
+  <li><span class="ui">Favoris (n)</span> — uniquement ceux marqués favori.</li>
 </ul>
 
 <h2>Ajouter vos propres fournisseurs</h2>
-<p>Le bouton <span class="ui">${ICO_PLUS} Ajouter</span> vous permet d'ajouter des fournisseurs qui ne sont pas dans votre mercuriale distributeur (ex. un maraÃ®cher local que vous payez directement). Voir l'article <a href="#/a/client-own-items">Ajouter vos propres produits et fournisseurs</a>.</p>
+<p>Le bouton <span class="ui">${ICO_PLUS} Ajouter</span> vous permet d'ajouter des fournisseurs qui ne sont pas dans votre mercuriale distributeur (ex. un maraîcher local que vous payez directement). Voir l'article <a href="#/a/client-own-items">Ajouter vos propres produits et fournisseurs</a>.</p>
 
 <div class="callout warn">
-  <div><strong>Lecture seule sur les fournisseurs distributeur :</strong> vous ne pouvez ni modifier ni supprimer les fournisseurs envoyÃ©s par votre distributeur. Seuls ceux que vous avez ajoutÃ©s vous-mÃªme sont Ã©ditables.</div>
+  <div><strong>Lecture seule sur les fournisseurs distributeur :</strong> vous ne pouvez ni modifier ni supprimer les fournisseurs envoyés par votre distributeur. Seuls ceux que vous avez ajoutés vous-même sont éditables.</div>
 </div>
 `,
     en:`
-<p class="lead">The <strong>Suppliers</strong> section on the customer side shows only the suppliers your distributor has referenced for you â not the distributor's entire supplier base.</p>
+<p class="lead">The <strong>Suppliers</strong> section on the customer side shows only the suppliers your distributor has referenced for you — not the distributor's entire supplier base.</p>
 
 <h2>What you see</h2>
 <ul>
   <li>Cards with supplier name, email, phone(s), address.</li>
-  <li>â­ <strong>Favourite</strong> badge if you've marked it.</li>
+  <li>⭐ <strong>Favourite</strong> badge if you've marked it.</li>
   <li>Counters <em>Product Supplier</em> / <em>Unmanaged products</em> (reference count).</li>
 </ul>
 
 <h2>Filters and views</h2>
 <ul>
-  <li><span class="ui">Tous (n)</span> â all your referenced suppliers.</li>
-  <li><span class="ui">Favoris (n)</span> â only those marked as favourite.</li>
+  <li><span class="ui">Tous (n)</span> — all your referenced suppliers.</li>
+  <li><span class="ui">Favoris (n)</span> — only those marked as favourite.</li>
 </ul>
 
 <h2>Add your own suppliers</h2>
@@ -1773,18 +1165,18 @@ const ARTICLES = [
     en:"Add your own products and suppliers"
   },
   summaries:{
-    fr:"Ce que votre distributeur ne vous fournit pas, vous pouvez l'ajouter vous-mÃªme.",
+    fr:"Ce que votre distributeur ne vous fournit pas, vous pouvez l'ajouter vous-même.",
     en:"What your distributor doesn't provide, you can add yourself."
   },
   bodies:{
     fr:`
-<p class="lead">Au-delÃ  des rÃ©fÃ©rences que votre distributeur vous envoie, vous pouvez enrichir votre mercuriale avec vos <strong>propres produits et fournisseurs</strong> (maraÃ®cher local, pÃ¢tissier indÃ©pendant, conserves artisanalesâ¦). Ces ajouts sont sous votre contrÃ´le exclusif.</p>
+<p class="lead">Au-delà des références que votre distributeur vous envoie, vous pouvez enrichir votre mercuriale avec vos <strong>propres produits et fournisseurs</strong> (maraîcher local, pâtissier indépendant, conserves artisanales…). Ces ajouts sont sous votre contrôle exclusif.</p>
 
 <h2>Ajouter un produit</h2>
 <ol>
   <li>Ouvrez <strong>Mercuriale</strong>.</li>
   <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span>.</li>
-  <li>Renseignez : nom, famille, unitÃ©, fournisseur (existant ou nouveau), prix, Minimum, Pack, ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>Renseignez : nom, famille, unité, fournisseur (existant ou nouveau), prix, Minimum, Pack, ou tout autre champ utile présent sur la page.</li>
   <li>Enregistrez.</li>
 </ol>
 
@@ -1792,28 +1184,28 @@ const ARTICLES = [
 <ol>
   <li>Ouvrez <strong>Fournisseurs</strong> dans la sidebar.</li>
   <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span>.</li>
-  <li>Renseignez : nom, e-mail, tÃ©lÃ©phone, adresse, ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>Renseignez : nom, e-mail, téléphone, adresse, ou tout autre champ utile présent sur la page.</li>
   <li>Enregistrez.</li>
 </ol>
 
-<h2>Ajouter une famille ou une unitÃ©</h2>
-<p>Via les boutons <span class="ui">GÃ©rer Groupes</span> et <span class="ui">GÃ©rer UnitÃ©s</span> en haut de la Mercuriale. Vos propres familles / unitÃ©s sont indÃ©pendantes de celles du distributeur.</p>
+<h2>Ajouter une famille ou une unité</h2>
+<p>Via les boutons <span class="ui">Gérer Groupes</span> et <span class="ui">Gérer Unités</span> en haut de la Mercuriale. Vos propres familles / unités sont indépendantes de celles du distributeur.</p>
 
-<h2>DiffÃ©rence avec le contenu distributeur</h2>
+<h2>Différence avec le contenu distributeur</h2>
 <table class="tbl">
 <thead><tr><th>Origine</th><th>Modifiable ?</th><th>Supprimable ?</th></tr></thead>
 <tbody>
-<tr><td>EnvoyÃ© par le distributeur</td><td>â Non</td><td>â Non</td></tr>
-<tr><td>AjoutÃ© par vous</td><td>â Oui</td><td>â Oui</td></tr>
+<tr><td>Envoyé par le distributeur</td><td>❌ Non</td><td>❌ Non</td></tr>
+<tr><td>Ajouté par vous</td><td>✅ Oui</td><td>✅ Oui</td></tr>
 </tbody>
 </table>
 
 <div class="callout tip">
-  <div><strong>Astuce :</strong> marquez vos propres entrÃ©es dans un groupe dÃ©diÃ© (ex. Â« Producteurs locaux Â») pour les retrouver facilement.</div>
+  <div><strong>Astuce :</strong> marquez vos propres entrées dans un groupe dédié (ex. « Producteurs locaux ») pour les retrouver facilement.</div>
 </div>
 `,
     en:`
-<p class="lead">Beyond the references your distributor sends you, you can enrich your mercuriale with your <strong>own products and suppliers</strong> (local produce, independent bakery, artisan preservesâ¦). These additions are entirely under your control.</p>
+<p class="lead">Beyond the references your distributor sends you, you can enrich your mercuriale with your <strong>own products and suppliers</strong> (local produce, independent bakery, artisan preserves…). These additions are entirely under your control.</p>
 
 <h2>Add a product</h2>
 <ol>
@@ -1832,14 +1224,14 @@ const ARTICLES = [
 </ol>
 
 <h2>Add a family or a unit</h2>
-<p>Via the <span class="ui">GÃ©rer Groupes</span> and <span class="ui">GÃ©rer UnitÃ©s</span> buttons at the top of the Mercuriale. Your own families / units are independent from the distributor's.</p>
+<p>Via the <span class="ui">Gérer Groupes</span> and <span class="ui">Gérer Unités</span> buttons at the top of the Mercuriale. Your own families / units are independent from the distributor's.</p>
 
 <h2>Difference with distributor content</h2>
 <table class="tbl">
 <thead><tr><th>Origin</th><th>Editable?</th><th>Deletable?</th></tr></thead>
 <tbody>
-<tr><td>Sent by distributor</td><td>â No</td><td>â No</td></tr>
-<tr><td>Added by you</td><td>â Yes</td><td>â Yes</td></tr>
+<tr><td>Sent by distributor</td><td>❌ No</td><td>❌ No</td></tr>
+<tr><td>Added by you</td><td>✅ Yes</td><td>✅ Yes</td></tr>
 </tbody>
 </table>
 
@@ -1853,39 +1245,39 @@ const ARTICLES = [
 {
   id:"client-update", cat:"purchase-client", readTime:2,
   titles:{
-    fr:"Mettre Ã  jour votre Mercuriale",
+    fr:"Mettre à jour votre Mercuriale",
     en:"Update your Mercuriale"
   },
   summaries:{
-    fr:"RÃ©cupÃ©rer les derniers tarifs et nouveautÃ©s envoyÃ©s par votre distributeur.",
+    fr:"Récupérer les derniers tarifs et nouveautés envoyés par votre distributeur.",
     en:"Fetch the latest prices and additions sent by your distributor."
   },
   bodies:{
     fr:`
-<p class="lead">Votre distributeur met rÃ©guliÃ¨rement Ã  jour les listes d'achat qu'il vous envoie (nouveaux tarifs, nouveaux produits, retraits). Pour que votre mercuriale reflÃ¨te ces Ã©volutions, un simple clic suffit.</p>
+<p class="lead">Votre distributeur met régulièrement à jour les listes d'achat qu'il vous envoie (nouveaux tarifs, nouveaux produits, retraits). Pour que votre mercuriale reflète ces évolutions, un simple clic suffit.</p>
 
-<h2>Faire la mise Ã  jour</h2>
+<h2>Faire la mise à jour</h2>
 <ol>
   <li>Ouvrez <strong>Mercuriale</strong>.</li>
-  <li>Cliquez sur <span class="ui">ð Mise Ã  jour</span> en haut de la page.</li>
-  <li>Les nouvelles listes d'achat de votre distributeur sont appliquÃ©es : tarifs Ã  jour, nouveautÃ©s ajoutÃ©es.</li>
+  <li>Cliquez sur <span class="ui">📅 Mise à jour</span> en haut de la page.</li>
+  <li>Les nouvelles listes d'achat de votre distributeur sont appliquées : tarifs à jour, nouveautés ajoutées.</li>
 </ol>
 
 <h2>Ce qui change, ce qui ne change pas</h2>
 <table class="tbl">
-<thead><tr><th>Type de donnÃ©es</th><th>Mise Ã  jour ?</th></tr></thead>
+<thead><tr><th>Type de données</th><th>Mise à jour ?</th></tr></thead>
 <tbody>
-<tr><td>Produits / tarifs / fournisseurs envoyÃ©s par le distributeur</td><td>â RafraÃ®chis avec les derniers envois</td></tr>
-<tr><td>Produits / fournisseurs / unitÃ©s / familles que vous avez ajoutÃ©s vous-mÃªme</td><td>â InchangÃ©s, vous gardez tout ce que vous avez saisi</td></tr>
-<tr><td>Vos favoris</td><td>â InchangÃ©s</td></tr>
+<tr><td>Produits / tarifs / fournisseurs envoyés par le distributeur</td><td>✅ Rafraîchis avec les derniers envois</td></tr>
+<tr><td>Produits / fournisseurs / unités / familles que vous avez ajoutés vous-même</td><td>❌ Inchangés, vous gardez tout ce que vous avez saisi</td></tr>
+<tr><td>Vos favoris</td><td>❌ Inchangés</td></tr>
 </tbody>
 </table>
 
-<h2>Ã quelle frÃ©quence ?</h2>
-<p>RecommandÃ© : au moins <strong>une fois par semaine</strong>, ou dÃ¨s que votre distributeur vous signale un changement (nouvelle saison, promo ponctuelle, etc.).</p>
+<h2>À quelle fréquence ?</h2>
+<p>Recommandé : au moins <strong>une fois par semaine</strong>, ou dès que votre distributeur vous signale un changement (nouvelle saison, promo ponctuelle, etc.).</p>
 
 <div class="callout tip">
-  <div><strong>Bon Ã  savoir :</strong> la mise Ã  jour est non destructive â elle n'Ã©crase pas vos propres entrÃ©es et elle ne modifie pas les favoris que vous avez marquÃ©s.</div>
+  <div><strong>Bon à savoir :</strong> la mise à jour est non destructive — elle n'écrase pas vos propres entrées et elle ne modifie pas les favoris que vous avez marqués.</div>
 </div>
 `,
     en:`
@@ -1894,7 +1286,7 @@ const ARTICLES = [
 <h2>Running the update</h2>
 <ol>
   <li>Open <strong>Mercuriale</strong>.</li>
-  <li>Click <span class="ui">ð Mise Ã  jour</span> at the top of the page.</li>
+  <li>Click <span class="ui">📅 Mise à jour</span> at the top of the page.</li>
   <li>Your distributor's latest purchase lists are applied: prices refreshed, new items added.</li>
 </ol>
 
@@ -1902,9 +1294,9 @@ const ARTICLES = [
 <table class="tbl">
 <thead><tr><th>Data type</th><th>Updated?</th></tr></thead>
 <tbody>
-<tr><td>Distributor-pushed products / prices / suppliers</td><td>â Refreshed with the latest push</td></tr>
-<tr><td>Products / suppliers / units / families you added yourself</td><td>â Untouched, you keep everything you entered</td></tr>
-<tr><td>Your favourites</td><td>â Untouched</td></tr>
+<tr><td>Distributor-pushed products / prices / suppliers</td><td>✅ Refreshed with the latest push</td></tr>
+<tr><td>Products / suppliers / units / families you added yourself</td><td>❌ Untouched, you keep everything you entered</td></tr>
+<tr><td>Your favourites</td><td>❌ Untouched</td></tr>
 </tbody>
 </table>
 
@@ -1912,7 +1304,7 @@ const ARTICLES = [
 <p>Recommended: at least <strong>once a week</strong>, or whenever your distributor signals a change (new season, promotion, etc.).</p>
 
 <div class="callout tip">
-  <div><strong>Good to know:</strong> the update is non-destructive â it doesn't overwrite your own entries and doesn't affect the favourites you've marked.</div>
+  <div><strong>Good to know:</strong> the update is non-destructive — it doesn't overwrite your own entries and doesn't affect the favourites you've marked.</div>
 </div>
 `
   }
@@ -1931,27 +1323,27 @@ const ARTICLES = [
   },
   bodies:{
     fr:`
-<p class="lead">Gestion de Stock est pensÃ© pour les <strong>restaurateurs</strong>, <strong>chefs</strong> et <strong>responsables achat en cuisine</strong>. Il gÃ¨re la vie de vos produits â de la commande fournisseur Ã  la recette, en passant par l'inventaire.</p>
+<p class="lead">Gestion de Stock est pensé pour les <strong>restaurateurs</strong>, <strong>chefs</strong> et <strong>responsables achat en cuisine</strong>. Il gère la vie de vos produits — de la commande fournisseur à la recette, en passant par l'inventaire.</p>
 
 <h2>Les 8 grandes sections</h2>
 <table class="tbl">
 <thead><tr><th>Section</th><th>Usage</th></tr></thead>
 <tbody>
-<tr><td><strong>Commande</strong></td><td>Passer un bon de commande Ã  un fournisseur, suivre sa livraison, rapprocher la facture.</td></tr>
-<tr><td><strong>Fournisseurs</strong></td><td>CoordonnÃ©es des fournisseurs (vue orientÃ©e cuisine, plus compacte que cÃ´tÃ© Achats).</td></tr>
+<tr><td><strong>Commande</strong></td><td>Passer un bon de commande à un fournisseur, suivre sa livraison, rapprocher la facture.</td></tr>
+<tr><td><strong>Fournisseurs</strong></td><td>Coordonnées des fournisseurs (vue orientée cuisine, plus compacte que côté Achats).</td></tr>
 <tr><td><strong>Produits Stock</strong></td><td>Catalogue des produits que vous utilisez en cuisine.</td></tr>
-<tr><td><strong>Transfert Stock</strong></td><td>Mouvement entre lieux (ex. cave â salle, cuisine â bar).</td></tr>
-<tr><td><strong>Inventaire</strong></td><td>Saisie pÃ©riodique pour valoriser votre stock.</td></tr>
+<tr><td><strong>Transfert Stock</strong></td><td>Mouvement entre lieux (ex. cave → salle, cuisine → bar).</td></tr>
+<tr><td><strong>Inventaire</strong></td><td>Saisie périodique pour valoriser votre stock.</td></tr>
 <tr><td><strong>Ventes</strong></td><td>Produits vendus, pour rapprocher avec la caisse.</td></tr>
-<tr><td><strong>Recettes</strong></td><td>Fiches techniques et calcul du coÃ»t matiÃ¨re.</td></tr>
-<tr><td><strong>Production</strong></td><td>Suivi des productions (lots fabriquÃ©s en interne).</td></tr>
+<tr><td><strong>Recettes</strong></td><td>Fiches techniques et calcul du coût matière.</td></tr>
+<tr><td><strong>Production</strong></td><td>Suivi des productions (lots fabriqués en interne).</td></tr>
 </tbody>
 </table>
 
-<p>Chaque section a sa propre logique, dÃ©taillÃ©e dans les articles qui suivent.</p>
+<p>Chaque section a sa propre logique, détaillée dans les articles qui suivent.</p>
 `,
     en:`
-<p class="lead">Stock Management is designed for <strong>restaurateurs</strong>, <strong>chefs</strong> and <strong>kitchen purchasing managers</strong>. It handles the life of your products â from supplier order to recipe, through inventory.</p>
+<p class="lead">Stock Management is designed for <strong>restaurateurs</strong>, <strong>chefs</strong> and <strong>kitchen purchasing managers</strong>. It handles the life of your products — from supplier order to recipe, through inventory.</p>
 
 <h2>The 8 main sections</h2>
 <table class="tbl">
@@ -1960,7 +1352,7 @@ const ARTICLES = [
 <tr><td><strong>Order</strong></td><td>Place a purchase order to a supplier, track delivery, reconcile the invoice.</td></tr>
 <tr><td><strong>Suppliers</strong></td><td>Supplier contacts (kitchen-oriented view, more compact than the Purchase side).</td></tr>
 <tr><td><strong>Stock Products</strong></td><td>Catalogue of products used in the kitchen.</td></tr>
-<tr><td><strong>Stock Transfer</strong></td><td>Movement between locations (e.g., cellar â dining room, kitchen â bar).</td></tr>
+<tr><td><strong>Stock Transfer</strong></td><td>Movement between locations (e.g., cellar → dining room, kitchen → bar).</td></tr>
 <tr><td><strong>Inventory</strong></td><td>Periodic count to value your stock.</td></tr>
 <tr><td><strong>Sales</strong></td><td>Sold products, to reconcile with the POS.</td></tr>
 <tr><td><strong>Recipes</strong></td><td>Technical sheets and food cost calculation.</td></tr>
@@ -1985,63 +1377,63 @@ const ARTICLES = [
   },
   bodies:{
     fr:`
-<p class="lead">La section <strong>Commande</strong> liste tous vos bons de commande et les factures associÃ©es. C'est aussi d'ici que vous en crÃ©ez de nouveaux.</p>
+<p class="lead">La section <strong>Commande</strong> liste tous vos bons de commande et les factures associées. C'est aussi d'ici que vous en créez de nouveaux.</p>
 
 <h2>Les 3 actions principales</h2>
 <ul>
-  <li><span class="ui">${ICO_PLUS} Ajouter Commande</span> â crÃ©er un nouveau bon de commande.</li>
-  <li><span class="ui">$ Facture</span> â ajouter / consulter les factures liÃ©es aux commandes.</li>
-  <li><span class="ui">ð Supprimer tout</span> â action d'administration, Ã  utiliser avec prudence.</li>
+  <li><span class="ui">${ICO_PLUS} Ajouter Commande</span> — créer un nouveau bon de commande.</li>
+  <li><span class="ui">$ Facture</span> — ajouter / consulter les factures liées aux commandes.</li>
+  <li><span class="ui">🗑 Supprimer tout</span> — action d'administration, à utiliser avec prudence.</li>
 </ul>
 
 <h2>Filtrer et chercher</h2>
 <p>Trois filtres au-dessus du tableau :</p>
 <ul>
-  <li><strong>Recherche</strong> â par numÃ©ro, fournisseur, ou contenu.</li>
-  <li><span class="ui">Choisir Fournisseur</span> â limite Ã  un fournisseur.</li>
-  <li><span class="ui">Toutes les lignes</span> â filtre par statut de ligne.</li>
+  <li><strong>Recherche</strong> — par numéro, fournisseur, ou contenu.</li>
+  <li><span class="ui">Choisir Fournisseur</span> — limite à un fournisseur.</li>
+  <li><span class="ui">Toutes les lignes</span> — filtre par statut de ligne.</li>
 </ul>
 
 <h2>Les colonnes du tableau Commande</h2>
 <table class="tbl">
 <thead><tr><th>Colonne</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><strong>Nr</strong></td><td>NumÃ©ro unique de la commande.</td></tr>
-<tr><td><strong>Statut</strong></td><td>OÃ¹ en est la commande (Ã  envoyer, envoyÃ©e, reÃ§ueâ¦).</td></tr>
-<tr><td><strong>Date</strong></td><td>Date d'Ã©mission.</td></tr>
-<tr><td><strong>Par</strong></td><td>Utilisateur qui a crÃ©Ã© la commande.</td></tr>
-<tr><td><strong>Fichier</strong></td><td>Document scannÃ© / importÃ©.</td></tr>
-<tr><td><strong>Lignes</strong></td><td>Nombre d'articles commandÃ©s.</td></tr>
+<tr><td><strong>Nr</strong></td><td>Numéro unique de la commande.</td></tr>
+<tr><td><strong>Statut</strong></td><td>Où en est la commande (à envoyer, envoyée, reçue…).</td></tr>
+<tr><td><strong>Date</strong></td><td>Date d'émission.</td></tr>
+<tr><td><strong>Par</strong></td><td>Utilisateur qui a créé la commande.</td></tr>
+<tr><td><strong>Fichier</strong></td><td>Document scanné / importé.</td></tr>
+<tr><td><strong>Lignes</strong></td><td>Nombre d'articles commandés.</td></tr>
 <tr><td><strong>Total HT</strong></td><td>Montant hors taxes.</td></tr>
 <tr><td><strong>Png</strong></td><td>Vignette image jointe.</td></tr>
 <tr><td><strong>Fournisseur</strong></td><td>Destinataire de la commande.</td></tr>
 </tbody>
 </table>
-<p>...ou toute autre colonne utile prÃ©sente sur la page.</p>
+<p>...ou toute autre colonne utile présente sur la page.</p>
 
 <div class="callout info">
-  <div><strong>Pas de donnÃ©es ?</strong> Le tableau affiche "Pas de donnÃ©es Ã  afficher pour le moment" tant qu'aucune commande n'existe. CrÃ©ez-en une avec <em>${ICO_PLUS} Ajouter Commande</em>.</div>
+  <div><strong>Pas de données ?</strong> Le tableau affiche "Pas de données à afficher pour le moment" tant qu'aucune commande n'existe. Créez-en une avec <em>${ICO_PLUS} Ajouter Commande</em>.</div>
 </div>
 
-<h2>L'icÃ´ne cloche ${ICO_BELL_PLUS}</h2>
-<p>Ã droite du filtre de lignes, une icÃ´ne cloche avec un + active les notifications d'une commande (suivi de livraison, alertes de retard).</p>
+<h2>L'icône cloche ${ICO_BELL_PLUS}</h2>
+<p>À droite du filtre de lignes, une icône cloche avec un + active les notifications d'une commande (suivi de livraison, alertes de retard).</p>
 `,
     en:`
 <p class="lead">The <strong>Order</strong> section lists all your purchase orders and related invoices. This is also where you create new ones.</p>
 
 <h2>The 3 main actions</h2>
 <ul>
-  <li><span class="ui">${ICO_PLUS} Add Order</span> â create a new purchase order.</li>
-  <li><span class="ui">$ Invoice</span> â add / view invoices linked to orders.</li>
-  <li><span class="ui">ð Delete all</span> â admin action, use with caution.</li>
+  <li><span class="ui">${ICO_PLUS} Add Order</span> — create a new purchase order.</li>
+  <li><span class="ui">$ Invoice</span> — add / view invoices linked to orders.</li>
+  <li><span class="ui">🗑 Delete all</span> — admin action, use with caution.</li>
 </ul>
 
 <h2>Filter and search</h2>
 <p>Three filters above the table:</p>
 <ul>
-  <li><strong>Search</strong> â by number, supplier, or content.</li>
-  <li><span class="ui">Choose Supplier</span> â restrict to one supplier.</li>
-  <li><span class="ui">All lines</span> â filter by line status.</li>
+  <li><strong>Search</strong> — by number, supplier, or content.</li>
+  <li><span class="ui">Choose Supplier</span> — restrict to one supplier.</li>
+  <li><span class="ui">All lines</span> — filter by line status.</li>
 </ul>
 
 <h2>Order table columns</h2>
@@ -2049,7 +1441,7 @@ const ARTICLES = [
 <thead><tr><th>Column</th><th>Description</th></tr></thead>
 <tbody>
 <tr><td><strong>Nr</strong></td><td>Unique order number.</td></tr>
-<tr><td><strong>Status</strong></td><td>Where the order stands (to send, sent, receivedâ¦).</td></tr>
+<tr><td><strong>Status</strong></td><td>Where the order stands (to send, sent, received…).</td></tr>
 <tr><td><strong>Date</strong></td><td>Issue date.</td></tr>
 <tr><td><strong>By</strong></td><td>User who created the order.</td></tr>
 <tr><td><strong>File</strong></td><td>Scanned / imported document.</td></tr>
@@ -2074,27 +1466,27 @@ const ARTICLES = [
 {
   id:"sk-suppliers", cat:"stock-mgmt", readTime:2,
   titles:{
-    fr:"Fournisseurs cÃ´tÃ© Stock",
+    fr:"Fournisseurs côté Stock",
     en:"Suppliers (Stock side)"
   },
   summaries:{
-    fr:"Vue orientÃ©e cuisine : contacts rapides pour passer commande.",
+    fr:"Vue orientée cuisine : contacts rapides pour passer commande.",
     en:"Kitchen-oriented view: quick contacts to place an order."
   },
   bodies:{
     fr:`
-<p class="lead">La section <strong>Fournisseurs</strong> cÃ´tÃ© Stock reprend les fournisseurs de votre base, avec une prÃ©sentation plus compacte pensÃ©e pour l'Ã©quipe cuisine.</p>
+<p class="lead">La section <strong>Fournisseurs</strong> côté Stock reprend les fournisseurs de votre base, avec une présentation plus compacte pensée pour l'équipe cuisine.</p>
 
-<p>Les champs sont les mÃªmes que cÃ´tÃ© Achats : nom, e-mail, tÃ©lÃ©phone, adresse, ou tout autre champ utile prÃ©sent sur la page. La diffÃ©rence est surtout ergonomique : on passe moins de temps ici car on commande plus qu'on n'Ã©dite.</p>
+<p>Les champs sont les mêmes que côté Achats : nom, e-mail, téléphone, adresse, ou tout autre champ utile présent sur la page. La différence est surtout ergonomique : on passe moins de temps ici car on commande plus qu'on n'édite.</p>
 
-<p>Pour crÃ©er ou modifier un fournisseur en profondeur, passez par <a href="#/a/pc-suppliers">Gestion des Achats â Fournisseurs</a>.</p>
+<p>Pour créer ou modifier un fournisseur en profondeur, passez par <a href="#/a/pc-suppliers">Gestion des Achats → Fournisseurs</a>.</p>
 `,
     en:`
 <p class="lead">The <strong>Suppliers</strong> section on the Stock side shows the same suppliers as your main base, but with a more compact presentation designed for the kitchen team.</p>
 
-<p>The fields are the same as on the Purchase side: name, email, phone, address, or any other useful field on the page. The difference is mainly ergonomic â you spend less time here since you order more than you edit.</p>
+<p>The fields are the same as on the Purchase side: name, email, phone, address, or any other useful field on the page. The difference is mainly ergonomic — you spend less time here since you order more than you edit.</p>
 
-<p>To create or deeply edit a supplier, go to <a href="#/a/pc-suppliers">Purchase Management â Suppliers</a>.</p>
+<p>To create or deeply edit a supplier, go to <a href="#/a/pc-suppliers">Purchase Management → Suppliers</a>.</p>
 `
   }
 },
@@ -2111,20 +1503,20 @@ const ARTICLES = [
   },
   bodies:{
     fr:`
-<p class="lead">Produits Stock est le catalogue des produits que vous utilisez en cuisine : ingrÃ©dients, boissons, consommables. Chaque produit a son unitÃ©, son fournisseur, son prix de rÃ©fÃ©rence.</p>
+<p class="lead">Produits Stock est le catalogue des produits que vous utilisez en cuisine : ingrédients, boissons, consommables. Chaque produit a son unité, son fournisseur, son prix de référence.</p>
 
 <h2>Les informations d'un produit</h2>
 <ul>
   <li>Nom et famille.</li>
-  <li>UnitÃ© d'achat (Kg, L, Pcâ¦) et unitÃ© de consommation (g, ml, Pc).</li>
+  <li>Unité d'achat (Kg, L, Pc…) et unité de consommation (g, ml, Pc).</li>
   <li>Prix HT courant.</li>
   <li>Fournisseur principal.</li>
-  <li>Stock actuel (si l'inventaire est Ã  jour).</li>
-  <li>...ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>Stock actuel (si l'inventaire est à jour).</li>
+  <li>...ou tout autre champ utile présent sur la page.</li>
 </ul>
 
 <h2>Lien avec les recettes</h2>
-<p>Un produit Stock est utilisable dans une <a href="#/a/sk-recipes">recette</a> : son prix unitaire est consommÃ© au prorata de la quantitÃ© utilisÃ©e, ce qui alimente le calcul du coÃ»t matiÃ¨re.</p>
+<p>Un produit Stock est utilisable dans une <a href="#/a/sk-recipes">recette</a> : son prix unitaire est consommé au prorata de la quantité utilisée, ce qui alimente le calcul du coût matière.</p>
 `,
     en:`
 <p class="lead">Stock Products is the catalogue of products you use in the kitchen: ingredients, drinks, consumables. Each product has its unit, its supplier, its reference price.</p>
@@ -2132,7 +1524,7 @@ const ARTICLES = [
 <h2>Product information</h2>
 <ul>
   <li>Name and family.</li>
-  <li>Purchase unit (Kg, L, Pcâ¦) and consumption unit (g, ml, Pc).</li>
+  <li>Purchase unit (Kg, L, Pc…) and consumption unit (g, ml, Pc).</li>
   <li>Current price ex. VAT.</li>
   <li>Main supplier.</li>
   <li>Current stock (if inventory is up to date).</li>
@@ -2152,24 +1544,24 @@ const ARTICLES = [
     en:"Stock Transfer"
   },
   summaries:{
-    fr:"DÃ©placer des produits d'un emplacement Ã  un autre.",
+    fr:"Déplacer des produits d'un emplacement à un autre.",
     en:"Move products from one location to another."
   },
   bodies:{
     fr:`
-<p class="lead">Le <strong>Transfert Stock</strong> enregistre le mouvement d'un produit entre deux emplacements : cave â salle, cuisine â bar, stock central â antenne.</p>
+<p class="lead">Le <strong>Transfert Stock</strong> enregistre le mouvement d'un produit entre deux emplacements : cave → salle, cuisine → bar, stock central → antenne.</p>
 
 <h2>Pourquoi l'utiliser ?</h2>
 <ul>
   <li>Suivre ce qui sort du stock principal.</li>
-  <li>Imputer le coÃ»t au bon centre de profit.</li>
-  <li>Avoir un inventaire cohÃ©rent dans chaque zone.</li>
+  <li>Imputer le coût au bon centre de profit.</li>
+  <li>Avoir un inventaire cohérent dans chaque zone.</li>
 </ul>
 
-<p>Renseignez : produit, quantitÃ©, emplacement source, emplacement destination, date, ou tout autre champ utile prÃ©sent sur la page. L'outil ajuste automatiquement les deux stocks.</p>
+<p>Renseignez : produit, quantité, emplacement source, emplacement destination, date, ou tout autre champ utile présent sur la page. L'outil ajuste automatiquement les deux stocks.</p>
 `,
     en:`
-<p class="lead"><strong>Stock Transfer</strong> records the movement of a product between two locations: cellar â dining room, kitchen â bar, central stock â satellite.</p>
+<p class="lead"><strong>Stock Transfer</strong> records the movement of a product between two locations: cellar → dining room, kitchen → bar, central stock → satellite.</p>
 
 <h2>Why use it?</h2>
 <ul>
@@ -2190,34 +1582,34 @@ const ARTICLES = [
     en:"Record an Inventory"
   },
   summaries:{
-    fr:"Le comptage pÃ©riodique qui valorise votre stock.",
+    fr:"Le comptage périodique qui valorise votre stock.",
     en:"The periodic count that values your stock."
   },
   bodies:{
     fr:`
-<p class="lead">L'<strong>Inventaire</strong> est la photographie du stock Ã  un instant T. C'est l'Ã©cart entre deux inventaires (+ entrÃ©es - sorties) qui fait Ã©merger les pertes, les erreurs de saisie ou les vols.</p>
+<p class="lead">L'<strong>Inventaire</strong> est la photographie du stock à un instant T. C'est l'écart entre deux inventaires (+ entrées - sorties) qui fait émerger les pertes, les erreurs de saisie ou les vols.</p>
 
-<h2>Les Ã©tapes</h2>
+<h2>Les étapes</h2>
 <ol>
   <li>Ouvrez <strong>Inventaire</strong> dans la sidebar.</li>
-  <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span> pour dÃ©marrer un nouvel inventaire.</li>
-  <li>Comptez et saisissez les quantitÃ©s par zone (cuisine, cave, barâ¦).</li>
-  <li>Validez â l'outil calcule la valorisation et les Ã©carts avec le prÃ©cÃ©dent inventaire.</li>
+  <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span> pour démarrer un nouvel inventaire.</li>
+  <li>Comptez et saisissez les quantités par zone (cuisine, cave, bar…).</li>
+  <li>Validez — l'outil calcule la valorisation et les écarts avec le précédent inventaire.</li>
 </ol>
 
 <div class="callout tip">
-  <div><strong>Bonne pratique :</strong> un inventaire hebdomadaire ou mensuel donne les meilleurs rÃ©sultats. Plus c'est frÃ©quent, plus vous dÃ©tectez tÃ´t les anomalies.</div>
+  <div><strong>Bonne pratique :</strong> un inventaire hebdomadaire ou mensuel donne les meilleurs résultats. Plus c'est fréquent, plus vous détectez tôt les anomalies.</div>
 </div>
 `,
     en:`
-<p class="lead">The <strong>Inventory</strong> is the snapshot of stock at a given moment. It's the gap between two inventories (+ inflows â outflows) that reveals losses, entry errors, or theft.</p>
+<p class="lead">The <strong>Inventory</strong> is the snapshot of stock at a given moment. It's the gap between two inventories (+ inflows − outflows) that reveals losses, entry errors, or theft.</p>
 
 <h2>Steps</h2>
 <ol>
   <li>Open <strong>Inventory</strong> in the sidebar.</li>
   <li>Click <span class="ui">${ICO_PLUS} Add</span> to start a new inventory.</li>
-  <li>Count and enter quantities by area (kitchen, cellar, barâ¦).</li>
-  <li>Validate â the tool computes the valuation and the variances from the previous inventory.</li>
+  <li>Count and enter quantities by area (kitchen, cellar, bar…).</li>
+  <li>Validate — the tool computes the valuation and the variances from the previous inventory.</li>
 </ol>
 
 <div class="callout tip">
@@ -2234,13 +1626,13 @@ const ARTICLES = [
     en:"Sales"
   },
   summaries:{
-    fr:"Le rapprochement entre les plats servis et les produits consommÃ©s.",
+    fr:"Le rapprochement entre les plats servis et les produits consommés.",
     en:"The reconciliation between dishes served and products consumed."
   },
   bodies:{
     fr:`
-<p class="lead">La section <strong>Ventes</strong> rÃ©fÃ©rence les produits vendus (plats, boissons, menus). CouplÃ©e aux recettes, elle permet de dÃ©duire automatiquement les produits consommÃ©s pour Ã©quilibrer le stock thÃ©orique et rÃ©el.</p>
-<p>Si votre caisse est connectÃ©e, les ventes remontent automatiquement. Sinon, un import manuel (CSV) est possible.</p>
+<p class="lead">La section <strong>Ventes</strong> référence les produits vendus (plats, boissons, menus). Couplée aux recettes, elle permet de déduire automatiquement les produits consommés pour équilibrer le stock théorique et réel.</p>
+<p>Si votre caisse est connectée, les ventes remontent automatiquement. Sinon, un import manuel (CSV) est possible.</p>
 `,
     en:`
 <p class="lead">The <strong>Sales</strong> section references sold products (dishes, drinks, menus). Paired with recipes, it lets you automatically deduct consumed products to balance theoretical and actual stock.</p>
@@ -2252,32 +1644,32 @@ const ARTICLES = [
 {
   id:"sk-recipes", cat:"stock-mgmt", readTime:4,
   titles:{
-    fr:"Recettes et coÃ»t matiÃ¨re",
+    fr:"Recettes et coût matière",
     en:"Recipes and food cost"
   },
   summaries:{
-    fr:"Construire une fiche technique, obtenir un coÃ»t matiÃ¨re fiable.",
+    fr:"Construire une fiche technique, obtenir un coût matière fiable.",
     en:"Build a technical sheet, get a reliable food cost."
   },
   bodies:{
     fr:`
-<p class="lead">Les <strong>Recettes</strong> lient vos produits vendus Ã  vos produits stock, avec des quantitÃ©s prÃ©cises. Ã partir de lÃ , l'outil calcule automatiquement votre <strong>coÃ»t matiÃ¨re</strong>.</p>
+<p class="lead">Les <strong>Recettes</strong> lient vos produits vendus à vos produits stock, avec des quantités précises. À partir de là, l'outil calcule automatiquement votre <strong>coût matière</strong>.</p>
 
-<h2>CrÃ©er une recette</h2>
+<h2>Créer une recette</h2>
 <ol>
   <li>Ouvrez <strong>Recettes</strong> dans la sidebar.</li>
   <li>Cliquez sur <span class="ui">${ICO_PLUS} Ajouter</span>.</li>
-  <li>Saisissez : nom de la recette, nombre de couverts, allergÃ¨nes, ou tout autre champ utile prÃ©sent sur la page.</li>
-  <li>Ajoutez les <strong>ingrÃ©dients</strong> en recherchant dans Produits Stock.</li>
-  <li>Pour chaque ingrÃ©dient, indiquez la quantitÃ© dans l'unitÃ© de consommation.</li>
-  <li>Facultatif : Ã©tapes de prÃ©paration (texte libre).</li>
+  <li>Saisissez : nom de la recette, nombre de couverts, allergènes, ou tout autre champ utile présent sur la page.</li>
+  <li>Ajoutez les <strong>ingrédients</strong> en recherchant dans Produits Stock.</li>
+  <li>Pour chaque ingrédient, indiquez la quantité dans l'unité de consommation.</li>
+  <li>Facultatif : étapes de préparation (texte libre).</li>
 </ol>
 
-<h2>Le calcul du coÃ»t matiÃ¨re</h2>
-<p>Pour chaque ingrÃ©dient, l'outil multiplie la quantitÃ© par le prix unitaire de consommation (prix du produit Ã· quantitÃ© dans son conditionnement). Le total donne votre coÃ»t matiÃ¨re par portion.</p>
+<h2>Le calcul du coût matière</h2>
+<p>Pour chaque ingrédient, l'outil multiplie la quantité par le prix unitaire de consommation (prix du produit ÷ quantité dans son conditionnement). Le total donne votre coût matière par portion.</p>
 
 <div class="callout tip">
-  <div><strong>Quand un tarif fournisseur change</strong>, le coÃ»t matiÃ¨re de toutes les recettes utilisant ce produit est recalculÃ© automatiquement. Gardez un Åil sur vos plats signatures pour ajuster vos prix de vente si besoin.</div>
+  <div><strong>Quand un tarif fournisseur change</strong>, le coût matière de toutes les recettes utilisant ce produit est recalculé automatiquement. Gardez un œil sur vos plats signatures pour ajuster vos prix de vente si besoin.</div>
 </div>
 `,
     en:`
@@ -2294,7 +1686,7 @@ const ARTICLES = [
 </ol>
 
 <h2>Food cost calculation</h2>
-<p>For each ingredient, the tool multiplies the quantity by the consumption unit price (product price Ã· quantity in its packaging). The total gives your food cost per portion.</p>
+<p>For each ingredient, the tool multiplies the quantity by the consumption unit price (product price ÷ quantity in its packaging). The total gives your food cost per portion.</p>
 
 <div class="callout tip">
   <div><strong>When a supplier price changes</strong>, the food cost of all recipes using that product is recalculated automatically. Keep an eye on your signature dishes to adjust selling prices if needed.</div>
@@ -2310,21 +1702,21 @@ const ARTICLES = [
     en:"Production"
   },
   summaries:{
-    fr:"Lots produits en interne (sauces mÃ¨res, bases, dessertsâ¦).",
-    en:"In-house produced batches (mother sauces, bases, dessertsâ¦)."
+    fr:"Lots produits en interne (sauces mères, bases, desserts…).",
+    en:"In-house produced batches (mother sauces, bases, desserts…)."
   },
   bodies:{
     fr:`
-<p class="lead">La <strong>Production</strong> trace les lots que vous fabriquez vous-mÃªme : sauces mÃ¨res, bases de cuisine, pÃ¢tisserie maison, fonds et fumets.</p>
+<p class="lead">La <strong>Production</strong> trace les lots que vous fabriquez vous-même : sauces mères, bases de cuisine, pâtisserie maison, fonds et fumets.</p>
 
 <h2>Pourquoi c'est utile</h2>
 <ul>
-  <li>ConnaÃ®tre prÃ©cisÃ©ment le coÃ»t d'un produit qui n'a pas de fournisseur externe.</li>
-  <li>Suivre les DLC internes et la fraÃ®cheur des bases.</li>
-  <li>Comparer le volume produit vs volume consommÃ©.</li>
+  <li>Connaître précisément le coût d'un produit qui n'a pas de fournisseur externe.</li>
+  <li>Suivre les DLC internes et la fraîcheur des bases.</li>
+  <li>Comparer le volume produit vs volume consommé.</li>
 </ul>
 
-<p>Une Production est essentiellement une <em>recette</em> Ã  rendement. Les ingrÃ©dients consommÃ©s sont dÃ©crÃ©mentÃ©s du stock et le produit fini est crÃ©ditÃ©.</p>
+<p>Une Production est essentiellement une <em>recette</em> à rendement. Les ingrédients consommés sont décrémentés du stock et le produit fini est crédité.</p>
 `,
     en:`
 <p class="lead"><strong>Production</strong> tracks the batches you produce in-house: mother sauces, kitchen bases, homemade pastry, stocks and fumets.</p>
@@ -2349,20 +1741,20 @@ const ARTICLES = [
     en:"My Account"
   },
   summaries:{
-    fr:"GÃ©rer votre profil personnel.",
+    fr:"Gérer votre profil personnel.",
     en:"Manage your personal profile."
   },
   bodies:{
     fr:`
-<p class="lead">L'entrÃ©e <strong>Mon compte</strong> ${ICO_CROWN} se trouve dans le menu principal en haut Ã  gauche. Elle regroupe vos informations personnelles et vos prÃ©fÃ©rences.</p>
+<p class="lead">L'entrée <strong>Mon compte</strong> ${ICO_CROWN} se trouve dans le menu principal en haut à gauche. Elle regroupe vos informations personnelles et vos préférences.</p>
 
 <h2>Ce que vous pouvez y faire</h2>
 <ul>
-  <li>Modifier votre nom, e-mail, tÃ©lÃ©phone.</li>
+  <li>Modifier votre nom, e-mail, téléphone.</li>
   <li>Changer votre mot de passe.</li>
-  <li>GÃ©rer vos prÃ©fÃ©rences (langue, fuseau horaire, notifications).</li>
+  <li>Gérer vos préférences (langue, fuseau horaire, notifications).</li>
   <li>Voir les informations de votre abonnement (formule, date de renouvellement).</li>
-  <li>...ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>...ou tout autre champ utile présent sur la page.</li>
 </ul>
 `,
     en:`
@@ -2383,33 +1775,33 @@ const ARTICLES = [
 {
   id:"company", cat:"settings", readTime:2,
   titles:{
-    fr:"Ma Companie (paramÃ¨tres entreprise)",
+    fr:"Ma Companie (paramètres entreprise)",
     en:"My Company (company settings)"
   },
   summaries:{
-    fr:"Nom, adresse, SIRET, logo â les infos de votre structure.",
-    en:"Name, address, company ID, logo â your company info."
+    fr:"Nom, adresse, SIRET, logo — les infos de votre structure.",
+    en:"Name, address, company ID, logo — your company info."
   },
   bodies:{
     fr:`
-<p class="lead"><strong>ParamÃ¨tres â Ma Companie</strong> regroupe les informations de votre entreprise. Ces donnÃ©es sont utilisÃ©es sur vos bons de commande, factures et documents exportÃ©s.</p>
+<p class="lead"><strong>Paramètres → Ma Companie</strong> regroupe les informations de votre entreprise. Ces données sont utilisées sur vos bons de commande, factures et documents exportés.</p>
 
 <h2>Les champs</h2>
 <ul>
   <li>Raison sociale</li>
-  <li>Adresse du siÃ¨ge</li>
+  <li>Adresse du siège</li>
   <li>SIRET, TVA intracommunautaire</li>
   <li>Logo (pour les documents PDF)</li>
-  <li>Conditions gÃ©nÃ©rales de vente</li>
-  <li>...ou tout autre champ utile prÃ©sent sur la page.</li>
+  <li>Conditions générales de vente</li>
+  <li>...ou tout autre champ utile présent sur la page.</li>
 </ul>
 
 <div class="callout warn">
-  <div>L'orthographe exacte dans l'app est <em>Ma Companie</em> (sans deuxiÃ¨me "g") â c'est ainsi que le menu est libellÃ© actuellement.</div>
+  <div>L'orthographe exacte dans l'app est <em>Ma Companie</em> (sans deuxième "g") — c'est ainsi que le menu est libellé actuellement.</div>
 </div>
 `,
     en:`
-<p class="lead"><strong>Settings â My Company</strong> groups your company info. This data is used on your purchase orders, invoices and exported documents.</p>
+<p class="lead"><strong>Settings → My Company</strong> groups your company info. This data is used on your purchase orders, invoices and exported documents.</p>
 
 <h2>Fields</h2>
 <ul>
@@ -2422,7 +1814,7 @@ const ARTICLES = [
 </ul>
 
 <div class="callout warn">
-  <div>The exact spelling in the app is <em>Ma Companie</em> (French, one "n") â that's how the menu is currently labeled.</div>
+  <div>The exact spelling in the app is <em>Ma Companie</em> (French, one "n") — that's how the menu is currently labeled.</div>
 </div>
 `
   }
@@ -2431,47 +1823,47 @@ const ARTICLES = [
 {
   id:"setup", cat:"settings", readTime:3, badge:"admin",
   titles:{
-    fr:"Setup (paramÃ¨tres avancÃ©s)",
+    fr:"Setup (paramètres avancés)",
     en:"Setup (advanced settings)"
   },
   summaries:{
-    fr:"Profils et droits, catÃ©gories, unitÃ©s, intÃ©grations.",
+    fr:"Profils et droits, catégories, unités, intégrations.",
     en:"Profiles and permissions, categories, units, integrations."
   },
   bodies:{
     fr:`
-<p class="lead"><span class="badge admin">RÃ©servÃ© aux admins</span> La section <strong>ParamÃ¨tres â Setup</strong> regroupe la configuration fine du systÃ¨me. La plupart des utilisateurs n'y touchent jamais.</p>
+<p class="lead"><span class="badge admin">Réservé aux admins</span> La section <strong>Paramètres → Setup</strong> regroupe la configuration fine du système. La plupart des utilisateurs n'y touchent jamais.</p>
 
-<h2>Les droits d'accÃ¨s</h2>
-<p>Dans CHR Solution, les droits se paramÃ¨trent <strong>par profil</strong>. Un profil est ensuite <strong>affectÃ© Ã  un ou plusieurs utilisateurs</strong>. Vous ne gÃ©rez donc pas les droits utilisateur par utilisateur, mais au niveau du profil â ce qui permet de crÃ©er des rÃ´les types (ex. "Chef", "Responsable achat", "Admin") et d'y rattacher vos collaborateurs.</p>
+<h2>Les droits d'accès</h2>
+<p>Dans CHR Solution, les droits se paramètrent <strong>par profil</strong>. Un profil est ensuite <strong>affecté à un ou plusieurs utilisateurs</strong>. Vous ne gérez donc pas les droits utilisateur par utilisateur, mais au niveau du profil — ce qui permet de créer des rôles types (ex. "Chef", "Responsable achat", "Admin") et d'y rattacher vos collaborateurs.</p>
 
 <h2>Les options actuelles du Setup</h2>
 <ul>
-  <li><strong>Profils &amp; droits</strong> â crÃ©er/Ã©diter les profils, dÃ©finir finement ce qu'un profil peut voir et faire.</li>
-  <li><strong>Utilisateurs</strong> â inviter des utilisateurs et leur affecter un profil.</li>
-  <li><strong>Familles &amp; sous-familles</strong> â structure du catalogue produit (liÃ©e Ã  <em>GÃ©rer Groupes</em>).</li>
-  <li><strong>UnitÃ©s de mesure</strong> â Kg, L, Pc, et personnalisations (liÃ©e Ã  <em>GÃ©rer UnitÃ©s</em>).</li>
-  <li><strong>Groupes de clients</strong> â crÃ©ation et Ã©dition des groupes (Commun, etc.).</li>
-  <li>...ou toute autre option prÃ©sente sur la page.</li>
+  <li><strong>Profils &amp; droits</strong> — créer/éditer les profils, définir finement ce qu'un profil peut voir et faire.</li>
+  <li><strong>Utilisateurs</strong> — inviter des utilisateurs et leur affecter un profil.</li>
+  <li><strong>Familles &amp; sous-familles</strong> — structure du catalogue produit (liée à <em>Gérer Groupes</em>).</li>
+  <li><strong>Unités de mesure</strong> — Kg, L, Pc, et personnalisations (liée à <em>Gérer Unités</em>).</li>
+  <li><strong>Groupes de clients</strong> — création et édition des groupes (Commun, etc.).</li>
+  <li>...ou toute autre option présente sur la page.</li>
 </ul>
 
 <div class="callout warn">
-  <div><strong>Attention :</strong> les modifications dans Setup peuvent avoir un impact sur toute l'entreprise. Notez vos changements pour pouvoir revenir en arriÃ¨re.</div>
+  <div><strong>Attention :</strong> les modifications dans Setup peuvent avoir un impact sur toute l'entreprise. Notez vos changements pour pouvoir revenir en arrière.</div>
 </div>
 `,
     en:`
-<p class="lead"><span class="badge admin">Admin only</span> The <strong>Settings â Setup</strong> section groups fine-grained system configuration. Most users never open it.</p>
+<p class="lead"><span class="badge admin">Admin only</span> The <strong>Settings → Setup</strong> section groups fine-grained system configuration. Most users never open it.</p>
 
 <h2>Permissions</h2>
-<p>In CHR Solution, permissions are configured <strong>by profile</strong>. A profile is then <strong>assigned to one or more users</strong>. You don't manage permissions user by user, but at the profile level â which lets you create standard roles (e.g., "Chef", "Purchasing Manager", "Admin") and attach your team members to them.</p>
+<p>In CHR Solution, permissions are configured <strong>by profile</strong>. A profile is then <strong>assigned to one or more users</strong>. You don't manage permissions user by user, but at the profile level — which lets you create standard roles (e.g., "Chef", "Purchasing Manager", "Admin") and attach your team members to them.</p>
 
 <h2>Current Setup options</h2>
 <ul>
-  <li><strong>Profiles &amp; permissions</strong> â create/edit profiles, precisely define what each profile can see and do.</li>
-  <li><strong>Users</strong> â invite users and assign them a profile.</li>
-  <li><strong>Families &amp; sub-families</strong> â product catalogue structure (linked to <em>Manage Groups</em>).</li>
-  <li><strong>Units of measure</strong> â Kg, L, Pc, and customizations (linked to <em>Manage Units</em>).</li>
-  <li><strong>Customer groups</strong> â create and edit groups (Common, etc.).</li>
+  <li><strong>Profiles &amp; permissions</strong> — create/edit profiles, precisely define what each profile can see and do.</li>
+  <li><strong>Users</strong> — invite users and assign them a profile.</li>
+  <li><strong>Families &amp; sub-families</strong> — product catalogue structure (linked to <em>Manage Groups</em>).</li>
+  <li><strong>Units of measure</strong> — Kg, L, Pc, and customizations (linked to <em>Manage Units</em>).</li>
+  <li><strong>Customer groups</strong> — create and edit groups (Common, etc.).</li>
   <li>...or any other option present on the page.</li>
 </ul>
 
@@ -2485,7 +1877,7 @@ const ARTICLES = [
 {
   id:"logout", cat:"settings", readTime:1,
   titles:{
-    fr:"Se dÃ©connecter",
+    fr:"Se déconnecter",
     en:"Log out"
   },
   summaries:{
@@ -2494,14 +1886,14 @@ const ARTICLES = [
   },
   bodies:{
     fr:`
-<p class="lead">Deux options pour vous dÃ©connecter :</p>
+<p class="lead">Deux options pour vous déconnecter :</p>
 <ul>
-  <li><strong>Bouton "DÃ©connexion"</strong> en haut Ã  droite de la page d'accueil.</li>
-  <li><strong>IcÃ´ne flÃ¨che de sortie ${ICO_LOGOUT}</strong> dans le menu principal ${ICO_9DOTS}, Ã  droite de "Support".</li>
+  <li><strong>Bouton "Déconnexion"</strong> en haut à droite de la page d'accueil.</li>
+  <li><strong>Icône flèche de sortie ${ICO_LOGOUT}</strong> dans le menu principal ${ICO_9DOTS}, à droite de "Support".</li>
 </ul>
 
 <div class="callout tip">
-  <div>Pensez Ã  vous dÃ©connecter si vous utilisez un poste partagÃ©. Votre session reste active jusqu'Ã  fermeture explicite ou expiration.</div>
+  <div>Pensez à vous déconnecter si vous utilisez un poste partagé. Votre session reste active jusqu'à fermeture explicite ou expiration.</div>
 </div>
 `,
     en:`
@@ -2525,12 +1917,12 @@ const ARTICLES = [
   summaries:{ fr:"Le produit en deux lignes.", en:"The product in two lines." },
   bodies:{
     fr:`
-<p>CHR Solution est une plateforme SaaS qui rÃ©unit deux outils complÃ©mentaires :</p>
+<p>CHR Solution est une plateforme SaaS qui réunit deux outils complémentaires :</p>
 <ul>
-  <li>Un <strong>ERP cÃ´tÃ© distributeurs</strong> (Gestion des Achats) pour rÃ©fÃ©rencer produits et envoyer des listes de prix Ã  leurs clients.</li>
-  <li>Un <strong>ERP cÃ´tÃ© restaurateurs</strong> (Gestion de Stock) pour commander, stocker, cuisiner, vendre.</li>
+  <li>Un <strong>ERP côté distributeurs</strong> (Gestion des Achats) pour référencer produits et envoyer des listes de prix à leurs clients.</li>
+  <li>Un <strong>ERP côté restaurateurs</strong> (Gestion de Stock) pour commander, stocker, cuisiner, vendre.</li>
 </ul>
-<p>Les deux modules dialoguent : un produit rÃ©fÃ©rencÃ© cÃ´tÃ© Achats peut apparaÃ®tre directement dans le catalogue Stock du restaurateur, avec son tarif Ã  jour.</p>
+<p>Les deux modules dialoguent : un produit référencé côté Achats peut apparaître directement dans le catalogue Stock du restaurateur, avec son tarif à jour.</p>
 `,
     en:`
 <p>CHR Solution is a SaaS platform that combines two complementary tools:</p>
@@ -2549,14 +1941,14 @@ const ARTICLES = [
   summaries:{ fr:"Distributeurs, centrales d'achat, groupements.", en:"Distributors, purchasing hubs, buying groups." },
   bodies:{
     fr:`
-<p>Le module <strong>Gestion des Achats</strong> est conÃ§u pour les professionnels qui <strong>revendent</strong> des produits alimentaires ou d'Ã©quipement :</p>
+<p>Le module <strong>Gestion des Achats</strong> est conçu pour les professionnels qui <strong>revendent</strong> des produits alimentaires ou d'équipement :</p>
 <ul>
-  <li>Distributeurs locaux et rÃ©gionaux.</li>
-  <li>Centrales d'achat (indÃ©pendantes ou franchisÃ©es).</li>
+  <li>Distributeurs locaux et régionaux.</li>
+  <li>Centrales d'achat (indépendantes ou franchisées).</li>
   <li>Groupements d'acheteurs.</li>
-  <li>Grossistes spÃ©cialisÃ©s.</li>
+  <li>Grossistes spécialisés.</li>
 </ul>
-<p>Il gÃ¨re la triangulaire <em>Fournisseur â Moi â Client restaurateur</em>.</p>
+<p>Il gère la triangulaire <em>Fournisseur → Moi → Client restaurateur</em>.</p>
 `,
     en:`
 <p>The <strong>Purchase Management</strong> module is designed for professionals who <strong>resell</strong> food or equipment:</p>
@@ -2566,7 +1958,7 @@ const ARTICLES = [
   <li>Buying groups.</li>
   <li>Specialized wholesalers.</li>
 </ul>
-<p>It handles the <em>Supplier â Me â Restaurant customer</em> triangle.</p>
+<p>It handles the <em>Supplier → Me → Restaurant customer</em> triangle.</p>
 `
   }
 },
@@ -2574,29 +1966,29 @@ const ARTICLES = [
 {
   id:"faq-who-stock", cat:"faq", readTime:1,
   titles:{ fr:"Qui utilise le module Gestion de Stock ?", en:"Who uses the Stock Management module?" },
-  summaries:{ fr:"Restaurateurs, traiteurs, collectivitÃ©s.", en:"Restaurateurs, caterers, institutional kitchens." },
+  summaries:{ fr:"Restaurateurs, traiteurs, collectivités.", en:"Restaurateurs, caterers, institutional kitchens." },
   bodies:{
     fr:`
-<p>Le module <strong>Gestion de Stock</strong> s'adresse aux <strong>opÃ©rationnels terrain</strong> qui transforment des achats en plats ou en services :</p>
+<p>Le module <strong>Gestion de Stock</strong> s'adresse aux <strong>opérationnels terrain</strong> qui transforment des achats en plats ou en services :</p>
 <ul>
-  <li>Restaurants indÃ©pendants et groupes.</li>
+  <li>Restaurants indépendants et groupes.</li>
   <li>Traiteurs.</li>
-  <li>Brasseries, cafÃ©s.</li>
-  <li>CollectivitÃ©s.</li>
+  <li>Brasseries, cafés.</li>
+  <li>Collectivités.</li>
   <li>Food trucks, dark kitchens.</li>
 </ul>
-<p>Il couvre le cycle complet : commande â rÃ©ception â inventaire â recette â production â vente.</p>
+<p>Il couvre le cycle complet : commande → réception → inventaire → recette → production → vente.</p>
 `,
     en:`
 <p>The <strong>Stock Management</strong> module is for <strong>field operators</strong> who turn purchases into dishes or services:</p>
 <ul>
   <li>Independent restaurants and groups.</li>
   <li>Caterers.</li>
-  <li>Brasseries, cafÃ©s.</li>
+  <li>Brasseries, cafés.</li>
   <li>Institutional kitchens.</li>
   <li>Food trucks, dark kitchens.</li>
 </ul>
-<p>It covers the complete cycle: order â receive â inventory â recipe â production â sale.</p>
+<p>It covers the complete cycle: order → receive → inventory → recipe → production → sale.</p>
 `
   }
 },
@@ -2604,27 +1996,27 @@ const ARTICLES = [
 {
   id:"faq-one-module", cat:"faq", readTime:2,
   titles:{ fr:"Pourquoi je ne vois qu'un seul module ?", en:"Why do I only see one module?" },
-  summaries:{ fr:"Selon votre abonnement, vous n'avez peut-Ãªtre qu'un module actif.", en:"Depending on your subscription, only one module may be active." },
+  summaries:{ fr:"Selon votre abonnement, vous n'avez peut-être qu'un module actif.", en:"Depending on your subscription, only one module may be active." },
   bodies:{
     fr:`
-<p>L'accueil affiche les modules auxquels <strong>votre compte</strong> a accÃ¨s :</p>
+<p>L'accueil affiche les modules auxquels <strong>votre compte</strong> a accès :</p>
 <ul>
-  <li><strong>Profil Â« Client acheteur seul Â»</strong> â cas le plus frÃ©quent. Vous avez Gestion des Achats (cÃ´tÃ© client) pour consulter votre mercuriale, mais pas Gestion de Stock. Pour passer commande, vous imprimez une <a href="#/a/client-print-sheet">feuille d'achat vierge</a> et l'envoyez Ã  votre fournisseur.</li>
-  <li><strong>Profil Â« Distributeur / centrale d'achats Â»</strong> â vous avez uniquement Gestion des Achats (cÃ´tÃ© gestionnaire) pour construire vos mercuriales et les envoyer Ã  vos clients. Gestion de Stock n'est pas dans votre mÃ©tier.</li>
-  <li><strong>Votre profil ne donne pas accÃ¨s Ã  l'autre</strong> â un employÃ© cuisine n'a pas nÃ©cessairement accÃ¨s aux Achats.</li>
-  <li><strong>L'autre module est en cours d'activation</strong> â attendez 24h aprÃ¨s souscription, puis rechargez la page.</li>
+  <li><strong>Profil « Client acheteur seul »</strong> — cas le plus fréquent. Vous avez Gestion des Achats (côté client) pour consulter votre mercuriale, mais pas Gestion de Stock. Pour passer commande, vous imprimez une <a href="#/a/client-print-sheet">feuille d'achat vierge</a> et l'envoyez à votre fournisseur.</li>
+  <li><strong>Profil « Distributeur / centrale d'achats »</strong> — vous avez uniquement Gestion des Achats (côté gestionnaire) pour construire vos mercuriales et les envoyer à vos clients. Gestion de Stock n'est pas dans votre métier.</li>
+  <li><strong>Votre profil ne donne pas accès à l'autre</strong> — un employé cuisine n'a pas nécessairement accès aux Achats.</li>
+  <li><strong>L'autre module est en cours d'activation</strong> — attendez 24h après souscription, puis rechargez la page.</li>
 </ul>
-<p>Si vous Ãªtes client acheteur seul et que vous voulez passer au profil Â« client avec cuisine Â» (commandes en ligne, inventaire, recettesâ¦), contactez votre distributeur ou le support pour ajouter Gestion de Stock.</p>
+<p>Si vous êtes client acheteur seul et que vous voulez passer au profil « client avec cuisine » (commandes en ligne, inventaire, recettes…), contactez votre distributeur ou le support pour ajouter Gestion de Stock.</p>
 `,
     en:`
 <p>The home page shows the modules <strong>your account</strong> has access to:</p>
 <ul>
-  <li><strong>"Customer â purchasing only" profile</strong> â the most common case. You have Purchase Management (customer side) to browse your mercuriale, but not Stock Management. To place orders, print a <a href="#/a/client-print-sheet">blank purchase sheet</a> and send it to your supplier.</li>
-  <li><strong>"Distributor / purchasing hub" profile</strong> â you only have Purchase Management (gestionnaire side) to build your mercuriales and send them to your customers. Stock Management isn't part of your job.</li>
-  <li><strong>Your profile doesn't grant access to the other</strong> â a kitchen employee doesn't necessarily have Purchase access.</li>
-  <li><strong>The other module is being activated</strong> â wait 24h after subscription, then reload.</li>
+  <li><strong>"Customer — purchasing only" profile</strong> — the most common case. You have Purchase Management (customer side) to browse your mercuriale, but not Stock Management. To place orders, print a <a href="#/a/client-print-sheet">blank purchase sheet</a> and send it to your supplier.</li>
+  <li><strong>"Distributor / purchasing hub" profile</strong> — you only have Purchase Management (gestionnaire side) to build your mercuriales and send them to your customers. Stock Management isn't part of your job.</li>
+  <li><strong>Your profile doesn't grant access to the other</strong> — a kitchen employee doesn't necessarily have Purchase access.</li>
+  <li><strong>The other module is being activated</strong> — wait 24h after subscription, then reload.</li>
 </ul>
-<p>If you're a purchasing-only customer and want to move to "customer with kitchen" (online orders, inventory, recipesâ¦), contact your distributor or support to add Stock Management.</p>
+<p>If you're a purchasing-only customer and want to move to "customer with kitchen" (online orders, inventory, recipes…), contact your distributor or support to add Stock Management.</p>
 `
   }
 },
@@ -2632,11 +2024,11 @@ const ARTICLES = [
 {
   id:"faq-switch-company", cat:"faq", readTime:2,
   titles:{ fr:"Puis-je changer d'entreprise active ?", en:"Can I switch the active company?" },
-  summaries:{ fr:"Oui, si vous avez accÃ¨s Ã  plusieurs.", en:"Yes, if you have access to several." },
+  summaries:{ fr:"Oui, si vous avez accès à plusieurs.", en:"Yes, if you have access to several." },
   bodies:{
     fr:`
-<p>Si vous gÃ©rez plusieurs entreprises (ex. vous Ãªtes admin d'un groupe avec plusieurs enseignes), le dropdown tout en haut de la sidebar vous permet de basculer de l'une Ã  l'autre.</p>
-<p>Toutes les donnÃ©es affichÃ©es (fournisseurs, clients, produits, commandes) se mettent Ã  jour pour l'entreprise choisie.</p>
+<p>Si vous gérez plusieurs entreprises (ex. vous êtes admin d'un groupe avec plusieurs enseignes), le dropdown tout en haut de la sidebar vous permet de basculer de l'une à l'autre.</p>
+<p>Toutes les données affichées (fournisseurs, clients, produits, commandes) se mettent à jour pour l'entreprise choisie.</p>
 `,
     en:`
 <p>If you manage several companies (e.g., you're admin of a group with multiple brands), the dropdown at the very top of the sidebar lets you switch between them.</p>
@@ -2648,28 +2040,28 @@ const ARTICLES = [
 {
   id:"faq-mobile", cat:"faq", readTime:2,
   titles:{ fr:"CHR Solution fonctionne-t-il sur mobile ?", en:"Does CHR Solution work on mobile?" },
-  summaries:{ fr:"Pas pour le moment â ordinateur ou tablette recommandÃ©s.", en:"Not yet â computer or tablet recommended." },
+  summaries:{ fr:"Pas pour le moment — ordinateur ou tablette recommandés.", en:"Not yet — computer or tablet recommended." },
   bodies:{
     fr:`
-<p class="lead">CHR Solution est optimisÃ© pour un usage sur <strong>ordinateur et tablette</strong>. Il n'existe pas encore de version mobile dÃ©diÃ©e.</p>
+<p class="lead">CHR Solution est optimisé pour un usage sur <strong>ordinateur et tablette</strong>. Il n'existe pas encore de version mobile dédiée.</p>
 
 <h2>En pratique</h2>
 <ul>
-  <li><strong>Ordinateur</strong> â expÃ©rience complÃ¨te, toutes fonctions. RecommandÃ© pour les saisies longues (Liste Achat, Recettes, Setup).</li>
-  <li><strong>Tablette</strong> â trÃ¨s bon confort, idÃ©ale en cuisine ou en salle.</li>
-  <li><strong>Mobile</strong> â l'interface n'est pas adaptÃ©e aux Ã©crans de tÃ©lÃ©phone ; certaines fonctions peuvent Ãªtre illisibles ou peu utilisables. Une version mobile fait partie de la feuille de route.</li>
+  <li><strong>Ordinateur</strong> — expérience complète, toutes fonctions. Recommandé pour les saisies longues (Liste Achat, Recettes, Setup).</li>
+  <li><strong>Tablette</strong> — très bon confort, idéale en cuisine ou en salle.</li>
+  <li><strong>Mobile</strong> — l'interface n'est pas adaptée aux écrans de téléphone ; certaines fonctions peuvent être illisibles ou peu utilisables. Une version mobile fait partie de la feuille de route.</li>
 </ul>
 
-<p>Aucune installation n'est nÃ©cessaire : CHR Solution tourne dans votre navigateur.</p>
+<p>Aucune installation n'est nécessaire : CHR Solution tourne dans votre navigateur.</p>
 `,
     en:`
 <p class="lead">CHR Solution is optimized for use on <strong>computer and tablet</strong>. There is no dedicated mobile version yet.</p>
 
 <h2>In practice</h2>
 <ul>
-  <li><strong>Computer</strong> â full experience, all features. Recommended for long input (Purchase Lists, Recipes, Setup).</li>
-  <li><strong>Tablet</strong> â very good comfort, ideal in the kitchen or dining room.</li>
-  <li><strong>Mobile</strong> â the interface is not adapted to phone screens; some features may be unreadable or barely usable. A mobile version is on the roadmap.</li>
+  <li><strong>Computer</strong> — full experience, all features. Recommended for long input (Purchase Lists, Recipes, Setup).</li>
+  <li><strong>Tablet</strong> — very good comfort, ideal in the kitchen or dining room.</li>
+  <li><strong>Mobile</strong> — the interface is not adapted to phone screens; some features may be unreadable or barely usable. A mobile version is on the roadmap.</li>
 </ul>
 
 <p>No installation needed: CHR Solution runs in your browser.</p>
@@ -2679,17 +2071,17 @@ const ARTICLES = [
 
 {
   id:"faq-security", cat:"faq", readTime:2,
-  titles:{ fr:"Mes donnÃ©es sont-elles sÃ©curisÃ©es ?", en:"Is my data secure?" },
-  summaries:{ fr:"HÃ©bergement europÃ©en, chiffrement, sauvegardes quotidiennes.", en:"European hosting, encryption, daily backups." },
+  titles:{ fr:"Mes données sont-elles sécurisées ?", en:"Is my data secure?" },
+  summaries:{ fr:"Hébergement européen, chiffrement, sauvegardes quotidiennes.", en:"European hosting, encryption, daily backups." },
   bodies:{
     fr:`
-<p>SÃ©curitÃ© et conformitÃ© RGPD :</p>
+<p>Sécurité et conformité RGPD :</p>
 <ul>
-  <li>HÃ©bergement en <strong>Union europÃ©enne</strong>.</li>
+  <li>Hébergement en <strong>Union européenne</strong>.</li>
   <li>Chiffrement TLS 1.3 entre votre navigateur et nos serveurs.</li>
-  <li>Chiffrement au repos sur la base de donnÃ©es.</li>
-  <li>Sauvegardes quotidiennes, rÃ©tention 30 jours.</li>
-  <li>Aucune donnÃ©e partagÃ©e avec des tiers sans votre accord.</li>
+  <li>Chiffrement au repos sur la base de données.</li>
+  <li>Sauvegardes quotidiennes, rétention 30 jours.</li>
+  <li>Aucune donnée partagée avec des tiers sans votre accord.</li>
 </ul>
 `,
     en:`
@@ -2708,35 +2100,35 @@ const ARTICLES = [
 /* ========== TROUBLESHOOTING ========== */
 {
   id:"troubleshoot-login", cat:"troubleshoot", readTime:3,
-  titles:{ fr:"Je n'arrive pas Ã  me connecter", en:"I can't log in" },
-  summaries:{ fr:"VÃ©rifications rapides avant de contacter le support.", en:"Quick checks before contacting support." },
+  titles:{ fr:"Je n'arrive pas à me connecter", en:"I can't log in" },
+  summaries:{ fr:"Vérifications rapides avant de contacter le support.", en:"Quick checks before contacting support." },
   bodies:{
     fr:`
-<h2>Les 3 vÃ©rifications</h2>
+<h2>Les 3 vérifications</h2>
 <ol>
-  <li><strong>E-mail correct</strong> â utilisez l'adresse qui a reÃ§u l'invitation.</li>
-  <li><strong>Majuscules</strong> â le mot de passe est sensible Ã  la casse.</li>
-  <li><strong>Connexion internet</strong> â essayez d'ouvrir un autre site.</li>
+  <li><strong>E-mail correct</strong> — utilisez l'adresse qui a reçu l'invitation.</li>
+  <li><strong>Majuscules</strong> — le mot de passe est sensible à la casse.</li>
+  <li><strong>Connexion internet</strong> — essayez d'ouvrir un autre site.</li>
 </ol>
 
 <h2>Si rien ne marche</h2>
 <ol>
-  <li>Utilisez <em>Mot de passe oubliÃ©</em> sur l'Ã©cran de connexion.</li>
-  <li>Essayez en navigation privÃ©e ou avec un autre navigateur.</li>
+  <li>Utilisez <em>Mot de passe oublié</em> sur l'écran de connexion.</li>
+  <li>Essayez en navigation privée ou avec un autre navigateur.</li>
   <li>Videz le cache et cookies de chrsolution.app.</li>
-  <li>Contactez le support si le problÃ¨me persiste.</li>
+  <li>Contactez le support si le problème persiste.</li>
 </ol>
 
 <div class="callout warn">
-  <div><strong>Compte verrouillÃ© :</strong> aprÃ¨s plusieurs tentatives erronÃ©es, le compte est verrouillÃ© temporairement. Patientez 15 minutes et rÃ©essayez.</div>
+  <div><strong>Compte verrouillé :</strong> après plusieurs tentatives erronées, le compte est verrouillé temporairement. Patientez 15 minutes et réessayez.</div>
 </div>
 `,
     en:`
 <h2>3 quick checks</h2>
 <ol>
-  <li><strong>Correct email</strong> â use the address that received the invitation.</li>
-  <li><strong>Caps lock</strong> â password is case-sensitive.</li>
-  <li><strong>Internet connection</strong> â try opening another website.</li>
+  <li><strong>Correct email</strong> — use the address that received the invitation.</li>
+  <li><strong>Caps lock</strong> — password is case-sensitive.</li>
+  <li><strong>Internet connection</strong> — try opening another website.</li>
 </ol>
 
 <h2>If nothing works</h2>
@@ -2757,24 +2149,24 @@ const ARTICLES = [
 {
   id:"troubleshoot-blank-page", cat:"troubleshoot", readTime:2,
   titles:{ fr:"Page blanche ou chargement infini", en:"Blank page or infinite loading" },
-  summaries:{ fr:"RafraÃ®chir, vider cache, changer de navigateur.", en:"Refresh, clear cache, switch browser." },
+  summaries:{ fr:"Rafraîchir, vider cache, changer de navigateur.", en:"Refresh, clear cache, switch browser." },
   bodies:{
     fr:`
-<p>Causes frÃ©quentes :</p>
+<p>Causes fréquentes :</p>
 <ul>
-  <li><strong>Extension navigateur</strong> qui bloque (adblock agressif, privacy tool). DÃ©sactivez-les temporairement sur chrsolution.app.</li>
-  <li><strong>Cache corrompu</strong> â faites <code>Cmd+Shift+R</code> (Mac) ou <code>Ctrl+Shift+R</code> (Windows) pour recharger sans cache.</li>
-  <li><strong>Navigateur obsolÃ¨te</strong> â mettez Chrome / Firefox / Safari Ã  jour.</li>
-  <li><strong>Coupure de service</strong> â rare mais possible. VÃ©rifiez avec le support.</li>
+  <li><strong>Extension navigateur</strong> qui bloque (adblock agressif, privacy tool). Désactivez-les temporairement sur chrsolution.app.</li>
+  <li><strong>Cache corrompu</strong> — faites <code>Cmd+Shift+R</code> (Mac) ou <code>Ctrl+Shift+R</code> (Windows) pour recharger sans cache.</li>
+  <li><strong>Navigateur obsolète</strong> — mettez Chrome / Firefox / Safari à jour.</li>
+  <li><strong>Coupure de service</strong> — rare mais possible. Vérifiez avec le support.</li>
 </ul>
 `,
     en:`
 <p>Common causes:</p>
 <ul>
   <li><strong>Browser extension</strong> blocking (aggressive ad-block, privacy tool). Temporarily disable them on chrsolution.app.</li>
-  <li><strong>Corrupted cache</strong> â press <code>Cmd+Shift+R</code> (Mac) or <code>Ctrl+Shift+R</code> (Windows) to reload without cache.</li>
-  <li><strong>Outdated browser</strong> â update Chrome / Firefox / Safari.</li>
-  <li><strong>Service outage</strong> â rare but possible. Check with support.</li>
+  <li><strong>Corrupted cache</strong> — press <code>Cmd+Shift+R</code> (Mac) or <code>Ctrl+Shift+R</code> (Windows) to reload without cache.</li>
+  <li><strong>Outdated browser</strong> — update Chrome / Firefox / Safari.</li>
+  <li><strong>Service outage</strong> — rare but possible. Check with support.</li>
 </ul>
 `
   }
@@ -2782,25 +2174,25 @@ const ARTICLES = [
 
 {
   id:"troubleshoot-unresponsive", cat:"troubleshoot", readTime:2,
-  titles:{ fr:"Un bouton ne rÃ©pond pas", en:"A button doesn't respond" },
+  titles:{ fr:"Un bouton ne répond pas", en:"A button doesn't respond" },
   summaries:{ fr:"Causes et solutions.", en:"Causes and fixes." },
   bodies:{
     fr:`
-<p>Si un bouton ne dÃ©clenche rien :</p>
+<p>Si un bouton ne déclenche rien :</p>
 <ul>
-  <li><strong>Vos droits</strong> ne permettent peut-Ãªtre pas l'action. Un bouton grisÃ© ou sans rÃ©action peut Ãªtre liÃ© Ã  votre profil.</li>
-  <li><strong>Formulaire invalide</strong> â vÃ©rifiez qu'il n'y a pas de champ obligatoire non rempli (surlignÃ© en rouge).</li>
-  <li><strong>JavaScript bloquÃ©</strong> â autorisez JS sur chrsolution.app.</li>
+  <li><strong>Vos droits</strong> ne permettent peut-être pas l'action. Un bouton grisé ou sans réaction peut être lié à votre profil.</li>
+  <li><strong>Formulaire invalide</strong> — vérifiez qu'il n'y a pas de champ obligatoire non rempli (surligné en rouge).</li>
+  <li><strong>JavaScript bloqué</strong> — autorisez JS sur chrsolution.app.</li>
 </ul>
 
-<p>Si le problÃ¨me est reproductible, notez l'Ã©cran exact et les Ã©tapes, puis envoyez au support.</p>
+<p>Si le problème est reproductible, notez l'écran exact et les étapes, puis envoyez au support.</p>
 `,
     en:`
 <p>If a button doesn't trigger anything:</p>
 <ul>
   <li><strong>Your permissions</strong> may not allow the action. A greyed-out or unresponsive button can be tied to your profile.</li>
-  <li><strong>Invalid form</strong> â check there's no required field unfilled (highlighted in red).</li>
-  <li><strong>JavaScript blocked</strong> â allow JS on chrsolution.app.</li>
+  <li><strong>Invalid form</strong> — check there's no required field unfilled (highlighted in red).</li>
+  <li><strong>JavaScript blocked</strong> — allow JS on chrsolution.app.</li>
 </ul>
 
 <p>If the issue is reproducible, note the exact screen and steps, then send to support.</p>
@@ -2810,23 +2202,23 @@ const ARTICLES = [
 
 {
   id:"troubleshoot-missing-data", cat:"troubleshoot", readTime:2,
-  titles:{ fr:"Mes donnÃ©es n'apparaissent pas", en:"My data doesn't appear" },
+  titles:{ fr:"Mes données n'apparaissent pas", en:"My data doesn't appear" },
   summaries:{ fr:"Causes courantes : filtre actif, mauvaise entreprise.", en:"Common causes: active filter, wrong company." },
   bodies:{
     fr:`
-<p>Si la liste est vide ou incomplÃ¨te :</p>
+<p>Si la liste est vide ou incomplète :</p>
 <ol>
-  <li>VÃ©rifiez le <strong>filtre en haut</strong> â un onglet <em>Actif</em> ou <em>Favoris</em> peut masquer les autres.</li>
-  <li>VÃ©rifiez le <strong>sÃ©lecteur d'entreprise</strong> tout en haut de la sidebar : vous Ãªtes peut-Ãªtre sur la mauvaise sociÃ©tÃ©.</li>
-  <li>VÃ©rifiez la <strong>recherche</strong> : un texte rÃ©siduel dans la barre filtre les rÃ©sultats.</li>
-  <li>Cliquez sur l'icÃ´ne ${ICO_REFRESH} <strong>Refresh</strong> pour recharger les donnÃ©es.</li>
-  <li>Essayez d'activer <em>Cacher SupprimÃ©s</em> puis de le dÃ©sactiver : parfois les Ã©lÃ©ments supprimÃ©s bloquent l'affichage.</li>
+  <li>Vérifiez le <strong>filtre en haut</strong> — un onglet <em>Actif</em> ou <em>Favoris</em> peut masquer les autres.</li>
+  <li>Vérifiez le <strong>sélecteur d'entreprise</strong> tout en haut de la sidebar : vous êtes peut-être sur la mauvaise société.</li>
+  <li>Vérifiez la <strong>recherche</strong> : un texte résiduel dans la barre filtre les résultats.</li>
+  <li>Cliquez sur l'icône ${ICO_REFRESH} <strong>Refresh</strong> pour recharger les données.</li>
+  <li>Essayez d'activer <em>Cacher Supprimés</em> puis de le désactiver : parfois les éléments supprimés bloquent l'affichage.</li>
 </ol>
 `,
     en:`
 <p>If the list is empty or incomplete:</p>
 <ol>
-  <li>Check the <strong>filter at the top</strong> â an <em>Active</em> or <em>Favorites</em> tab can hide others.</li>
+  <li>Check the <strong>filter at the top</strong> — an <em>Active</em> or <em>Favorites</em> tab can hide others.</li>
   <li>Check the <strong>company selector</strong> at the top of the sidebar: you may be on the wrong company.</li>
   <li>Check the <strong>search</strong>: leftover text in the bar filters the results.</li>
   <li>Click the ${ICO_REFRESH} <strong>Refresh</strong> icon to reload data.</li>
@@ -2839,33 +2231,33 @@ const ARTICLES = [
 {
   id:"troubleshoot-contact-support", cat:"troubleshoot", readTime:2,
   titles:{ fr:"Contacter le support", en:"Contact support" },
-  summaries:{ fr:"Comment joindre l'Ã©quipe CHR Solution.", en:"How to reach the CHR Solution team." },
+  summaries:{ fr:"Comment joindre l'équipe CHR Solution.", en:"How to reach the CHR Solution team." },
   bodies:{
     fr:`
-<p>Avant de contacter le support, utilisez la <strong>barre de recherche</strong> de ce centre d'aide â vous trouverez la rÃ©ponse dans 90 % des cas.</p>
+<p>Avant de contacter le support, utilisez la <strong>barre de recherche</strong> de ce centre d'aide — vous trouverez la réponse dans 90 % des cas.</p>
 
 <h2>Comment nous joindre</h2>
 <ul>
-  <li><strong>E-mail :</strong> <a href="mailto:support@chrsolution.app">support@chrsolution.app</a> â rÃ©ponse sous 24 h ouvrÃ©es.</li>
-  <li><strong>Depuis l'app :</strong> menu principal ${ICO_9DOTS} â <em>Support</em>.</li>
+  <li><strong>E-mail :</strong> <a href="mailto:support@chrsolution.app">support@chrsolution.app</a> — réponse sous 24 h ouvrées.</li>
+  <li><strong>Depuis l'app :</strong> menu principal ${ICO_9DOTS} → <em>Support</em>.</li>
 </ul>
 
-<h2>Pour accÃ©lÃ©rer la rÃ©solution, prÃ©cisez</h2>
+<h2>Pour accélérer la résolution, précisez</h2>
 <ul>
   <li>Votre entreprise et votre profil.</li>
-  <li>Le module et la page concernÃ©s.</li>
-  <li>Les Ã©tapes exactes reproduisant le problÃ¨me.</li>
-  <li>Une capture d'Ã©cran (trÃ¨s utile).</li>
-  <li>Votre navigateur (Chrome, Safari, Firefoxâ¦) et sa version.</li>
+  <li>Le module et la page concernés.</li>
+  <li>Les étapes exactes reproduisant le problème.</li>
+  <li>Une capture d'écran (très utile).</li>
+  <li>Votre navigateur (Chrome, Safari, Firefox…) et sa version.</li>
 </ul>
 `,
     en:`
-<p>Before contacting support, use this help center's <strong>search bar</strong> â you'll find the answer in 90% of cases.</p>
+<p>Before contacting support, use this help center's <strong>search bar</strong> — you'll find the answer in 90% of cases.</p>
 
 <h2>How to reach us</h2>
 <ul>
-  <li><strong>Email:</strong> <a href="mailto:support@chrsolution.app">support@chrsolution.app</a> â reply within 24 business hours.</li>
-  <li><strong>From the app:</strong> main menu ${ICO_9DOTS} â <em>Support</em>.</li>
+  <li><strong>Email:</strong> <a href="mailto:support@chrsolution.app">support@chrsolution.app</a> — reply within 24 business hours.</li>
+  <li><strong>From the app:</strong> main menu ${ICO_9DOTS} → <em>Support</em>.</li>
 </ul>
 
 <h2>To speed up the fix, please include</h2>
@@ -2874,7 +2266,7 @@ const ARTICLES = [
   <li>The module and page concerned.</li>
   <li>The exact steps to reproduce the issue.</li>
   <li>A screenshot (very helpful).</li>
-  <li>Your browser (Chrome, Safari, Firefoxâ¦) and its version.</li>
+  <li>Your browser (Chrome, Safari, Firefox…) and its version.</li>
 </ul>
 `
   }
@@ -2883,7 +2275,7 @@ const ARTICLES = [
 ];
 
 /* ============================================================
-   LANGUE â dÃ©tection + sÃ©lecteur + persistance
+   LANGUE — détection + sélecteur + persistance
    ============================================================ */
 const LANG_KEY = 'chr-help-lang';
 function detectLang(){
@@ -2914,8 +2306,8 @@ function setLang(lang){
 function renderLangSwitcher(){
   const $ls = document.getElementById('langSwitcher');
   $ls.innerHTML = `
-    <button data-lang="fr" class="${currentLang==='fr'?'active':''}" aria-label="FranÃ§ais"><span class="flag">ð«ð·</span> FR</button>
-    <button data-lang="en" class="${currentLang==='en'?'active':''}" aria-label="English"><span class="flag">ð¬ð§</span> EN</button>
+    <button data-lang="fr" class="${currentLang==='fr'?'active':''}" aria-label="Français"><span class="flag">🇫🇷</span> FR</button>
+    <button data-lang="en" class="${currentLang==='en'?'active':''}" aria-label="English"><span class="flag">🇬🇧</span> EN</button>
   `;
   $ls.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', e => setLang(btn.dataset.lang));
@@ -2980,15 +2372,15 @@ function renderCategory(catId){
       <div class="art-num">${i+1}</div>
       <div class="art-body">
         <strong>${escapeHtml(a.titles[currentLang])} ${a.badge?`<span class="badge ${a.badge}">${a.badge==='admin'?t('adminBadge'):t('soonBadge')}</span>`:''}</strong>
-        <p>${escapeHtml(a.summaries[currentLang])} Â· ${t('readTime', a.readTime)}</p>
+        <p>${escapeHtml(a.summaries[currentLang])} · ${t('readTime', a.readTime)}</p>
       </div>
-      <span class="art-arrow">âº</span>
+      <span class="art-arrow">›</span>
     </a>`).join('') : `<div style="padding:28px;text-align:center;color:var(--muted)">${t('noArticles')}</div>`;
 
   $app.className = 'container';
   $app.innerHTML = `
     <div class="cat-header">
-      <div class="breadcrumb"><a href="#/">${t('home')}</a><span class="sep">âº</span> ${escapeHtml(cat.titles[currentLang])}</div>
+      <div class="breadcrumb"><a href="#/">${t('home')}</a><span class="sep">›</span> ${escapeHtml(cat.titles[currentLang])}</div>
       <h1>${escapeHtml(cat.titles[currentLang])}</h1>
       <p>${escapeHtml(cat.descs[currentLang])}</p>
     </div>
@@ -3026,8 +2418,8 @@ function renderArticle(artId){
 
   const nav = (prev||next) ? `
     <div style="display:flex;justify-content:space-between;gap:12px;margin-top:28px">
-      ${prev?`<a class="btn outline" href="#/a/${prev.id}">â ${escapeHtml(prev.titles[currentLang])}</a>`:'<span></span>'}
-      ${next?`<a class="btn outline" href="#/a/${next.id}">${escapeHtml(next.titles[currentLang])} â</a>`:'<span></span>'}
+      ${prev?`<a class="btn outline" href="#/a/${prev.id}">← ${escapeHtml(prev.titles[currentLang])}</a>`:'<span></span>'}
+      ${next?`<a class="btn outline" href="#/a/${next.id}">${escapeHtml(next.titles[currentLang])} →</a>`:'<span></span>'}
     </div>` : '';
 
   const relatedHtml = related.length ? `
@@ -3048,8 +2440,8 @@ function renderArticle(artId){
       ${sideNav}
       <article class="article">
         <div class="breadcrumb">
-          <a href="#/">${t('home')}</a><span class="sep">âº</span>
-          <a href="#/c/${cat.id}">${escapeHtml(cat.titles[currentLang])}</a><span class="sep">âº</span>
+          <a href="#/">${t('home')}</a><span class="sep">›</span>
+          <a href="#/c/${cat.id}">${escapeHtml(cat.titles[currentLang])}</a><span class="sep">›</span>
           ${escapeHtml(art.titles[currentLang])}
         </div>
         <h1>${escapeHtml(art.titles[currentLang])}</h1>
@@ -3107,7 +2499,7 @@ function runSearch(q){
     $results.innerHTML = matches.map(a=>`
       <a class="item" href="#/a/${a.id}">
         <strong>${escapeHtml(a.titles[currentLang])}</strong>
-        <span>${escapeHtml(catById(a.cat).titles[currentLang])} Â· ${escapeHtml(a.summaries[currentLang])}</span>
+        <span>${escapeHtml(catById(a.cat).titles[currentLang])} · ${escapeHtml(a.summaries[currentLang])}</span>
       </a>`).join('');
   }
   $results.classList.add('open');
@@ -3125,7 +2517,7 @@ $results.addEventListener('click', ()=>{
 
 /* Init */
 
-// DÃ©tecter le mode embedded : si on est dans une iframe (popup Bubble ou
+// Détecter le mode embedded : si on est dans une iframe (popup Bubble ou
 // n'importe quel embed), on masque le hero et on garde juste la barre de recherche.
 try {
   if (window.self !== window.top) {
@@ -3143,7 +2535,7 @@ route();
 /* ============================================================
    Captcha anti-spam pour le bouton "Contacter le support"
    L'email n'est jamais dans le HTML statique (obfuscation scrapers)
-   + petit calcul Ã  rÃ©soudre avant d'ouvrir mailto:.
+   + petit calcul à résoudre avant d'ouvrir mailto:.
    ============================================================ */
 (function(){
   let a=0, b=0;
@@ -3210,7 +2602,7 @@ route();
   }
   window.chrOpenSupport = function(e){
     if(e && e.preventDefault) e.preventDefault();
-    // En iframe Bubble : user dÃ©jÃ  authentifiÃ©, on skip le captcha
+    // En iframe Bubble : user déjà authentifié, on skip le captcha
     if(document.body.classList.contains('embedded')){
       openMailto();
       return;
