@@ -5,3 +5,6 @@
 node_modules/
 .env
 .ovh-env
+
+# Local-only handoff doc (contains credentials, never commit)
+BRIEF-HANDOFF.md
