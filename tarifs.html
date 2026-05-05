@@ -4,13 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarifs — CHR Solution</title>
-  <meta name="description" content="Quatre modules (POS, Stock, Achats, Suite) × paliers Free / Starter / Business / Enterprise. Essai POS 1 mois gratuit. Add-ons à la carte : OCR Mindee, IA Allergènes, multi-imprimantes, fidélité client." />
+  <meta name="description" content="POS Cloud Web 4 tiers (Starter, Pro, Premium, MultiTenant), apps mobiles add-on, module Achat, crédits IA, services. Toggle Mensuel/Annuel (-15%) et EUR/MAD." />
   <meta name="theme-color" content="#0F0F0F" />
   <link rel="canonical" href="https://chrsolution.fr/tarifs.html" />
   <link rel="alternate" hreflang="fr" href="https://chrsolution.fr/tarifs.html" />
   <link rel="alternate" hreflang="en" href="https://chrsolution.fr/en/pricing.html" />
+  <meta property="og:title" content="Tarifs — CHR Solution" />
+  <meta property="og:description" content="POS Cloud Web, apps mobiles, IA, services — tarifs EUR & MAD." />
+  <meta property="og:url" content="https://chrsolution.fr/tarifs.html" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
-  <link rel="stylesheet" href="/assets/css/main.css?v=1777991579" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=1777992084" />
 </head>
 <body>
 
@@ -34,318 +39,396 @@
   </div>
 </header>
 
-<section style="padding-top: var(--space-lg); padding-bottom: 0;">
+<section style="padding-top: var(--space-lg); padding-bottom: var(--space-md);">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Tarifs</span>
-      <h2>Une formule par métier,<br>un palier par taille</h2>
-      <p class="lead">Prix en euros HT, par centre de profit. Facturation mensuelle ou annuelle (-15%). Sans engagement au-delà du premier mois.</p>
+      <h2>Choisissez votre formule.<br>Évoluez quand vous voulez.</h2>
+      <p class="lead">Quatre tiers POS Cloud Web, des apps mobiles en complément, un module Achat et des crédits IA à la carte. Migration de votre ancien POS offerte.</p>
     </div>
 
-    <div class="pricing-center">
-      <div class="pricing-tabs" role="tablist">
-        <button data-pricing-tab="pos" class="active">POS</button>
-        <button data-pricing-tab="stock">Stock</button>
-        <button data-pricing-tab="achats">Achats</button>
-        <button data-pricing-tab="suite">Suite Complète</button>
+    <div class="pricing-toggles reveal" data-pricing-controls>
+      <div class="pricing-toggle">
+        <button class="active" data-period="month">Mensuel</button>
+        <button data-period="year">Annuel <span class="badge-discount">−15%</span></button>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- POS -->
-<section data-pricing-panel="pos" class="active" style="padding-top: var(--space-sm);">
-  <div class="container">
-    <p style="text-align:center;color:var(--color-text-soft);margin-bottom:var(--space-md);">Caisse enregistreuse pour cafés, hôtels et restaurants. iPad, tablette Android et pocket. Conformité NF525.</p>
-    <div class="pricing-grid four">
-      <div class="pricing-card free reveal">
-        <span class="badge">Essai 1 mois</span>
-        <div class="pricing-name">Free</div>
-        <div class="pricing-sub">Pour découvrir en conditions réelles</div>
-        <div class="pricing-price">0 € <span class="detail">/ pendant 1 mois</span></div>
-        <ul>
-          <li>Toutes les fonctions Starter incluses</li>
-          <li>Aucune carte bancaire requise</li>
-          <li>Bascule automatique sur Starter à J+30</li>
-          <li>Résiliation en 1 clic à tout moment</li>
-        </ul>
-        <a href="/connexion.html" class="btn btn-outline">Démarrer l'essai</a>
-      </div>
-      <div class="pricing-card reveal delay-1">
-        <div class="pricing-name">Starter</div>
-        <div class="pricing-sub">Petit établissement, équipe réduite</div>
-        <div class="pricing-price">29 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>1 POS</li>
-          <li>1 centre de profit</li>
-          <li>2 utilisateurs</li>
-          <li>40 produits</li>
-          <li>Aucun matériel inclus</li>
-          <li>Plafond CA&nbsp;: 10 000 €/mois</li>
-          <li>Reporting basique (Z journalier)</li>
-          <li>Mode hors-ligne</li>
-          <li>Support email standard</li>
-        </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
-      </div>
-      <div class="pricing-card featured reveal delay-2">
-        <div class="pricing-name">Business</div>
-        <div class="pricing-sub">Restaurant complet ou multi-pôles</div>
-        <div class="pricing-price">59 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>Jusqu'à 3 POS</li>
-          <li>Jusqu'à 2 imprimantes de production</li>
-          <li>Produits illimités</li>
-          <li>Jusqu'à 5 centres de profit</li>
-          <li>10 utilisateurs inclus</li>
-          <li>Plan de salle illimité</li>
-          <li>Reporting avancé (marges, food-cost, multi-jour)</li>
-          <li>Sync temps réel multi-caisses</li>
-          <li>Pas de plafond CA</li>
-          <li>Support email prioritaire</li>
-        </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
-      </div>
-      <div class="pricing-card reveal delay-3">
-        <div class="pricing-name">Enterprise</div>
-        <div class="pricing-sub">Chaînes, groupes, multi-pays</div>
-        <div class="pricing-price">Sur devis</div>
-        <ul>
-          <li>POS, centres et utilisateurs illimités</li>
-          <li>Imprimantes illimitées</li>
-          <li>SSO entreprise (SAML / Google / Microsoft)</li>
-          <li>API publique pour intégrations ERP</li>
-          <li>SLA 4 h ouvrées</li>
-          <li>Customer success dédié</li>
-          <li>Onboarding sur site (FR/EN)</li>
-          <li>Multi-pays, multi-devises</li>
-        </ul>
-        <a href="/contact.html" class="btn btn-outline">Nous contacter</a>
+      <div class="pricing-toggle">
+        <button class="active" data-currency="eur">EUR</button>
+        <button data-currency="mad">MAD</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STOCK -->
-<section data-pricing-panel="stock" style="padding-top: var(--space-sm);">
+<!-- ════ POS Cloud Web — 4 tiers ════ -->
+<section style="padding-top: 0;">
   <div class="container">
-    <div class="pricing-grid four">
-      <div class="pricing-card free reveal">
-        <span class="badge">Gratuit à vie</span>
-        <div class="pricing-name">Free</div>
-        <div class="pricing-sub">Pour démarrer en douceur</div>
-        <div class="pricing-price">0 € <span class="detail">/ à vie</span></div>
-        <ul>
-          <li>1 centre de profit</li>
-          <li>1 utilisateur</li>
-          <li>50 produits de stock</li>
-          <li>50 produits fournisseur</li>
-          <li>10 produits par commande</li>
-          <li>Commandes illimitées</li>
-          <li>Pas d'add-ons (IA, OCR, signature)</li>
-        </ul>
-        <a href="/connexion.html" class="btn btn-outline">Créer un compte</a>
-      </div>
-      <div class="pricing-card reveal delay-1">
-        <div class="pricing-name">Starter</div>
-        <div class="pricing-sub">Un restaurant, une équipe réduite</div>
-        <div class="pricing-price">39 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>1 centre de profit</li>
-          <li>2 utilisateurs inclus</li>
-          <li>Produits et fournisseurs illimités</li>
-          <li>Commandes illimitées</li>
-          <li>Recettes &amp; food-cost</li>
-          <li>Support email</li>
-        </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
-      </div>
-      <div class="pricing-card featured reveal delay-2">
-        <div class="pricing-name">Business</div>
-        <div class="pricing-sub">Plusieurs sites, plusieurs métiers</div>
-        <div class="pricing-price">89 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>Jusqu'à 5 centres de profit</li>
-          <li>10 utilisateurs inclus</li>
-          <li>Transferts inter-centres</li>
-          <li>Add-ons disponibles</li>
-          <li>Support prioritaire email + chat</li>
-        </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
-      </div>
-      <div class="pricing-card reveal delay-3">
-        <div class="pricing-name">Enterprise</div>
-        <div class="pricing-sub">Chaînes, groupes, collectivités</div>
-        <div class="pricing-price">Sur devis</div>
-        <ul>
-          <li>Centres &amp; utilisateurs illimités</li>
-          <li>Analyses multi-sites consolidées</li>
-          <li>SSO, audit, conformité</li>
-          <li>API &amp; intégrations métier</li>
-          <li>SLA 4h ouvrées</li>
-          <li>Customer success dédié</li>
-        </ul>
-        <a href="/contact.html" class="btn btn-outline">Nous contacter</a>
-      </div>
+    <div class="section-head reveal">
+      <span class="eyebrow">POS Cloud Web</span>
+      <h2>La caisse SaaS, multi-tiers</h2>
     </div>
-  </div>
-</section>
 
-<!-- ACHATS -->
-<section data-pricing-panel="achats" style="padding-top: var(--space-sm);">
-  <div class="container">
-    <p style="text-align:center;color:var(--color-text-soft);margin-bottom:var(--space-md);">Pour distributeurs et grossistes CHR. Prix variant en fonction du nombre de clients connectés à votre mercuriale.</p>
-    <div class="pricing-grid">
+    <div class="pricing-grid pricing-grid-4">
       <div class="pricing-card reveal">
-        <div class="pricing-name">Starter</div>
-        <div class="pricing-sub">Jusqu'à 10 clients connectés</div>
-        <div class="pricing-price">110 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>Mercuriale multi-fournisseurs</li>
-          <li>Diffusion aux clients connectés</li>
-          <li>Centralisation commandes</li>
-          <li>2 utilisateurs internes</li>
-          <li>Support email</li>
-        </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
-      </div>
-      <div class="pricing-card featured reveal delay-1">
-        <div class="pricing-name">Business</div>
-        <div class="pricing-sub">11 à 50 clients connectés</div>
-        <div class="pricing-price">189 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>Tout du Starter</li>
-          <li>10 utilisateurs internes</li>
-          <li>Familles paramétrables avancées</li>
-          <li>Impression feuilles d'achat PDF</li>
-          <li>Analyses par client</li>
-          <li>Support prioritaire</li>
-        </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
-      </div>
-      <div class="pricing-card reveal delay-2">
-        <div class="pricing-name">Enterprise</div>
-        <div class="pricing-sub">51+ clients connectés</div>
-        <div class="pricing-price">Sur devis</div>
-        <ul>
-          <li>Clients et utilisateurs illimités</li>
-          <li>SSO, audit, conformité</li>
-          <li>Intégration ERP existant</li>
-          <li>SLA 4h ouvrées</li>
-        </ul>
-        <a href="/contact.html" class="btn btn-outline">Nous contacter</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SUITE -->
-<section data-pricing-panel="suite" style="padding-top: var(--space-sm);">
-  <div class="container">
-    <p style="text-align:center;color:var(--color-text-soft);margin-bottom:var(--space-md);">Modules Achats + Stock combinés. Idéal pour chaînes, groupes et établissements intégrés.</p>
-    <div class="pricing-grid">
-      <div class="pricing-card reveal">
-        <div class="pricing-name">Starter</div>
-        <div class="pricing-sub">1 centre de profit, jusqu'à 10 clients</div>
-        <div class="pricing-price">129 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>Stock + Achats intégrés</li>
-          <li>Ponts mercuriale ↔ stock</li>
-          <li>Food-cost temps réel</li>
+        <h3>Starter</h3>
+        <p class="pricing-tagline">Pour démarrer simple.</p>
+        <div class="price" data-month-eur="29" data-month-mad="249">
+          <span class="amount">29</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>1 caisse</li>
           <li>2 utilisateurs</li>
-          <li>Support email</li>
+          <li>1 centre</li>
+          <li>5 Go de stockage</li>
+          <li>Support email J+2</li>
         </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
+        <a href="/contact.html?demo=1&tier=starter" class="btn btn-outline btn-lg" style="width:100%;">Démarrer essai 14 jours</a>
       </div>
-      <div class="pricing-card featured reveal delay-1">
-        <div class="pricing-name">Business</div>
-        <div class="pricing-sub">Jusqu'à 5 centres, 11 à 50 clients</div>
-        <div class="pricing-price">249 € <span class="detail">HT / mois</span></div>
-        <ul>
-          <li>Tout du Starter</li>
+
+      <div class="pricing-card pricing-card-featured reveal delay-1">
+        <span class="pricing-badge">Recommandé</span>
+        <h3>Pro</h3>
+        <p class="pricing-tagline">Pour un établissement complet.</p>
+        <div class="price" data-month-eur="79" data-month-mad="599">
+          <span class="amount">79</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>3 caisses</li>
           <li>10 utilisateurs</li>
-          <li>Transferts inter-centres</li>
-          <li>Add-ons disponibles</li>
-          <li>Support prioritaire</li>
+          <li>3 centres</li>
+          <li>50 Go de stockage</li>
+          <li>Support email + chat J+1</li>
+          <li>Stock &amp; Achats inclus</li>
+          <li>CRM, Réservations, Reporting avancé</li>
+          <li>Multi-centre</li>
         </ul>
-        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
+        <a href="/contact.html?demo=1&tier=pro" class="btn btn-primary btn-lg" style="width:100%;">Démarrer essai 14 jours</a>
       </div>
+
       <div class="pricing-card reveal delay-2">
-        <div class="pricing-name">Enterprise</div>
-        <div class="pricing-sub">Illimité</div>
-        <div class="pricing-price">Sur devis</div>
-        <ul>
-          <li>Centres &amp; utilisateurs illimités</li>
-          <li>Analyses multi-sites consolidées</li>
-          <li>SSO, audit, conformité</li>
-          <li>API complète</li>
-          <li>SLA 4h ouvrées</li>
-          <li>Customer success dédié</li>
+        <h3>Premium</h3>
+        <p class="pricing-tagline">Pour les enseignes exigeantes.</p>
+        <div class="price" data-month-eur="149" data-month-mad="1190">
+          <span class="amount">149</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Caisses &amp; users illimités</li>
+          <li>500 Go de stockage</li>
+          <li>Support premium 6j/7 9h-21h</li>
+          <li>API publique</li>
+          <li>Export FEC comptable</li>
+          <li>Custom branding</li>
         </ul>
-        <a href="/contact.html" class="btn btn-outline">Nous contacter</a>
+        <a href="/contact.html?demo=1&tier=premium" class="btn btn-outline btn-lg" style="width:100%;">Demander une démo</a>
+      </div>
+
+      <div class="pricing-card reveal delay-3">
+        <h3>MultiTenant</h3>
+        <p class="pricing-tagline">Consolidation multimarque.</p>
+        <div class="price" data-month-eur="299" data-month-mad="2490">
+          <span class="amount">299</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Consolidation multimarque</li>
+          <li>Tout illimité</li>
+          <li>Premium requis</li>
+          <li>Pilotage centralisé</li>
+          <li>Reporting consolidé</li>
+        </ul>
+        <a href="/contact.html?demo=1&tier=multitenant" class="btn btn-outline btn-lg" style="width:100%;">Nous contacter</a>
+      </div>
+    </div>
+
+    <p class="pricing-mention">TVA en sus. Engagement annuel : 15 % d'économie. Migration de votre ancien POS offerte.</p>
+  </div>
+</section>
+
+<!-- ════ Apps mobiles ════ -->
+<section class="bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Apps mobiles — add-on</span>
+      <h2>Sur le terrain,<br>vos équipes en mobilité</h2>
+      <p class="lead">Chaque app mobile vient en complément de votre POS Cloud Web. Tarif par appareil et par mois.</p>
+    </div>
+
+    <div class="pricing-grid pricing-grid-3">
+      <div class="pricing-card reveal">
+        <h3>POS Caisse Mobile</h3>
+        <p class="pricing-tagline">Android — Pocket serveur.</p>
+        <div class="price" data-month-eur="39" data-month-mad="390">
+          <span class="amount">39</span><span class="symbol"> €</span><span class="period"> / appareil / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Prise de commande à table</li>
+          <li>Envoi cuisine en 1 tap</li>
+          <li>Encaissement à table</li>
+          <li>Pairing Bluetooth imprimantes</li>
+        </ul>
+        <p class="pricing-addon-note">Tarif additionnel à un abonnement POS Cloud Web actif. Non disponible seul.</p>
+      </div>
+
+      <div class="pricing-card reveal delay-1">
+        <h3>POS Manager iOS</h3>
+        <p class="pricing-tagline">iPad — Directeur en salle.</p>
+        <div class="price" data-month-eur="39" data-month-mad="390">
+          <span class="amount">39</span><span class="symbol"> €</span><span class="period"> / appareil / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Plan de salle plein écran</li>
+          <li>Suivi du service en temps réel</li>
+          <li>Encaissement &amp; clôture</li>
+          <li>Reporting du jour</li>
+        </ul>
+        <p class="pricing-addon-note">Tarif additionnel à un abonnement POS Cloud Web actif. Non disponible seul.</p>
+      </div>
+
+      <div class="pricing-card reveal delay-2">
+        <h3>Mobile Stock &amp; Inv</h3>
+        <p class="pricing-tagline">Android — Inventaires &amp; réceptions.</p>
+        <div class="price" data-month-eur="59" data-month-mad="599">
+          <span class="amount">59</span><span class="symbol"> €</span><span class="period"> / appareil / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Standard 1 centre</li>
+          <li>Multi-dépôt : <strong data-month-eur="49" data-month-mad="499"><span class="amount">49</span><span class="symbol"> €</span></strong> par centre (max 5)</li>
+          <li>Enterprise : sur consultation</li>
+          <li>Inventaires hors-ligne</li>
+          <li>Scan code-barres</li>
+        </ul>
+        <p class="pricing-addon-note">Tarif additionnel à un abonnement POS Cloud Web actif. Non disponible seul.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Add-ons -->
-<section style="padding-top:var(--space-md);">
+<!-- ════ Module Achat ════ -->
+<section>
   <div class="container">
-    <div class="addons reveal">
-      <h3>Add-ons à la carte</h3>
-      <p style="color:var(--color-text-soft);margin-bottom:var(--space-sm);">Disponibles sur les formules Business et Enterprise. Tarifs par centre de profit sauf mention contraire.</p>
-      <table>
+    <div class="section-head reveal">
+      <span class="eyebrow">Module Achat</span>
+      <h2>Centralisez vos achats fournisseurs</h2>
+      <p class="lead">Inclus dans Mobile Stock &amp; Inv. Tarif selon le nombre de fournisseurs gérés.</p>
+    </div>
+
+    <div class="pricing-grid pricing-grid-3">
+      <div class="pricing-card reveal">
+        <h3>Jusqu'à 10 fournisseurs</h3>
+        <div class="price" data-month-eur="59" data-month-mad="599">
+          <span class="amount">59</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Mercuriales fournisseurs</li>
+          <li>Bons de commande</li>
+          <li>Suivi des livraisons</li>
+        </ul>
+      </div>
+      <div class="pricing-card reveal delay-1">
+        <h3>11 à 50 fournisseurs</h3>
+        <div class="price" data-month-eur="129" data-month-mad="1290">
+          <span class="amount">129</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Tout le palier précédent</li>
+          <li>Comparaison fournisseurs</li>
+          <li>Alertes prix</li>
+        </ul>
+      </div>
+      <div class="pricing-card reveal delay-2">
+        <h3>Illimité</h3>
+        <div class="price" data-month-eur="299" data-month-mad="2990">
+          <span class="amount">299</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Fournisseurs illimités</li>
+          <li>Workflow validation BC</li>
+          <li>Reporting consolidé</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ IA — Crédits inclus par tier ════ -->
+<section class="bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Add-ons IA — 2 sous-comptes distincts</span>
+      <h2>L'IA au service de vos opérations</h2>
+      <p class="lead">Crédits IA Caisse (descriptions produits, vision menu, chatbot tenant) et IA Stock (OCR factures, suggestions mercuriales/recettes). 1 crédit = 1 action IA.</p>
+    </div>
+
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Crédits IA inclus / mois</th>
+            <th>Starter</th>
+            <th>Pro</th>
+            <th>Premium</th>
+            <th>MultiTenant</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td colspan="2" style="background:rgba(242,232,213,0.05);font-weight:600;color:var(--color-gold);">Add-ons POS</td></tr>
-          <tr><td>Multi-imprimantes Star/Epson (Bluetooth/Wi-Fi)</td><td>19 € / mois</td></tr>
-          <tr><td>Pourboires &amp; partage de salle (tronc)</td><td>9 € / mois</td></tr>
-          <tr><td>Module fidélité client (points, cadeaux, anniversaires)</td><td>19 € / mois</td></tr>
-          <tr><td>Click &amp; Collect / commande en ligne intégrée</td><td>29 € / mois</td></tr>
-          <tr><td colspan="2" style="background:rgba(242,232,213,0.05);font-weight:600;color:var(--color-gold);">Add-ons Stock &amp; Achats</td></tr>
-          <tr><td>OCR factures fournisseurs (Mindee)</td><td>69 € / mois</td></tr>
-          <tr><td>IA Allergènes &amp; Calories (analyse automatique des recettes)</td><td>29 € / mois</td></tr>
-          <tr><td>Module Signature électronique</td><td>59 € / mois</td></tr>
-          <tr><td colspan="2" style="background:rgba(242,232,213,0.05);font-weight:600;color:var(--color-gold);">Services</td></tr>
-          <tr><td>Migration / reprise de données existantes</td><td>Sur devis</td></tr>
-          <tr><td>Onboarding sur site (FR/EN)</td><td>Sur devis</td></tr>
+          <tr>
+            <td>IA Caisse</td>
+            <td>0</td>
+            <td>100</td>
+            <td>500</td>
+            <td>2 000</td>
+          </tr>
+          <tr>
+            <td>IA Stock <small>(si Stock&amp;Purchase activé)</small></td>
+            <td>0</td>
+            <td>100</td>
+            <td>200</td>
+            <td>1 000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="pricing-mention">Les crédits IA non utilisés sur le mois ne sont pas reportés. Recharge à la demande via votre back-office.</p>
+
+    <h3 class="pricing-subhead reveal">Packs IA Caisse — recharge mensuelle</h3>
+    <div class="pricing-grid pricing-grid-4">
+      <div class="pricing-card pricing-card-mini reveal">
+        <h4>Mini</h4>
+        <div class="price-mini">+200 crédits</div>
+        <div class="price" data-month-eur="19" data-month-mad="199">
+          <span class="amount">19</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+      <div class="pricing-card pricing-card-mini reveal delay-1">
+        <h4>Standard</h4>
+        <div class="price-mini">+1 000 crédits</div>
+        <div class="price" data-month-eur="49" data-month-mad="499">
+          <span class="amount">49</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+      <div class="pricing-card pricing-card-mini reveal delay-2">
+        <h4>Pro</h4>
+        <div class="price-mini">+5 000 crédits</div>
+        <div class="price" data-month-eur="149" data-month-mad="1490">
+          <span class="amount">149</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+      <div class="pricing-card pricing-card-mini reveal delay-3">
+        <h4>Illimité</h4>
+        <div class="price-mini">fair use</div>
+        <div class="price" data-month-eur="299" data-month-mad="2990">
+          <span class="amount">299</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="pricing-subhead reveal">Packs IA Stock — recharge mensuelle</h3>
+    <p class="pricing-mention" style="margin-top:0;">Nécessite le module Stock&amp;Purchase activé.</p>
+    <div class="pricing-grid pricing-grid-4">
+      <div class="pricing-card pricing-card-mini reveal">
+        <h4>Mini</h4>
+        <div class="price-mini">+200 crédits</div>
+        <div class="price" data-month-eur="19" data-month-mad="199">
+          <span class="amount">19</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+      <div class="pricing-card pricing-card-mini reveal delay-1">
+        <h4>Standard</h4>
+        <div class="price-mini">+1 000 crédits</div>
+        <div class="price" data-month-eur="49" data-month-mad="499">
+          <span class="amount">49</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+      <div class="pricing-card pricing-card-mini reveal delay-2">
+        <h4>Pro</h4>
+        <div class="price-mini">+5 000 crédits</div>
+        <div class="price" data-month-eur="149" data-month-mad="1490">
+          <span class="amount">149</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+      <div class="pricing-card pricing-card-mini reveal delay-3">
+        <h4>Illimité</h4>
+        <div class="price-mini">fair use</div>
+        <div class="price" data-month-eur="299" data-month-mad="2990">
+          <span class="amount">299</span><span class="symbol"> €</span><span class="period"> / mois</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Options & Add-ons ════ -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Options &amp; Add-ons</span>
+      <h2>Composez votre offre</h2>
+    </div>
+
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table">
+        <thead>
+          <tr><th>Option</th><th class="text-right">Prix mensuel</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Module Réservations + theFork</td><td class="text-right" data-month-eur="39" data-month-mad="399"><span class="amount">39</span><span class="symbol"> €</span><span class="period"> / mois</span></td></tr>
+          <tr><td>Module CRM avancé (allergies, fidélité)</td><td class="text-right" data-month-eur="59" data-month-mad="599"><span class="amount">59</span><span class="symbol"> €</span><span class="period"> / mois</span></td></tr>
+          <tr><td>Pack SMS (1 000 SMS / mois)</td><td class="text-right" data-month-eur="99" data-month-mad="999"><span class="amount">99</span><span class="symbol"> €</span><span class="period"> / mois</span></td></tr>
+          <tr><td>Export FEC comptable</td><td class="text-right" data-month-eur="30" data-month-mad="299"><span class="amount">30</span><span class="symbol"> €</span><span class="period"> / mois</span></td></tr>
+          <tr><td>API publique</td><td class="text-right" data-month-eur="49" data-month-mad="499"><span class="amount">49</span><span class="symbol"> €</span><span class="period"> / mois</span></td></tr>
+          <tr><td>Stockage supplémentaire (par 100 Go)</td><td class="text-right" data-month-eur="19" data-month-mad="199"><span class="amount">19</span><span class="symbol"> €</span><span class="period"> / mois</span></td></tr>
+          <tr><td>Hardware caisse pré-configuré (kit)</td><td class="text-right">Nous consulter</td></tr>
+          <tr><td>Maintenance évolutive (par jour)</td><td class="text-right">Nous consulter</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- FAQ revisité -->
+<!-- ════ Setup & Services ════ -->
 <section class="bg-soft">
   <div class="container">
-    <div class="section-head"><span class="eyebrow">Tarifs — questions fréquentes</span><h2>Ce qu'on nous demande souvent</h2></div>
-    <div class="faq-list">
-      <details class="faq-item"><summary>Le plan Free est-il vraiment gratuit à vie ?</summary><p>Oui. Tant que vous restez sous les limites — 1 centre, 1 utilisateur, 50 produits de stock, 50 produits fournisseur, 10 produits par commande — vous ne payez rien. Vous pouvez basculer vers Starter quand ces limites deviennent trop justes.</p></details>
-      <details class="faq-item"><summary>Pourquoi une limite de produits sur le plan Free ?</summary><p>Parce qu'à partir d'un certain volume, un restaurant a vraiment besoin des fonctionnalités du plan Starter (rapports avancés, favoris, exports). Le Free sert à démarrer et à valider que CHR Solution vous convient.</p></details>
-      <details class="faq-item"><summary>La démo est-elle engageante ?</summary><p>Non. La démo est gratuite et sans engagement. On configure ensemble vos premières données, vous décidez ensuite — ou pas.</p></details>
-      <details class="faq-item"><summary>Puis-je changer de formule en cours de route ?</summary><p>Oui, à tout moment. En upgrade, la différence est facturée au prorata. En downgrade, l'effet prend lieu au cycle suivant.</p></details>
-      <details class="faq-item"><summary>Les clients que je connecte (côté distributeur) paient-ils de leur côté ?</summary><p>Non. Vos clients accèdent à votre mercuriale gratuitement, sans compte payant. S'ils veulent gérer leur propre stock, ils souscrivent un abonnement Stock de leur côté.</p></details>
-      <details class="faq-item"><summary>Les add-ons sont-ils disponibles sur tous les plans ?</summary><p>Non. Les add-ons (IA Allergènes &amp; Calories, OCR factures, Signature électronique) sont réservés aux formules Business et Enterprise. Ils sont facturés par centre de profit.</p></details>
-      <details class="faq-item"><summary>Quel est le délai de mise en route ?</summary><p>48 h sur votre premier centre de profit, import de données compris. Pour les chaînes multi-sites, comptez 1 à 2 semaines pour la reprise complète.</p></details>
+    <div class="section-head reveal">
+      <span class="eyebrow">Setup &amp; Services</span>
+      <h2>Pour démarrer en confiance</h2>
+    </div>
+
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table">
+        <thead>
+          <tr><th>Service</th><th class="text-right">Tarif</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Frais d'installation initiale</td><td class="text-right" data-fixed-eur="490" data-fixed-mad="4990"><span class="amount">490</span><span class="symbol"> €</span></td></tr>
+          <tr><td>Formation sur site (1 journée)</td><td class="text-right" data-fixed-eur="490" data-fixed-mad="4990"><span class="amount">490</span><span class="symbol"> €</span></td></tr>
+          <tr><td>Formation à distance (1 heure)</td><td class="text-right" data-fixed-eur="59" data-fixed-mad="590"><span class="amount">59</span><span class="symbol"> €</span></td></tr>
+          <tr><td><strong>Migration données depuis ancien POS</strong></td><td class="text-right"><strong style="color:var(--color-gold);">Offerte</strong></td></tr>
+          <tr><td>Support standard (5j/7, 9h-18h)</td><td class="text-right">Inclus dans Starter et Pro</td></tr>
+          <tr><td>Support premium 7j/7</td><td class="text-right">Inclus dans Premium, en option pour Pro</td></tr>
+          <tr><td>Support sur site (intervention)</td><td class="text-right" data-fixed-eur="99" data-fixed-mad="990"><span class="amount">99</span><span class="symbol"> €</span><span class="period"> / heure</span></td></tr>
+          <tr><td>Personnalisation graphique BO</td><td class="text-right">Sur devis</td></tr>
+          <tr><td>Audit &amp; conseil (par jour)</td><td class="text-right">Sur devis</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
 <section class="cta-section">
   <div class="container">
-    <span class="eyebrow">Un doute ?</span>
-    <h2>Parlons de votre cas</h2>
-    <p>30 minutes pour cadrer votre besoin et recommander la bonne formule. Zéro bullshit.</p>
-    <a href="/contact.html?demo=1" class="btn btn-primary btn-lg">Demander une démo</a>
+    <h2>Prêt à démarrer ?</h2>
+    <p>14 jours d'essai gratuit, migration de votre ancien POS offerte. Sans engagement au-delà du premier mois.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:var(--space-md);">
+      <a href="/contact.html?demo=1" class="btn btn-primary btn-lg">Démarrer essai 14 jours</a>
+      <a href="/contact.html?demo=1" class="btn btn-outline btn-lg">Demander une démo</a>
+    </div>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <div class="logo"><span class="logo-mark">CHR</span><span>CHR Solution</span></div>
-        <p>L'ERP métier qui relie distributeurs et restaurateurs.</p>
-      </div>
+      <div class="footer-col footer-brand"><div class="logo"><span class="logo-mark">CHR</span><span>CHR Solution</span></div><p>L'ERP métier qui relie distributeurs et restaurateurs.</p></div>
       <div class="footer-col"><h4>Produit</h4><ul>
         <li><a href="/fonctionnalites.html">Fonctionnalités</a></li>
         <li><a href="/chr-pos.html">CHR POS</a></li>
@@ -366,10 +449,7 @@
         <li><a href="/connexion.html">Se connecter</a></li>
       </ul></div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-year>2026</span> CHR Solution.</span>
-      <span><a href="/mentions-legales.html" style="color:inherit;">Mentions légales</a> · <a href="/cgv.html" style="color:inherit;">CGV</a> · <a href="/confidentialite.html" style="color:inherit;">Confidentialité</a></span>
-    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> CHR Solution.</span><span><a href="/mentions-legales.html" style="color:inherit;">Mentions légales</a> · <a href="/cgv.html" style="color:inherit;">CGV</a> · <a href="/confidentialite.html" style="color:inherit;">Confidentialité</a></span></div>
     <div class="footer-legal" style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(240,234,218,0.08);font-size:0.78rem;color:var(--color-text-dim);line-height:1.6;">
       <p style="margin:0 0 0.6em 0;"><strong style="color:var(--color-text-soft);">CHR Solution®</strong> est une marque exploitée par <strong style="color:var(--color-text-soft);">HRC Consulting</strong>, SARL AU au capital de 10 000 MAD, RC Marrakech 109389, ICE 002634498000012, IF 47336182. Siège&nbsp;: Appartement n° 10, n° 7, Rue de la Liberté, Gueliz, 40000 Marrakech, Maroc. Gérant&nbsp;: M. le Gérant.</p>
       <p style="margin:0;">Contact&nbsp;: <a href="/contact.html?topic=general" style="color:inherit;">formulaire de contact</a> · Données personnelles&nbsp;: <a href="/contact.html?topic=privacy" style="color:inherit;">formulaire RGPD/CNDP</a> · Hébergeur&nbsp;: OVH SAS, Roubaix, France.</p>
@@ -377,6 +457,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/main.js?v=1777991579" defer></script>
+<script src="/assets/js/main.js?v=1777992084" defer></script>
 </body>
 </html>

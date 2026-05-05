@@ -110,7 +110,7 @@
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  // Pricing toggle (module selector)
+  // Pricing toggle (module selector — legacy multi-module tabs)
   const tabs = document.querySelectorAll('[data-pricing-tab]');
   const panels = document.querySelectorAll('[data-pricing-panel]');
   if (tabs.length && panels.length) {
@@ -121,6 +121,90 @@
         panels.forEach(p => p.classList.toggle('active', p.dataset.pricingPanel === target));
       });
     });
+  }
+
+  // Pricing controls (Mensuel/Annuel + EUR/MAD) — new tarifs.html refonte 2026-05-05
+  const pricingControls = document.querySelector('[data-pricing-controls]');
+  if (pricingControls) {
+    const formatMoney = (n) => n.toLocaleString('fr-FR');
+    let period = localStorage.getItem('chr_period') || 'month';
+    let currency = localStorage.getItem('chr_currency') || 'eur';
+
+    const symEur = ' €';
+    const symMad = ' MAD';
+
+    function updatePrices() {
+      // Recurring prices (data-month-eur, data-month-mad)
+      document.querySelectorAll('[data-month-eur]').forEach(el => {
+        const monthEur = parseFloat(el.dataset.monthEur);
+        const monthMad = parseFloat(el.dataset.monthMad);
+        const baseMonth = currency === 'eur' ? monthEur : monthMad;
+        let amount, periodLabel;
+        if (period === 'month') {
+          amount = baseMonth;
+          periodLabel = ' / mois';
+        } else {
+          // -15% annual = ×12×0.85 = ×10.2
+          amount = Math.round(baseMonth * 10.2);
+          periodLabel = ' / an';
+        }
+        const amountEl = el.querySelector('.amount');
+        const symbolEl = el.querySelector('.symbol');
+        const periodEl = el.querySelector('.period');
+        if (amountEl) amountEl.textContent = formatMoney(amount);
+        if (symbolEl) symbolEl.textContent = currency === 'eur' ? symEur : symMad;
+        // Preserve period suffix words after " / mois" if any (e.g. " / appareil / mois")
+        if (periodEl) {
+          const txt = periodEl.textContent;
+          if (period === 'month') {
+            periodEl.textContent = txt.replace(/ \/ an(\b|$)/, ' / mois');
+            if (!periodEl.textContent.includes('/ mois')) periodEl.textContent = ' / mois';
+          } else {
+            periodEl.textContent = txt.replace(/ \/ mois(\b|$)/, ' / an');
+            if (!periodEl.textContent.includes('/ an')) periodEl.textContent = ' / an';
+          }
+        }
+      });
+      // One-shot fixed prices (data-fixed-eur, data-fixed-mad) — currency only, period ignored
+      document.querySelectorAll('[data-fixed-eur]').forEach(el => {
+        const fixedEur = parseFloat(el.dataset.fixedEur);
+        const fixedMad = parseFloat(el.dataset.fixedMad);
+        const amount = currency === 'eur' ? fixedEur : fixedMad;
+        const amountEl = el.querySelector('.amount');
+        const symbolEl = el.querySelector('.symbol');
+        if (amountEl) amountEl.textContent = formatMoney(amount);
+        if (symbolEl) symbolEl.textContent = currency === 'eur' ? symEur : symMad;
+      });
+    }
+
+    function syncButtons() {
+      pricingControls.querySelectorAll('[data-period]').forEach(b => {
+        b.classList.toggle('active', b.dataset.period === period);
+      });
+      pricingControls.querySelectorAll('[data-currency]').forEach(b => {
+        b.classList.toggle('active', b.dataset.currency === currency);
+      });
+    }
+
+    pricingControls.querySelectorAll('[data-period]').forEach(b => {
+      b.addEventListener('click', () => {
+        period = b.dataset.period;
+        localStorage.setItem('chr_period', period);
+        syncButtons();
+        updatePrices();
+      });
+    });
+    pricingControls.querySelectorAll('[data-currency]').forEach(b => {
+      b.addEventListener('click', () => {
+        currency = b.dataset.currency;
+        localStorage.setItem('chr_currency', currency);
+        syncButtons();
+        updatePrices();
+      });
+    });
+
+    syncButtons();
+    updatePrices();
   }
 
   // Current year
