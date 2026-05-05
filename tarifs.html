@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarifs — CHR Solution</title>
-  <meta name="description" content="Trois formules (Stock, Achats, Suite) × trois paliers. Plan gratuit Stock pour démarrer. Add-ons à la carte : OCR, IA Allergènes & Calories, signature électronique." />
+  <meta name="description" content="Quatre modules (POS, Stock, Achats, Suite) × paliers Free / Starter / Business / Enterprise. Essai POS 1 mois gratuit. Add-ons à la carte : OCR Mindee, IA Allergènes, multi-imprimantes, fidélité client." />
   <meta name="theme-color" content="#0F0F0F" />
   <link rel="canonical" href="https://chrsolution.fr/tarifs.html" />
   <link rel="alternate" hreflang="fr" href="https://chrsolution.fr/tarifs.html" />
@@ -19,13 +19,14 @@
     <a href="/" class="logo"><span class="logo-mark">CHR</span><span>CHR Solution</span></a>
     <nav class="nav-main">
       <a href="/fonctionnalites.html">Fonctionnalités</a>
+      <a href="/chr-pos.html">CHR POS</a>
       <a href="/pour-qui.html">Pour qui</a>
       <a href="/tarifs.html">Tarifs</a>
       <a href="/a-propos.html">À propos</a>
     </nav>
     <div class="nav-actions">
       <a href="https://support.chrsolution.app" class="btn btn-ghost" target="_blank" rel="noopener">Aide</a>
-      <a href="https://chrsolution.app" class="btn btn-outline" target="_blank" rel="noopener">Se connecter</a>
+      <a href="/connexion.html" class="btn btn-outline" target="_blank" rel="noopener">Se connecter</a>
       <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
       <span class="lang-switch"><a href="/tarifs.html" class="active">FR</a><a href="/en/pricing.html">EN</a></span>
       <button class="menu-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -43,7 +44,8 @@
 
     <div class="pricing-center">
       <div class="pricing-tabs" role="tablist">
-        <button data-pricing-tab="stock" class="active">Stock</button>
+        <button data-pricing-tab="pos" class="active">POS</button>
+        <button data-pricing-tab="stock">Stock</button>
         <button data-pricing-tab="achats">Achats</button>
         <button data-pricing-tab="suite">Suite Complète</button>
       </div>
@@ -51,8 +53,81 @@
   </div>
 </section>
 
+<!-- POS -->
+<section data-pricing-panel="pos" class="active" style="padding-top: var(--space-sm);">
+  <div class="container">
+    <p style="text-align:center;color:var(--color-text-soft);margin-bottom:var(--space-md);">Caisse enregistreuse pour cafés, hôtels et restaurants. iPad, tablette Android et pocket. Conformité NF525.</p>
+    <div class="pricing-grid four">
+      <div class="pricing-card free reveal">
+        <span class="badge">Essai 1 mois</span>
+        <div class="pricing-name">Free</div>
+        <div class="pricing-sub">Pour découvrir en conditions réelles</div>
+        <div class="pricing-price">0 € <span class="detail">/ pendant 1 mois</span></div>
+        <ul>
+          <li>Toutes les fonctions Starter incluses</li>
+          <li>Aucune carte bancaire requise</li>
+          <li>Bascule automatique sur Starter à J+30</li>
+          <li>Résiliation en 1 clic à tout moment</li>
+        </ul>
+        <a href="/connexion.html" class="btn btn-outline">Démarrer l'essai</a>
+      </div>
+      <div class="pricing-card reveal delay-1">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-sub">Petit établissement, équipe réduite</div>
+        <div class="pricing-price">29 € <span class="detail">HT / mois</span></div>
+        <ul>
+          <li>1 POS</li>
+          <li>1 centre de profit</li>
+          <li>2 utilisateurs</li>
+          <li>40 produits</li>
+          <li>Aucun matériel inclus</li>
+          <li>Plafond CA&nbsp;: 10 000 €/mois</li>
+          <li>Reporting basique (Z journalier)</li>
+          <li>Mode hors-ligne</li>
+          <li>Support email standard</li>
+        </ul>
+        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
+      </div>
+      <div class="pricing-card featured reveal delay-2">
+        <div class="pricing-name">Business</div>
+        <div class="pricing-sub">Restaurant complet ou multi-pôles</div>
+        <div class="pricing-price">59 € <span class="detail">HT / mois</span></div>
+        <ul>
+          <li>Jusqu'à 3 POS</li>
+          <li>Jusqu'à 2 imprimantes de production</li>
+          <li>Produits illimités</li>
+          <li>Jusqu'à 5 centres de profit</li>
+          <li>10 utilisateurs inclus</li>
+          <li>Plan de salle illimité</li>
+          <li>Reporting avancé (marges, food-cost, multi-jour)</li>
+          <li>Sync temps réel multi-caisses</li>
+          <li>Pas de plafond CA</li>
+          <li>Support email prioritaire</li>
+        </ul>
+        <a href="/contact.html?demo=1" class="btn btn-primary">Demander une démo</a>
+      </div>
+      <div class="pricing-card reveal delay-3">
+        <div class="pricing-name">Enterprise</div>
+        <div class="pricing-sub">Chaînes, groupes, multi-pays</div>
+        <div class="pricing-price">Sur devis</div>
+        <ul>
+          <li>POS, centres et utilisateurs illimités</li>
+          <li>Imprimantes illimitées</li>
+          <li>SSO entreprise (SAML / Google / Microsoft)</li>
+          <li>API publique pour intégrations ERP</li>
+          <li>SLA 4 h ouvrées</li>
+          <li>Customer success dédié</li>
+          <li>Onboarding sur site (FR/EN)</li>
+          <li>Multi-pays, multi-devises</li>
+        </ul>
+        <a href="/contact.html" class="btn btn-outline">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- STOCK -->
-<section data-pricing-panel="stock" class="active" style="padding-top: var(--space-sm);">
+<section data-pricing-panel="stock" style="padding-top: var(--space-sm);">
   <div class="container">
     <div class="pricing-grid four">
       <div class="pricing-card free reveal">
@@ -69,7 +144,7 @@
           <li>Commandes illimitées</li>
           <li>Pas d'add-ons (IA, OCR, signature)</li>
         </ul>
-        <a href="https://chrsolution.app" target="_blank" rel="noopener" class="btn btn-outline">Créer un compte</a>
+        <a href="/connexion.html" class="btn btn-outline">Créer un compte</a>
       </div>
       <div class="pricing-card reveal delay-1">
         <div class="pricing-name">Starter</div>
@@ -221,10 +296,18 @@
       <p style="color:var(--color-text-soft);margin-bottom:var(--space-sm);">Disponibles sur les formules Business et Enterprise. Tarifs par centre de profit sauf mention contraire.</p>
       <table>
         <tbody>
+          <tr><td colspan="2" style="background:rgba(242,232,213,0.05);font-weight:600;color:var(--color-gold);">Add-ons POS</td></tr>
+          <tr><td>Multi-imprimantes Star/Epson (Bluetooth/Wi-Fi)</td><td>19 € / mois</td></tr>
+          <tr><td>Pourboires &amp; partage de salle (tronc)</td><td>9 € / mois</td></tr>
+          <tr><td>Module fidélité client (points, cadeaux, anniversaires)</td><td>19 € / mois</td></tr>
+          <tr><td>Click &amp; Collect / commande en ligne intégrée</td><td>29 € / mois</td></tr>
+          <tr><td colspan="2" style="background:rgba(242,232,213,0.05);font-weight:600;color:var(--color-gold);">Add-ons Stock &amp; Achats</td></tr>
           <tr><td>OCR factures fournisseurs (Mindee)</td><td>69 € / mois</td></tr>
           <tr><td>IA Allergènes &amp; Calories (analyse automatique des recettes)</td><td>29 € / mois</td></tr>
           <tr><td>Module Signature électronique</td><td>59 € / mois</td></tr>
+          <tr><td colspan="2" style="background:rgba(242,232,213,0.05);font-weight:600;color:var(--color-gold);">Services</td></tr>
           <tr><td>Migration / reprise de données existantes</td><td>Sur devis</td></tr>
+          <tr><td>Onboarding sur site (FR/EN)</td><td>Sur devis</td></tr>
         </tbody>
       </table>
     </div>
@@ -265,8 +348,9 @@
       </div>
       <div class="footer-col"><h4>Produit</h4><ul>
         <li><a href="/fonctionnalites.html">Fonctionnalités</a></li>
-        <li><a href="/gestion-achats.html">Gestion des Achats</a></li>
+        <li><a href="/chr-pos.html">CHR POS</a></li>
         <li><a href="/gestion-stock.html">Gestion de Stock</a></li>
+        <li><a href="/gestion-achats.html">Gestion des Achats</a></li>
         <li><a href="/tarifs.html">Tarifs</a></li>
       </ul></div>
       <div class="footer-col"><h4>Pour qui</h4><ul>
@@ -279,7 +363,7 @@
         <li><a href="/blog.html">Blog</a></li>
         <li><a href="/contact.html">Contact</a></li>
         <li><a href="https://support.chrsolution.app" target="_blank" rel="noopener">Centre d'aide</a></li>
-        <li><a href="https://chrsolution.app" target="_blank" rel="noopener">Se connecter</a></li>
+        <li><a href="/connexion.html">Se connecter</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
