@@ -1,0 +1,3 @@
+# Redirect 301 toward main site (with UTM tracking)
+RewriteEngine On
+RewriteRule ^(.*)$ https://chrsolution.fr/gestion-stock.html?utm_source=stockgestion_ma&utm_medium=domain&utm_campaign=seo_ma [R=301,L]

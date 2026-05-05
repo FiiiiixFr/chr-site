@@ -1,0 +1,3 @@
+# Redirect 301 toward main site (with UTM tracking)
+RewriteEngine On
+RewriteRule ^(.*)$ https://chrsolution.fr/?utm_source=caisserestaurant_ma&utm_medium=domain&utm_campaign=seo_ma [R=301,L]
