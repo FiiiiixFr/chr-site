@@ -1,8 +1,0 @@
-# /support/.htaccess — override du .htaccess parent
-# Autorise l'embedding en iframe depuis chrsolution.app (Bubble)
-# et depuis chrsolution.fr lui-même.
-
-<IfModule mod_headers.c>
-  Header unset X-Frame-Options
-  Header always set Content-Security-Policy "frame-ancestors 'self' https://chrsolution.app https://*.chrsolution.app https://chrsolution.fr https://*.chrsolution.fr https://*.bubbleapps.io"
-</IfModule>
