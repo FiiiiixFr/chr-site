@@ -4,142 +4,100 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Centre d'aide — CHR Solution</title>
-  <meta name="description" content="Centre d'aide CHR Solution : documentation, guides et FAQ pour la plateforme CHR POS, CHR Stock et CHR Achats." />
+  <meta name="description" content="Centre d'aide CHR Solution : documentation, guides et FAQ pour CHR POS, CHR Stock et CHR Achats." />
   <meta name="theme-color" content="#0F0F0F" />
   <meta name="robots" content="index,follow" />
-
   <link rel="canonical" href="https://support.chrsolution.app/" />
   <link rel="alternate" hreflang="fr" href="https://support.chrsolution.app/" />
   <link rel="alternate" hreflang="en" href="https://support.chrsolution.app/?lang=en" />
-
   <meta property="og:title" content="Centre d'aide — CHR Solution" />
   <meta property="og:description" content="Documentation et guides pour la plateforme CHR Solution." />
   <meta property="og:url" content="https://support.chrsolution.app/" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:type" content="website" />
-
   <link rel="icon" type="image/svg+xml" href="https://chrsolution.fr/assets/img/favicon.svg" />
   <link rel="stylesheet" href="https://chrsolution.fr/assets/css/main.css" />
-
   <style>
-    /* Styles spécifiques au centre d'aide (le reste hérite de chrsolution.fr/assets/css/main.css) */
+    .help-hero{padding:var(--space-xl) 0 var(--space-lg);background:linear-gradient(180deg,var(--color-bg-soft) 0%,var(--color-bg) 100%);border-bottom:1px solid var(--color-border-soft);text-align:center}
+    .help-hero .eyebrow{display:inline-block;font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--color-gold);margin-bottom:1rem}
+    .help-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;margin:0 0 1rem;color:var(--color-text)}
+    .help-hero .lead{font-size:1.1rem;color:var(--color-text-soft);max-width:640px;margin:0 auto 2rem}
+    .help-search{max-width:560px;margin:0 auto;position:relative}
+    .help-search input{width:100%;padding:1rem 1.25rem 1rem 3rem;background:var(--color-bg-elevated);border:1px solid var(--color-border);border-radius:var(--radius-md);color:var(--color-text);font-family:var(--font-body);font-size:1rem;box-sizing:border-box}
+    .help-search input::placeholder{color:var(--color-text-dim)}
+    .help-search input:focus{outline:none;border-color:var(--color-gold);box-shadow:0 0 0 3px rgba(242,232,213,.12)}
+    .help-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--color-text-dim);pointer-events:none}
 
-    .help-hero {
-      padding: var(--space-xl) 0 var(--space-lg);
-      background: linear-gradient(180deg, var(--color-bg-soft) 0%, var(--color-bg) 100%);
-      border-bottom: 1px solid var(--color-border-soft);
-      text-align: center;
-    }
-    .help-hero .eyebrow {
-      display: inline-block;
-      font-size: .82rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      margin-bottom: 1rem;
-    }
-    .help-hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      line-height: 1.15;
-      margin: 0 0 1rem;
-      color: var(--color-text);
-    }
-    .help-hero .lead {
-      font-size: 1.1rem;
-      color: var(--color-text-soft);
-      max-width: 640px;
-      margin: 0 auto 2rem;
-    }
-    .help-search {
-      max-width: 560px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .help-search input {
-      width: 100%;
-      padding: 1rem 1.25rem 1rem 3rem;
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      color: var(--color-text);
-      font-family: var(--font-body);
-      font-size: 1rem;
-    }
-    .help-search input::placeholder { color: var(--color-text-dim); }
-    .help-search input:focus {
-      outline: none;
-      border-color: var(--color-gold);
-      box-shadow: 0 0 0 3px rgba(242, 232, 213, 0.12);
-    }
-    .help-search input:disabled {
-      cursor: not-allowed;
-      opacity: .5;
-    }
-    .help-search svg {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
-      color: var(--color-text-dim);
-      pointer-events: none;
-    }
+    .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:2.5rem 0}
+    .cat-card{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:var(--color-bg-elevated);border:1px solid var(--color-border-soft);border-radius:var(--radius-md);text-decoration:none;transition:border-color .2s,box-shadow .2s}
+    .cat-card:hover{border-color:var(--color-gold);box-shadow:0 4px 24px rgba(0,0,0,.3)}
+    .cat-icon{flex-shrink:0;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .cat-icon svg{width:22px;height:22px}
+    .cat-icon.navy{background:rgba(30,64,175,.18);color:#93c5fd}
+    .cat-icon.teal{background:rgba(13,148,136,.18);color:#5eead4}
+    .cat-icon.gold{background:rgba(217,119,6,.18);color:#fcd34d}
+    .cat-icon.green{background:rgba(22,163,74,.18);color:#86efac}
+    .cat-icon.brown{background:rgba(120,53,15,.25);color:#d97706}
+    .cat-icon.purple{background:rgba(109,40,217,.18);color:#c4b5fd}
+    .cat-icon.blue{background:rgba(37,99,235,.18);color:#93c5fd}
+    .cat-icon.red{background:rgba(185,28,28,.18);color:#fca5a5}
+    .cat-title{font-weight:600;color:var(--color-text);margin:0 0 .3rem;font-size:.97rem}
+    .cat-desc{font-size:.85rem;color:var(--color-text-soft);margin:0;line-height:1.5}
+    .cat-count{font-size:.78rem;color:var(--color-text-dim);margin-top:.4rem}
 
-    .help-empty {
-      padding: var(--space-xl) 0;
-      text-align: center;
-    }
-    .help-empty .help-icon {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 1.5rem;
-      border-radius: 50%;
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-border-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-gold);
-    }
-    .help-empty .help-icon svg { width: 32px; height: 32px; }
-    .help-empty h2 {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      margin: 0 0 1rem;
-      color: var(--color-text);
-    }
-    .help-empty p {
-      max-width: 560px;
-      margin: 0 auto 1rem;
-      color: var(--color-text-soft);
-      line-height: 1.6;
-    }
-    .help-actions {
-      margin-top: 2rem;
-      display: flex;
-      gap: .75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .article-list{margin:2rem 0}
+    .article-list-title{font-size:1.05rem;font-weight:600;color:var(--color-text-soft);margin:0 0 .75rem;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem}
+    .article-item{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;background:var(--color-bg-elevated);border:1px solid var(--color-border-soft);border-radius:var(--radius-md);text-decoration:none;color:var(--color-text);margin-bottom:.5rem;transition:border-color .2s}
+    .article-item:hover{border-color:var(--color-gold)}
+    .article-item-icon{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--color-bg-soft);border:1px solid var(--color-border-soft);display:flex;align-items:center;justify-content:center;color:var(--color-gold)}
+    .article-item-icon svg{width:16px;height:16px}
+    .article-item-title{flex:1;font-size:.95rem}
+    .article-item-time{font-size:.78rem;color:var(--color-text-dim);white-space:nowrap}
+    .article-item-arrow{color:var(--color-text-dim)}
+    .article-item-arrow svg{width:16px;height:16px}
 
-    .help-back {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-    }
-    .help-back svg { width: 16px; height: 16px; }
+    .breadcrumb{display:flex;align-items:center;gap:.4rem;margin:2rem 0 1.5rem;font-size:.85rem;color:var(--color-text-dim)}
+    .breadcrumb a{color:var(--color-text-soft);text-decoration:none}
+    .breadcrumb a:hover{color:var(--color-gold)}
+    .breadcrumb svg{width:14px;height:14px}
 
-    /* Toggle FR/EN — affiche/cache les blocs selon <html lang> */
-    [data-en] { display: none; }
-    html[lang="en"] [data-fr] { display: none; }
-    html[lang="en"] [data-en] { display: initial; }
+    .article-view{max-width:720px;margin:0 auto 4rem}
+    .article-view h1{font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.2;margin:0 0 1rem;color:var(--color-text)}
+    .article-meta{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--color-border-soft)}
+    .article-meta-tag{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-gold)}
+    .article-meta-time{font-size:.82rem;color:var(--color-text-dim)}
+    .article-body{font-size:1rem;line-height:1.75;color:var(--color-text-soft)}
+    .article-body h2{font-size:1.3rem;color:var(--color-text);margin:2rem 0 .75rem;padding-bottom:.5rem;border-bottom:1px solid var(--color-border-soft)}
+    .article-body h3{font-size:1.05rem;color:var(--color-text);margin:1.5rem 0 .5rem}
+    .article-body p{margin:0 0 1rem}
+    .article-body ul,
+    .article-body ol{padding-left:1.5rem;margin:0 0 1rem}
+    .article-body li{margin-bottom:.4rem}
+    .article-body strong{color:var(--color-text);font-weight:600}
+    .article-body code{font-family:monospace;font-size:.9em;background:var(--color-bg-elevated);border:1px solid var(--color-border-soft);padding:.1em .4em;border-radius:4px}
+    .callout{padding:1rem 1.25rem;border-radius:var(--radius-md);margin:1.25rem 0;border-left:3px solid}
+    .callout.info{background:rgba(37,99,235,.1);border-color:#3b82f6}
+    .callout.tip{background:rgba(22,163,74,.1);border-color:#22c55e}
+    .callout.warn{background:rgba(217,119,6,.1);border-color:#f59e0b}
+    .callout.danger{background:rgba(185,28,28,.1);border-color:#ef4444}
+    .callout p{margin:0;font-size:.92rem;line-height:1.6}
+    .callout strong{display:block;margin-bottom:.3rem;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+
+    .search-results-count{font-size:.88rem;color:var(--color-text-dim);margin:1.5rem 0 .5rem}
+    .no-results{text-align:center;padding:3rem 0;color:var(--color-text-soft)}
+
+    .help-back{display:inline-flex;align-items:center;gap:.4rem}
+    .help-back svg{width:16px;height:16px}
+
+    [data-en]{display:none}
+    html[lang="en"] [data-fr]{display:none}
+    html[lang="en"] [data-en]{display:initial}
     html[lang="en"] p[data-en],
-    html[lang="en"] [data-en].block { display: block; }
+    html[lang="en"] [data-en].block{display:block}
 
-    @media (max-width: 720px) {
-      .help-hero { padding: var(--space-lg) 0 var(--space-md); }
-      .help-empty { padding: var(--space-lg) 0; }
+    @media(max-width:720px){
+      .help-hero{padding:var(--space-lg) 0 var(--space-md)}
+      .cat-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -171,7 +129,7 @@
   <div class="container">
     <span class="eyebrow" data-fr>Centre d'aide</span><span class="eyebrow" data-en>Help center</span>
     <h1>
-      <span data-fr>Comment pouvons-nous vous aider ?</span>
+      <span data-fr>Comment pouvons-nous vous aider&nbsp;?</span>
       <span data-en>How can we help?</span>
     </h1>
     <p class="lead">
@@ -179,41 +137,14 @@
       <span data-en>Documentation, guides and FAQ for the CHR Solution platform.</span>
     </p>
     <div class="help-search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="search" disabled
-        data-fr-placeholder="Recherche bientôt disponible…"
-        data-en-placeholder="Search coming soon…" />
+      <svg class="help-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="searchInput" autocomplete="off"
+        placeholder="Rechercher un article…" />
     </div>
   </div>
 </section>
 
-<main class="container" id="app">
-  <div class="help-empty">
-    <div class="help-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13h4"/><path d="M10 17h4"/></svg>
-    </div>
-    <h2>
-      <span data-fr>Centre d'aide en cours de refonte</span>
-      <span data-en>Help center under refresh</span>
-    </h2>
-    <p>
-      <span data-fr>Notre documentation est en train d'être réécrite pour refléter la nouvelle plateforme CHR Solution (CHR POS, CHR Stock, CHR Achats).</span>
-      <span data-en>Our documentation is being rewritten to match the new CHR Solution platform (CHR POS, CHR Stock, CHR Purchasing).</span>
-    </p>
-    <p>
-      <span data-fr>En attendant, notre équipe répond directement à vos questions :</span>
-      <span data-en>In the meantime, our team is happy to answer your questions directly:</span>
-    </p>
-    <div class="help-actions">
-      <a href="https://chrsolution.fr/contact.html" class="btn btn-primary">
-        <span data-fr>Formulaire de contact</span><span data-en>Contact form</span>
-      </a>
-      <a href="https://chrsolution.fr/contact.html?demo=1" class="btn btn-outline">
-        <span data-fr>Demander une démo</span><span data-en>Request a demo</span>
-      </a>
-    </div>
-  </div>
-</main>
+<main class="container" id="app" style="min-height:60vh;padding-top:2rem;padding-bottom:4rem"></main>
 
 <footer class="site-footer">
   <div class="container">
@@ -247,48 +178,1212 @@
           <li><a href="https://chrsolution.fr/blog.html">Blog</a></li>
           <li><a href="https://chrsolution.fr/contact.html">Contact</a></li>
           <li><a href="https://support.chrsolution.app/"><span data-fr>Centre d'aide</span><span data-en>Help center</span></a></li>
-          <li><a href="https://chrsolution.fr/connexion.html"><span data-fr>Se connecter</span><span data-en>Sign in</span></a></li>
+          <li><a href="https://app.chrsolution.app/"><span data-fr>Se connecter</span><span data-en>Sign in</span></a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> CHR Solution. <span data-fr>Tous droits réservés.</span><span data-en>All rights reserved.</span></span>
       <span>
-        <a href="https://chrsolution.fr/mentions-legales.html" style="color:inherit;"><span data-fr>Mentions légales</span><span data-en>Legal notice</span></a> ·
-        <a href="https://chrsolution.fr/cgv.html" style="color:inherit;"><span data-fr>CGV</span><span data-en>Terms</span></a> ·
-        <a href="https://chrsolution.fr/confidentialite.html" style="color:inherit;"><span data-fr>Confidentialité</span><span data-en>Privacy</span></a>
+        <a href="https://chrsolution.fr/mentions-legales.html" style="color:inherit"><span data-fr>Mentions légales</span><span data-en>Legal notice</span></a> ·
+        <a href="https://chrsolution.fr/cgv.html" style="color:inherit"><span data-fr>CGV</span><span data-en>Terms</span></a> ·
+        <a href="https://chrsolution.fr/confidentialite.html" style="color:inherit"><span data-fr>Confidentialité</span><span data-en>Privacy</span></a>
       </span>
     </div>
-    <div class="footer-legal" style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(240,234,218,0.08);font-size:0.78rem;color:var(--color-text-dim);line-height:1.6;">
-      <p data-fr style="margin:0 0 0.6em 0;"><strong style="color:var(--color-text-soft);">CHR Solution&reg;</strong> est une marque exploitée par <strong style="color:var(--color-text-soft);">HRC Consulting</strong>, SARL AU au capital de 10 000 MAD, RC Marrakech 109389, ICE 002634498000012, IF 47336182. Siège&nbsp;: Appartement n&deg; 10, n&deg; 7, Rue de la Liberté, Gueliz, 40000 Marrakech, Maroc.</p>
-      <p data-en style="margin:0 0 0.6em 0;"><strong style="color:var(--color-text-soft);">CHR Solution&reg;</strong> is a trademark operated by <strong style="color:var(--color-text-soft);">HRC Consulting</strong>, a Moroccan SARL AU with a share capital of MAD 10,000, registered with Marrakech Trade Register under no. 109389 (ICE 002634498000012, IF 47336182). Registered office: Apartment 10, no. 7, Rue de la Liberté, Gueliz, 40000 Marrakech, Morocco.</p>
-      <p data-fr style="margin:0;">Contact&nbsp;: <a href="https://chrsolution.fr/contact.html?topic=general" style="color:inherit;">formulaire de contact</a> · Données personnelles&nbsp;: <a href="https://chrsolution.fr/contact.html?topic=privacy" style="color:inherit;">formulaire RGPD/CNDP</a> · Hébergeur&nbsp;: OVH SAS, Roubaix, France.</p>
-      <p data-en style="margin:0;">Contact: <a href="https://chrsolution.fr/contact.html?topic=general" style="color:inherit;">contact form</a> · Personal data: <a href="https://chrsolution.fr/contact.html?topic=privacy" style="color:inherit;">GDPR/CNDP form</a> · Hosting: OVH SAS, Roubaix, France.</p>
+    <div class="footer-legal" style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(240,234,218,.08);font-size:.78rem;color:var(--color-text-dim);line-height:1.6">
+      <p data-fr style="margin:0 0 .6em"><strong style="color:var(--color-text-soft)">CHR Solution&reg;</strong> est une marque exploitée par <strong style="color:var(--color-text-soft)">HRC Consulting</strong>, SARL AU au capital de 10 000 MAD, RC Marrakech 109389, ICE 002634498000012, IF 47336182. Siège&nbsp;: Appartement n&deg;10, n&deg;7, Rue de la Liberté, Gueliz, 40000 Marrakech, Maroc.</p>
+      <p data-en style="margin:0 0 .6em"><strong style="color:var(--color-text-soft)">CHR Solution&reg;</strong> is a trademark operated by <strong style="color:var(--color-text-soft)">HRC Consulting</strong>, a Moroccan SARL AU with share capital of MAD 10,000, registered Marrakech RC 109389 (ICE 002634498000012, IF 47336182). Registered office: Apartment 10, no.7, Rue de la Liberté, Gueliz, 40000 Marrakech, Morocco.</p>
+      <p data-fr style="margin:0">Contact&nbsp;: <a href="https://chrsolution.fr/contact.html?topic=general" style="color:inherit">formulaire de contact</a> · Données personnelles&nbsp;: <a href="https://chrsolution.fr/contact.html?topic=privacy" style="color:inherit">formulaire RGPD/CNDP</a> · Hébergeur&nbsp;: OVH SAS, Roubaix, France.</p>
+      <p data-en style="margin:0">Contact: <a href="https://chrsolution.fr/contact.html?topic=general" style="color:inherit">contact form</a> · Personal data: <a href="https://chrsolution.fr/contact.html?topic=privacy" style="color:inherit">GDPR/CNDP form</a> · Hosting: OVH SAS, Roubaix, France.</p>
     </div>
   </div>
 </footer>
 
 <script>
-  (function () {
-    'use strict';
+(function () {
+'use strict';
 
-    var params = new URLSearchParams(location.search);
-    var lang = params.get('lang') === 'en' ? 'en' : 'fr';
-    document.documentElement.lang = lang;
+/* ── Lang ── */
+var params = new URLSearchParams(location.search);
+var LANG = params.get('lang') === 'en' ? 'en' : 'fr';
+document.documentElement.lang = LANG;
+document.querySelectorAll('.lang-switch a').forEach(function(a){
+  if(a.getAttribute('data-lang')===LANG) a.classList.add('active');
+});
+document.querySelectorAll('[data-year]').forEach(function(el){el.textContent=String(new Date().getFullYear());});
+var SI = document.getElementById('searchInput');
+if(SI) SI.placeholder = LANG==='en' ? 'Search an article…' : 'Rechercher un article…';
 
-    document.querySelectorAll('.lang-switch a').forEach(function (a) {
-      if (a.getAttribute('data-lang') === lang) a.classList.add('active');
+/* ── Categories ── */
+var CATS = [
+  {id:'getting-started', icon:'navy', titles:{fr:'Premiers pas',en:'Getting started'}, descs:{fr:'Connexion, interface et gestion multi-établissement.',en:'Sign-in, interface and multi-entity management.'},
+   svg:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>'},
+  {id:'chr-pos', icon:'teal', titles:{fr:'CHR POS — Caisse',en:'CHR POS — Register'}, descs:{fr:'Activation, caissiers, tickets, encaissement et clôture journalière.',en:'Activation, cashiers, tickets, payments and daily closing.'},
+   svg:'<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'},
+  {id:'chr-achats', icon:'gold', titles:{fr:'CHR Achats',en:'CHR Purchasing'}, descs:{fr:'Fournisseurs, listes de tarifs et bons de commande.',en:'Suppliers, price lists and purchase orders.'},
+   svg:'<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>'},
+  {id:'chr-stock', icon:'green', titles:{fr:'CHR Stock',en:'CHR Stock'}, descs:{fr:'Produits, mouvements, inventaires et recettes.',en:'Products, movements, stock-takes and recipes.'},
+   svg:'<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>'},
+  {id:'parametres', icon:'brown', titles:{fr:'Paramètres',en:'Settings'}, descs:{fr:'Compte, sécurité 2FA, utilisateurs et rôles.',en:'Account, 2FA security, users and roles.'},
+   svg:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>'},
+  {id:'mobile', icon:'purple', titles:{fr:'Applications mobiles',en:'Mobile apps'}, descs:{fr:'CHR POS Mobile et CHR Stock Mobile sur Android.',en:'CHR POS Mobile and CHR Stock Mobile on Android.'},
+   svg:'<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>'},
+  {id:'faq', icon:'blue', titles:{fr:'Questions fréquentes',en:'FAQ'}, descs:{fr:'Réponses aux questions les plus posées.',en:'Answers to the most common questions.'},
+   svg:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>'},
+  {id:'depannage', icon:'red', titles:{fr:'Dépannage',en:'Troubleshooting'}, descs:{fr:'Résoudre les problèmes courants et contacter le support.',en:'Solve common issues and contact support.'},
+   svg:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'}
+];
+
+/* ── Articles ── */
+var ARTS = [
+  /* ── Getting started ── */
+  {id:'gs-connexion', cat:'getting-started', readTime:3,
+   titles:{fr:'Se connecter à CHR Solution',en:'Signing in to CHR Solution'},
+   summaries:{fr:'Accéder à la plateforme depuis un navigateur et créer un compte.',en:'Access the platform from a browser and set up your account.'},
+   bodies:{
+    fr:`<h2>Accès à la plateforme</h2>
+<p>CHR Solution est accessible depuis tout navigateur récent à l'adresse <strong>app.chrsolution.app</strong>. Aucune installation n'est requise sur votre ordinateur.</p>
+<h2>Première connexion</h2>
+<p>Votre compte est créé par votre administrateur ou par l'équipe CHR Solution. Vous recevrez un e-mail contenant votre adresse e-mail et un mot de passe provisoire.</p>
+<ol>
+  <li>Ouvrez <strong>app.chrsolution.app</strong>.</li>
+  <li>Saisissez votre adresse e-mail et votre mot de passe provisoire.</li>
+  <li>Changez votre mot de passe au premier accès.</li>
+  <li>Activez l'authentification à deux facteurs (recommandé).</li>
+</ol>
+<div class="callout tip"><strong>Conseil</strong><p>Activez la 2FA dès la première connexion. Consultez l'article <a href="#/a/param-compte">Mon compte et 2FA</a> pour la procédure.</p></div>
+<h2>Mot de passe oublié</h2>
+<p>Sur la page de connexion, cliquez sur <strong>Mot de passe oublié</strong> et saisissez votre adresse e-mail. Vous recevrez un lien de réinitialisation valable 24 heures.</p>`,
+    en:`<h2>Accessing the platform</h2>
+<p>CHR Solution is accessible from any modern browser at <strong>app.chrsolution.app</strong>. No installation required.</p>
+<h2>First sign-in</h2>
+<p>Your account is created by your administrator or by the CHR Solution team. You will receive an email with your address and a temporary password.</p>
+<ol>
+  <li>Open <strong>app.chrsolution.app</strong>.</li>
+  <li>Enter your email address and temporary password.</li>
+  <li>Change your password on first access.</li>
+  <li>Enable two-factor authentication (recommended).</li>
+</ol>
+<div class="callout tip"><strong>Tip</strong><p>Enable 2FA at first sign-in. See <a href="#/a/param-compte">My account &amp; 2FA</a> for the procedure.</p></div>
+<h2>Forgotten password</h2>
+<p>On the sign-in page, click <strong>Forgot password</strong> and enter your email. You will receive a reset link valid for 24 hours.</p>`
+   }},
+
+  {id:'gs-navigation', cat:'getting-started', readTime:3,
+   titles:{fr:'Interface et navigation',en:'Interface and navigation'},
+   summaries:{fr:'Découvrir le tableau de bord, le menu principal et les raccourcis.',en:'Discover the dashboard, main menu and shortcuts.'},
+   bodies:{
+    fr:`<h2>Structure de l'interface</h2>
+<p>Une fois connecté, vous arrivez sur le <strong>tableau de bord</strong> de votre société. L'interface se compose de :</p>
+<ul>
+  <li><strong>Barre latérale gauche</strong> — navigation principale entre les modules (POS, Achats, Stock, Paramètres).</li>
+  <li><strong>Barre du haut</strong> — sélecteur de société, notifications et menu utilisateur.</li>
+  <li><strong>Zone centrale</strong> — contenu du module actif.</li>
+</ul>
+<h2>Modules disponibles</h2>
+<p>Les modules affichés dépendent de votre abonnement et des droits de votre rôle :</p>
+<ul>
+  <li><strong>CHR POS</strong> — gestion de la caisse enregistreuse.</li>
+  <li><strong>CHR Achats</strong> — commandes fournisseurs.</li>
+  <li><strong>CHR Stock</strong> — inventaire et mouvements.</li>
+  <li><strong>Paramètres</strong> — configuration de votre société et de vos utilisateurs.</li>
+</ul>
+<h2>Aide contextuelle</h2>
+<p>Le bouton <strong>?</strong> présent dans chaque module ouvre le centre d'aide directement sur l'article correspondant.</p>`,
+    en:`<h2>Interface structure</h2>
+<p>After signing in, you land on your company's <strong>dashboard</strong>. The interface consists of:</p>
+<ul>
+  <li><strong>Left sidebar</strong> — main navigation between modules (POS, Purchasing, Stock, Settings).</li>
+  <li><strong>Top bar</strong> — company selector, notifications and user menu.</li>
+  <li><strong>Central area</strong> — active module content.</li>
+</ul>
+<h2>Available modules</h2>
+<p>The modules displayed depend on your subscription and your role's permissions:</p>
+<ul>
+  <li><strong>CHR POS</strong> — cash register management.</li>
+  <li><strong>CHR Purchasing</strong> — supplier orders.</li>
+  <li><strong>CHR Stock</strong> — inventory and movements.</li>
+  <li><strong>Settings</strong> — company and user configuration.</li>
+</ul>
+<h2>Contextual help</h2>
+<p>The <strong>?</strong> button in each module opens the help center directly on the relevant article.</p>`
+   }},
+
+  {id:'gs-multi-societe', cat:'getting-started', readTime:2,
+   titles:{fr:'Gérer plusieurs établissements',en:'Managing multiple venues'},
+   summaries:{fr:'Un seul compte pour piloter plusieurs sociétés ou établissements.',en:'A single account to manage multiple companies or venues.'},
+   bodies:{
+    fr:`<h2>Principe multi-société</h2>
+<p>CHR Solution vous permet de gérer plusieurs sociétés (ou établissements) depuis un seul compte utilisateur. Chaque société possède ses propres données : produits, fournisseurs, stocks, caissiers, etc.</p>
+<h2>Changer de société</h2>
+<p>Dans la barre du haut, cliquez sur le nom de la société active. Un menu déroulant affiche toutes les sociétés auxquelles vous avez accès. Sélectionnez celle souhaitée.</p>
+<div class="callout info"><strong>Information</strong><p>Vos droits peuvent différer d'une société à l'autre. Un utilisateur peut être administrateur sur un établissement et simple caissier sur un autre.</p></div>
+<h2>Créer une nouvelle société</h2>
+<p>Seul un administrateur de compte peut créer une nouvelle société. Rendez-vous dans <strong>Paramètres → Sociétés → Nouvelle société</strong>.</p>`,
+    en:`<h2>Multi-entity principle</h2>
+<p>CHR Solution lets you manage multiple companies (or venues) from a single user account. Each company has its own data: products, suppliers, stock, cashiers, etc.</p>
+<h2>Switching companies</h2>
+<p>In the top bar, click the active company name. A dropdown shows all companies you have access to. Select the desired one.</p>
+<div class="callout info"><strong>Information</strong><p>Your permissions may differ between companies. A user can be an admin on one venue and a cashier-only on another.</p></div>
+<h2>Creating a new company</h2>
+<p>Only an account administrator can create a new company. Go to <strong>Settings → Companies → New company</strong>.</p>`
+   }},
+
+  /* ── CHR POS ── */
+  {id:'pos-activation', cat:'chr-pos', readTime:3,
+   titles:{fr:'Activer et configurer le module POS',en:'Activating and configuring the POS module'},
+   summaries:{fr:'Prérequis, activation de la licence et premier démarrage de la caisse.',en:'Prerequisites, licence activation and first POS launch.'},
+   bodies:{
+    fr:`<h2>Prérequis</h2>
+<p>CHR POS nécessite :</p>
+<ul>
+  <li>Un abonnement incluant le module POS (vérifiez sur la page <strong>Paramètres → Abonnement</strong>).</li>
+  <li>Un navigateur récent (Chrome, Firefox, Edge, Safari) — ou l'application Android CHR POS Mobile.</li>
+  <li>Une imprimante thermique compatible ESC/POS (recommandé) ou une imprimante réseau.</li>
+</ul>
+<h2>Activer le module</h2>
+<ol>
+  <li>Allez dans <strong>Paramètres → Modules</strong>.</li>
+  <li>Cliquez sur <strong>Activer</strong> en face de <em>CHR POS</em>.</li>
+  <li>Renseignez les informations de votre établissement (raison sociale, adresse, n° SIRET ou équivalent).</li>
+  <li>Validez. Le module apparaît dans la barre latérale.</li>
+</ol>
+<h2>Configuration minimale</h2>
+<p>Avant d'encaisser, configurez au minimum :</p>
+<ul>
+  <li><strong>Modes de paiement</strong> — Espèces, CB, Chèque, Titre restaurant.</li>
+  <li><strong>Taux de TVA</strong> — selon votre pays et type de vente.</li>
+  <li><strong>Caissiers</strong> — au moins un caissier avec code PIN (<a href="#/a/pos-pin">voir l'article dédié</a>).</li>
+</ul>
+<div class="callout warn"><strong>NF525</strong><p>CHR POS est conforme à la norme NF525 (loi anti-fraude TVA française). La piste d'audit ECDSA P-256 est activée automatiquement. Ne supprimez jamais les données d'archive.</p></div>`,
+    en:`<h2>Prerequisites</h2>
+<p>CHR POS requires:</p>
+<ul>
+  <li>A subscription including the POS module (check in <strong>Settings → Subscription</strong>).</li>
+  <li>A recent browser (Chrome, Firefox, Edge, Safari) — or the CHR POS Mobile Android app.</li>
+  <li>A compatible ESC/POS thermal printer (recommended) or a network printer.</li>
+</ul>
+<h2>Activating the module</h2>
+<ol>
+  <li>Go to <strong>Settings → Modules</strong>.</li>
+  <li>Click <strong>Activate</strong> next to <em>CHR POS</em>.</li>
+  <li>Fill in your venue information (legal name, address, SIRET or equivalent).</li>
+  <li>Confirm. The module appears in the sidebar.</li>
+</ol>
+<h2>Minimum configuration</h2>
+<p>Before taking payments, configure at least:</p>
+<ul>
+  <li><strong>Payment methods</strong> — Cash, Card, Cheque, Meal voucher.</li>
+  <li><strong>VAT rates</strong> — according to your country and sale type.</li>
+  <li><strong>Cashiers</strong> — at least one cashier with a PIN (<a href="#/a/pos-pin">see dedicated article</a>).</li>
+</ul>
+<div class="callout warn"><strong>NF525</strong><p>CHR POS is compliant with NF525 (French anti-VAT-fraud regulation). The ECDSA P-256 audit chain is enabled automatically. Never delete archive data.</p></div>`
+   }},
+
+  {id:'pos-pin', cat:'chr-pos', readTime:2,
+   titles:{fr:'Codes PIN des caissiers',en:'Cashier PINs'},
+   summaries:{fr:'Créer et gérer les codes PIN pour l\'accès à la caisse.',en:'Create and manage PIN codes for register access.'},
+   bodies:{
+    fr:`<h2>Rôle des codes PIN</h2>
+<p>Chaque caissier s'identifie sur la caisse avec un code PIN à 4 chiffres. Cela permet de tracer les ventes par caissier et de sécuriser l'accès au terminal.</p>
+<h2>Créer un caissier</h2>
+<ol>
+  <li>Allez dans <strong>CHR POS → Caissiers</strong>.</li>
+  <li>Cliquez sur <strong>Nouveau caissier</strong>.</li>
+  <li>Renseignez le prénom (affiché sur l'écran de sélection) et un code PIN à 4 chiffres.</li>
+  <li>Enregistrez.</li>
+</ol>
+<h2>Modifier ou réinitialiser un PIN</h2>
+<p>Depuis la liste des caissiers, cliquez sur le crayon en face du caissier concerné. Saisissez le nouveau PIN et enregistrez.</p>
+<div class="callout info"><strong>Bon à savoir</strong><p>Le PIN du caissier est distinct du mot de passe du compte CHR Solution. Un caissier peut ne pas avoir de compte utilisateur — il n'a accès qu'à l'interface de caisse.</p></div>
+<h2>Caissier manager</h2>
+<p>Vous pouvez marquer un caissier comme <strong>Manager</strong> pour lui donner accès aux fonctions de supervision (consultation du journal Z, remboursements, annulations).</p>`,
+    en:`<h2>Purpose of PIN codes</h2>
+<p>Each cashier identifies themselves at the register with a 4-digit PIN. This allows tracking sales per cashier and securing terminal access.</p>
+<h2>Creating a cashier</h2>
+<ol>
+  <li>Go to <strong>CHR POS → Cashiers</strong>.</li>
+  <li>Click <strong>New cashier</strong>.</li>
+  <li>Enter the first name (shown on the selection screen) and a 4-digit PIN.</li>
+  <li>Save.</li>
+</ol>
+<h2>Modifying or resetting a PIN</h2>
+<p>From the cashier list, click the pencil icon next to the cashier. Enter the new PIN and save.</p>
+<div class="callout info"><strong>Good to know</strong><p>The cashier PIN is separate from the CHR Solution account password. A cashier may not have a user account — they only access the register interface.</p></div>
+<h2>Manager cashier</h2>
+<p>You can mark a cashier as <strong>Manager</strong> to grant access to supervision features (Z-report, refunds, cancellations).</p>`
+   }},
+
+  {id:'pos-tables', cat:'chr-pos', readTime:3,
+   titles:{fr:'Tables et tickets',en:'Tables and tickets'},
+   summaries:{fr:'Ouvrir, modifier et transférer des tickets depuis le plan de salle.',en:'Open, modify and transfer tickets from the floor plan.'},
+   bodies:{
+    fr:`<h2>Plan de salle</h2>
+<p>L'écran principal de caisse affiche votre plan de salle. Les tables sont colorées selon leur état :</p>
+<ul>
+  <li><strong>Gris</strong> — table libre.</li>
+  <li><strong>Vert</strong> — table occupée, ticket ouvert.</li>
+  <li><strong>Orange</strong> — commande envoyée en cuisine, en attente de règlement.</li>
+</ul>
+<h2>Ouvrir un ticket</h2>
+<ol>
+  <li>Touchez une table libre.</li>
+  <li>Saisissez le nombre de couverts (optionnel).</li>
+  <li>Ajoutez les articles depuis le menu produits.</li>
+</ol>
+<h2>Modifier un ticket</h2>
+<p>Touchez une table occupée pour rouvrir le ticket. Vous pouvez ajouter, supprimer ou modifier les quantités. Chaque modification est tracée avec l'identifiant du caissier.</p>
+<h2>Transfert de table</h2>
+<p>Pour déplacer un ticket d'une table à une autre : touchez la table source, puis le bouton <strong>Transférer</strong>, puis sélectionnez la table de destination.</p>
+<h2>Tickets à emporter</h2>
+<p>Utilisez le bouton <strong>À emporter</strong> (ou la zone dédiée) pour créer un ticket sans numéro de table.</p>`,
+    en:`<h2>Floor plan</h2>
+<p>The main register screen shows your floor plan. Tables are colour-coded by status:</p>
+<ul>
+  <li><strong>Grey</strong> — free table.</li>
+  <li><strong>Green</strong> — occupied table, open ticket.</li>
+  <li><strong>Orange</strong> — order sent to kitchen, awaiting payment.</li>
+</ul>
+<h2>Opening a ticket</h2>
+<ol>
+  <li>Tap a free table.</li>
+  <li>Enter the number of covers (optional).</li>
+  <li>Add items from the product menu.</li>
+</ol>
+<h2>Modifying a ticket</h2>
+<p>Tap an occupied table to reopen the ticket. You can add, remove or adjust quantities. Every change is logged with the cashier's ID.</p>
+<h2>Table transfer</h2>
+<p>To move a ticket from one table to another: tap the source table, then the <strong>Transfer</strong> button, then select the destination table.</p>
+<h2>Takeaway tickets</h2>
+<p>Use the <strong>Takeaway</strong> button (or dedicated area) to create a ticket without a table number.</p>`
+   }},
+
+  {id:'pos-encaissement', cat:'chr-pos', readTime:3,
+   titles:{fr:'Encaissement et paiements',en:'Taking payments'},
+   summaries:{fr:'Modes de paiement, partage d\'addition et remboursements.',en:'Payment methods, split bills and refunds.'},
+   bodies:{
+    fr:`<h2>Déclencher l'encaissement</h2>
+<p>Depuis un ticket ouvert, appuyez sur <strong>Encaisser</strong>. L'écran de paiement s'ouvre avec le montant total.</p>
+<h2>Modes de paiement</h2>
+<p>Les modes activés dans les paramètres sont disponibles : <strong>Espèces</strong>, <strong>Carte bancaire</strong>, <strong>Chèque</strong>, <strong>Titre restaurant</strong>. Pour les espèces, saisissez le montant remis par le client pour calculer le rendu monnaie automatiquement.</p>
+<h2>Paiement mixte</h2>
+<p>Vous pouvez utiliser plusieurs modes de paiement sur un même ticket. Sélectionnez le premier mode, saisissez le montant partiel, puis ajoutez un second mode pour le solde.</p>
+<h2>Partage d'addition</h2>
+<p>Pour partager une addition entre plusieurs personnes, utilisez le bouton <strong>Partager</strong> et choisissez le nombre de parts ou la répartition par articles.</p>
+<h2>Remboursements</h2>
+<p>Les remboursements nécessitent un accès Manager. Depuis l'historique des tickets, retrouvez le ticket concerné et cliquez <strong>Rembourser</strong>. Un avoir ou un remboursement direct sont possibles.</p>
+<div class="callout warn"><strong>Attention</strong><p>Un ticket validé ne peut plus être modifié, conformément à NF525. En cas d'erreur, utilisez uniquement la fonction de remboursement.</p></div>`,
+    en:`<h2>Triggering checkout</h2>
+<p>From an open ticket, press <strong>Checkout</strong>. The payment screen opens with the total amount.</p>
+<h2>Payment methods</h2>
+<p>Methods enabled in settings are available: <strong>Cash</strong>, <strong>Card</strong>, <strong>Cheque</strong>, <strong>Meal voucher</strong>. For cash, enter the amount given by the customer to calculate change automatically.</p>
+<h2>Mixed payment</h2>
+<p>You can use multiple payment methods on the same ticket. Select the first method, enter the partial amount, then add a second method for the balance.</p>
+<h2>Split bill</h2>
+<p>To split a bill between several people, use the <strong>Split</strong> button and choose the number of shares or per-item allocation.</p>
+<h2>Refunds</h2>
+<p>Refunds require Manager access. From ticket history, find the ticket and click <strong>Refund</strong>. A credit note or direct refund are both possible.</p>
+<div class="callout warn"><strong>Warning</strong><p>A validated ticket cannot be modified, in accordance with NF525. In case of error, only use the refund function.</p></div>`
+   }},
+
+  {id:'pos-impression', cat:'chr-pos', readTime:2,
+   titles:{fr:'Impression des tickets',en:'Printing receipts'},
+   summaries:{fr:'Configurer l\'imprimante thermique et les options d\'impression.',en:'Configure the thermal printer and printing options.'},
+   bodies:{
+    fr:`<h2>Configurer l'imprimante</h2>
+<p>Allez dans <strong>CHR POS → Paramètres → Impression</strong>. Renseignez l'adresse IP ou le port USB/série de votre imprimante. CHR POS supporte les imprimantes ESC/POS réseau et USB.</p>
+<h2>Test d'impression</h2>
+<p>Cliquez sur <strong>Imprimer un ticket de test</strong> pour vérifier la connexion et la mise en page.</p>
+<h2>Options du ticket</h2>
+<ul>
+  <li><strong>Logo</strong> — uploadez votre logo (PNG recommandé, max 300 px de large).</li>
+  <li><strong>Pied de page</strong> — message personnalisé (ex : "Merci de votre visite !").</li>
+  <li><strong>TVA détaillée</strong> — afficher le détail des taux sur le ticket client.</li>
+</ul>
+<h2>Impression automatique</h2>
+<p>Activez l'impression automatique à la validation du ticket depuis <strong>Paramètres → Impression → Imprimer automatiquement</strong>.</p>
+<div class="callout tip"><strong>Ticket sans imprimante</strong><p>Si vous n'avez pas d'imprimante, vous pouvez envoyer le ticket par e-mail au client depuis l'écran de validation.</p></div>`,
+    en:`<h2>Configuring the printer</h2>
+<p>Go to <strong>CHR POS → Settings → Printing</strong>. Enter your printer's IP address or USB/serial port. CHR POS supports ESC/POS network and USB printers.</p>
+<h2>Test print</h2>
+<p>Click <strong>Print a test receipt</strong> to verify the connection and layout.</p>
+<h2>Receipt options</h2>
+<ul>
+  <li><strong>Logo</strong> — upload your logo (PNG recommended, max 300 px wide).</li>
+  <li><strong>Footer</strong> — custom message (e.g. "Thank you for your visit!").</li>
+  <li><strong>Detailed VAT</strong> — show VAT rate breakdown on the customer receipt.</li>
+</ul>
+<h2>Automatic printing</h2>
+<p>Enable automatic printing on ticket validation via <strong>Settings → Printing → Print automatically</strong>.</p>
+<div class="callout tip"><strong>No printer?</strong><p>If you don't have a printer, you can email the receipt to the customer from the validation screen.</p></div>`
+   }},
+
+  {id:'pos-cloture', cat:'chr-pos', readTime:3,
+   titles:{fr:'Clôture journalière et journal Z',en:'Daily closing and Z-report'},
+   summaries:{fr:'Effectuer la clôture de caisse et lire le journal Z.',en:'Perform the cash close and read the Z-report.'},
+   bodies:{
+    fr:`<h2>Qu'est-ce que la clôture journalière ?</h2>
+<p>La clôture journalière (ou <strong>journal Z</strong>) est l'opération qui arrête la session de caisse et génère le récapitulatif des ventes. Elle doit être effectuée chaque jour, avant la prochaine ouverture de caisse.</p>
+<h2>Effectuer la clôture</h2>
+<ol>
+  <li>Assurez-vous que tous les tickets ouverts sont clôturés.</li>
+  <li>Allez dans <strong>CHR POS → Clôture</strong>.</li>
+  <li>Vérifiez le résumé (total des ventes par mode de paiement).</li>
+  <li>Cliquez sur <strong>Valider la clôture</strong>. L'opération est irréversible.</li>
+</ol>
+<h2>Lire le journal Z</h2>
+<p>Le journal Z récapitule :</p>
+<ul>
+  <li>Total des ventes HT et TTC par taux de TVA.</li>
+  <li>Total par mode de paiement.</li>
+  <li>Nombre de tickets et de couverts.</li>
+  <li>Annulations et remboursements.</li>
+</ul>
+<p>Les journaux Z sont archivés dans <strong>CHR POS → Archives</strong> et ne peuvent pas être supprimés.</p>
+<div class="callout warn"><strong>Obligation légale (France)</strong><p>La conservation des journaux Z est obligatoire pendant 6 ans dans le cadre de la norme NF525. CHR Solution les conserve automatiquement.</p></div>`,
+    en:`<h2>What is the daily closing?</h2>
+<p>The daily closing (or <strong>Z-report</strong>) ends the register session and generates the sales summary. It must be performed every day, before the next opening.</p>
+<h2>Performing the close</h2>
+<ol>
+  <li>Make sure all open tickets are closed.</li>
+  <li>Go to <strong>CHR POS → Closing</strong>.</li>
+  <li>Review the summary (total sales by payment method).</li>
+  <li>Click <strong>Confirm closing</strong>. The action is irreversible.</li>
+</ol>
+<h2>Reading the Z-report</h2>
+<p>The Z-report summarises:</p>
+<ul>
+  <li>Total sales excluding and including VAT, by VAT rate.</li>
+  <li>Total by payment method.</li>
+  <li>Number of tickets and covers.</li>
+  <li>Cancellations and refunds.</li>
+</ul>
+<p>Z-reports are archived in <strong>CHR POS → Archives</strong> and cannot be deleted.</p>
+<div class="callout warn"><strong>Legal requirement (France)</strong><p>Z-report retention is mandatory for 6 years under NF525. CHR Solution retains them automatically.</p></div>`
+   }},
+
+  /* ── CHR Achats ── */
+  {id:'ach-vue-ensemble', cat:'chr-achats', readTime:3,
+   titles:{fr:'Vue d\'ensemble des achats',en:'Purchasing overview'},
+   summaries:{fr:'Comprendre le flux fournisseur → commande → réception dans CHR Achats.',en:'Understand the supplier → order → reception flow in CHR Purchasing.'},
+   bodies:{
+    fr:`<h2>Le flux achat en 3 étapes</h2>
+<ol>
+  <li><strong>Fournisseurs &amp; tarifs</strong> — référencez vos fournisseurs et importez leurs listes de prix.</li>
+  <li><strong>Bon de commande</strong> — créez une commande à partir d'un tarif ou manuellement.</li>
+  <li><strong>Réception</strong> — à la livraison, validez la réception pour mettre à jour le stock.</li>
+</ol>
+<h2>Tableau de bord Achats</h2>
+<p>Le tableau de bord affiche :</p>
+<ul>
+  <li>Commandes en attente de validation.</li>
+  <li>Commandes envoyées (en attente de livraison).</li>
+  <li>Livraisons à réceptionner.</li>
+  <li>Écarts entre commandé et reçu.</li>
+</ul>
+<h2>Lien avec le stock</h2>
+<p>Chaque réception validée génère automatiquement un <strong>mouvement d'entrée de stock</strong> dans CHR Stock. Les deux modules sont synchronisés en temps réel.</p>`,
+    en:`<h2>The 3-step purchasing flow</h2>
+<ol>
+  <li><strong>Suppliers &amp; price lists</strong> — register your suppliers and import their price lists.</li>
+  <li><strong>Purchase order</strong> — create an order from a price list or manually.</li>
+  <li><strong>Reception</strong> — at delivery, confirm reception to update stock.</li>
+</ol>
+<h2>Purchasing dashboard</h2>
+<p>The dashboard shows:</p>
+<ul>
+  <li>Orders pending validation.</li>
+  <li>Sent orders (awaiting delivery).</li>
+  <li>Deliveries to receive.</li>
+  <li>Discrepancies between ordered and received quantities.</li>
+</ul>
+<h2>Link with stock</h2>
+<p>Each validated reception automatically generates a <strong>stock entry movement</strong> in CHR Stock. Both modules are synchronised in real time.</p>`
+   }},
+
+  {id:'ach-fournisseurs', cat:'chr-achats', readTime:2,
+   titles:{fr:'Gérer les fournisseurs',en:'Managing suppliers'},
+   summaries:{fr:'Créer, modifier et archiver vos fournisseurs dans CHR Achats.',en:'Create, edit and archive your suppliers in CHR Purchasing.'},
+   bodies:{
+    fr:`<h2>Créer un fournisseur</h2>
+<ol>
+  <li>Allez dans <strong>CHR Achats → Fournisseurs → Nouveau</strong>.</li>
+  <li>Renseignez : raison sociale, e-mail de commande, téléphone, conditions de paiement.</li>
+  <li>Enregistrez.</li>
+</ol>
+<h2>Informations utiles</h2>
+<ul>
+  <li><strong>E-mail de commande</strong> — l'adresse à laquelle les bons de commande seront envoyés automatiquement.</li>
+  <li><strong>Délai de livraison</strong> — utilisé pour calculer la date de livraison estimée.</li>
+  <li><strong>Conditions de paiement</strong> — informatives, pour le suivi comptable.</li>
+</ul>
+<h2>Archiver un fournisseur</h2>
+<p>Un fournisseur ne peut pas être supprimé s'il a des commandes existantes. Utilisez <strong>Archiver</strong> pour le masquer sans perdre l'historique.</p>`,
+    en:`<h2>Creating a supplier</h2>
+<ol>
+  <li>Go to <strong>CHR Purchasing → Suppliers → New</strong>.</li>
+  <li>Fill in: company name, order email, phone, payment terms.</li>
+  <li>Save.</li>
+</ol>
+<h2>Key fields</h2>
+<ul>
+  <li><strong>Order email</strong> — the address to which purchase orders will be sent automatically.</li>
+  <li><strong>Lead time</strong> — used to calculate the estimated delivery date.</li>
+  <li><strong>Payment terms</strong> — informational, for accounting tracking.</li>
+</ul>
+<h2>Archiving a supplier</h2>
+<p>A supplier cannot be deleted if they have existing orders. Use <strong>Archive</strong> to hide them without losing the history.</p>`
+   }},
+
+  {id:'ach-tarifs', cat:'chr-achats', readTime:3,
+   titles:{fr:'Listes de tarifs fournisseurs',en:'Supplier price lists'},
+   summaries:{fr:'Importer et gérer les catalogues de prix de vos fournisseurs.',en:'Import and manage your supplier price catalogues.'},
+   bodies:{
+    fr:`<h2>Qu'est-ce qu'une liste de tarifs ?</h2>
+<p>Une liste de tarifs est le catalogue de produits et de prix d'un fournisseur. Elle contient : référence article, désignation, unité, prix unitaire HT, et éventuellement des variantes (conditionnements).</p>
+<h2>Créer une liste manuellement</h2>
+<ol>
+  <li>Allez dans <strong>CHR Achats → Tarifs → Nouvelle liste</strong>.</li>
+  <li>Associez-la à un fournisseur.</li>
+  <li>Ajoutez les articles ligne par ligne.</li>
+</ol>
+<h2>Importer depuis un CSV</h2>
+<p>Voir l'article <a href="#/a/ach-import">Importer des tarifs CSV</a>.</p>
+<h2>Mettre à jour les prix</h2>
+<p>Pour mettre à jour les prix sans tout re-saisir, importez un nouveau fichier CSV sur la liste existante. Les lignes existantes sont mises à jour, les nouvelles références sont ajoutées.</p>
+<div class="callout info"><strong>Historique des prix</strong><p>CHR Achats conserve l'historique des variations de prix par article et par fournisseur. Utilisez-le pour analyser l'évolution de vos coûts.</p></div>`,
+    en:`<h2>What is a price list?</h2>
+<p>A price list is a supplier's product and price catalogue. It contains: item reference, description, unit, unit price (ex-tax), and optionally variants (pack sizes).</p>
+<h2>Creating a list manually</h2>
+<ol>
+  <li>Go to <strong>CHR Purchasing → Price lists → New list</strong>.</li>
+  <li>Associate it with a supplier.</li>
+  <li>Add items line by line.</li>
+</ol>
+<h2>Importing from CSV</h2>
+<p>See the article <a href="#/a/ach-import">Importing CSV price lists</a>.</p>
+<h2>Updating prices</h2>
+<p>To update prices without re-entering everything, import a new CSV file on the existing list. Existing lines are updated; new references are added.</p>
+<div class="callout info"><strong>Price history</strong><p>CHR Purchasing retains the price variation history per item and supplier. Use it to analyse how your costs evolve.</p></div>`
+   }},
+
+  {id:'ach-commande', cat:'chr-achats', readTime:3,
+   titles:{fr:'Créer et envoyer un bon de commande',en:'Creating and sending a purchase order'},
+   summaries:{fr:'Passer une commande à un fournisseur depuis une liste de tarifs.',en:'Place an order with a supplier from a price list.'},
+   bodies:{
+    fr:`<h2>Créer un bon de commande</h2>
+<ol>
+  <li>Allez dans <strong>CHR Achats → Commandes → Nouvelle commande</strong>.</li>
+  <li>Sélectionnez le fournisseur.</li>
+  <li>Choisissez la liste de tarifs applicable.</li>
+  <li>Ajoutez les articles et saisissez les quantités.</li>
+  <li>Enregistrez en brouillon ou validez directement.</li>
+</ol>
+<h2>Envoyer la commande</h2>
+<p>Une fois validée, cliquez sur <strong>Envoyer par e-mail</strong> pour transmettre le bon de commande au fournisseur. L'e-mail utilise l'adresse renseignée dans la fiche fournisseur.</p>
+<h2>Suivre la commande</h2>
+<p>Les statuts successifs d'une commande sont :</p>
+<ul>
+  <li><strong>Brouillon</strong> — en cours de saisie.</li>
+  <li><strong>Validée</strong> — prête à envoyer.</li>
+  <li><strong>Envoyée</strong> — transmise au fournisseur.</li>
+  <li><strong>Partiellement reçue</strong> — livraison partielle enregistrée.</li>
+  <li><strong>Reçue</strong> — livraison complète, stock mis à jour.</li>
+</ul>`,
+    en:`<h2>Creating a purchase order</h2>
+<ol>
+  <li>Go to <strong>CHR Purchasing → Orders → New order</strong>.</li>
+  <li>Select the supplier.</li>
+  <li>Choose the applicable price list.</li>
+  <li>Add items and enter quantities.</li>
+  <li>Save as draft or validate directly.</li>
+</ol>
+<h2>Sending the order</h2>
+<p>Once validated, click <strong>Send by email</strong> to transmit the purchase order to the supplier. The email uses the address from the supplier's record.</p>
+<h2>Tracking the order</h2>
+<p>The successive statuses of an order are:</p>
+<ul>
+  <li><strong>Draft</strong> — being entered.</li>
+  <li><strong>Validated</strong> — ready to send.</li>
+  <li><strong>Sent</strong> — transmitted to the supplier.</li>
+  <li><strong>Partially received</strong> — partial delivery recorded.</li>
+  <li><strong>Received</strong> — complete delivery, stock updated.</li>
+</ul>`
+   }},
+
+  {id:'ach-import', cat:'chr-achats', readTime:4,
+   titles:{fr:'Importer des tarifs CSV',en:'Importing CSV price lists'},
+   summaries:{fr:'Format attendu, validation et import du catalogue fournisseur.',en:'Expected format, validation and import of the supplier catalogue.'},
+   bodies:{
+    fr:`<h2>Format CSV attendu</h2>
+<p>Le fichier CSV doit contenir les colonnes suivantes (séparateur virgule ou point-virgule, encodage UTF-8) :</p>
+<ul>
+  <li><code>reference</code> — référence unique du produit chez le fournisseur.</li>
+  <li><code>designation</code> — nom du produit.</li>
+  <li><code>unite</code> — unité de vente (ex: KG, L, carton de 6).</li>
+  <li><code>prix_ht</code> — prix unitaire hors taxes (décimal, séparateur point).</li>
+  <li><code>tva</code> (optionnel) — taux de TVA en % (ex: 5.5, 10, 20).</li>
+</ul>
+<h2>Importer le fichier</h2>
+<ol>
+  <li>Ouvrez la liste de tarifs cible dans <strong>CHR Achats → Tarifs</strong>.</li>
+  <li>Cliquez sur <strong>Importer CSV</strong>.</li>
+  <li>Sélectionnez votre fichier. Une prévisualisation s'affiche avec les colonnes détectées.</li>
+  <li>Vérifiez le mapping des colonnes et cliquez sur <strong>Confirmer l'import</strong>.</li>
+</ol>
+<h2>Résultat de l'import</h2>
+<p>Un rapport indique le nombre de lignes ajoutées, mises à jour et en erreur. Les lignes en erreur sont listées avec le motif (référence dupliquée, prix invalide, etc.).</p>
+<div class="callout tip"><strong>Conseil</strong><p>Exportez d'abord la liste existante en CSV pour obtenir le bon format, puis modifiez le fichier et ré-importez.</p></div>`,
+    en:`<h2>Expected CSV format</h2>
+<p>The CSV file must contain the following columns (comma or semicolon separator, UTF-8 encoding):</p>
+<ul>
+  <li><code>reference</code> — unique product reference for this supplier.</li>
+  <li><code>designation</code> — product name.</li>
+  <li><code>unite</code> — sale unit (e.g. KG, L, case of 6).</li>
+  <li><code>prix_ht</code> — unit price excluding tax (decimal, dot separator).</li>
+  <li><code>tva</code> (optional) — VAT rate in % (e.g. 5.5, 10, 20).</li>
+</ul>
+<h2>Importing the file</h2>
+<ol>
+  <li>Open the target price list in <strong>CHR Purchasing → Price lists</strong>.</li>
+  <li>Click <strong>Import CSV</strong>.</li>
+  <li>Select your file. A preview shows the detected columns.</li>
+  <li>Check the column mapping and click <strong>Confirm import</strong>.</li>
+</ol>
+<h2>Import result</h2>
+<p>A report shows the number of lines added, updated and in error. Error lines are listed with the reason (duplicate reference, invalid price, etc.).</p>
+<div class="callout tip"><strong>Tip</strong><p>First export the existing list as CSV to get the correct format, then edit the file and re-import.</p></div>`
+   }},
+
+  /* ── CHR Stock ── */
+  {id:'sk-vue-ensemble', cat:'chr-stock', readTime:3,
+   titles:{fr:'Vue d\'ensemble du stock',en:'Stock overview'},
+   summaries:{fr:'Comprendre les mouvements, les valorisations et le tableau de bord stock.',en:'Understand movements, valuations and the stock dashboard.'},
+   bodies:{
+    fr:`<h2>Principe du stock CHR Solution</h2>
+<p>CHR Stock est basé sur un moteur de <strong>mouvements immuables</strong> : chaque entrée ou sortie de stock est un événement enregistré définitivement. Le stock courant est le cumul de ces mouvements. Cette approche garantit la traçabilité complète et la conformité aux contrôles.</p>
+<h2>Types de mouvements</h2>
+<ul>
+  <li><strong>Entrée réception</strong> — générée par la réception d'un bon de commande.</li>
+  <li><strong>Sortie vente</strong> — générée automatiquement par CHR POS (si recettes configurées).</li>
+  <li><strong>Sortie manuelle</strong> — perte, casse, don.</li>
+  <li><strong>Ajustement inventaire</strong> — correction suite à un comptage physique.</li>
+  <li><strong>Transfert</strong> — entre deux établissements du même groupe.</li>
+</ul>
+<h2>Tableau de bord</h2>
+<p>Le tableau de bord Stock affiche : valeur du stock au coût moyen pondéré, produits en alerte de seuil, derniers mouvements et état des inventaires en cours.</p>`,
+    en:`<h2>CHR Solution stock principle</h2>
+<p>CHR Stock is based on an <strong>immutable movements engine</strong>: every stock entry or exit is a permanently recorded event. The current stock is the sum of these movements. This approach guarantees full traceability and compliance with audits.</p>
+<h2>Movement types</h2>
+<ul>
+  <li><strong>Reception entry</strong> — generated by a purchase order reception.</li>
+  <li><strong>Sale exit</strong> — automatically generated by CHR POS (if recipes are configured).</li>
+  <li><strong>Manual exit</strong> — loss, breakage, donation.</li>
+  <li><strong>Inventory adjustment</strong> — correction after a physical count.</li>
+  <li><strong>Transfer</strong> — between two venues in the same group.</li>
+</ul>
+<h2>Dashboard</h2>
+<p>The Stock dashboard shows: stock value at weighted average cost, products below reorder threshold, latest movements and status of ongoing stock-takes.</p>`
+   }},
+
+  {id:'sk-produits', cat:'chr-stock', readTime:3,
+   titles:{fr:'Gérer les produits',en:'Managing products'},
+   summaries:{fr:'Créer, catégoriser et paramétrer les produits du stock.',en:'Create, categorise and configure stock products.'},
+   bodies:{
+    fr:`<h2>Créer un produit</h2>
+<ol>
+  <li>Allez dans <strong>CHR Stock → Produits → Nouveau</strong>.</li>
+  <li>Renseignez : nom, catégorie, unité de stockage, seuil d'alerte.</li>
+  <li>Associez les fournisseurs et références d'achat correspondantes.</li>
+  <li>Enregistrez.</li>
+</ol>
+<h2>Catégories et unités</h2>
+<p>Organisez vos produits en catégories (Boissons, Épicerie, Frais, etc.) et définissez les unités de mesure (KG, L, pièce, carton). Les unités peuvent être converties entre elles (ex: 1 carton = 6 bouteilles).</p>
+<h2>Seuil d'alerte</h2>
+<p>Définissez un <strong>seuil d'alerte</strong> par produit. Lorsque le stock descend en dessous de ce seuil, le produit apparaît en rouge dans le tableau de bord et peut déclencher une suggestion de commande.</p>
+<h2>Associer à un article POS</h2>
+<p>Si vous utilisez CHR POS, vous pouvez lier un produit stock à un article de caisse. À chaque vente, la quantité correspondante est déduite automatiquement du stock (via les recettes).</p>`,
+    en:`<h2>Creating a product</h2>
+<ol>
+  <li>Go to <strong>CHR Stock → Products → New</strong>.</li>
+  <li>Fill in: name, category, storage unit, reorder threshold.</li>
+  <li>Associate the corresponding suppliers and purchase references.</li>
+  <li>Save.</li>
+</ol>
+<h2>Categories and units</h2>
+<p>Organise your products into categories (Beverages, Grocery, Fresh, etc.) and define units of measure (KG, L, piece, case). Units can be converted between each other (e.g. 1 case = 6 bottles).</p>
+<h2>Reorder threshold</h2>
+<p>Set a <strong>reorder threshold</strong> per product. When stock falls below this threshold, the product appears in red on the dashboard and can trigger an order suggestion.</p>
+<h2>Linking to a POS item</h2>
+<p>If you use CHR POS, you can link a stock product to a register item. Each sale automatically deducts the corresponding quantity from stock (via recipes).</p>`
+   }},
+
+  {id:'sk-inventaire', cat:'chr-stock', readTime:4,
+   titles:{fr:'Réaliser un inventaire',en:'Performing a stock-take'},
+   summaries:{fr:'Lancer, compter et valider un inventaire physique.',en:'Start, count and validate a physical stock-take.'},
+   bodies:{
+    fr:`<h2>Créer un inventaire</h2>
+<ol>
+  <li>Allez dans <strong>CHR Stock → Inventaires → Nouvel inventaire</strong>.</li>
+  <li>Choisissez la portée : inventaire complet ou sélection de catégories.</li>
+  <li>Cliquez sur <strong>Démarrer</strong>. Une feuille de comptage est générée avec tous les produits concernés.</li>
+</ol>
+<h2>Saisir les quantités</h2>
+<p>Pour chaque produit de la liste, saisissez la quantité physique comptée. Vous pouvez :</p>
+<ul>
+  <li>Utiliser l'interface web depuis un ordinateur.</li>
+  <li>Utiliser l'application <strong>CHR Stock Mobile</strong> sur Android avec scan de code-barres.</li>
+</ul>
+<h2>Valider l'inventaire</h2>
+<p>Quand tous les produits sont comptés, cliquez sur <strong>Valider</strong>. CHR Stock génère automatiquement les <strong>ajustements de stock</strong> nécessaires (mouvements positifs ou négatifs) pour ramener le stock théorique au stock physique constaté.</p>
+<div class="callout warn"><strong>Action irréversible</strong><p>La validation d'un inventaire génère des mouvements définitifs. Vérifiez vos saisies avant de valider.</p></div>`,
+    en:`<h2>Creating a stock-take</h2>
+<ol>
+  <li>Go to <strong>CHR Stock → Stock-takes → New stock-take</strong>.</li>
+  <li>Choose the scope: full stock-take or selected categories.</li>
+  <li>Click <strong>Start</strong>. A counting sheet is generated with all relevant products.</li>
+</ol>
+<h2>Entering quantities</h2>
+<p>For each product in the list, enter the physically counted quantity. You can:</p>
+<ul>
+  <li>Use the web interface from a computer.</li>
+  <li>Use the <strong>CHR Stock Mobile</strong> app on Android with barcode scanning.</li>
+</ul>
+<h2>Validating the stock-take</h2>
+<p>When all products are counted, click <strong>Validate</strong>. CHR Stock automatically generates the necessary <strong>stock adjustments</strong> (positive or negative movements) to bring the theoretical stock in line with the physical count.</p>
+<div class="callout warn"><strong>Irreversible action</strong><p>Validating a stock-take generates permanent movements. Check your entries before validating.</p></div>`
+   }},
+
+  {id:'sk-recettes', cat:'chr-stock', readTime:3,
+   titles:{fr:'Recettes et food-cost',en:'Recipes and food cost'},
+   summaries:{fr:'Créer des recettes pour calculer le food-cost et déduire les sorties de stock.',en:'Create recipes to calculate food cost and deduct stock exits.'},
+   bodies:{
+    fr:`<h2>Qu'est-ce qu'une recette ?</h2>
+<p>Une recette (ou nomenclature) associe un <strong>article de vente CHR POS</strong> à une liste d'ingrédients (produits stock) avec leurs quantités. À chaque vente, les ingrédients correspondants sont automatiquement déduits du stock.</p>
+<h2>Créer une recette</h2>
+<ol>
+  <li>Allez dans <strong>CHR Stock → Recettes → Nouvelle recette</strong>.</li>
+  <li>Sélectionnez l'article POS correspondant.</li>
+  <li>Ajoutez les ingrédients avec leur quantité par portion.</li>
+  <li>Enregistrez.</li>
+</ol>
+<h2>Calcul du food-cost</h2>
+<p>CHR Stock calcule automatiquement le <strong>coût matière</strong> de chaque recette en utilisant le coût moyen pondéré (CMP) de chaque ingrédient. Le tableau de bord affiche :</p>
+<ul>
+  <li>Food-cost en valeur et en pourcentage du prix de vente.</li>
+  <li>Évolution sur les 30 derniers jours.</li>
+  <li>Articles avec food-cost hors objectif (rouge/vert).</li>
+</ul>`,
+    en:`<h2>What is a recipe?</h2>
+<p>A recipe (or bill of materials) links a <strong>CHR POS sales item</strong> to a list of ingredients (stock products) with their quantities. Each sale automatically deducts the corresponding ingredients from stock.</p>
+<h2>Creating a recipe</h2>
+<ol>
+  <li>Go to <strong>CHR Stock → Recipes → New recipe</strong>.</li>
+  <li>Select the corresponding POS item.</li>
+  <li>Add ingredients with their quantity per serving.</li>
+  <li>Save.</li>
+</ol>
+<h2>Food cost calculation</h2>
+<p>CHR Stock automatically calculates the <strong>material cost</strong> of each recipe using the weighted average cost (WAC) of each ingredient. The dashboard shows:</p>
+<ul>
+  <li>Food cost in value and as a percentage of the sale price.</li>
+  <li>Trend over the last 30 days.</li>
+  <li>Items with food cost outside target (red/green).</li>
+</ul>`
+   }},
+
+  /* ── Paramètres ── */
+  {id:'param-compte', cat:'parametres', readTime:3,
+   titles:{fr:'Mon compte et authentification 2FA',en:'My account and 2FA authentication'},
+   summaries:{fr:'Changer le mot de passe et activer l\'authentification à deux facteurs TOTP.',en:'Change your password and enable TOTP two-factor authentication.'},
+   bodies:{
+    fr:`<h2>Accéder à mon compte</h2>
+<p>Cliquez sur votre avatar en haut à droite, puis sur <strong>Mon compte</strong>.</p>
+<h2>Changer le mot de passe</h2>
+<ol>
+  <li>Dans <strong>Mon compte → Sécurité</strong>, cliquez sur <strong>Changer le mot de passe</strong>.</li>
+  <li>Saisissez votre mot de passe actuel, puis le nouveau (minimum 10 caractères).</li>
+  <li>Confirmez et enregistrez.</li>
+</ol>
+<h2>Activer la 2FA (TOTP)</h2>
+<p>CHR Solution utilise une authentification à deux facteurs compatible avec les applications <strong>Google Authenticator</strong>, <strong>Authy</strong> ou tout client TOTP standard.</p>
+<ol>
+  <li>Dans <strong>Mon compte → Sécurité → Authentification 2 facteurs</strong>, cliquez sur <strong>Activer</strong>.</li>
+  <li>Scannez le QR code avec votre application TOTP.</li>
+  <li>Saisissez le code à 6 chiffres affiché par l'application pour confirmer.</li>
+  <li>Conservez les codes de récupération affichés (à mettre en lieu sûr).</li>
+</ol>
+<div class="callout warn"><strong>Important</strong><p>Si vous perdez l'accès à votre application TOTP et que vous n'avez plus vos codes de récupération, contactez le support pour réinitialiser votre 2FA.</p></div>`,
+    en:`<h2>Accessing my account</h2>
+<p>Click your avatar in the top right, then click <strong>My account</strong>.</p>
+<h2>Changing the password</h2>
+<ol>
+  <li>In <strong>My account → Security</strong>, click <strong>Change password</strong>.</li>
+  <li>Enter your current password, then the new one (minimum 10 characters).</li>
+  <li>Confirm and save.</li>
+</ol>
+<h2>Enabling 2FA (TOTP)</h2>
+<p>CHR Solution uses two-factor authentication compatible with <strong>Google Authenticator</strong>, <strong>Authy</strong> or any standard TOTP client.</p>
+<ol>
+  <li>In <strong>My account → Security → Two-factor authentication</strong>, click <strong>Enable</strong>.</li>
+  <li>Scan the QR code with your TOTP app.</li>
+  <li>Enter the 6-digit code shown by the app to confirm.</li>
+  <li>Save the recovery codes displayed (keep them somewhere safe).</li>
+</ol>
+<div class="callout warn"><strong>Important</strong><p>If you lose access to your TOTP app and no longer have your recovery codes, contact support to reset your 2FA.</p></div>`
+   }},
+
+  {id:'param-users', cat:'parametres', readTime:3,
+   titles:{fr:'Utilisateurs et rôles',en:'Users and roles'},
+   summaries:{fr:'Inviter des collaborateurs et définir leurs droits d\'accès.',en:'Invite team members and define their access rights.'},
+   bodies:{
+    fr:`<h2>Inviter un utilisateur</h2>
+<ol>
+  <li>Allez dans <strong>Paramètres → Utilisateurs → Inviter</strong>.</li>
+  <li>Saisissez l'adresse e-mail de la personne à inviter.</li>
+  <li>Sélectionnez le rôle et la ou les sociétés auxquelles l'utilisateur aura accès.</li>
+  <li>Envoyez l'invitation. La personne reçoit un e-mail avec un lien d'activation (valable 48h).</li>
+</ol>
+<h2>Rôles disponibles</h2>
+<ul>
+  <li><strong>Administrateur</strong> — accès complet à tous les modules et paramètres.</li>
+  <li><strong>Manager</strong> — accès à tous les modules, sans accès aux paramètres de facturation.</li>
+  <li><strong>Acheteur</strong> — CHR Achats uniquement.</li>
+  <li><strong>Responsable stock</strong> — CHR Stock uniquement.</li>
+  <li><strong>Lecteur</strong> — consultation uniquement, aucune modification.</li>
+</ul>
+<div class="callout info"><strong>Caissiers POS</strong><p>Les caissiers du POS ne sont pas des utilisateurs du compte. Ils sont gérés dans <strong>CHR POS → Caissiers</strong> et s'identifient par code PIN.</p></div>
+<h2>Modifier ou révoquer un accès</h2>
+<p>Depuis la liste des utilisateurs, cliquez sur le menu d'un utilisateur pour modifier son rôle ou révoquer son accès. La révocation est immédiate.</p>`,
+    en:`<h2>Inviting a user</h2>
+<ol>
+  <li>Go to <strong>Settings → Users → Invite</strong>.</li>
+  <li>Enter the email address of the person to invite.</li>
+  <li>Select the role and the company (or companies) the user will have access to.</li>
+  <li>Send the invitation. The person receives an email with an activation link (valid 48h).</li>
+</ol>
+<h2>Available roles</h2>
+<ul>
+  <li><strong>Administrator</strong> — full access to all modules and settings.</li>
+  <li><strong>Manager</strong> — access to all modules, without billing settings access.</li>
+  <li><strong>Buyer</strong> — CHR Purchasing only.</li>
+  <li><strong>Stock manager</strong> — CHR Stock only.</li>
+  <li><strong>Reader</strong> — read-only, no modifications.</li>
+</ul>
+<div class="callout info"><strong>POS cashiers</strong><p>POS cashiers are not account users. They are managed in <strong>CHR POS → Cashiers</strong> and identified by PIN code.</p></div>
+<h2>Modifying or revoking access</h2>
+<p>From the user list, click a user's menu to change their role or revoke access. Revocation is immediate.</p>`
+   }},
+
+  /* ── Mobile ── */
+  {id:'mob-pos', cat:'mobile', readTime:3,
+   titles:{fr:'CHR POS Mobile (Android)',en:'CHR POS Mobile (Android)'},
+   summaries:{fr:'Installer et utiliser l\'application caisse sur Android.',en:'Install and use the register app on Android.'},
+   bodies:{
+    fr:`<h2>Télécharger l'application</h2>
+<p>CHR POS Mobile est disponible sur le <strong>Google Play Store</strong>. Recherchez "CHR POS Solution" ou utilisez le lien fourni par votre administrateur.</p>
+<h2>Première connexion</h2>
+<ol>
+  <li>Ouvrez l'application. Un QR code de session apparaît.</li>
+  <li>Depuis un ordinateur, connectez-vous à <strong>app.chrsolution.app</strong> et allez dans <strong>CHR POS → Appareils</strong>.</li>
+  <li>Cliquez sur <strong>Ajouter un appareil</strong> et scannez le QR code avec l'appareil mobile.</li>
+  <li>L'appareil est associé à votre société. Sélectionnez votre caissier avec votre PIN pour commencer.</li>
+</ol>
+<h2>Mode hors ligne</h2>
+<p>CHR POS Mobile fonctionne en mode hors ligne : les ventes sont enregistrées localement et synchronisées dès que la connexion est rétablie.</p>
+<div class="callout warn"><strong>Synchronisation</strong><p>Assurez-vous de synchroniser l'application avant chaque clôture journalière pour garantir l'intégrité du journal Z.</p></div>`,
+    en:`<h2>Downloading the app</h2>
+<p>CHR POS Mobile is available on the <strong>Google Play Store</strong>. Search "CHR POS Solution" or use the link provided by your administrator.</p>
+<h2>First sign-in</h2>
+<ol>
+  <li>Open the app. A session QR code appears.</li>
+  <li>From a computer, sign in to <strong>app.chrsolution.app</strong> and go to <strong>CHR POS → Devices</strong>.</li>
+  <li>Click <strong>Add a device</strong> and scan the QR code with the mobile device.</li>
+  <li>The device is linked to your company. Select your cashier with your PIN to start.</li>
+</ol>
+<h2>Offline mode</h2>
+<p>CHR POS Mobile works offline: sales are recorded locally and synchronised as soon as the connection is restored.</p>
+<div class="callout warn"><strong>Synchronisation</strong><p>Make sure to synchronise the app before each daily closing to ensure Z-report integrity.</p></div>`
+   }},
+
+  {id:'mob-stock', cat:'mobile', readTime:2,
+   titles:{fr:'CHR Stock Mobile (Android)',en:'CHR Stock Mobile (Android)'},
+   summaries:{fr:'Réaliser des inventaires et enregistrer des mouvements depuis un smartphone.',en:'Perform stock-takes and record movements from a smartphone.'},
+   bodies:{
+    fr:`<h2>Télécharger l'application</h2>
+<p>CHR Stock Mobile est disponible sur le <strong>Google Play Store</strong>. Recherchez "CHR Stock Solution" ou demandez le lien à votre administrateur.</p>
+<h2>Connexion</h2>
+<p>Connectez-vous avec vos identifiants CHR Solution habituels. L'application se synchronise avec votre compte.</p>
+<h2>Inventaire depuis mobile</h2>
+<ol>
+  <li>Dans l'app, ouvrez un inventaire existant (créé depuis le web) ou créez-en un nouveau.</li>
+  <li>Scannez le code-barres d'un produit ou recherchez-le par nom.</li>
+  <li>Saisissez la quantité comptée.</li>
+  <li>Recommencez pour chaque produit. Les saisies sont synchronisées en temps réel.</li>
+</ol>
+<h2>Mouvements rapides</h2>
+<p>Depuis le menu <strong>Mouvement rapide</strong>, enregistrez une sortie manuelle (casse, perte) en scannant directement le produit.</p>`,
+    en:`<h2>Downloading the app</h2>
+<p>CHR Stock Mobile is available on the <strong>Google Play Store</strong>. Search "CHR Stock Solution" or ask your administrator for the link.</p>
+<h2>Sign-in</h2>
+<p>Sign in with your usual CHR Solution credentials. The app synchronises with your account.</p>
+<h2>Stock-take from mobile</h2>
+<ol>
+  <li>In the app, open an existing stock-take (created on the web) or create a new one.</li>
+  <li>Scan a product's barcode or search by name.</li>
+  <li>Enter the counted quantity.</li>
+  <li>Repeat for each product. Entries synchronise in real time.</li>
+</ol>
+<h2>Quick movements</h2>
+<p>From the <strong>Quick movement</strong> menu, record a manual exit (breakage, loss) by scanning the product directly.</p>`
+   }},
+
+  /* ── FAQ ── */
+  {id:'faq-quest-ce-que-chr', cat:'faq', readTime:2,
+   titles:{fr:'Qu\'est-ce que CHR Solution ?',en:'What is CHR Solution?'},
+   summaries:{fr:'Présentation de la plateforme et de ses modules.',en:'Overview of the platform and its modules.'},
+   bodies:{
+    fr:`<h2>Une plateforme ERP pour la restauration et la distribution CHR</h2>
+<p>CHR Solution est un ERP SaaS (logiciel en tant que service) conçu pour les professionnels de la restauration et de la distribution alimentaire. La plateforme regroupe trois modules complémentaires :</p>
+<ul>
+  <li><strong>CHR POS</strong> — caisse enregistreuse conforme NF525, adaptée aux restaurants, bars et snacks.</li>
+  <li><strong>CHR Achats</strong> — gestion des commandes fournisseurs et des tarifs d'achat.</li>
+  <li><strong>CHR Stock</strong> — suivi des stocks, inventaires et calcul du food-cost.</li>
+</ul>
+<p>Les modules sont indépendants mais partagent un référentiel commun (produits, fournisseurs, tarifs) pour éviter les doubles saisies.</p>
+<h2>Pour qui ?</h2>
+<ul>
+  <li><strong>Restaurateurs</strong> — gestion de caisse + stock + achats en une seule interface.</li>
+  <li><strong>Distributeurs CHR</strong> — catalogue de tarifs, prises de commande clients et gestion de leur propre stock.</li>
+  <li><strong>Groupes et chaînes</strong> — vision multi-établissements, consolidation des achats.</li>
+</ul>`,
+    en:`<h2>An ERP platform for hospitality and food distribution</h2>
+<p>CHR Solution is a SaaS ERP (software as a service) designed for hospitality professionals and food distributors. The platform includes three complementary modules:</p>
+<ul>
+  <li><strong>CHR POS</strong> — NF525-compliant cash register, suitable for restaurants, bars and snack bars.</li>
+  <li><strong>CHR Purchasing</strong> — supplier order management and purchase price lists.</li>
+  <li><strong>CHR Stock</strong> — stock tracking, stock-takes and food cost calculation.</li>
+</ul>
+<p>Modules are independent but share a common reference base (products, suppliers, prices) to avoid duplicate entries.</p>
+<h2>Who is it for?</h2>
+<ul>
+  <li><strong>Restaurateurs</strong> — register + stock + purchasing in a single interface.</li>
+  <li><strong>CHR distributors</strong> — price catalogues, customer order taking and their own stock management.</li>
+  <li><strong>Groups and chains</strong> — multi-venue visibility, consolidated purchasing.</li>
+</ul>`
+   }},
+
+  {id:'faq-quel-module', cat:'faq', readTime:2,
+   titles:{fr:'Quel module me convient ?',en:'Which module is right for me?'},
+   summaries:{fr:'Choisir entre CHR POS, CHR Achats et CHR Stock selon votre activité.',en:'Choose between CHR POS, CHR Purchasing and CHR Stock based on your activity.'},
+   bodies:{
+    fr:`<h2>Vous êtes restaurateur</h2>
+<p>Commencez avec <strong>CHR POS</strong> pour gérer votre caisse et vos encaissements. Ajoutez <strong>CHR Stock</strong> pour maîtriser votre food-cost et vos inventaires. Ajoutez <strong>CHR Achats</strong> pour passer vos commandes directement depuis la plateforme.</p>
+<h2>Vous êtes distributeur / grossiste</h2>
+<p>Commencez avec <strong>CHR Achats</strong> pour publier vos tarifs et recevoir les commandes de vos clients restaurants. Ajoutez <strong>CHR Stock</strong> pour gérer votre propre entrepôt.</p>
+<h2>Vous gérez un groupe ou une chaîne</h2>
+<p>Activez les trois modules. La vue multi-société vous permet de consolider les achats et de comparer les performances de vos établissements.</p>
+<div class="callout tip"><strong>Conseil</strong><p>Chaque module peut être activé ou désactivé indépendamment. Vous ne payez que les modules que vous utilisez.</p></div>`,
+    en:`<h2>You are a restaurateur</h2>
+<p>Start with <strong>CHR POS</strong> to manage your register and payments. Add <strong>CHR Stock</strong> to control your food cost and inventories. Add <strong>CHR Purchasing</strong> to place orders directly from the platform.</p>
+<h2>You are a distributor / wholesaler</h2>
+<p>Start with <strong>CHR Purchasing</strong> to publish your price lists and receive orders from your restaurant clients. Add <strong>CHR Stock</strong> to manage your own warehouse.</p>
+<h2>You manage a group or chain</h2>
+<p>Activate all three modules. The multi-entity view lets you consolidate purchasing and compare performance across your venues.</p>
+<div class="callout tip"><strong>Tip</strong><p>Each module can be activated or deactivated independently. You only pay for the modules you use.</p></div>`
+   }},
+
+  {id:'faq-securite', cat:'faq', readTime:3,
+   titles:{fr:'Sécurité et confidentialité des données',en:'Data security and privacy'},
+   summaries:{fr:'Chiffrement, hébergement, sauvegardes et conformité RGPD.',en:'Encryption, hosting, backups and GDPR compliance.'},
+   bodies:{
+    fr:`<h2>Hébergement</h2>
+<p>CHR Solution est hébergée en Europe sur des serveurs <strong>OVH</strong> (Roubaix, France), conformément aux exigences du RGPD en matière de localisation des données.</p>
+<h2>Chiffrement</h2>
+<ul>
+  <li>Toutes les connexions sont chiffrées en <strong>TLS 1.3</strong>.</li>
+  <li>Les mots de passe sont hachés avec <strong>Argon2id</strong> (aucun mot de passe en clair jamais stocké).</li>
+  <li>La piste d'audit NF525 utilise des signatures <strong>ECDSA P-256</strong>.</li>
+</ul>
+<h2>Sauvegardes</h2>
+<p>Les données sont sauvegardées quotidiennement. Les sauvegardes sont conservées 30 jours. En cas d'incident, contactez le support pour une restauration.</p>
+<h2>RGPD / CNDP</h2>
+<p>CHR Solution est conforme au RGPD (Europe) et à la CNDP (Maroc). Vous pouvez exercer vos droits (accès, rectification, suppression) via notre <a href="https://chrsolution.fr/contact.html?topic=privacy">formulaire RGPD</a>.</p>`,
+    en:`<h2>Hosting</h2>
+<p>CHR Solution is hosted in Europe on <strong>OVH</strong> servers (Roubaix, France), in compliance with GDPR data localisation requirements.</p>
+<h2>Encryption</h2>
+<ul>
+  <li>All connections are encrypted with <strong>TLS 1.3</strong>.</li>
+  <li>Passwords are hashed with <strong>Argon2id</strong> (no passwords ever stored in plain text).</li>
+  <li>The NF525 audit chain uses <strong>ECDSA P-256</strong> signatures.</li>
+</ul>
+<h2>Backups</h2>
+<p>Data is backed up daily. Backups are retained for 30 days. In case of an incident, contact support for a restoration.</p>
+<h2>GDPR / CNDP</h2>
+<p>CHR Solution complies with GDPR (Europe) and CNDP (Morocco). You can exercise your rights (access, correction, deletion) via our <a href="https://chrsolution.fr/contact.html?topic=privacy">GDPR form</a>.</p>`
+   }},
+
+  /* ── Dépannage ── */
+  {id:'dep-connexion', cat:'depannage', readTime:3,
+   titles:{fr:'Problème de connexion',en:'Connection issues'},
+   summaries:{fr:'Que faire si vous ne pouvez pas vous connecter à CHR Solution.',en:'What to do if you cannot sign in to CHR Solution.'},
+   bodies:{
+    fr:`<h2>Vérifications préliminaires</h2>
+<ul>
+  <li>Vérifiez que vous utilisez la bonne adresse : <strong>app.chrsolution.app</strong>.</li>
+  <li>Vérifiez que le verrouillage majuscules n'est pas activé.</li>
+  <li>Essayez avec un autre navigateur ou en mode navigation privée.</li>
+</ul>
+<h2>Mot de passe incorrect</h2>
+<p>Après 5 tentatives échouées, le compte est temporairement verrouillé (15 minutes). Utilisez <strong>Mot de passe oublié</strong> sur la page de connexion pour recevoir un lien de réinitialisation.</p>
+<h2>Code 2FA incorrect</h2>
+<p>Le code TOTP change toutes les 30 secondes. Assurez-vous que l'heure de votre téléphone est correcte (activez la synchronisation automatique). Si vous avez perdu l'accès à votre application TOTP, utilisez un <strong>code de récupération</strong>.</p>
+<h2>Compte désactivé</h2>
+<p>Si votre compte a été désactivé par un administrateur, vous verrez un message spécifique. Contactez votre administrateur CHR Solution ou l'équipe support.</p>
+<div class="callout info"><strong>Toujours bloqué ?</strong><p><a href="#/a/dep-contact">Contactez le support</a> en indiquant votre adresse e-mail et une description du message d'erreur affiché.</p></div>`,
+    en:`<h2>Preliminary checks</h2>
+<ul>
+  <li>Check that you are using the correct address: <strong>app.chrsolution.app</strong>.</li>
+  <li>Check that Caps Lock is not enabled.</li>
+  <li>Try with another browser or in private browsing mode.</li>
+</ul>
+<h2>Incorrect password</h2>
+<p>After 5 failed attempts, the account is temporarily locked (15 minutes). Use <strong>Forgot password</strong> on the sign-in page to receive a reset link.</p>
+<h2>Incorrect 2FA code</h2>
+<p>The TOTP code changes every 30 seconds. Make sure your phone's time is correct (enable automatic time sync). If you have lost access to your TOTP app, use a <strong>recovery code</strong>.</p>
+<h2>Account disabled</h2>
+<p>If your account has been disabled by an administrator, you will see a specific message. Contact your CHR Solution administrator or the support team.</p>
+<div class="callout info"><strong>Still stuck?</strong><p><a href="#/a/dep-contact">Contact support</a>, specifying your email address and a description of the error message displayed.</p></div>`
+   }},
+
+  {id:'dep-page-blanche', cat:'depannage', readTime:2,
+   titles:{fr:'Page blanche ou erreur d\'affichage',en:'Blank page or display error'},
+   summaries:{fr:'Résoudre les problèmes d\'affichage de la plateforme.',en:'Resolve platform display issues.'},
+   bodies:{
+    fr:`<h2>Rafraîchir le cache navigateur</h2>
+<p>Une mise à jour de la plateforme peut rendre le cache navigateur obsolète. Effectuez un <strong>rechargement forcé</strong> :</p>
+<ul>
+  <li><strong>Windows / Linux</strong> : <code>Ctrl + Shift + R</code></li>
+  <li><strong>Mac</strong> : <code>Cmd + Shift + R</code></li>
+</ul>
+<h2>Vider le cache et les cookies</h2>
+<p>Si le rechargement forcé ne suffit pas, videz le cache et les cookies pour le domaine <code>app.chrsolution.app</code> depuis les paramètres de votre navigateur, puis reconnectez-vous.</p>
+<h2>Vérifier la console JavaScript</h2>
+<p>Si vous êtes à l'aise avec les outils de développement, ouvrez la console (F12) et notez les erreurs en rouge. Transmettez-les au support.</p>
+<h2>Navigateur non supporté</h2>
+<p>CHR Solution supporte les navigateurs récents : Chrome 110+, Firefox 110+, Edge 110+, Safari 16+. Internet Explorer n'est pas supporté.</p>`,
+    en:`<h2>Refreshing the browser cache</h2>
+<p>A platform update may make the browser cache outdated. Do a <strong>hard reload</strong>:</p>
+<ul>
+  <li><strong>Windows / Linux</strong>: <code>Ctrl + Shift + R</code></li>
+  <li><strong>Mac</strong>: <code>Cmd + Shift + R</code></li>
+</ul>
+<h2>Clear cache and cookies</h2>
+<p>If hard reload is not enough, clear cache and cookies for the domain <code>app.chrsolution.app</code> in your browser settings, then sign in again.</p>
+<h2>Check the JavaScript console</h2>
+<p>If you are comfortable with developer tools, open the console (F12) and note any red errors. Send them to support.</p>
+<h2>Unsupported browser</h2>
+<p>CHR Solution supports recent browsers: Chrome 110+, Firefox 110+, Edge 110+, Safari 16+. Internet Explorer is not supported.</p>`
+   }},
+
+  {id:'dep-contact', cat:'depannage', readTime:2,
+   titles:{fr:'Contacter le support',en:'Contact support'},
+   summaries:{fr:'Comment joindre l\'équipe support pour une assistance personnalisée.',en:'How to reach the support team for personalised assistance.'},
+   bodies:{
+    fr:`<h2>Avant de contacter le support</h2>
+<p>Consultez les articles de dépannage pour les problèmes courants :</p>
+<ul>
+  <li><a href="#/a/dep-connexion">Problème de connexion</a></li>
+  <li><a href="#/a/dep-page-blanche">Page blanche ou erreur d'affichage</a></li>
+</ul>
+<h2>Formulaire de contact</h2>
+<p>Pour toute demande d'assistance, utilisez notre <strong><a href="https://chrsolution.fr/contact.html">formulaire de contact</a></strong>. Décrivez votre problème en précisant :</p>
+<ul>
+  <li>Votre adresse e-mail de compte.</li>
+  <li>Le module concerné (POS, Achats, Stock).</li>
+  <li>Les étapes pour reproduire le problème.</li>
+  <li>Une capture d'écran si possible.</li>
+</ul>
+<h2>Délais de réponse</h2>
+<ul>
+  <li><strong>Incident bloquant</strong> (caisse inopérante) — réponse sous 4h ouvrées.</li>
+  <li><strong>Incident non bloquant</strong> — réponse sous 24h ouvrées.</li>
+  <li><strong>Question générale</strong> — réponse sous 48h ouvrées.</li>
+</ul>
+<div class="callout tip"><strong>Conseil</strong><p>Pour les urgences liées à la caisse, mentionnez "URGENT POS" dans l'objet de votre message.</p></div>`,
+    en:`<h2>Before contacting support</h2>
+<p>Check the troubleshooting articles for common issues:</p>
+<ul>
+  <li><a href="#/a/dep-connexion">Connection issues</a></li>
+  <li><a href="#/a/dep-page-blanche">Blank page or display error</a></li>
+</ul>
+<h2>Contact form</h2>
+<p>For any assistance request, use our <strong><a href="https://chrsolution.fr/contact.html">contact form</a></strong>. Describe your issue specifying:</p>
+<ul>
+  <li>Your account email address.</li>
+  <li>The module concerned (POS, Purchasing, Stock).</li>
+  <li>The steps to reproduce the issue.</li>
+  <li>A screenshot if possible.</li>
+</ul>
+<h2>Response times</h2>
+<ul>
+  <li><strong>Blocking incident</strong> (inoperable register) — response within 4 business hours.</li>
+  <li><strong>Non-blocking incident</strong> — response within 24 business hours.</li>
+  <li><strong>General question</strong> — response within 48 business hours.</li>
+</ul>
+<div class="callout tip"><strong>Tip</strong><p>For register emergencies, include "URGENT POS" in the subject of your message.</p></div>`
+   }}
+];
+
+/* ── Helpers ── */
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function t(obj){return obj[LANG]||obj.fr;}
+function stripHtml(h){return h.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ');}
+function catById(id){return CATS.find(function(c){return c.id===id;});}
+function artById(id){return ARTS.find(function(a){return a.id===id;});}
+function artsInCat(catId){return ARTS.filter(function(a){return a.cat===catId;});}
+
+function langHref(path){
+  var base = location.search || '';
+  return path + (LANG==='en' ? (base?base:'?lang=en') : (base.replace(/[?&]lang=[^&]*/g,'').replace(/^\?&/,'?') || ''));
+}
+
+/* ── Icons ── */
+var ICON_DOC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+var ICON_ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+var ICON_BACK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>';
+
+/* ── Render home ── */
+function renderHome(){
+  var html = '<div class="cat-grid">';
+  CATS.forEach(function(cat){
+    var count = artsInCat(cat.id).length;
+    var countLabel = LANG==='en' ? (count+' article'+(count>1?'s':'')) : (count+' article'+(count>1?'s':''));
+    html += '<a class="cat-card" href="#/c/'+cat.id+'">'
+      +'<div class="cat-icon '+cat.icon+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+cat.svg+'</svg></div>'
+      +'<div><p class="cat-title">'+esc(t(cat.titles))+'</p>'
+      +'<p class="cat-desc">'+esc(t(cat.descs))+'</p>'
+      +'<p class="cat-count">'+countLabel+'</p></div>'
+      +'</a>';
+  });
+  html += '</div>';
+  return html;
+}
+
+/* ── Render category ── */
+function renderCat(catId){
+  var cat = catById(catId);
+  if(!cat) return renderHome();
+  var arts = artsInCat(catId);
+  var html = '<div class="breadcrumb">'
+    +'<a href="#">'+ICON_BACK+(LANG==='en'?'All topics':'Tous les sujets')+'</a>'
+    +'</div>';
+  html += '<div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem">'
+    +'<div class="cat-icon '+cat.icon+'" style="width:52px;height:52px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+cat.svg+'</svg></div>'
+    +'<div><h2 style="margin:0;font-size:1.6rem;color:var(--color-text)">'+esc(t(cat.titles))+'</h2>'
+    +'<p style="margin:.3rem 0 0;color:var(--color-text-soft);font-size:.92rem">'+esc(t(cat.descs))+'</p></div>'
+    +'</div>';
+  html += '<div class="article-list">';
+  arts.forEach(function(art){
+    var minLabel = LANG==='en' ? art.readTime+' min read' : art.readTime+' min de lecture';
+    html += '<a class="article-item" href="#/a/'+art.id+'">'
+      +'<div class="article-item-icon">'+ICON_DOC+'</div>'
+      +'<span class="article-item-title">'+esc(t(art.titles))+'</span>'
+      +'<span class="article-item-time">'+minLabel+'</span>'
+      +'<span class="article-item-arrow">'+ICON_ARROW+'</span>'
+      +'</a>';
+  });
+  html += '</div>';
+  return html;
+}
+
+/* ── Render article ── */
+function renderArticle(artId){
+  var art = artById(artId);
+  if(!art) return renderHome();
+  var cat = catById(art.cat);
+  var minLabel = LANG==='en' ? art.readTime+' min read' : art.readTime+' min de lecture';
+  var html = '<div class="breadcrumb">'
+    +'<a href="#">'+(LANG==='en'?'All topics':'Tous les sujets')+'</a>'
+    +' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg> '
+    +(cat?('<a href="#/c/'+cat.id+'">'+esc(t(cat.titles))+'</a> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg> '):'')
+    +'<span>'+esc(t(art.titles))+'</span>'
+    +'</div>';
+  html += '<div class="article-view">'
+    +'<h1>'+esc(t(art.titles))+'</h1>'
+    +'<div class="article-meta">'
+    +(cat?('<span class="article-meta-tag">'+esc(t(cat.titles))+'</span>'):'')
+    +'<span class="article-meta-time">'+minLabel+'</span>'
+    +'</div>'
+    +'<div class="article-body">'+t(art.bodies)+'</div>'
+    +'</div>';
+  return html;
+}
+
+/* ── Search ── */
+function renderSearch(q){
+  var lq = q.toLowerCase();
+  var results = ARTS.filter(function(a){
+    return (t(a.titles)+' '+t(a.summaries)+' '+stripHtml(t(a.bodies))).toLowerCase().indexOf(lq)!==-1;
+  });
+  var countMsg = LANG==='en'
+    ? (results.length+' result'+(results.length!==1?'s':''))
+    : (results.length+' résultat'+(results.length!==1?'s':''));
+  var html = '<p class="search-results-count">'
+    +(LANG==='en'?'Results for «'+esc(q)+'» — ':'Résultats pour «'+esc(q)+'» — ')+countMsg+'</p>';
+  if(!results.length){
+    html += '<div class="no-results"><p>'+(LANG==='en'?'No article found for this search.':'Aucun article trouvé pour cette recherche.')+'</p></div>';
+  } else {
+    html += '<div class="article-list">';
+    results.forEach(function(art){
+      var cat = catById(art.cat);
+      var minLabel = LANG==='en' ? art.readTime+' min read' : art.readTime+' min de lecture';
+      html += '<a class="article-item" href="#/a/'+art.id+'">'
+        +'<div class="article-item-icon">'+ICON_DOC+'</div>'
+        +'<div style="flex:1"><span class="article-item-title">'+esc(t(art.titles))+'</span>'
+        +(cat?'<span style="display:block;font-size:.78rem;color:var(--color-text-dim);margin-top:.2rem">'+esc(t(cat.titles))+'</span>':'')
+        +'</div>'
+        +'<span class="article-item-time">'+minLabel+'</span>'
+        +'<span class="article-item-arrow">'+ICON_ARROW+'</span>'
+        +'</a>';
     });
+    html += '</div>';
+  }
+  return html;
+}
 
-    document.querySelectorAll('input[data-fr-placeholder]').forEach(function (el) {
-      var key = lang === 'en' ? 'enPlaceholder' : 'frPlaceholder';
-      el.placeholder = el.dataset[key] || el.placeholder;
-    });
+/* ── Router ── */
+var APP = document.getElementById('app');
+function route(){
+  var hash = location.hash || '#/';
+  var parts = hash.replace(/^#\/?/,'').split('/');
+  if(parts[0]==='c' && parts[1]) APP.innerHTML = renderCat(parts[1]);
+  else if(parts[0]==='a' && parts[1]) APP.innerHTML = renderArticle(parts[1]);
+  else APP.innerHTML = renderHome();
+  window.scrollTo(0,0);
+}
 
-    document.querySelectorAll('[data-year]').forEach(function (el) {
-      el.textContent = String(new Date().getFullYear());
-    });
-  })();
+window.addEventListener('hashchange', route);
+
+/* ── Search input ── */
+var searchTimer;
+SI.addEventListener('input', function(){
+  clearTimeout(searchTimer);
+  var q = SI.value.trim();
+  if(!q){route();return;}
+  searchTimer = setTimeout(function(){
+    location.hash='#/';
+    APP.innerHTML = renderSearch(q);
+  }, 200);
+});
+SI.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){SI.value='';route();}
+});
+
+/* ── Init ── */
+route();
+
+})();
 </script>
 
 </body>
