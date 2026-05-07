@@ -95,6 +95,10 @@
     html[lang="en"] p[data-en],
     html[lang="en"] [data-en].block{display:block}
 
+
+    .article-body figure{margin:2rem 0;text-align:center}
+    .article-body figure img{max-width:100%;height:auto;border-radius:var(--radius-md);border:1px solid var(--color-border-soft);box-shadow:0 8px 32px rgba(0,0,0,.45)}
+    .article-body figcaption{font-size:.82rem;color:var(--color-text-dim);margin-top:.6rem;font-style:italic}
     @media(max-width:720px){
       .help-hero{padding:var(--space-lg) 0 var(--space-md)}
       .cat-grid{grid-template-columns:1fr}
@@ -330,31 +334,47 @@ var ARTS = [
    }},
 
   /* ── CHR POS ── */
-  {id:'pos-activation', cat:'chr-pos', readTime:3,
+  {id:'pos-activation', cat:'chr-pos', readTime:5,
    titles:{fr:'Activer et configurer le module POS',en:'Activating and configuring the POS module'},
    summaries:{fr:'Prérequis, activation de la licence et premier démarrage de la caisse.',en:'Prerequisites, licence activation and first POS launch.'},
    bodies:{
     fr:`<h2>Prérequis</h2>
 <p>CHR POS nécessite :</p>
 <ul>
-  <li>Un abonnement incluant le module POS (vérifiez sur la page <strong>Paramètres → Abonnement</strong>).</li>
-  <li>Un navigateur récent (Chrome, Firefox, Edge, Safari) — ou l'application Android CHR POS Mobile.</li>
-  <li>Une imprimante thermique compatible ESC/POS (recommandé) ou une imprimante réseau.</li>
+  <li>Un abonnement incluant le module POS (vérifiez dans <strong>Paramètres → Abonnement</strong>).</li>
+  <li>Un navigateur récent (Chrome, Firefox, Edge, Safari) ou l'application Android <strong>CHR POS Mobile</strong>.</li>
+  <li>Une imprimante thermique ESC/POS (réseau ou USB) si vous imprimez des tickets.</li>
 </ul>
-<h2>Activer le module</h2>
+<div class="callout info"><strong>Info</strong><p>CHR POS fonctionne entièrement dans le navigateur — aucune installation locale requise sur PC ou Mac. Sur tablette Android, l'app dédiée offre un meilleur rendu tactile.</p></div>
+<h2>Accéder au module POS</h2>
 <ol>
-  <li>Allez dans <strong>Paramètres → Modules</strong>.</li>
-  <li>Cliquez sur <strong>Activer</strong> en face de <em>CHR POS</em>.</li>
-  <li>Renseignez les informations de votre établissement (raison sociale, adresse, n° SIRET ou équivalent).</li>
-  <li>Validez. Le module apparaît dans la barre latérale.</li>
+  <li>Connectez-vous à <strong>app.chrsolution.app</strong>.</li>
+  <li>Dans la barre latérale gauche, cliquez sur <strong>CHR POS</strong>.</li>
+  <li>Si votre abonnement inclut le module, le tableau de bord POS s'affiche.</li>
 </ol>
-<h2>Configuration minimale</h2>
-<p>Avant d'encaisser, configurez au minimum :</p>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-bo-tiles.png" alt="Tableau de bord back-office CHR POS" loading="lazy">
+  <figcaption>Tableau de bord back-office CHR POS — vue d'ensemble des ventes du jour</figcaption>
+</figure>
+<h2>Configurer votre établissement</h2>
+<p>Avant d'ouvrir la caisse pour la première fois, paramétrez depuis le back-office :</p>
 <ul>
-  <li><strong>Modes de paiement</strong> — Espèces, CB, Chèque, Titre restaurant.</li>
-  <li><strong>Taux de TVA</strong> — selon votre pays et type de vente.</li>
-  <li><strong>Caissiers</strong> — au moins un caissier avec code PIN (<a href="#/a/pos-pin">voir l'article dédié</a>).</li>
+  <li><strong>Plan de salle</strong> — créez vos salles et placez vos tables.</li>
+  <li><strong>Produits et menus</strong> — ajoutez les articles depuis le menu produits.</li>
+  <li><strong>Imprimante</strong> — renseignez l'IP ou le port USB.</li>
+  <li><strong>Caissiers</strong> — créez les comptes et attribuez les codes PIN.</li>
 </ul>
+<div class="callout tip"><strong>Conseil</strong><p>Lancez d'abord un ticket de test pour vérifier impression, prix et TVA avant d'ouvrir au public.</p></div>
+<h2>Ouvrir la caisse</h2>
+<ol>
+  <li>Cliquez sur <strong>CHR POS → Caisse</strong> dans la barre latérale.</li>
+  <li>Un caissier saisit son code PIN pour s'identifier.</li>
+  <li>L'écran du plan de salle apparaît — vous êtes prêt.</li>
+</ol>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-caisse.png" alt="Écran principal de la caisse CHR POS" loading="lazy">
+  <figcaption>Écran principal de la caisse — plan de salle avec les tables</figcaption>
+</figure>
 <div class="callout warn"><strong>NF525</strong><p>CHR POS est conforme à la norme NF525 (loi anti-fraude TVA française). La piste d'audit ECDSA P-256 est activée automatiquement. Ne supprimez jamais les données d'archive.</p></div>`,
     en:`<h2>Prerequisites</h2>
 <p>CHR POS requires:</p>
@@ -363,204 +383,599 @@ var ARTS = [
   <li>A recent browser (Chrome, Firefox, Edge, Safari) — or the CHR POS Mobile Android app.</li>
   <li>A compatible ESC/POS thermal printer (recommended) or a network printer.</li>
 </ul>
-<h2>Activating the module</h2>
+<div class="callout info"><strong>Info</strong><p>CHR POS runs entirely in the browser — no local installation required on PC or Mac. On Android tablets, the dedicated app offers better touch rendering.</p></div>
+<h2>Accessing the POS module</h2>
 <ol>
-  <li>Go to <strong>Settings → Modules</strong>.</li>
-  <li>Click <strong>Activate</strong> next to <em>CHR POS</em>.</li>
-  <li>Fill in your venue information (legal name, address, SIRET or equivalent).</li>
-  <li>Confirm. The module appears in the sidebar.</li>
+  <li>Log in to <strong>app.chrsolution.app</strong>.</li>
+  <li>In the left sidebar, click <strong>CHR POS</strong>.</li>
+  <li>If your subscription includes the module, the POS dashboard appears.</li>
 </ol>
-<h2>Minimum configuration</h2>
-<p>Before taking payments, configure at least:</p>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-bo-tiles.png" alt="CHR POS back-office dashboard" loading="lazy">
+  <figcaption>CHR POS back-office dashboard — today's sales overview</figcaption>
+</figure>
+<h2>Setting up your venue</h2>
+<p>Before opening the register for the first time, configure from the back-office:</p>
 <ul>
-  <li><strong>Payment methods</strong> — Cash, Card, Cheque, Meal voucher.</li>
-  <li><strong>VAT rates</strong> — according to your country and sale type.</li>
-  <li><strong>Cashiers</strong> — at least one cashier with a PIN (<a href="#/a/pos-pin">see dedicated article</a>).</li>
+  <li><strong>Floor plan</strong> — create your rooms and place your tables.</li>
+  <li><strong>Products and menus</strong> — add items from the products menu.</li>
+  <li><strong>Printer</strong> — enter the IP address or USB port.</li>
+  <li><strong>Cashiers</strong> — create accounts and assign PIN codes.</li>
 </ul>
-<div class="callout warn"><strong>NF525</strong><p>CHR POS is compliant with NF525 (French anti-VAT-fraud regulation). The ECDSA P-256 audit chain is enabled automatically. Never delete archive data.</p></div>`
+<div class="callout tip"><strong>Tip</strong><p>Run a test ticket first to verify printing, pricing and VAT before opening to the public.</p></div>
+<h2>Opening the register</h2>
+<ol>
+  <li>Click <strong>CHR POS → Register</strong> in the sidebar.</li>
+  <li>A cashier enters their PIN to identify themselves.</li>
+  <li>The floor plan screen appears — you're ready.</li>
+</ol>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-caisse.png" alt="CHR POS main register screen" loading="lazy">
+  <figcaption>Main register screen — floor plan with tables</figcaption>
+</figure>
+<div class="callout warn"><strong>NF525</strong><p>CHR POS is compliant with NF525 (French anti-VAT-fraud law). The ECDSA P-256 audit chain is enabled automatically. Never delete archive data.</p></div>`
    }},
 
-  {id:'pos-pin', cat:'chr-pos', readTime:2,
+  {id:'pos-pin', cat:'chr-pos', readTime:3,
    titles:{fr:'Codes PIN des caissiers',en:'Cashier PINs'},
    summaries:{fr:'Créer et gérer les codes PIN pour l\'accès à la caisse.',en:'Create and manage PIN codes for register access.'},
    bodies:{
-    fr:`<h2>Rôle des codes PIN</h2>
-<p>Chaque caissier s'identifie sur la caisse avec un code PIN à 4 chiffres. Cela permet de tracer les ventes par caissier et de sécuriser l'accès au terminal.</p>
-<h2>Créer un caissier</h2>
+    fr:`<h2>Pourquoi un code PIN ?</h2>
+<p>Le code PIN identifie chaque caissier à l'ouverture d'un ticket. Il permet de tracer les ventes par opérateur et de restreindre l'accès aux fonctions sensibles (remises, annulations, clôture).</p>
+<h2>Créer un caissier et son PIN</h2>
 <ol>
   <li>Allez dans <strong>CHR POS → Caissiers</strong>.</li>
   <li>Cliquez sur <strong>Nouveau caissier</strong>.</li>
-  <li>Renseignez le prénom (affiché sur l'écran de sélection) et un code PIN à 4 chiffres.</li>
+  <li>Saisissez le prénom (affiché sur les tickets) et un code PIN à 4 chiffres.</li>
+  <li>Choisissez le <strong>niveau d'accès</strong> : <em>Caissier</em>, <em>Gérant</em> ou <em>Admin</em>.</li>
   <li>Enregistrez.</li>
 </ol>
-<h2>Modifier ou réinitialiser un PIN</h2>
-<p>Depuis la liste des caissiers, cliquez sur le crayon en face du caissier concerné. Saisissez le nouveau PIN et enregistrez.</p>
-<div class="callout info"><strong>Bon à savoir</strong><p>Le PIN du caissier est distinct du mot de passe du compte CHR Solution. Un caissier peut ne pas avoir de compte utilisateur — il n'a accès qu'à l'interface de caisse.</p></div>
-<h2>Caissier manager</h2>
-<p>Vous pouvez marquer un caissier comme <strong>Manager</strong> pour lui donner accès aux fonctions de supervision (consultation du journal Z, remboursements, annulations).</p>`,
-    en:`<h2>Purpose of PIN codes</h2>
-<p>Each cashier identifies themselves at the register with a 4-digit PIN. This allows tracking sales per cashier and securing terminal access.</p>
-<h2>Creating a cashier</h2>
+<h2>Niveaux d'accès</h2>
+<table>
+  <thead><tr><th>Niveau</th><th>Caisse</th><th>Remises/Offerts</th><th>Annulations</th><th>Clôture</th><th>Back-office</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Caissier</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Gérant</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>Lecture</td></tr>
+    <tr><td><strong>Admin</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>Complet</td></tr>
+  </tbody>
+</table>
+<h2>Modifier ou supprimer un PIN</h2>
+<p>Dans la liste des caissiers, cliquez sur l'icône <strong>✏</strong> pour modifier le PIN ou le niveau. Un caissier ne peut pas modifier son propre niveau.</p>
+<div class="callout tip"><strong>Conseil</strong><p>Changez les PIN régulièrement, notamment lors d'un départ. Un code perdu se réinitialise depuis le back-office — aucune récupération par SMS ou mail n'est disponible.</p></div>
+<h2>PIN de supervision</h2>
+<p>En cas de blocage (ticket nécessitant une autorisation), la caisse demande un PIN <em>Gérant</em> ou <em>Admin</em>. Ce mécanisme évite qu'un caissier puisse effectuer seul des remises ou annulations.</p>`,
+    en:`<h2>Why a PIN?</h2>
+<p>The PIN identifies each cashier when opening a ticket. It tracks sales by operator and restricts access to sensitive functions (discounts, cancellations, closing).</p>
+<h2>Creating a cashier and their PIN</h2>
 <ol>
   <li>Go to <strong>CHR POS → Cashiers</strong>.</li>
   <li>Click <strong>New cashier</strong>.</li>
-  <li>Enter the first name (shown on the selection screen) and a 4-digit PIN.</li>
+  <li>Enter the first name (shown on receipts) and a 4-digit PIN.</li>
+  <li>Choose the <strong>access level</strong>: <em>Cashier</em>, <em>Manager</em> or <em>Admin</em>.</li>
   <li>Save.</li>
 </ol>
-<h2>Modifying or resetting a PIN</h2>
-<p>From the cashier list, click the pencil icon next to the cashier. Enter the new PIN and save.</p>
-<div class="callout info"><strong>Good to know</strong><p>The cashier PIN is separate from the CHR Solution account password. A cashier may not have a user account — they only access the register interface.</p></div>
-<h2>Manager cashier</h2>
-<p>You can mark a cashier as <strong>Manager</strong> to grant access to supervision features (Z-report, refunds, cancellations).</p>`
+<h2>Access levels</h2>
+<table>
+  <thead><tr><th>Level</th><th>Register</th><th>Discounts/Comps</th><th>Cancellations</th><th>Closing</th><th>Back-office</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Cashier</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Manager</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>Read</td></tr>
+    <tr><td><strong>Admin</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>Full</td></tr>
+  </tbody>
+</table>
+<h2>Modifying or deleting a PIN</h2>
+<p>In the cashiers list, click the <strong>✏</strong> icon to change the PIN or level. A cashier cannot modify their own access level.</p>
+<div class="callout tip"><strong>Tip</strong><p>Change PINs regularly, especially when an employee leaves. A lost PIN can be reset from the back-office — no SMS or email recovery is available.</p></div>
+<h2>Supervisor PIN</h2>
+<p>When a ticket requires authorisation (e.g. a discount), the register prompts for a <em>Manager</em> or <em>Admin</em> PIN. This prevents cashiers from applying discounts or cancellations on their own.</p>`
    }},
 
-  {id:'pos-tables', cat:'chr-pos', readTime:3,
+  {id:'pos-tables', cat:'chr-pos', readTime:4,
    titles:{fr:'Tables et tickets',en:'Tables and tickets'},
    summaries:{fr:'Ouvrir, modifier et transférer des tickets depuis le plan de salle.',en:'Open, modify and transfer tickets from the floor plan.'},
    bodies:{
-    fr:`<h2>Plan de salle</h2>
-<p>L'écran principal de caisse affiche votre plan de salle. Les tables sont colorées selon leur état :</p>
-<ul>
-  <li><strong>Gris</strong> — table libre.</li>
-  <li><strong>Vert</strong> — table occupée, ticket ouvert.</li>
-  <li><strong>Orange</strong> — commande envoyée en cuisine, en attente de règlement.</li>
-</ul>
-<h2>Ouvrir un ticket</h2>
+    fr:`<h2>Créer le plan de salle</h2>
+<p>Allez dans <strong>CHR POS → Configuration → Plan de salle</strong>. Vous pouvez créer plusieurs <strong>salles</strong> (Terrasse, Salle principale, Bar, Comptoir…) et y placer des <strong>tables</strong>.</p>
 <ol>
-  <li>Touchez une table libre.</li>
-  <li>Saisissez le nombre de couverts (optionnel).</li>
-  <li>Ajoutez les articles depuis le menu produits.</li>
+  <li>Cliquez sur <strong>Ajouter une salle</strong>.</li>
+  <li>Donnez-lui un nom et une couleur distinctive.</li>
+  <li>Cliquez sur <strong>Ajouter une table</strong> dans la salle.</li>
+  <li>Définissez le numéro, le nombre de couverts et la position sur le plan.</li>
 </ol>
-<h2>Modifier un ticket</h2>
-<p>Touchez une table occupée pour rouvrir le ticket. Vous pouvez ajouter, supprimer ou modifier les quantités. Chaque modification est tracée avec l'identifiant du caissier.</p>
-<h2>Transfert de table</h2>
-<p>Pour déplacer un ticket d'une table à une autre : touchez la table source, puis le bouton <strong>Transférer</strong>, puis sélectionnez la table de destination.</p>
-<h2>Tickets à emporter</h2>
-<p>Utilisez le bouton <strong>À emporter</strong> (ou la zone dédiée) pour créer un ticket sans numéro de table.</p>`,
-    en:`<h2>Floor plan</h2>
-<p>The main register screen shows your floor plan. Tables are colour-coded by status:</p>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-plan-salle.png" alt="Plan de salle CHR POS" loading="lazy">
+  <figcaption>Plan de salle — tables colorées selon leur statut en temps réel</figcaption>
+</figure>
+<h2>Statuts des tables</h2>
+<p>Sur l'écran de caisse, chaque table affiche une couleur indiquant son statut :</p>
 <ul>
-  <li><strong>Grey</strong> — free table.</li>
-  <li><strong>Green</strong> — occupied table, open ticket.</li>
-  <li><strong>Orange</strong> — order sent to kitchen, awaiting payment.</li>
+  <li><span style="color:#aaa"><strong>Gris</strong></span> — Table libre, prête à accueillir un ticket.</li>
+  <li><span style="color:#e8a020"><strong>Orange</strong></span> — Ticket ouvert, commande en cours.</li>
+  <li><span style="color:#d44"><strong>Rouge</strong></span> — Ticket envoyé en cuisine, en attente.</li>
+  <li><span style="color:#2a8"><strong>Vert</strong></span> — Commande servie, prête à encaisser.</li>
 </ul>
-<h2>Opening a ticket</h2>
+<h2>Changer une table</h2>
+<p>Pour déplacer un ticket d'une table à une autre (client qui change de place) :</p>
 <ol>
-  <li>Tap a free table.</li>
-  <li>Enter the number of covers (optional).</li>
-  <li>Add items from the product menu.</li>
+  <li>Ouvrez le ticket de la table source.</li>
+  <li>Appuyez sur <strong>Options → Changer de table</strong>.</li>
+  <li>Sélectionnez la table de destination.</li>
+  <li>Le ticket et ses articles sont transférés instantanément.</li>
 </ol>
-<h2>Modifying a ticket</h2>
-<p>Tap an occupied table to reopen the ticket. You can add, remove or adjust quantities. Every change is logged with the cashier's ID.</p>
-<h2>Table transfer</h2>
-<p>To move a ticket from one table to another: tap the source table, then the <strong>Transfer</strong> button, then select the destination table.</p>
-<h2>Takeaway tickets</h2>
-<p>Use the <strong>Takeaway</strong> button (or dedicated area) to create a ticket without a table number.</p>`
+<div class="callout tip"><strong>Conseil</strong><p>Si vous n'utilisez pas de plan de salle (vente à emporter), désactivez-le dans <strong>Paramètres → Affichage → Mode emporté</strong>. Les tickets sont alors créés directement sans sélection de table.</p></div>`,
+    en:`<h2>Creating the floor plan</h2>
+<p>Go to <strong>CHR POS → Configuration → Floor plan</strong>. You can create multiple <strong>rooms</strong> (Terrace, Main room, Bar, Counter…) and place <strong>tables</strong> in them.</p>
+<ol>
+  <li>Click <strong>Add a room</strong>.</li>
+  <li>Give it a name and a distinctive colour.</li>
+  <li>Click <strong>Add a table</strong> inside the room.</li>
+  <li>Set the number, cover count and position on the plan.</li>
+</ol>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-plan-salle.png" alt="CHR POS floor plan" loading="lazy">
+  <figcaption>Floor plan — tables colour-coded by real-time status</figcaption>
+</figure>
+<h2>Table statuses</h2>
+<p>On the register screen, each table shows a colour indicating its status:</p>
+<ul>
+  <li><span style="color:#aaa"><strong>Grey</strong></span> — Free table, ready for a ticket.</li>
+  <li><span style="color:#e8a020"><strong>Orange</strong></span> — Open ticket, order in progress.</li>
+  <li><span style="color:#d44"><strong>Red</strong></span> — Ticket sent to kitchen, awaiting service.</li>
+  <li><span style="color:#2a8"><strong>Green</strong></span> — Order served, ready to pay.</li>
+</ul>
+<h2>Moving a table</h2>
+<p>To move a ticket from one table to another (customer changes seats):</p>
+<ol>
+  <li>Open the source table's ticket.</li>
+  <li>Press <strong>Options → Move table</strong>.</li>
+  <li>Select the destination table.</li>
+  <li>The ticket and its items are transferred instantly.</li>
+</ol>
+<div class="callout tip"><strong>Tip</strong><p>If you don't use a floor plan (takeaway only), disable it in <strong>Settings → Display → Takeaway mode</strong>. Tickets are then created directly without selecting a table.</p></div>`
    }},
 
-  {id:'pos-encaissement', cat:'chr-pos', readTime:3,
+  {id:'pos-encaissement', cat:'chr-pos', readTime:5,
    titles:{fr:'Encaissement et paiements',en:'Taking payments'},
    summaries:{fr:'Modes de paiement, partage d\'addition et remboursements.',en:'Payment methods, split bills and refunds.'},
    bodies:{
-    fr:`<h2>Déclencher l'encaissement</h2>
-<p>Depuis un ticket ouvert, appuyez sur <strong>Encaisser</strong>. L'écran de paiement s'ouvre avec le montant total.</p>
+    fr:`<h2>Accéder à l'écran de paiement</h2>
+<p>Depuis le ticket ouvert, appuyez sur <strong>Encaisser</strong>. Le montant total TTC s'affiche. CHR POS calcule automatiquement la TVA selon les taux configurés.</p>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-encaissement.png" alt="Écran d'encaissement CHR POS" loading="lazy">
+  <figcaption>Écran d'encaissement — sélection du mode de paiement et saisie du montant</figcaption>
+</figure>
 <h2>Modes de paiement</h2>
-<p>Les modes activés dans les paramètres sont disponibles : <strong>Espèces</strong>, <strong>Carte bancaire</strong>, <strong>Chèque</strong>, <strong>Titre restaurant</strong>. Pour les espèces, saisissez le montant remis par le client pour calculer le rendu monnaie automatiquement.</p>
-<h2>Paiement mixte</h2>
-<p>Vous pouvez utiliser plusieurs modes de paiement sur un même ticket. Sélectionnez le premier mode, saisissez le montant partiel, puis ajoutez un second mode pour le solde.</p>
-<h2>Partage d'addition</h2>
-<p>Pour partager une addition entre plusieurs personnes, utilisez le bouton <strong>Partager</strong> et choisissez le nombre de parts ou la répartition par articles.</p>
-<h2>Remboursements</h2>
-<p>Les remboursements nécessitent un accès Manager. Depuis l'historique des tickets, retrouvez le ticket concerné et cliquez <strong>Rembourser</strong>. Un avoir ou un remboursement direct sont possibles.</p>
-<div class="callout warn"><strong>Attention</strong><p>Un ticket validé ne peut plus être modifié, conformément à NF525. En cas d'erreur, utilisez uniquement la fonction de remboursement.</p></div>`,
-    en:`<h2>Triggering checkout</h2>
-<p>From an open ticket, press <strong>Checkout</strong>. The payment screen opens with the total amount.</p>
+<ul>
+  <li><strong>Espèces</strong> — saisissez le montant remis. CHR POS calcule automatiquement la monnaie à rendre.</li>
+  <li><strong>Carte (CB)</strong> — confirmez le montant, le client paye sur le terminal.</li>
+  <li><strong>Chèque</strong> — saisissez le montant et le numéro de chèque (facultatif).</li>
+  <li><strong>Compte client</strong> — le montant est ajouté au compte du client, réglé ultérieurement.</li>
+  <li><strong>Tickets restaurant (TR)</strong> — saisissez le montant pris en charge par les TR.</li>
+</ul>
+<div class="callout tip"><strong>Paiement fractionné</strong><p>Pour payer sur plusieurs modes (ex. 30 € espèces + solde en carte), saisissez le premier montant, confirmez, puis ajoutez le second. Le solde restant se met à jour en temps réel.</p></div>
+<h2>Calcul de la monnaie</h2>
+<p>En mode <strong>Espèces</strong>, saisissez le montant remis. CHR POS affiche la <strong>monnaie à rendre</strong>. Confirmez pour clôturer le ticket.</p>
+<h2>Ticket de caisse client</h2>
+<ul>
+  <li><strong>Impression automatique</strong> — si une imprimante est configurée, le ticket s'imprime immédiatement.</li>
+  <li><strong>Ticket électronique</strong> — si activé, un QR code peut être proposé au client.</li>
+</ul>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-ticket.png" alt="Ticket de caisse CHR POS" loading="lazy">
+  <figcaption>Aperçu du ticket avant impression</figcaption>
+</figure>
+<h2>Annuler un paiement</h2>
+<p>Un paiement validé génère un ticket clôturé. Pour l'annuler, un gérant effectue un <strong>avoir</strong> depuis le back-office (<em>CHR POS → Tickets → Avoir</em>). L'avoir est tracé dans le rapport Z et déduit du CA journalier.</p>`,
+    en:`<h2>Accessing the payment screen</h2>
+<p>From the open ticket, press <strong>Pay</strong>. The total amount including tax is displayed. CHR POS automatically calculates VAT based on configured rates.</p>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-encaissement.png" alt="CHR POS payment screen" loading="lazy">
+  <figcaption>Payment screen — selecting payment method and entering the amount</figcaption>
+</figure>
 <h2>Payment methods</h2>
-<p>Methods enabled in settings are available: <strong>Cash</strong>, <strong>Card</strong>, <strong>Cheque</strong>, <strong>Meal voucher</strong>. For cash, enter the amount given by the customer to calculate change automatically.</p>
-<h2>Mixed payment</h2>
-<p>You can use multiple payment methods on the same ticket. Select the first method, enter the partial amount, then add a second method for the balance.</p>
-<h2>Split bill</h2>
-<p>To split a bill between several people, use the <strong>Split</strong> button and choose the number of shares or per-item allocation.</p>
-<h2>Refunds</h2>
-<p>Refunds require Manager access. From ticket history, find the ticket and click <strong>Refund</strong>. A credit note or direct refund are both possible.</p>
-<div class="callout warn"><strong>Warning</strong><p>A validated ticket cannot be modified, in accordance with NF525. In case of error, only use the refund function.</p></div>`
+<ul>
+  <li><strong>Cash</strong> — enter the amount given. CHR POS automatically calculates the change.</li>
+  <li><strong>Card (CB)</strong> — confirm the amount, the customer pays on the terminal.</li>
+  <li><strong>Cheque</strong> — enter the amount and cheque number (optional).</li>
+  <li><strong>Customer account</strong> — amount added to the customer file, settled later.</li>
+  <li><strong>Meal vouchers (TR)</strong> — enter the amount covered by meal vouchers.</li>
+</ul>
+<div class="callout tip"><strong>Split payment</strong><p>To pay across multiple methods (e.g. €30 cash + remainder on card), enter the first amount, confirm, then add the second. The remaining balance updates in real time.</p></div>
+<h2>Change calculation</h2>
+<p>In <strong>Cash</strong> mode, enter the amount given. CHR POS displays the <strong>change to return</strong>. Confirm to close the ticket.</p>
+<h2>Customer receipt</h2>
+<ul>
+  <li><strong>Auto-print</strong> — if a printer is configured, the receipt prints immediately.</li>
+  <li><strong>E-receipt</strong> — if enabled, a QR code can be offered to the customer.</li>
+</ul>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-ticket.png" alt="CHR POS receipt" loading="lazy">
+  <figcaption>Receipt preview before printing</figcaption>
+</figure>
+<h2>Cancelling a payment</h2>
+<p>A validated payment generates a closed ticket. To cancel it, a manager issues a <strong>credit note</strong> from the back-office (<em>CHR POS → Tickets → Credit note</em>). It is logged in the Z report and deducted from daily revenue.</p>`
    }},
 
-  {id:'pos-impression', cat:'chr-pos', readTime:2,
+  {id:'pos-impression', cat:'chr-pos', readTime:4,
    titles:{fr:'Impression des tickets',en:'Printing receipts'},
    summaries:{fr:'Configurer l\'imprimante thermique et les options d\'impression.',en:'Configure the thermal printer and printing options.'},
    bodies:{
     fr:`<h2>Configurer l'imprimante</h2>
-<p>Allez dans <strong>CHR POS → Paramètres → Impression</strong>. Renseignez l'adresse IP ou le port USB/série de votre imprimante. CHR POS supporte les imprimantes ESC/POS réseau et USB.</p>
-<h2>Test d'impression</h2>
-<p>Cliquez sur <strong>Imprimer un ticket de test</strong> pour vérifier la connexion et la mise en page.</p>
-<h2>Options du ticket</h2>
+<p>Allez dans <strong>CHR POS → Paramètres → Impression</strong>. CHR POS supporte les imprimantes thermiques <strong>ESC/POS</strong> (standard universel des caisses).</p>
+<h3>Imprimante réseau (Wi-Fi / Ethernet)</h3>
+<ol>
+  <li>Connectez l'imprimante au même réseau que votre tablette ou PC.</li>
+  <li>Notez l'adresse IP de l'imprimante (menu réseau de l'imprimante ou votre box).</li>
+  <li>Dans CHR POS, renseignez l'IP et le port (généralement <code>9100</code>).</li>
+  <li>Cliquez sur <strong>Tester</strong> — un ticket de test doit s'imprimer.</li>
+</ol>
+<h3>Imprimante USB</h3>
+<ol>
+  <li>Branchez l'imprimante en USB sur l'appareil.</li>
+  <li>Dans CHR POS, sélectionnez le port détecté (<code>COM3</code> sur Windows, <code>/dev/usb/lp0</code> sur Linux).</li>
+  <li>Testez l'impression.</li>
+</ol>
+<div class="callout info"><strong>Imprimantes compatibles</strong><p>Toute imprimante ESC/POS : Epson TM, Star, Bixolon, SEWOO, SNBC, etc. Une imprimante cuisine peut être configurée sur un port ou IP séparé.</p></div>
+<h2>Imprimante cuisine</h2>
+<p>Une seconde imprimante imprime les bons de cuisine. Elle ne reçoit que les articles marqués «envoyer en cuisine».</p>
+<ol>
+  <li>Dans <strong>Paramètres → Impression</strong>, activez <strong>Imprimante cuisine</strong>.</li>
+  <li>Renseignez son IP ou port.</li>
+  <li>Cochez les catégories à envoyer en cuisine (Plats, Entrées — pas les Boissons).</li>
+</ol>
+<h2>Largeur du papier</h2>
+<p>Deux formats courants :</p>
 <ul>
-  <li><strong>Logo</strong> — uploadez votre logo (PNG recommandé, max 300 px de large).</li>
-  <li><strong>Pied de page</strong> — message personnalisé (ex : "Merci de votre visite !").</li>
-  <li><strong>TVA détaillée</strong> — afficher le détail des taux sur le ticket client.</li>
+  <li><strong>80 mm</strong> (le plus courant en restauration) — configure 80 caractères par ligne.</li>
+  <li><strong>58 mm</strong> (format compact) — configure 42 caractères par ligne.</li>
 </ul>
-<h2>Impression automatique</h2>
-<p>Activez l'impression automatique à la validation du ticket depuis <strong>Paramètres → Impression → Imprimer automatiquement</strong>.</p>
-<div class="callout tip"><strong>Ticket sans imprimante</strong><p>Si vous n'avez pas d'imprimante, vous pouvez envoyer le ticket par e-mail au client depuis l'écran de validation.</p></div>`,
+<p>Vérifiez que la largeur configurée dans CHR POS correspond au rouleau installé dans l'imprimante.</p>
+<h2>Pied de ticket personnalisé</h2>
+<p>Dans <strong>Paramètres → Impression → Pied de ticket</strong>, ajoutez un message (ex. «Merci de votre visite !»). Il s'imprime en bas de chaque ticket client.</p>
+<div class="callout warn"><strong>Problème d'impression ?</strong><p>Vérifiez que l'imprimante et la tablette sont sur le même réseau. Si l'impression est décalée, vérifiez que la largeur papier configurée correspond au rouleau installé (58 mm ou 80 mm).</p></div>`,
     en:`<h2>Configuring the printer</h2>
-<p>Go to <strong>CHR POS → Settings → Printing</strong>. Enter your printer's IP address or USB/serial port. CHR POS supports ESC/POS network and USB printers.</p>
-<h2>Test print</h2>
-<p>Click <strong>Print a test receipt</strong> to verify the connection and layout.</p>
-<h2>Receipt options</h2>
+<p>Go to <strong>CHR POS → Settings → Printing</strong>. CHR POS supports <strong>ESC/POS</strong> thermal printers (the universal cash register standard).</p>
+<h3>Network printer (Wi-Fi / Ethernet)</h3>
+<ol>
+  <li>Connect the printer to the same network as your tablet or PC.</li>
+  <li>Note the printer's IP address (printer network menu or your router).</li>
+  <li>In CHR POS, enter the IP and port (usually <code>9100</code>).</li>
+  <li>Click <strong>Test</strong> — a test receipt should print.</li>
+</ol>
+<h3>USB printer</h3>
+<ol>
+  <li>Plug the printer into the device via USB.</li>
+  <li>In CHR POS, select the detected port (<code>COM3</code> on Windows, <code>/dev/usb/lp0</code> on Linux).</li>
+  <li>Test printing.</li>
+</ol>
+<div class="callout info"><strong>Compatible printers</strong><p>Any ESC/POS printer: Epson TM, Star, Bixolon, SEWOO, SNBC, etc. A kitchen printer can be configured on a separate port or IP.</p></div>
+<h2>Kitchen printer</h2>
+<p>A second printer prints kitchen tickets. It only receives items marked "send to kitchen".</p>
+<ol>
+  <li>In <strong>Settings → Printing</strong>, enable <strong>Kitchen printer</strong>.</li>
+  <li>Enter its IP or port.</li>
+  <li>Check the categories to send to the kitchen (Mains, Starters — not Drinks).</li>
+</ol>
+<h2>Paper width</h2>
+<p>Two common formats:</p>
 <ul>
-  <li><strong>Logo</strong> — upload your logo (PNG recommended, max 300 px wide).</li>
-  <li><strong>Footer</strong> — custom message (e.g. "Thank you for your visit!").</li>
-  <li><strong>Detailed VAT</strong> — show VAT rate breakdown on the customer receipt.</li>
+  <li><strong>80 mm</strong> (most common in restaurants) — configures 80 characters per line.</li>
+  <li><strong>58 mm</strong> (compact format) — configures 42 characters per line.</li>
 </ul>
-<h2>Automatic printing</h2>
-<p>Enable automatic printing on ticket validation via <strong>Settings → Printing → Print automatically</strong>.</p>
-<div class="callout tip"><strong>No printer?</strong><p>If you don't have a printer, you can email the receipt to the customer from the validation screen.</p></div>`
+<p>Make sure the width configured in CHR POS matches the roll installed in the printer.</p>
+<h2>Custom receipt footer</h2>
+<p>In <strong>Settings → Printing → Receipt footer</strong>, add a message (e.g. "Thank you for your visit!"). It prints at the bottom of each customer receipt.</p>
+<div class="callout warn"><strong>Printing problem?</strong><p>Check that the printer and tablet are on the same network. If the printout is misaligned, check that the configured paper width matches the installed roll (58 mm or 80 mm).</p></div>`
    }},
 
-  {id:'pos-cloture', cat:'chr-pos', readTime:3,
+  {id:'pos-cloture', cat:'chr-pos', readTime:5,
    titles:{fr:'Clôture journalière et journal Z',en:'Daily closing and Z-report'},
    summaries:{fr:'Effectuer la clôture de caisse et lire le journal Z.',en:'Perform the cash close and read the Z-report.'},
    bodies:{
     fr:`<h2>Qu'est-ce que la clôture journalière ?</h2>
-<p>La clôture journalière (ou <strong>journal Z</strong>) est l'opération qui arrête la session de caisse et génère le récapitulatif des ventes. Elle doit être effectuée chaque jour, avant la prochaine ouverture de caisse.</p>
+<p>La <strong>clôture journalière</strong> (rapport Z) marque la fin de la journée de caisse. Elle calcule le chiffre d'affaires, génère le ticket Z (obligation légale) et remet les compteurs à zéro.</p>
+<div class="callout warn"><strong>Obligation légale</strong><p>En France, la loi anti-fraude TVA impose une clôture journalière. Le ticket Z doit être conservé 6 ans.</p></div>
 <h2>Effectuer la clôture</h2>
 <ol>
-  <li>Assurez-vous que tous les tickets ouverts sont clôturés.</li>
+  <li>Assurez-vous que tous les tickets ouverts sont encaissés.</li>
   <li>Allez dans <strong>CHR POS → Clôture</strong>.</li>
-  <li>Vérifiez le résumé (total des ventes par mode de paiement).</li>
-  <li>Cliquez sur <strong>Valider la clôture</strong>. L'opération est irréversible.</li>
+  <li>Vérifiez le résumé (CA, tickets, ventilation des paiements).</li>
+  <li>Cliquez sur <strong>Clôturer la journée</strong>.</li>
+  <li>Imprimez le ticket Z.</li>
 </ol>
-<h2>Lire le journal Z</h2>
-<p>Le journal Z récapitule :</p>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-bo-reporting.png" alt="Rapport de ventes CHR POS" loading="lazy">
+  <figcaption>Tableau de bord reporting — résumé du CA et ventilation par mode de paiement</figcaption>
+</figure>
+<h2>Contenu du ticket Z</h2>
 <ul>
-  <li>Total des ventes HT et TTC par taux de TVA.</li>
-  <li>Total par mode de paiement.</li>
-  <li>Nombre de tickets et de couverts.</li>
-  <li>Annulations et remboursements.</li>
+  <li>Date &amp; heure de clôture · Numéro de séquence Z</li>
+  <li>CA TTC total · Ventilation TVA</li>
+  <li>Montants par mode de paiement · Nombre de tickets et couverts</li>
+  <li>Remises et avoirs de la journée</li>
 </ul>
-<p>Les journaux Z sont archivés dans <strong>CHR POS → Archives</strong> et ne peuvent pas être supprimés.</p>
-<div class="callout warn"><strong>Obligation légale (France)</strong><p>La conservation des journaux Z est obligatoire pendant 6 ans dans le cadre de la norme NF525. CHR Solution les conserve automatiquement.</p></div>`,
-    en:`<h2>What is the daily closing?</h2>
-<p>The daily closing (or <strong>Z-report</strong>) ends the register session and generates the sales summary. It must be performed every day, before the next opening.</p>
-<h2>Performing the close</h2>
+<h2>Rapport X (intermédiaire)</h2>
+<p>Le <strong>rapport X</strong> donne les mêmes informations sans clôturer la journée — utile pour un bilan en milieu de journée.</p>
 <ol>
-  <li>Make sure all open tickets are closed.</li>
-  <li>Go to <strong>CHR POS → Closing</strong>.</li>
-  <li>Review the summary (total sales by payment method).</li>
-  <li>Click <strong>Confirm closing</strong>. The action is irreversible.</li>
+  <li>Allez dans <strong>Clôture → Rapport X</strong>.</li>
+  <li>Consultez ou imprimez le rapport — les compteurs continuent à s'alimenter.</li>
 </ol>
-<h2>Reading the Z-report</h2>
-<p>The Z-report summarises:</p>
+<h2>Historique des clôtures</h2>
+<p>Les tickets Z archivés sont consultables dans <strong>CHR POS → Rapports → Historique des clôtures</strong>. Chaque clôture liste les tickets et le détail des ventes.</p>`,
+    en:`<h2>What is the daily closing?</h2>
+<p>The <strong>daily closing</strong> (Z report) marks the end of the register day. It calculates revenue, generates the Z receipt (legal requirement), and resets counters.</p>
+<div class="callout warn"><strong>Legal requirement</strong><p>In France, the anti-VAT fraud law requires a daily closing. The Z receipt must be kept for 6 years.</p></div>
+<h2>Performing the closing</h2>
+<ol>
+  <li>Make sure all open tickets are paid.</li>
+  <li>Go to <strong>CHR POS → Closing</strong>.</li>
+  <li>Review the summary (revenue, tickets, payment breakdown).</li>
+  <li>Click <strong>Close the day</strong>.</li>
+  <li>Print the Z receipt.</li>
+</ol>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-bo-reporting.png" alt="CHR POS sales report" loading="lazy">
+  <figcaption>Reporting dashboard — revenue summary and payment breakdown</figcaption>
+</figure>
+<h2>Z receipt contents</h2>
 <ul>
-  <li>Total sales excluding and including VAT, by VAT rate.</li>
-  <li>Total by payment method.</li>
-  <li>Number of tickets and covers.</li>
-  <li>Cancellations and refunds.</li>
+  <li>Closing date &amp; time · Z sequence number</li>
+  <li>Total revenue incl. tax · VAT breakdown</li>
+  <li>Amounts by payment method · Ticket and cover count</li>
+  <li>Day's discounts and credit notes</li>
 </ul>
-<p>Z-reports are archived in <strong>CHR POS → Archives</strong> and cannot be deleted.</p>
-<div class="callout warn"><strong>Legal requirement (France)</strong><p>Z-report retention is mandatory for 6 years under NF525. CHR Solution retains them automatically.</p></div>`
+<h2>X report (interim)</h2>
+<p>The <strong>X report</strong> gives the same information without closing the day — useful for a mid-day summary.</p>
+<ol>
+  <li>Go to <strong>Closing → X Report</strong>.</li>
+  <li>View or print the report — counters keep accumulating.</li>
+</ol>
+<h2>Closing history</h2>
+<p>Archived Z reports are in <strong>CHR POS → Reports → Closing history</strong>. Each closing lists the day's tickets and sales details.</p>`
    }},
+
+
+  {id:'pos-commande', cat:'chr-pos', readTime:5,
+   titles:{fr:'Passer une commande',en:'Taking an order'},
+   summaries:{fr:'Ajouter des articles, modifier les quantités et envoyer en cuisine.',en:'Add items, adjust quantities and send to kitchen.'},
+   bodies:{
+    fr:`<h2>Ouvrir un ticket</h2>
+<p>Depuis le plan de salle, touchez une <strong>table libre (grise)</strong>. Un ticket vide s'ouvre. Si le plan de salle est désactivé, appuyez sur <strong>Nouveau ticket</strong>.</p>
+<h2>Ajouter des articles</h2>
+<p>Le catalogue de produits s'affiche à droite, organisé par catégories (Entrées, Plats, Desserts, Boissons…).</p>
+<ol>
+  <li>Naviguez dans les catégories.</li>
+  <li>Appuyez sur un article pour l'ajouter au ticket.</li>
+  <li>Appuyez plusieurs fois ou utilisez <strong>+/−</strong> pour ajuster la quantité.</li>
+</ol>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-ticket.png" alt="Ticket de commande CHR POS" loading="lazy">
+  <figcaption>Ticket en cours — articles avec quantités et prix unitaires</figcaption>
+</figure>
+<h2>Modifier un article</h2>
+<ul>
+  <li><strong>Changer la quantité</strong> — touchez l'article dans la liste puis +/−.</li>
+  <li><strong>Supprimer</strong> — glissez vers la gauche ou appuyez longuement → <em>Supprimer</em>.</li>
+  <li><strong>Note de ligne</strong> — appuyez longuement → <em>Ajouter une note</em> (ex. «sans oignons»). La note s'imprime sur le bon de cuisine.</li>
+  <li><strong>Remise sur article</strong> — appuyez longuement → <em>Remise</em> → saisissez % ou montant.</li>
+</ul>
+<div class="callout tip"><strong>Notes de cuisine</strong><p>Les notes de ligne sont transmises avec le bon de cuisine, permettant de personnaliser chaque plat sans modifier le menu.</p></div>
+<h2>Envoyer en cuisine</h2>
+<p>Une fois la commande saisie, appuyez sur <strong>Envoyer</strong>. Les articles «cuisine» s'impriment sur l'imprimante cuisine. La table passe en orange.</p>
+<div class="callout info"><strong>Ajout après envoi</strong><p>Les articles ajoutés après le premier envoi sont mis en évidence. Un second <em>Envoyer</em> n'envoie que les nouveaux articles en cuisine.</p></div>
+<h2>Mettre en attente</h2>
+<p>Revenez simplement au plan de salle — le ticket est sauvegardé automatiquement. Vous pouvez y revenir à tout moment.</p>`,
+    en:`<h2>Opening a ticket</h2>
+<p>From the floor plan, tap a <strong>free (grey) table</strong>. An empty ticket opens. If the floor plan is disabled, press <strong>New ticket</strong>.</p>
+<h2>Adding items</h2>
+<p>The product catalogue appears on the right, organised by category (Starters, Mains, Desserts, Drinks…).</p>
+<ol>
+  <li>Browse the categories.</li>
+  <li>Tap an item to add it to the ticket.</li>
+  <li>Tap multiple times or use <strong>+/−</strong> to adjust the quantity.</li>
+</ol>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-ticket.png" alt="CHR POS order ticket" loading="lazy">
+  <figcaption>Active ticket — items with quantities and unit prices</figcaption>
+</figure>
+<h2>Modifying an item</h2>
+<ul>
+  <li><strong>Change quantity</strong> — tap the item in the list, then +/−.</li>
+  <li><strong>Delete</strong> — swipe left or long-press → <em>Delete</em>.</li>
+  <li><strong>Line note</strong> — long-press → <em>Add note</em> (e.g. "no onions"). The note prints on the kitchen ticket.</li>
+  <li><strong>Item discount</strong> — long-press → <em>Discount</em> → enter % or amount.</li>
+</ul>
+<div class="callout tip"><strong>Kitchen notes</strong><p>Line notes are transmitted with the kitchen ticket, letting you personalise each dish without changing the menu.</p></div>
+<h2>Sending to kitchen</h2>
+<p>Once the order is entered, press <strong>Send</strong>. Kitchen items print on the kitchen printer. The table turns orange.</p>
+<div class="callout info"><strong>Adding after sending</strong><p>Items added after the first send are highlighted. A second <em>Send</em> only transmits the new items to the kitchen.</p></div>
+<h2>Putting on hold</h2>
+<p>Simply return to the floor plan — the ticket is saved automatically and can be resumed at any time.</p>`
+   }
+  },
+
+  {id:'pos-remises', cat:'chr-pos', readTime:3,
+   titles:{fr:'Remises, offerts et notes',en:'Discounts, complimentary items and notes'},
+   summaries:{fr:'Appliquer une remise sur un article ou un ticket, offrir un article.',en:'Apply a discount to an item or ticket, mark items as complimentary.'},
+   bodies:{
+    fr:`<h2>Remise sur un article</h2>
+<ol>
+  <li><strong>Appuyez longuement</strong> sur l'article dans le ticket.</li>
+  <li>Choisissez <strong>Remise</strong>.</li>
+  <li>Saisissez le pourcentage (ex. 10%) ou le montant fixe (ex. 2,00 €).</li>
+  <li>Confirmez — le nouveau prix s'affiche sur la ligne.</li>
+</ol>
+<div class="callout tip"><strong>Visibilité client</strong><p>La remise est visible sur le ticket : le prix original est barré, le nouveau prix s'affiche en dessous.</p></div>
+<h2>Remise globale sur le ticket</h2>
+<ol>
+  <li>Ouvrez le ticket et appuyez sur <strong>Options ticket</strong> (icône ⋯).</li>
+  <li>Choisissez <strong>Remise globale</strong>.</li>
+  <li>Saisissez le pourcentage ou le montant à déduire.</li>
+  <li>La remise est répartie proportionnellement sur tous les articles.</li>
+</ol>
+<h2>Article offert</h2>
+<p>Pour offrir un article gratuitement (verre offert, dessert offert…) :</p>
+<ol>
+  <li>Ajoutez l'article normalement au ticket.</li>
+  <li>Appuyez longuement → choisissez <strong>Offrir</strong>.</li>
+  <li>L'article passe à 0,00 € et est marqué «Offert» sur le ticket.</li>
+</ol>
+<div class="callout warn"><strong>Traçabilité</strong><p>Les articles offerts sont comptabilisés séparément dans le journal Z. Ils n'apparaissent pas dans le CA encaissé.</p></div>
+<h2>Note sur le ticket</h2>
+<ol>
+  <li>Appuyez sur <strong>Options ticket</strong> → <strong>Note</strong>.</li>
+  <li>Saisissez votre note (ex. «Anniversaire — bougie sur le gâteau»).</li>
+  <li>Elle s'affiche sur le ticket et peut s'imprimer sur le bon de cuisine.</li>
+</ol>`,
+    en:`<h2>Item discount</h2>
+<ol>
+  <li><strong>Long-press</strong> the item in the ticket.</li>
+  <li>Choose <strong>Discount</strong>.</li>
+  <li>Enter the percentage (e.g. 10%) or fixed amount (e.g. €2.00).</li>
+  <li>Confirm — the new price appears on the line.</li>
+</ol>
+<div class="callout tip"><strong>Customer visibility</strong><p>The discount is visible on the receipt: the original price is struck through, the new price shown below.</p></div>
+<h2>Overall ticket discount</h2>
+<ol>
+  <li>Open the ticket and press <strong>Ticket options</strong> (⋯ icon).</li>
+  <li>Choose <strong>Overall discount</strong>.</li>
+  <li>Enter the percentage or amount to deduct.</li>
+  <li>The discount is spread proportionally across all items.</li>
+</ol>
+<h2>Complimentary item</h2>
+<p>To offer an item free of charge (complimentary drink, free dessert…):</p>
+<ol>
+  <li>Add the item to the ticket as normal.</li>
+  <li>Long-press → choose <strong>Complimentary</strong>.</li>
+  <li>The item is set to €0.00 and marked "Complimentary" on the ticket.</li>
+</ol>
+<div class="callout warn"><strong>Traceability</strong><p>Complimentary items are logged separately in the Z report. They do not appear in collected revenue.</p></div>
+<h2>Ticket note</h2>
+<ol>
+  <li>Press <strong>Ticket options</strong> → <strong>Note</strong>.</li>
+  <li>Enter your note (e.g. "Birthday — candle on the cake").</li>
+  <li>It appears on the ticket and can print on the kitchen ticket.</li>
+</ol>`
+   }
+  },
+
+  {id:'pos-partage', cat:'chr-pos', readTime:4,
+   titles:{fr:'Partager et scinder une addition',en:'Splitting and sharing a bill'},
+   summaries:{fr:'Diviser un ticket par parts égales ou par articles entre plusieurs clients.',en:'Divide a ticket into equal shares or by item between multiple customers.'},
+   bodies:{
+    fr:`<h2>Partage par parts égales</h2>
+<ol>
+  <li>Sur le ticket ouvert, appuyez sur <strong>Partager</strong>.</li>
+  <li>Choisissez <strong>Par parts égales</strong>.</li>
+  <li>Saisissez le nombre de personnes.</li>
+  <li>CHR POS affiche la part de chacun. Chaque client paye sa part séparément.</li>
+  <li>Le ticket se clôture automatiquement quand la totalité est réglée.</li>
+</ol>
+<div class="callout tip"><strong>Arrondi</strong><p>En cas de montant non divisible exactement, CHR POS arrondit à l'euro inférieur et attribue les centimes restants au dernier paiement.</p></div>
+<h2>Partage par articles</h2>
+<p>Chaque convive paye uniquement ses articles :</p>
+<ol>
+  <li>Appuyez sur <strong>Partager → Par articles</strong>.</li>
+  <li>L'écran se divise : articles à déplacer (gauche) et note partielle (droite).</li>
+  <li>Sélectionnez les articles du premier client et glissez-les dans sa note.</li>
+  <li>Encaissez la note partielle.</li>
+  <li>Répétez pour chaque client. Le dernier encaissement clôture le ticket.</li>
+</ol>
+<h2>Scinder un ticket</h2>
+<p>La scission crée <strong>deux tickets indépendants</strong> à partir d'un seul :</p>
+<ol>
+  <li>Appuyez sur <strong>Options ticket → Scinder</strong>.</li>
+  <li>Sélectionnez les articles à transférer vers le nouveau ticket.</li>
+  <li>Deux tickets apparaissent sur le plan de salle.</li>
+  <li>Chaque ticket peut être encaissé séparément à des moments différents.</li>
+</ol>
+<div class="callout info"><strong>Partage vs scission</strong><p>Le <em>partage</em> s'effectue à l'encaissement (articles sur un seul ticket). La <em>scission</em> crée deux tickets distincts et indépendants.</p></div>`,
+    en:`<h2>Equal-share split</h2>
+<ol>
+  <li>On the open ticket, press <strong>Split</strong>.</li>
+  <li>Choose <strong>Equal shares</strong>.</li>
+  <li>Enter the number of people.</li>
+  <li>CHR POS shows each person's share. Each customer pays separately.</li>
+  <li>The ticket closes automatically when fully paid.</li>
+</ol>
+<div class="callout tip"><strong>Rounding</strong><p>If the amount doesn't divide evenly, CHR POS rounds down and assigns the remaining cents to the last payment.</p></div>
+<h2>Item-by-item split</h2>
+<p>Each guest pays only their items:</p>
+<ol>
+  <li>Press <strong>Split → By items</strong>.</li>
+  <li>The screen divides: items to move (left) and partial bill (right).</li>
+  <li>Select the first customer's items and drag them to their bill.</li>
+  <li>Process the partial payment.</li>
+  <li>Repeat for each customer. The last payment closes the ticket.</li>
+</ol>
+<h2>Splitting a ticket</h2>
+<p>Splitting creates <strong>two independent tickets</strong> from one:</p>
+<ol>
+  <li>Press <strong>Ticket options → Split ticket</strong>.</li>
+  <li>Select the items to transfer to the new ticket.</li>
+  <li>Two tickets appear on the floor plan.</li>
+  <li>Each ticket can be paid separately at different times.</li>
+</ol>
+<div class="callout info"><strong>Share vs. split</strong><p><em>Sharing</em> happens at payment time (items stay on one ticket). <em>Splitting</em> creates two separate, independent tickets.</p></div>`
+   }
+  },
+
+  {id:'pos-rapports', cat:'chr-pos', readTime:4,
+   titles:{fr:'Rapports et statistiques de ventes',en:'Sales reports and statistics'},
+   summaries:{fr:'Consulter le CA, les ventes par article et les analyses dans le back-office.',en:'View revenue, per-item sales and analytics in the back-office.'},
+   bodies:{
+    fr:`<h2>Tableau de bord</h2>
+<p>Le tableau de bord (<strong>CHR POS → Rapports</strong>) affiche en temps réel :</p>
+<ul>
+  <li>Chiffre d'affaires TTC du jour · Nombre de tickets et de couverts</li>
+  <li>Ticket moyen · Ventilation par mode de paiement</li>
+  <li>Top 5 des articles vendus</li>
+</ul>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-bo-reporting.png" alt="Rapports CHR POS" loading="lazy">
+  <figcaption>Tableau de bord reporting — indicateurs du jour et graphiques</figcaption>
+</figure>
+<h2>Rapports disponibles</h2>
+<h3>Rapport journalier</h3>
+<p>Synthèse complète : CA, ventilation TVA, remises, avoirs, heures de pointe. Accessible via <strong>Rapports → Journalier</strong>.</p>
+<h3>Rapport par article</h3>
+<p>Classement des articles vendus sur une période : quantités, CA généré, part des ventes totales. Idéal pour identifier les best-sellers et les articles peu vendus.</p>
+<h3>Rapport par caissier</h3>
+<p>Détail des encaissements par caissier : CA total, remises accordées, annulations.</p>
+<h3>Rapport horaire</h3>
+<p>Courbe de fréquentation heure par heure — identifiez les créneaux de rush pour optimiser le personnel.</p>
+<h2>Filtrer et exporter</h2>
+<p>Tous les rapports sont filtrables par <strong>période</strong> (jour, semaine, mois, personnalisée). Export <strong>CSV ou PDF</strong> disponible.</p>
+<div class="callout tip"><strong>Comptabilité</strong><p>Exportez le rapport mensuel en CSV pour votre comptable ou votre déclaration de TVA.</p></div>
+<h2>Historique des tickets</h2>
+<p>La liste de tous les tickets est consultable dans <strong>Rapports → Tickets</strong>. Chaque ticket peut être ouvert pour voir le détail des articles, le mode de paiement et l'heure.</p>`,
+    en:`<h2>Dashboard</h2>
+<p>The dashboard (<strong>CHR POS → Reports</strong>) shows in real time:</p>
+<ul>
+  <li>Day's total revenue incl. tax · Number of tickets and covers</li>
+  <li>Average ticket value · Payment method breakdown</li>
+  <li>Top 5 best-selling items</li>
+</ul>
+<figure>
+  <img src="https://chrsolution.fr/assets/img/pos/pos-ipad-bo-reporting.png" alt="CHR POS reports" loading="lazy">
+  <figcaption>Reporting dashboard — today's metrics and charts</figcaption>
+</figure>
+<h2>Available reports</h2>
+<h3>Daily report</h3>
+<p>Complete summary: revenue, VAT breakdown, discounts, credit notes, peak hours. Via <strong>Reports → Daily</strong>.</p>
+<h3>Per-item report</h3>
+<p>Ranking of items sold over a period: quantities, revenue generated, share of total sales. Ideal for identifying best-sellers and slow movers.</p>
+<h3>Per-cashier report</h3>
+<p>Payment breakdown by cashier: total revenue, discounts granted, cancellations.</p>
+<h3>Hourly report</h3>
+<p>Hour-by-hour traffic curve — identify rush periods to optimise staffing.</p>
+<h2>Filter and export</h2>
+<p>All reports can be filtered by <strong>period</strong> (day, week, month, custom). <strong>CSV or PDF</strong> export available.</p>
+<div class="callout tip"><strong>Accounting</strong><p>Export the monthly report as CSV for your accountant or VAT returns.</p></div>
+<h2>Ticket history</h2>
+<p>The full list of tickets is in <strong>Reports → Tickets</strong>. Each ticket can be opened to see item details, payment method and time.</p>`
+   }
+  },
 
   /* ── CHR Achats ── */
   {id:'ach-vue-ensemble', cat:'chr-achats', readTime:3,
